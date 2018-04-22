@@ -2,18 +2,27 @@ import React from 'react';
 import {Button, Col, Icon, Input, Row} from 'antd';
 //
 import {MarketText} from '../Styles';
-import telegram from '../images/telegram.svg';
-import twitter from '../images/twitter.svg';
-import medium from '../images/medium.svg';
-import github from '../images/github.svg';
+import styled from "styled-components";
+import {device} from "../breakpoints";
 
+const SectionWrapper = styled.section`
+  background: #F0F0F0;
+  
+  @media ${device.mobileS} {
+    padding: 0 10px 70px 10px;
+  }
+  
+  @media ${device.tablet} {
+    padding: 0 50px 70px 50px;
+  }
+`;
 
 class Cta extends React.Component {
   render() {
     return (
-      <section id="dapp" style={{background: '#F0F0F0', padding: '130px'}}>
-        <Row type="flex" align="middle" gutter={48}>
-          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+      <SectionWrapper>
+        <Row type="flex" align="middle">
+          <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
             <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Join our Newsletter</MarketText>
             <Input
               placeholder="Enter your email here"
@@ -24,7 +33,7 @@ class Cta extends React.Component {
               )}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+          <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
             <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Become a Partner</MarketText>
             <Input
               placeholder="Email Us"
@@ -35,23 +44,8 @@ class Cta extends React.Component {
               )}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Market Protocol on the web</MarketText>
-            <Button size="large" type="primary" style={{marginRight: '10px'}}>
-              <img alt="telegram" src={telegram}/>
-            </Button>
-            <Button size="large" type="primary" style={{marginRight: '10px'}} >
-              <img alt="telegram" src={twitter}/>
-            </Button>
-            <Button size="large" type="primary" style={{marginRight: '10px'}} >
-              <img alt="telegram" src={medium}/>
-            </Button>
-            <Button size="large" type="primary" style={{marginRight: '10px'}} >
-              <img alt="telegram" src={github}/>
-            </Button>
-          </Col>
         </Row>
-      </section>
+      </SectionWrapper>
     );
   }
 }

@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import {size} from "./breakpoints";
 
-const MarketText = styled.div`
+const MarketText = styled.h1`
   font-size: ${props => props.header ? '36px;' : '18px;'};
   font-weight: ${props => props.header ? '500;' : '300;'};
+  
+  @media (max-width: ${size.laptop})  {
+    font-size: ${props => props.header ? '28px;' : '14px;'};
+  }
 `;
 
 
@@ -21,6 +26,9 @@ const MarketList = styled.li`
     margin-top: 10px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+  @media (max-width: ${size.laptop})  {
+    font-size: 14px;
   }
 `;
 

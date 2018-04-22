@@ -3,6 +3,7 @@ import {Button, Col, Row} from 'antd';
 import styled from 'styled-components';
 //
 import {MarketText, MarketList} from '../Styles';
+import {device, size} from '../breakpoints';
 import asset3 from '../images/asset_3.svg';
 import asset9 from '../images/asset_9.svg';
 import asset5 from '../images/asset_5.svg';
@@ -17,18 +18,51 @@ const Wrapper = styled.div`
   text-align: center;
   height: 420px;
   margin-right: 10px;
+  
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    margin-right: 0px;
+  }
 `;
 
 const TextWrapper = styled.div`
   padding: 0px 100px 0px 50px;
+  
+  @media ${device.mobileS}  {
+    padding: 20px 20px 50px 20px;
+  }
+  @media ${device.tablet} {
+    padding: 0px 50px 0px 0px;
+  }
+  @media ${device.laptop} {
+    padding: 0px 50px 0px 30px;
+  }
 `;
 
+
+const SectionWrapper = styled.section`
+  padding: 70px;
+  background: #F0F0F0;
+  
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    padding: 0px;
+  }
+`;
+
+
+const HeaderText = MarketText.extend`
+  padding-bottom: 70px;
+  
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    padding: 70px 20px;
+  }
+  
+`;
 
 class Dapp extends React.Component {
   render() {
     return (
-      <section id="dapp" style={{background: '#F0F0F0', padding: '70px'}}>
-        <MarketText header style={{marginBottom: '70px'}}>Easily create new contracts</MarketText>
+      <SectionWrapper>
+        <HeaderText header>Easily create new contracts</HeaderText>
         <Row type="flex" align="middle">
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <Wrapper bg="#181E26">
@@ -52,7 +86,7 @@ class Dapp extends React.Component {
             </Wrapper>
           </Col>
         </Row>
-        <Row type="flex" align="middle" style={{marginTop: '90px'}}>
+        <Row type="flex" align="middle" style={{marginTop: '10%'}}>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <TextWrapper>
               <MarketList>Users can create contracts with MARKET Protocol’s dApp guiding them through the process</MarketList>
@@ -66,7 +100,7 @@ class Dapp extends React.Component {
             <img alt="tablet" src={tablet} width="100%"/>
           </Col>
         </Row>
-      </section>
+      </SectionWrapper>
     );
   }
 }
