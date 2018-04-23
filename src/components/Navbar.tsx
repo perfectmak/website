@@ -43,12 +43,12 @@ class Navbar extends React.Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="5">
-            <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to="https://medium.com/market-protocol" style={{color: 'inherit', textDecoration: 'none'}}>
               Blog
             </Link>
           </Menu.Item>
           <Menu.Item key="6">
-            <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to="https://t.me/Market_Protocol_Chat" style={{color: 'inherit', textDecoration: 'none'}}>
               Telegram
             </Link>
           </Menu.Item>

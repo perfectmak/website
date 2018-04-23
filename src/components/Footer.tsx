@@ -73,40 +73,50 @@ class MarketFooter extends React.Component {
               <HeaderText>Documentation</HeaderText>
               <FooterLink>
                 <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Product Brief
-                </Link>
-              </FooterLink>
-              <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
                   Whitepaper
                 </Link>
               </FooterLink>
               <FooterLink>
                 <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                  Summary
+                </Link>
+              </FooterLink>
+              <FooterLink>
+                <Link to="https://github.com/MARKETProtocol" style={{color: 'inherit', textDecoration: 'none'}}>
                   Github
                 </Link>
               </FooterLink>
               <FooterLink>
+                <Link to="https://docs.marketprotocol.io/" style={{color: 'inherit', textDecoration: 'none'}}>
+                  Technical Docs
+                </Link>
+              </FooterLink>
+              <FooterLink>
                 <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  FAQ Later
+                  FAQ
                 </Link>
               </FooterLink>
             </Col>
             <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <HeaderText>Community</HeaderText>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Slack
+                <Link to="https://t.me/Market_Protocol_Chat" style={{color: 'inherit', textDecoration: 'none'}}>
+                  Telegram
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://twitter.com/MarketProtocol" style={{color: 'inherit', textDecoration: 'none'}}>
                   Twitter
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Facebook
+                <Link to="https://medium.com/market-protocol" style={{color: 'inherit', textDecoration: 'none'}}>
+                  Medium
+                </Link>
+              </FooterLink>
+              <FooterLink>
+                <Link to="https://discordapp.com/invite/qN8MCbq" style={{color: 'inherit', textDecoration: 'none'}}>
+                  Discord
                 </Link>
               </FooterLink>
             </Col>
@@ -114,22 +124,22 @@ class MarketFooter extends React.Component {
               Organization
               <FooterLink>
                 <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  About
+                  Team
                 </Link>
               </FooterLink>
               <FooterLink>
                 <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Address
+                  Partners
                 </Link>
               </FooterLink>
+              {/*<FooterLink>*/}
+                {/*<Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>*/}
+                  {/*Jobs (We're hiring!)*/}
+                {/*</Link>*/}
+              {/*</FooterLink>*/}
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Phone
-                </Link>
-              </FooterLink>
-              <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
-                  Email
+                <Link to="mailto:info@marketprotocool.io" style={{color: 'inherit', textDecoration: 'none'}}>
+                  info@marketprotocol.io
                 </Link>
               </FooterLink>
             </Col>
