@@ -24,10 +24,10 @@ class Cta extends React.Component {
       <SectionWrapper>
         <Row type="flex" align="middle">
           <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
-            <MarketSubscriberForm title="Join our Newsletter" hint="Enter your email here" campaignToken="newsletter-list-token-here" />
+            <MarketSubscriberForm title="Join our Newsletter" hint="Enter your email here" campaignToken="6yWV9" />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
-            <MarketSubscriberForm title="Become a Partner" hint="Email us" campaignToken="patner-list-token-here" />
+            <MarketSubscriberForm title="Become a Partner" hint="Email us" campaignToken="6yWV9" />
           </Col>
         </Row>
       </SectionWrapper>
