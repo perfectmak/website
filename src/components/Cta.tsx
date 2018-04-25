@@ -1,8 +1,9 @@
 import React from 'react';
-import {Button, Col, Icon, Input, Row} from 'antd';
+import {Col, Row} from 'antd';
 //
-import {MarketText} from '../Styles';
+
 import styled from "styled-components";
+import MarketSubscriberForm from "./MarketSubscriberForm";
 import {device} from "../breakpoints";
 
 const SectionWrapper = styled.section`
@@ -23,26 +24,10 @@ class Cta extends React.Component {
       <SectionWrapper>
         <Row type="flex" align="middle">
           <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
-            <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Join our Newsletter</MarketText>
-            <Input
-              placeholder="Enter your email here"
-              suffix={(
-                <Button className="search-btn" size="large" type="primary" style={{padding: '0 10px', height: '38px'}}>
-                  <Icon type="arrow-right" />
-                </Button>
-              )}
-            />
+            <MarketSubscriberForm title="Join our Newsletter" hint="Enter your email here" campaignToken="newsletter-list-token-here" />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '70px'}}>
-            <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Become a Partner</MarketText>
-            <Input
-              placeholder="Email Us"
-              suffix={(
-                <Button className="search-btn" size="large" type="primary" style={{padding: '0 10px', height: '38px'}}>
-                  <Icon type="arrow-right" />
-                </Button>
-              )}
-            />
+            <MarketSubscriberForm title="Become a Partner" hint="Email us" campaignToken="patner-list-token-here" />
           </Col>
         </Row>
       </SectionWrapper>
