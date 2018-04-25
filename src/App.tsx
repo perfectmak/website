@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Router, withRouter} from 'react-static';
+import {Link, Switch, Router, Route, withRouter} from 'react-static';
 import {injectGlobal} from 'styled-components';
 import {hot} from 'react-hot-loader';
 //
@@ -17,6 +17,11 @@ injectGlobal`
   }
 `;
 
+function Redirect(url: string): string {
+  window.location.replace(url);
+  return `Redirecting to ${url}`;
+}
+
 class App extends React.Component {
   render() {
     return (
@@ -24,7 +29,11 @@ class App extends React.Component {
         <Layout style={{width: '100vw'}}>
           <Navbar/>
           <Content style={{background: '#FFFFFF', width: '100%vw'}}>
-            <Routes />
+            <Switch>
+              <Route path="/discord" render={Redirect.bind(null, "https://discordapp.com/invite/qN8MCbq")} />
+              <Route path="/telegram" render={Redirect.bind(null, "https://t.me/Market_Protocol_Chat")} />
+              <Routes />
+            </Switch>
           </Content>
           <MarketFooter />
         </Layout>
