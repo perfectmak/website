@@ -38,7 +38,7 @@ class Navbar extends React.Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="4">
-            <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to="/#ctaSection" style={{color: 'inherit', textDecoration: 'none'}}>
               Subscribe
             </Link>
           </Menu.Item>
