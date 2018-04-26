@@ -23,7 +23,7 @@ class App extends React.Component {
       <Router>
         <Layout style={{width: '100vw'}}>
           <Navbar/>
-          <Content style={{background: '#FFFFFF', width: '100%vw'}}>
+          <Content style={{background: '#FFFFFF', width: '100vw'}}>
             <Routes />
           </Content>
           <MarketFooter />

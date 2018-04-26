@@ -39,6 +39,7 @@ const MarketList = styled.li`
   padding: 10px 0;
   list-style: none;
   font-weight: 300;
+  margin-left: 20px;
   :before {
     content: "";
     line-height: 1em;
@@ -49,9 +50,13 @@ const MarketList = styled.li`
     margin-top: 10px;
     border-radius: 50%;
     margin-right: 10px;
+    margin-left: -20px;
   }
   @media (max-width: ${size.laptop})  {
     font-size: 14px;
+    :before {
+      margin-top: 5px;
+    }
   }
 `;
 

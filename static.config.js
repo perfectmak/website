@@ -25,7 +25,7 @@ const webpack = require('webpack')
 //
 export default {
   getSiteData: () => ({
-    title: 'React Static',
+    title: 'Market Protocol',
   }),
   getRoutes: async () => {
     return [
@@ -61,7 +61,9 @@ export default {
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="shortcut icon" href="/favicon.png" />
+            <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
+            <title>Market Protocol</title>
           </Head>
           <Body>
             {children}
