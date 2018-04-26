@@ -1,16 +1,16 @@
 import React from 'react';
 import {Col, Button, Layout, Row} from 'antd';
 import styled from 'styled-components';
-import logoImg from 'images/logo_light.svg';
 import {Link} from 'react-static';
 //
 const {Footer} = Layout;
-
-import telegram from '../images/telegram.svg';
-import twitter from '../images/twitter.svg';
-import medium from '../images/medium.svg';
-import github from '../images/github.svg';
-import {device} from "../breakpoints";
+import logoImg from '@images/logo_light.svg';
+import telegram from '@images/telegram.svg';
+import twitter from '@images/twitter.svg';
+import medium from '@images/medium.svg';
+import github from '@images/github.svg';
+import {device} from "@src/breakpoints";
+import whitepaper from '@assets/whitepaper.pdf'
 
 const AboutMarketText = styled.div`
   margin-top: 35px;
@@ -29,6 +29,10 @@ const HeaderText = styled.h2`
 const FooterLink = styled.div`
   margin: 22px 0;
   font-weight: 100;
+  
+  :hover {
+    color: #00E2C1;
+  }
 `;
 
 const FooterWrapper = styled.div`
@@ -52,17 +56,25 @@ class MarketFooter extends React.Component {
                 derivatives trading and exchanges on the Ethereum blockchain.
               </AboutMarketText>
               <div style={{marginTop: '35px'}}>
-                <Button size="large" type="primary" style={{marginRight: '10px'}}>
-                  <img alt="telegram" src={telegram}/>
+                <Button size="small" type="primary" style={{marginRight: '10px'}}>
+                  <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
+                    <img alt="telegram" src={telegram} width="80%"/>
+                  </Link>
                 </Button>
-                <Button size="large" type="primary" style={{marginRight: '10px'}} >
-                  <img alt="telegram" src={twitter}/>
+                <Button size="small" type="primary" style={{marginRight: '10px'}} >
+                  <Link to="https://twitter.com/MarketProtocol/" target="_blank">
+                    <img alt="twitter" src={twitter} width="80%"/>
+                  </Link>
                 </Button>
-                <Button size="large" type="primary" style={{marginRight: '10px'}} >
-                  <img alt="telegram" src={medium}/>
+                <Button size="small" type="primary" style={{marginRight: '10px'}} >
+                  <Link to="https://medium.com/market-protocol" target="_blank">
+                    <img alt="medium" src={medium} width="80%"/>
+                  </Link>
                 </Button>
-                <Button size="large" type="primary" style={{marginRight: '10px'}} >
-                  <img alt="telegram" src={github}/>
+                <Button size="small" type="primary" style={{marginRight: '10px'}} >
+                  <Link to="https://github.com/MARKETProtocol/" target="_blank">
+                    <img alt="github" src={github} width="80%"/>
+                  </Link>
                 </Button>
               </div>
               <AboutMarketText>
@@ -72,7 +84,7 @@ class MarketFooter extends React.Component {
             <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <HeaderText>Documentation</HeaderText>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to={whitepaper} target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Whitepaper
                 </Link>
               </FooterLink>
@@ -82,17 +94,17 @@ class MarketFooter extends React.Component {
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="https://github.com/MARKETProtocol" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://github.com/MARKETProtocol" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Github
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="https://docs.marketprotocol.io/" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://docs.marketprotocol.io/" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Technical Docs
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="#" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   FAQ
                 </Link>
               </FooterLink>
@@ -100,22 +112,22 @@ class MarketFooter extends React.Component {
             <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <HeaderText>Community</HeaderText>
               <FooterLink>
-                <Link to="https://t.me/Market_Protocol_Chat" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://t.me/Market_Protocol_Chat" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Telegram
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="https://twitter.com/MarketProtocol" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://twitter.com/MarketProtocol" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Twitter
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="https://medium.com/market-protocol" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://medium.com/market-protocol" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Medium
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="https://discordapp.com/invite/qN8MCbq" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="https://discordapp.com/invite/qN8MCbq" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Discord
                 </Link>
               </FooterLink>
@@ -123,7 +135,7 @@ class MarketFooter extends React.Component {
             <Col xs={8} sm={8} md={4} lg={4} xl={4}>
               Organization
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="/team" style={{color: 'inherit', textDecoration: 'none'}}>
                   Team
                 </Link>
               </FooterLink>

@@ -1,9 +1,10 @@
 import React from 'react';
 import {Layout, Menu} from 'antd';
 import styled from 'styled-components';
-import logoImg from 'images/logo_light.svg';
 import {Link} from 'react-static';
 //
+import logoImg from '@images/logo_light.svg';
+import whitepaper from '@assets/whitepaper.pdf'
 const {Header} = Layout;
 
 const Logo = styled.div`
@@ -23,12 +24,12 @@ class Navbar extends React.Component {
           style={{lineHeight: '64px', float: 'right'}}
         >
           <Menu.Item key="1">
-            <Link to="/about" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to="/team" style={{color: 'inherit', textDecoration: 'none'}}>
               Team
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to={whitepaper} style={{color: 'inherit', textDecoration: 'none'}} target="_blank">
               Whitepaper
             </Link>
           </Menu.Item>

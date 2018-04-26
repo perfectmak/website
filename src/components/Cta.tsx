@@ -3,9 +3,9 @@ import {Button, Col, Icon, Row} from 'antd';
 //
 
 import styled from "styled-components";
-import MarketSubscriberForm from "./MarketSubscriberForm";
-import {MarketText} from "../Styles";
-import {device} from "../breakpoints";
+import MarketSubscriberForm from "@components/MarketSubscriberForm";
+import {MarketText} from "@src/Styles";
+import {device} from "@src/breakpoints";
 
 const SectionWrapper = styled.section`
   background: #F0F0F0;
@@ -37,7 +37,7 @@ class Cta extends React.Component {
           <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{padding: '0 20px', marginTop: '40px'}}>
             <MarketText style={{fontSize: '24px', marginBottom: '30px'}}>Become a Partner</MarketText>
             <Button href={`mailto:${PartnersEmail.email}?subject=${PartnersEmail.subject}&body=${PartnersEmail.body}`} type="primary" style={{width: "100%", textAlign:"left"}}>
-              <strong>Email Us</strong> <Icon type="arrow-right" style={{position: "absolute", top: "35%", right: "15px"}} />
+              Email Us <Icon type="arrow-right" style={{position: "absolute", top: "35%", right: "15px"}} />
             </Button>
           </Col>
         </Row>

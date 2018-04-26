@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Form, Icon, Input} from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 
-import {MarketText} from '../Styles';
+import {MarketText} from '@src/Styles';
 
 const FormItem = Form.Item;
 
@@ -15,7 +15,7 @@ interface Props extends FormComponentProps {
 /**
  * Simple subscription form to subscriping to different GetResponse Lists.
  * Just specify the campaignToken for the list and it should work out of the box
- * 
+ *
  */
 class MarketSubscriberForm extends React.Component<Props> {
   handleSubmit = (e: Event) => {
