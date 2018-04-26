@@ -9,11 +9,11 @@ import {device} from "@src/breakpoints";
 
 const SectionWrapper = styled.section`
   background: #F0F0F0;
-  
+
   @media ${device.mobileS} {
     padding: 0 10px 70px 10px;
   }
-  
+
   @media ${device.tablet} {
     padding: 0 50px 70px 50px;
   }

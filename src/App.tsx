@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Router, withRouter} from 'react-static';
+import { Router } from 'react-static';
 import {injectGlobal} from 'styled-components';
 import {hot} from 'react-hot-loader';
 //

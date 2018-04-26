@@ -34,8 +34,8 @@ export default {
         component: 'src/containers/Home',
       },
       {
-        path: '/about',
-        component: 'src/containers/About',
+        path: '/team',
+        component: 'src/containers/Team',
       },
       {
         is404: true,
@@ -223,7 +223,6 @@ export default {
     /*
     * Add new Loaders to default Loaders
     * */
-
     config.module.rules = [
       {
         oneOf: [
