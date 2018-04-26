@@ -34,7 +34,7 @@ class Navbar extends React.Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+            <Link to="https://docs.marketprotocol.io/#faq-general" style={{color: 'inherit', textDecoration: 'none'}}>
               FAQs
             </Link>
           </Menu.Item>
