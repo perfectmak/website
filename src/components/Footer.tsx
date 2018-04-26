@@ -10,7 +10,6 @@ import twitter from '@images/twitter.svg';
 import medium from '@images/medium.svg';
 import github from '@images/github.svg';
 import {device} from "@src/breakpoints";
-import whitepaper from '@assets/whitepaper.pdf'
 
 const AboutMarketText = styled.div`
   margin-top: 35px;
@@ -84,12 +83,14 @@ class MarketFooter extends React.Component {
             <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <HeaderText>Documentation</HeaderText>
               <FooterLink>
-                <Link to={whitepaper} target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="http://marketprotocol.io.s3-website-us-east-1.amazonaws.com/assets/MARKET_Protocol-Whitepaper.pdf"
+                      target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Whitepaper
                 </Link>
               </FooterLink>
               <FooterLink>
-                <Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>
+                <Link to="http://marketprotocol.io.s3-website-us-east-1.amazonaws.com/assets/MARKET_Protocol-Summary.pdf"
+                      target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
                   Summary
                 </Link>
               </FooterLink>

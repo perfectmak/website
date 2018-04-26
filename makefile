@@ -55,6 +55,8 @@ rm_dev:
 
 # DEV - deploy site to s3 bucket
 deploy_dev:
+	npm run build
+	cp -r ./assets ./dist/
 	aws s3 --profile $(DEV_PROFILE_NAME) cp dist/ $(DEV_BUCKET) --recursive
 
 
@@ -68,6 +70,8 @@ rm_prod:
 
 # PROD - deploy site to s3 bucket
 deploy_prod:
+	npm run build
+	cp -r ./assets ./dist/
 	aws s3 --profile $(PROD_PROFILE_NAME) cp dist/ $(PROD_BUCKET) --recursive
 
 
