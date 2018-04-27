@@ -8,6 +8,7 @@ import {Layout} from 'antd';
 const {Content} = Layout;
 import MarketFooter from '@components/Footer';
 import Navbar from '@components/Navbar';
+import Popup from '@components/Popup';
 
 injectGlobal`
   #root {
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Content style={{background: '#FFFFFF', width: '100vw'}}>
             <Routes />
           </Content>
+          <Popup/>
           <MarketFooter />
         </Layout>
       </Router>
