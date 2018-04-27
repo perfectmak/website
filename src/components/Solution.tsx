@@ -42,9 +42,9 @@ class Solution extends React.Component {
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <TextWrapper>
               <MarketText header>Issues with current exchanges</MarketText>
-              <MarketList>centralized</MarketList>
+              <MarketList>centralized, limited access</MarketList>
               <MarketList>security, safety, and custody of funds</MarketList>
-              <MarketList>hard to short or hedge crypto assets</MarketList>
+              <MarketList>hard to short or hedge digital assets</MarketList>
               <MarketList>limited exposure to cross-chain or real world assets</MarketList>
             </TextWrapper>
           </Col>
