@@ -7,7 +7,7 @@ DEV_PROFILE_NAME=dev-website-rw
 PROD_PROFILE_NAME=prod-website-rw
 # target AWS bucket for dev deployment
 DEV_BUCKET=s3://dev.website.marketprotocol.io
-PROD_BUCKET=s3://marketprotocol.io
+PROD_BUCKET=s3://www.marketprotocol.io
 
 # default make target
 default:
