@@ -9,7 +9,7 @@ import {device, size} from "@src/breakpoints";
 
 const PopupArt = styled.div`
   /*layout*/
-  background-color: #D7D7D7;
+  background-color: #fff;
   border-radius: 0.1rem;
   font-size: 1rem;
   height: 6rem;
@@ -80,7 +80,7 @@ class Popup extends React.Component {
           <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
             <PopupButton type="primary">
               <PopupButtonText>
-                <img alt="telegram" src={telegram} height="100%" fill="#FFFFFF"/>
+                <img alt="telegram" src={telegram} height="100%" fill="#FFFFFF" style={{marginRight: '5px'}}/>
                   Join our Telegram.
               </PopupButtonText>
             </PopupButton>

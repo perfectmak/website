@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import { Link } from 'react-static';
 import { size } from "../breakpoints";
 import logoImg from '@images/logo_light.svg';
+import {Link} from "react-router-dom";
 
 
 const { Header } = Layout;
-
+const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram']
 
 const Logo = styled.div`
   line-height: 64px;
@@ -99,40 +100,64 @@ const HeaderWrapper = styled.div`
 
 class Navbar extends React.Component {
 
+  componentDidMount() {
+    if (!externalLinks.includes(location.pathname)) {
+      this.setState({
+        current: location.pathname,
+      });
+    }
+  }
+
+  state = {
+    current: '',
+  }
+
+  handleClick = (e) => {
+    const path = e.key || e
+    if (!externalLinks.includes(path)) {
+      this.setState({
+        current: path,
+      });
+    }
+  }
+
   renderMenuMarkup(breakpoint: string): JSX.Element {
     return (
       <StyledMenu
         theme={breakpoint === 'desktop' ? 'dark' : 'light'}
         mode={breakpoint === 'desktop' ? 'horizontal' : 'vertical'}
-        style={{ lineHeight: '64px', float: breakpoint === 'desktop' ? 'right' : 'none' }}>
-        <Menu.Item key="1">
+        style={{ lineHeight: '64px', float: breakpoint === 'desktop' ? 'right' : 'none' }}
+        onClick={this.handleClick}
+        selectedKeys={[this.state.current]}
+      >
+        <Menu.Item key="/team">
           <Link to="/team" style={{color: 'inherit', textDecoration: 'none'}}>
             Team
           </Link>
         </Menu.Item>
-        <Menu.Item key="2">
+        <Menu.Item key="/whitepaper">
           <Link to="http://marketprotocol.io.s3-website-us-east-1.amazonaws.com/assets/MARKET_Protocol-Whitepaper.pdf"
                 style={{color: 'inherit', textDecoration: 'none'}} target="_blank">
             Whitepaper
           </Link>
         </Menu.Item>
-        <Menu.Item key="3">
+        <Menu.Item key="/faq">
           <Link to="https://docs.marketprotocol.io/#faq-general" style={{color: 'inherit', textDecoration: 'none'}}>
             FAQs
           </Link>
         </Menu.Item>
-        <Menu.Item key="4">
-          <Link to="/#ctaSection" style={{color: 'inherit', textDecoration: 'none'}}>
+        <Menu.Item key="/subscribe">
+          <Link to="/#subscribe" style={{color: 'inherit', textDecoration: 'none'}}>
             Subscribe
           </Link>
         </Menu.Item>
-        <Menu.Item key="5">
+        <Menu.Item key="/blog">
           <Link to="https://medium.com/market-protocol"
                 style={{color: 'inherit', textDecoration: 'none'}} target="_blank">
             Blog
           </Link>
         </Menu.Item>
-        <Menu.Item key="6">
+        <Menu.Item key="/telegram">
           <Link to="https://t.me/Market_Protocol_Chat" style={{color: 'inherit', textDecoration: 'none'}}
                 target="_blank">
             Telegram
@@ -146,7 +171,11 @@ class Navbar extends React.Component {
     return (
       <HeaderWrapper>
         <Header>
-          <Logo><a href="/"><img alt="react-static" width="100%" src={logoImg} /></a></Logo>
+          <Logo>
+            <Link to="/" style={{color: 'inherit', textDecoration: 'none'}} onClick={() => this.handleClick('/')}>
+              <img alt="react-static" width="100%" src={logoImg} />
+            </Link>
+          </Logo>
           {this.renderMenuMarkup('desktop')}
           <Popover getPopupContainer={triggerNode => triggerNode.parentNode as HTMLElement}
                    content={this.renderMenuMarkup('mobile')}
