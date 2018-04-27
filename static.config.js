@@ -25,7 +25,7 @@ const webpack = require('webpack')
 //
 export default {
   getSiteData: () => ({
-    title: 'Market Protocol',
+    title: 'MARKET Protocol',
   }),
   getRoutes: async () => {
     return [
@@ -63,7 +63,7 @@ export default {
             <link rel="shortcut icon" href="/favicon.png" />
             <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
-            <title>Market Protocol</title>
+            <title>MARKET Protocol</title>
           </Head>
           <Body>
             {children}
