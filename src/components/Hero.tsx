@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Row} from 'antd';
 import styled from 'styled-components';
 //
-import heroIllustration from '@images/hero-illustration.png';
+import heroIllustration from '@images/hero-illustration.svg';
 import {device, size} from "@src/breakpoints";
 
 const HeroArt = styled.div`
@@ -60,7 +60,7 @@ const HeroText = styled.div`
 class Hero extends React.Component {
   render() {
     return (
-      <section id="hero" style={{background: '#181E26'}}>
+      <section style={{background: '#181E26', minHeight: '300px'}}>
         <Row type="flex" className="hero" align="middle">
           <Col xs={24} md={10}>
             <HeroText>Powering safe, solvent and trustless trading of any asset.</HeroText>
