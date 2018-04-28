@@ -68,7 +68,7 @@ class BuildDapp extends React.Component {
               <MarketText header>Build your dApp on MARKET Protocol</MarketText>
               <MarketText style={{margin: '40px 0'}}>As a protocol, MARKET enables third parties to build applications for trading, order routing and related activities. The protocol is open source and available under the Apache 2.0 license.</MarketText>
               <ButtonWrapper type="primary" style={{padding: '0 5%'}}>
-                <Link to="https://github.com/MARKETProtocol/dapp" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>Check us out on Github</Link>
+                <Link to="https://github.com/MARKETProtocol" target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>Check us out on Github</Link>
               </ButtonWrapper>
               <ButtonWrapper type="primary" style={{padding: '0 7.5%'}}>
                 <Link to="/team" style={{color: 'inherit', textDecoration: 'none'}}>
