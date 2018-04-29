@@ -57,24 +57,43 @@
     "typescript": "^2.7.2"
   },
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.jest.json",
+        "useBabelrc": true
+     }
+    },
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx,js,jsx,mjs}"
     ],
     "setupFiles": [],
     "testMatch": [
-      "<rootDir>/test/*.test.{ts,tsx,js,jsx,mjs}"
+      "<rootDir>/test/*.test.{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
-      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^.+\\.(ts|tsx|js|jsx|mjs)$": "ts-jest",
+      "^.+\\.less$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
+    "moduleNameMapper":{
+      "\\.(css|less|sass|scss)$": "<rootDir>/config/jest/cssTransform.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/jest/fileTransform.js"
+    },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+       "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx|less|css|js|jsx|mjs)$",
+       "!node_modules/react-static/docs-dist/.+.js$"
+    ],
+    "modulePaths": [
+      "node_modules",
+      "<rootDir>/src/",
+      "<rootDir>/src/components",
+      "<rootDir>/node_modules/react-static/docs-dist"
     ],
     "moduleFileExtensions": [
+      "ts",
+      "tsx",
       "web.js",
       "mjs",
       "js",
