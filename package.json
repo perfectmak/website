@@ -61,7 +61,7 @@
       "ts-jest": {
         "tsConfigFile": "tsconfig.jest.json",
         "useBabelrc": true
-     }
+      }
     },
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx,js,jsx,mjs}"
@@ -77,13 +77,13 @@
       "^.+\\.less$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "moduleNameMapper":{
+    "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/config/jest/cssTransform.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
-       "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx|less|css|js|jsx|mjs)$",
-       "!node_modules/react-static/docs-dist/.+.js$"
+      "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx|less|css|js|jsx|mjs)$",
+      "!node_modules/react-static/docs-dist/.+.js$"
     ],
     "modulePaths": [
       "node_modules",
