@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
-import { Link } from 'react-static';
+import { Link, scrollTo } from 'react-static';
 import { size } from '../breakpoints';
 import logoImg from '@images/logo_light.svg';
 
@@ -123,6 +123,13 @@ class Navbar extends React.Component {
         current: path
       });
     }
+    const resolvedHash = path.substring(path.indexOf('#') + 1);
+    if (path === location.pathname + location.hash) {
+      const element = document.getElementById(resolvedHash);
+      if (element !== null) {
+        scrollTo(element);
+      }
+    }
   }
 
   renderMenuMarkup(breakpoint: string): JSX.Element {
@@ -159,7 +166,7 @@ class Navbar extends React.Component {
             FAQs
           </Link>
         </Menu.Item>
-        <Menu.Item key="/subscribe">
+        <Menu.Item key="/#subscribe">
           <Link
             to="/#subscribe"
             style={{ color: 'inherit', textDecoration: 'none' }}
