@@ -9,6 +9,7 @@
     "jest-matcher-utils": "^22.4.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-ga": "^2.5.0",
     "react-router": "^4.2.0",
     "react-static": "^5",
     "react-static-routes": "^1.0.0",
