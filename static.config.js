@@ -56,7 +56,7 @@ export default {
       } = this.props
 
       return (
-        <Html>
+        <Html itemScope itemType="http://schema.org/Article">
           <Head>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,6 +64,21 @@ export default {
             <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
             <title>MARKET Protocol</title>
+            <meta name="description" content="Powering safe, solvent and trustless trading of any asset." />
+            <meta httpEquiv="content-language" content="en" />
+            <meta itemProp="name" content="MARKET Protocol" />
+            <meta itemProp="description" content="Powering safe, solvent and trustless trading of any asset." />
+            <meta itemProp="image" content="https://www.marketprotocol.io/social.jpg" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@MarketProtocol" />
+            <meta name="twitter:creator" content="@MarketProtocol" />
+            <meta name="twitter:image:src" content="https://www.marketprotocol.io/social.jpg" />
+            <meta property="og:locale" content="en_US" />
+            <meta name="language" content="English" />
+            <meta property="og:url" content="https://www.marketprotocol.io/" />
+            <meta property="og:title" content="MARKET Protocol" />
+            <meta property="og:description" content="Powering safe, solvent and trustless trading of any asset." />
+            <meta property="og:image" content="https://www.marketprotocol.io/social.jpg" />
           </Head>
           <Body>
             {children}
