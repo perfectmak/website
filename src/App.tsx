@@ -6,9 +6,9 @@ import {hot} from 'react-hot-loader';
 import Routes from 'react-static-routes';
 import {Layout} from 'antd';
 const {Content} = Layout;
-import MarketFooter from '@components/Footer';
-import Navbar from '@components/Navbar';
-import Popup from '@components/Popup';
+import MarketFooter from 'components/Footer';
+import Navbar from 'components/Navbar';
+import Popup from 'components/Popup';
 
 injectGlobal`
   #root {

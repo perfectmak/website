@@ -1,6 +1,11 @@
-# initially, ignore everything
 node_modules
 tmp
 dist
+coverage
+
 .idea
+.vscode
+
 .DS_Store
+*~
+*.swp
