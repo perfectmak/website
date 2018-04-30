@@ -57,9 +57,12 @@
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
+    "build:ci": "npm run clean && react-static build && npm run copy:assets",
     "serve": "serve dist -p 3000",
     "test": "node scripts/test.js --env=jsdom",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "clean": "rm -rf ./dist/",
+    "copy:assets": "cp -r ./assets ./dist/",
     "precommit": "lint-staged",
     "lint-ts": "tslint --fix \"./src/**/*.{ts,tsx}\"",
     "prettier-ts": "prettier --single-quote --parser typescript --write \"./src/**/*.{ts,tsx}\""
