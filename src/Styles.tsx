@@ -1,5 +1,5 @@
 import styled, { injectGlobal } from 'styled-components';
-import {size} from "./breakpoints";
+import { size } from './breakpoints';
 
 injectGlobal`
 .bio-wrap {
@@ -23,14 +23,14 @@ injectGlobal`
     transition: 250ms;
   }
 }
-`
+`;
 
 const MarketText = styled.h1`
-  font-size: ${props => props.header ? '36px;' : '18px;'};
-  font-weight: ${props => props.header ? '500;' : '300;'};
+  font-size: ${props => (props.header ? '36px;' : '18px;')};
+  font-weight: ${props => (props.header ? '500;' : '300;')};
 
-  @media (max-width: ${size.laptop})  {
-    font-size: ${props => props.header ? '28px;' : '14px;'};
+  @media (max-width: ${size.laptop}) {
+    font-size: ${props => (props.header ? '28px;' : '14px;')};
   }
 `;
 
@@ -41,18 +41,18 @@ const MarketList = styled.li`
   font-weight: 300;
   margin-left: 20px;
   :before {
-    content: "";
+    content: '';
     line-height: 1em;
     width: 10px;
     height: 10px;
-    background-color: #00E2C1;
+    background-color: #00e2c1;
     float: left;
     margin-top: 10px;
     border-radius: 50%;
     margin-right: 10px;
     margin-left: -20px;
   }
-  @media (max-width: ${size.laptop})  {
+  @media (max-width: ${size.laptop}) {
     font-size: 14px;
     :before {
       margin-top: 5px;
@@ -70,7 +70,7 @@ const TeamDivWithResponsiveWidth = styled.div`
   @media (max-width: ${size.tablet}) {
     width: 92%;
   }
-`
+`;
 
 const BioModalContentWrap = styled.div`
   width: 515px;
@@ -78,6 +78,11 @@ const BioModalContentWrap = styled.div`
   @media (max-width: ${size.tablet}) {
     width: 350px;
   }
-`
+`;
 
-export { MarketList, MarketText, BioModalContentWrap, TeamDivWithResponsiveWidth };
+export {
+  MarketList,
+  MarketText,
+  BioModalContentWrap,
+  TeamDivWithResponsiveWidth
+};

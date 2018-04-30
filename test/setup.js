@@ -4,7 +4,10 @@ import chai from 'chai';
 
 enzyme.configure({ adapter: new Adapter() });
 
-const originalNot = Object.getOwnPropertyDescriptor(chai.Assertion.prototype, 'not').get;
+const originalNot = Object.getOwnPropertyDescriptor(
+  chai.Assertion.prototype,
+  'not'
+).get;
 Object.defineProperty(chai.Assertion.prototype, 'not', {
   get() {
     Object.assign(this, this.assignedNot);
@@ -13,13 +16,13 @@ Object.defineProperty(chai.Assertion.prototype, 'not', {
   set(newNot) {
     this.assignedNot = newNot;
     return newNot;
-  },
+  }
 });
 
 // Combine both jest and chai matchers on expect
 const originalExpect = global.expect;
 
-global.expect = (actual) => {
+global.expect = actual => {
   const originalMatchers = originalExpect(actual);
   const chaiMatchers = chai.expect(actual);
   const combinedMatchers = Object.assign(chaiMatchers, originalMatchers);

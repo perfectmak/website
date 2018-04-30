@@ -1,14 +1,12 @@
 import React from 'react';
-import { Layout, Menu, Button, Popover } from 'antd';
+import { Button, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
-import { size } from "../breakpoints";
+import { size } from '../breakpoints';
 import logoImg from '@images/logo_light.svg';
-import {Link} from "react-router-dom";
-
 
 const { Header } = Layout;
-const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram']
+const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram'];
 
 const Logo = styled.div`
   line-height: 64px;
@@ -20,22 +18,22 @@ const Logo = styled.div`
   }
 `;
 
-const StyledMenu= styled(Menu as any)`
+const StyledMenu = styled(Menu)`
   @media (max-width: ${size.tablet}) {
     &.ant-menu-dark {
       display: none;
     }
 
     &.ant-menu-light.ant-menu-vertical {
-       display: block;
-       background: #fff;
-       border-right: 0;
+      display: block;
+      background: #fff;
+      border-right: 0;
 
-       .ant-menu-item-selected {
-         border-radius: 12px;
-         background-color: #f1f1f1;
-         color: #00AD94;
-       }
+      .ant-menu-item-selected {
+        border-radius: 12px;
+        background-color: #f1f1f1;
+        color: #00ad94;
+      }
     }
   }
 `;
@@ -69,54 +67,60 @@ const MobileMenuToggle = styled(Button)`
       height: 32px;
       margin-top: 17px;
       line-height: 32px;
-      i { font-size: 16px; }
+      i {
+        font-size: 16px;
+      }
     }
   }
-`
+`;
 
 const HeaderWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
-    .ant-layout-header { padding-left: 30px; padding-right: 30px;}
+    .ant-layout-header {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
   }
 
   @media (max-width: ${size.mobileS}) {
-    .ant-layout-header { padding-left: 20px; padding-right: 20px;}
+    .ant-layout-header {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 
+  .ant-popover-arrow {
+    top: -4px;
+  }
 
- .ant-popover-arrow {
-   top: -4px;
- }
+  .ant-popover-inner-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
- .ant-popover-inner-content {
-   padding-left: 10px;
-   padding-right: 10px;
- }
-
- .ant-popover-inner {
-   border-radius: 25px;
- }
+  .ant-popover-inner {
+    border-radius: 25px;
+  }
 `;
 
 class Navbar extends React.Component {
+  state = {
+    current: ''
+  };
 
   componentDidMount() {
     if (!externalLinks.includes(location.pathname)) {
       this.setState({
-        current: location.pathname,
+        current: location.pathname
       });
     }
   }
 
-  state = {
-    current: '',
-  }
-
-  handleClick = (e) => {
-    const path = e.key || e
+  handleClick = e => {
+    const path = e.key || e;
     if (!externalLinks.includes(path)) {
       this.setState({
-        current: path,
+        current: path
       });
     }
   }
@@ -126,40 +130,58 @@ class Navbar extends React.Component {
       <StyledMenu
         theme={breakpoint === 'desktop' ? 'dark' : 'light'}
         mode={breakpoint === 'desktop' ? 'horizontal' : 'vertical'}
-        style={{ lineHeight: '64px', float: breakpoint === 'desktop' ? 'right' : 'none' }}
+        style={{
+          float: breakpoint === 'desktop' ? 'right' : 'none',
+          lineHeight: '64px'
+        }}
         onClick={this.handleClick}
         selectedKeys={[this.state.current]}
       >
         <Menu.Item key="/team">
-          <Link to="/team" style={{color: 'inherit', textDecoration: 'none'}}>
+          <Link to="/team" style={{ color: 'inherit', textDecoration: 'none' }}>
             Team
           </Link>
         </Menu.Item>
         <Menu.Item key="/whitepaper">
-          <Link to="http://marketprotocol.io.s3-website-us-east-1.amazonaws.com/assets/MARKET_Protocol-Whitepaper.pdf"
-                style={{color: 'inherit', textDecoration: 'none'}} target="_blank">
+          <Link
+            to="http://marketprotocol.io.s3-website-us-east-1.amazonaws.com/assets/MARKET_Protocol-Whitepaper.pdf"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+            target="_blank"
+          >
             Whitepaper
           </Link>
         </Menu.Item>
         <Menu.Item key="/faq">
-          <Link to="https://docs.marketprotocol.io/#faq-general" style={{color: 'inherit', textDecoration: 'none'}}>
+          <Link
+            to="https://docs.marketprotocol.io/#faq-general"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
             FAQs
           </Link>
         </Menu.Item>
         <Menu.Item key="/subscribe">
-          <Link to="/#subscribe" style={{color: 'inherit', textDecoration: 'none'}}>
+          <Link
+            to="/#subscribe"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
             Subscribe
           </Link>
         </Menu.Item>
         <Menu.Item key="/blog">
-          <Link to="https://medium.com/market-protocol"
-                style={{color: 'inherit', textDecoration: 'none'}} target="_blank">
+          <Link
+            to="https://medium.com/market-protocol"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+            target="_blank"
+          >
             Blog
           </Link>
         </Menu.Item>
         <Menu.Item key="/telegram">
-          <Link to="https://t.me/Market_Protocol_Chat" style={{color: 'inherit', textDecoration: 'none'}}
-                target="_blank">
+          <Link
+            to="https://t.me/Market_Protocol_Chat"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+            target="_blank"
+          >
             Telegram
           </Link>
         </Menu.Item>
@@ -172,16 +194,24 @@ class Navbar extends React.Component {
       <HeaderWrapper>
         <Header>
           <Logo>
-            <Link to="/" style={{color: 'inherit', textDecoration: 'none'}} onClick={() => this.handleClick('/')}>
+            <Link
+              to="/"
+              style={{ color: 'inherit', textDecoration: 'none' }}
+              onClick={() => this.handleClick('/')}
+            >
               <img alt="react-static" width="100%" src={logoImg} />
             </Link>
           </Logo>
           {this.renderMenuMarkup('desktop')}
-          <Popover getPopupContainer={triggerNode => triggerNode.parentNode as HTMLElement}
-                   content={this.renderMenuMarkup('mobile')}
-                   trigger='click'
-                   arrowPointAtCenter={true}>
-            <MobileMenuToggle shape="circle" icon='bars'/>
+          <Popover
+            getPopupContainer={triggerNode =>
+              triggerNode.parentNode as HTMLElement
+            }
+            content={this.renderMenuMarkup('mobile')}
+            trigger="click"
+            arrowPointAtCenter={true}
+          >
+            <MobileMenuToggle shape="circle" icon="bars" />
           </Popover>
         </Header>
       </HeaderWrapper>
