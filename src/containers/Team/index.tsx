@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 
-import withGAPageView from '../GoogleAnalyticsTracker';
 import config from './config.js';
+import withGAPageView from '../GoogleAnalyticsTracker';
 import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';

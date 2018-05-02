@@ -3,7 +3,7 @@ import { Button, Col, Icon, Row } from 'antd';
 
 import styled from 'styled-components';
 import MarketSubscriberForm from '@components/MarketSubscriberForm';
-import { MarketText } from '@src/Styles';
+import { MarketText } from '@styledComponents';
 import { device } from '@src/breakpoints';
 
 const SectionWrapper = styled.section`
