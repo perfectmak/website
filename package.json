@@ -95,8 +95,7 @@
     ],
     "setupFiles": [],
     "testMatch": [
-      "<rootDir>/test/*.test.{js,jsx,mjs}",
-      "<rootDir>/src/test/*.test.{js,jsx,mjs}"
+      "<rootDir>/test/*.test.{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
@@ -122,10 +121,7 @@
       "node_modules",
       "<rootDir>/src/*",
       "<rootDir>/src/components",
-      "<rootDir>/node_modules/react-static/docs-dist",
-      "<rootDir>/src/containers",
-      "<rootDir>/src/assets/images",
-      "<rootDir>/src/helpers"
+      "<rootDir>/node_modules/react-static/docs-dist"
     ],
     "moduleFileExtensions": [
       "ts",
