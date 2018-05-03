@@ -89,7 +89,7 @@
     ],
     "setupFiles": [],
     "testMatch": [
-      "<rootDir>/test/*.test.{js,jsx,mjs}"
+      "<rootDir>/test/*.test.{js,jsx,mjs,tsx}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",

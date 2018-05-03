@@ -1,8 +1,5 @@
 import React from 'react';
-import { Button, Form, Icon, Input, Modal } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
-
-import { MarketText } from '@styledComponents';
+import { Button, Form, Input, Modal } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -45,6 +42,9 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
       <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
       <input type="hidden" name="id" value="491f750dec" />{' '}
       {/* <input type="text" name="MERGE1" id="MERGE1" /> */}{' '}
+      <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+        Join Our Newsletter
+      </h2>
       <FormItem>
         {form.getFieldDecorator('firstName', {
           rules: [
@@ -59,7 +59,8 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
             type="text"
             placeholder="First name"
             style={{
-              backgroundColor: '#f6f6f6'
+              backgroundColor: '#f6f6f6',
+              marginTop: '10px'
             }}
           />
         )}

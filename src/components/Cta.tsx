@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Col, Form, Icon, Input, Modal, Row } from 'antd';
-
+import { Button, Col, Icon, Row } from 'antd';
 import styled from 'styled-components';
-import MarketSubscriberForm from '@components/MarketSubscriberForm';
-import { MarketText } from '@styledComponents';
-import { device } from '@src/breakpoints';
+import MarketSubscriberForm from '../components/MarketSubscriberForm';
+import { MarketText } from '../Styles';
+import { device } from '../breakpoints';
+
 
 const SectionWrapper = styled.section`
   background: #f0f0f0;
@@ -29,21 +29,14 @@ const PartnersEmail = {
 
 class Cta extends React.Component {
   state = {
-    subscriptionPopUpAlertVisiable: false,
-    subscriptionPopUpInputData: {},
     subscriptionPopUpVisible: false
   };
 
   render() {
-    const {
-      subscriptionPopUpVisible,
-      subscriptionPopUpInputData,
-      subscriptionPopUpAlertVisiable
-    } = this.state;
+    const { subscriptionPopUpVisible } = this.state;
     return (
       <SectionWrapper id="subscribe">
         <MarketSubscriberForm
-          alertVisiable={subscriptionPopUpAlertVisiable}
           onCancel={() => this.setState({ subscriptionPopUpVisible: false })}
           visible={subscriptionPopUpVisible}
         />
@@ -64,7 +57,7 @@ class Cta extends React.Component {
               type="primary"
               style={{ width: '100%', textAlign: 'left' }}
             >
-              Join Us{' '}
+              Click To Subscribe{' '}
               <Icon
                 type="arrow-right"
                 style={{ position: 'absolute', top: '35%', right: '15px' }}
