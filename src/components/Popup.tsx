@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import { Link } from 'react-static';
 //
 import telegram from '@images/telegram.svg';
-import { device, size } from '@src/breakpoints';
 
-const PopupArt = styled.div`
+export const PopupArt = styled.div`
   /*layout*/
   background-color: #fff;
   border-radius: 0.1rem;
@@ -26,16 +25,16 @@ const PopupArt = styled.div`
 `;
 
 /*text stuff*/
-const PopupText = styled.div`
+export const PopupText = styled.div`
   color: #000000;
   padding: 4px;
 `;
 
-const PopupButton = styled(Button)`
+export const PopupButton = styled(Button)`
   width: 14rem;
 `;
 
-const PopupButtonText = styled.div`
+export const PopupButtonText = styled.div`
   color: #212121;
   font-size: 1rem;
   padding: 0.3rem;
@@ -44,7 +43,7 @@ const PopupButtonText = styled.div`
   }
 `;
 
-const PopupClose = styled(Icon)`
+export const PopupClose = styled(Icon)`
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
