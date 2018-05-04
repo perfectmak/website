@@ -2,12 +2,12 @@ import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
-//
-import { MarketText } from '@src/Styles';
-import Protocol from '@images/protocol_illustration.svg';
-import { device, size } from '@src/breakpoints';
 
-const TextWrapper = styled.div`
+import { MarketText } from '../Styles';
+import Protocol from '@images/protocol_illustration.svg';
+import { device, size } from '../breakpoints';
+
+export const TextWrapper = styled.div`
   padding: 0px 10px;
 
   @media ${device.mobileS} and (max-width: ${size.tablet}) {
@@ -23,7 +23,7 @@ const TextWrapper = styled.div`
   }
 `;
 
-const IllustrationWrapper = styled.div`
+export const IllustrationWrapper = styled.div`
   background: #181E26
   justify-content: center;
   display: flex;
@@ -32,7 +32,7 @@ const IllustrationWrapper = styled.div`
   padding: 70px
 `;
 
-const SectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
   padding: 50px 20px;
 
   @media ${device.tablet} {
@@ -44,7 +44,7 @@ const SectionWrapper = styled.section`
   }
 `;
 
-const ButtonWrapper = styled(Button)`
+export const ButtonWrapper = styled(Button)`
   margin-top: 20px;
   margin-right: 20px;
 
