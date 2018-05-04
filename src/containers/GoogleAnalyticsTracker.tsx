@@ -14,24 +14,22 @@ const withGAPageView = (WrappedComponent: typeof Component) => {
   };
 
   const HOC = (props: RouterProps) => {
-    if (isClient) {
-      if (isProduction) {
-        if (!gaInitialised) {
-          const origin = window.location.origin;
+    if (isClient && isProduction) {
+      if (!gaInitialised) {
+        const origin = window.location.origin;
 
-          gaInitialised = true;
+        gaInitialised = true;
 
-          if (origin.indexOf('dev.website.marketprotocol.io') !== -1) {
-            GoogleAnalytics.initialize('UA-118445796-1');
-          } else if (origin.indexOf('marketprotocol.io') !== -1) {
-            GoogleAnalytics.initialize('UA-114752952-1');
-          }
+        if (origin.indexOf('dev.website.marketprotocol.io') !== -1) {
+          GoogleAnalytics.initialize('UA-118445796-1');
+        } else if (origin.indexOf('marketprotocol.io') !== -1) {
+          GoogleAnalytics.initialize('UA-114752952-1');
         }
+      }
 
-        if (props.history.location) {
-          const page = props.history.location.pathname;
-          trackPage(page);
-        }
+      if (props.history.location) {
+        const page = props.history.location.pathname;
+        trackPage(page);
       }
     }
 

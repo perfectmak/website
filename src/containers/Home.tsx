@@ -14,7 +14,7 @@ import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
 import styled from 'styled-components';
 
-const MarketMainText = MarketText.extend`
+export const MarketMainText = MarketText.extend`
   font-size: 25px;
 
   @media ${device.mobileS} {

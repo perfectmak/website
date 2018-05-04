@@ -9,7 +9,7 @@ const { Header } = Layout;
 const { SubMenu } = Menu;
 const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram'];
 
-const Logo = styled.div`
+export const Logo = styled.div`
   line-height: 64px;
   margin: 0;
   float: left;
@@ -18,7 +18,7 @@ const Logo = styled.div`
   }
 `;
 
-const StyledMenu = styled(Menu)`
+export const StyledMenu = styled(Menu)`
   .ant-dropdown-menu {
     background: #fff;
     border-radius: 25px;
@@ -306,7 +306,7 @@ class Navbar extends React.Component {
               style={{ color: 'inherit', textDecoration: 'none' }}
               onClick={() => this.handleClick('/')}
             >
-              <img alt="react-static" width="100%" src={logoImg} />
+              <img alt="market-pool-logo" width="100%" src={logoImg} />
             </Link>
           </Logo>
           {this.renderMenuMarkup('desktop')}

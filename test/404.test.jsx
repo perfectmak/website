@@ -5,7 +5,7 @@ import Page404, {
   homepageUrl,
   docsUrl,
   faqUrl
-} from '../src/containers/404';
+} from '@containers/404';
 
 const expectedValues = {
   headerText,
