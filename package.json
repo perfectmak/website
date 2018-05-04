@@ -106,7 +106,12 @@
     },
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/config/jest/cssTransform.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/jest/fileTransform.js"
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/jest/fileTransform.js",
+      "^@images(.*)$": "<rootDir>/src/assets/images$1",
+      "^@styledComponents": "<rootDir>/src/Styles.tsx",
+      "^@styles(.*)$": "<rootDir>/src/styles$1",
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@src(.*)$": "<rootDir>/src$1"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx|less|css|js|jsx|mjs)$",
@@ -114,7 +119,7 @@
     ],
     "modulePaths": [
       "node_modules",
-      "<rootDir>/src/",
+      "<rootDir>/src/*",
       "<rootDir>/src/components",
       "<rootDir>/node_modules/react-static/docs-dist"
     ],

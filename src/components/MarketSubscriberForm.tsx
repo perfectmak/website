@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, Icon, Input } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 
-import { MarketText } from '@src/Styles';
+import { MarketText } from '@styledComponents';
 
 const FormItem = Form.Item;
 
