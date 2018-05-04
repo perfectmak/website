@@ -1,6 +1,7 @@
-import axios from 'axios'
 import React, { Component } from 'react'
 import { ServerStyleSheet } from 'styled-components'
+import { Helmet } from "react-helmet";
+
 /*
 * For Less Support
 * */
@@ -47,6 +48,8 @@ export default {
     const sheet = new ServerStyleSheet()
     const html = render(sheet.collectStyles(<Comp />))
     meta.styleTags = sheet.getStyleElement()
+    const helmet = Helmet.renderStatic()
+    meta.helmet = helmet
     return html
   },
   Document: class CustomHtml extends Component {
@@ -64,7 +67,7 @@ export default {
             <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
             <title>MARKET Protocol</title>
-            <meta name="description" content="Powering safe, solvent and trustless trading of any asset." />
+            {renderMeta.helmet}
             <meta httpEquiv="content-language" content="en" />
             <meta itemProp="name" content="MARKET Protocol" />
             <meta itemProp="description" content="Powering safe, solvent and trustless trading of any asset." />
@@ -79,6 +82,7 @@ export default {
             <meta property="og:title" content="MARKET Protocol" />
             <meta property="og:description" content="Powering safe, solvent and trustless trading of any asset." />
             <meta property="og:image" content="https://marketprotocol.io/social.jpg" />
+            <meta name="robots" content="index,follow" />
           </Head>
           <Body>
             {children}

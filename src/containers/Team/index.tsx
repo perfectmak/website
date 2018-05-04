@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'antd';
+import { Helmet } from 'react-helmet';
 
 import config from './config.js';
 import withGAPageView from '../GoogleAnalyticsTracker';
@@ -75,6 +76,16 @@ class Team extends React.Component {
           justifyContent: 'center'
         }}
       >
+        <Helmet>
+          <meta
+            name="keywords"
+            content="MARKET Protocol People, MARKET Protocol Team, MARKET Protocol Advisors, MARKET Protocol Founders"
+          />
+          <meta
+            name="description"
+            content="MARKET Protocol People - Team, Founders and Advisors"
+          />
+        </Helmet>
         {/* 'the team' title and info */}
         <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
           <MarketText header>{'The Team'}</MarketText>
