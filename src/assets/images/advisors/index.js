@@ -4,3 +4,5 @@ exports.CasperJohansen = require('./casper-johansen.svg');
 exports.DanHorowitz = require('./dan-horowitz.svg');
 exports.JoshFraser = require('./josh-fraser.svg');
 exports.PatrickCharles = require('./patrick-charles.svg');
+exports.RobBehnke = require('./rob-behnke.png');
+exports.KevinOwocki = require('./kevin-owocki.svg');

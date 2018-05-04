@@ -118,6 +118,20 @@ const config = {
       img: advisorImages.CasperJohansen,
       email: '',
       linkedin: 'https://www.linkedin.com/in/casperbjohansen'
+    },
+    {
+      name: 'Rob Behnke',
+      title: 'Founder, Token Agency',
+      img: advisorImages.RobBehnke,
+      email: '',
+      linkedin: 'https://www.linkedin.com/in/rbehnke/'
+    },
+    {
+      name: 'Kevin Owocki',
+      title: 'Founder, GitCoin',
+      img: advisorImages.KevinOwocki,
+      email: '',
+      linkedin: 'https://www.linkedin.com/in/owocki/'
     }
   ]
 };
