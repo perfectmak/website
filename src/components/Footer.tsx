@@ -111,7 +111,7 @@ class MarketFooter extends React.Component {
               <HeaderText>Documentation</HeaderText>
               <FooterLink>
                 <Link
-                  to="https://www.marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf"
+                  to="https://marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf"
                   target="_blank"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
@@ -120,7 +120,7 @@ class MarketFooter extends React.Component {
               </FooterLink>
               <FooterLink>
                 <Link
-                  to="https://www.marketprotocol.io/assets/MARKET_Protocol-Summary.pdf"
+                  to="https://marketprotocol.io/assets/MARKET_Protocol-Summary.pdf"
                   target="_blank"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
