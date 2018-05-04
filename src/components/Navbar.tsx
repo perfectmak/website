@@ -151,7 +151,7 @@ class Navbar extends React.Component {
         </Menu.Item>
         <Menu.Item key="/whitepaper">
           <Link
-            to="https://www.marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf"
+            to="https://marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf"
             style={{ color: 'inherit', textDecoration: 'none' }}
             target="_blank"
           >
