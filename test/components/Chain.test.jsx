@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Col, Row } from 'antd';
 import { MarketList, MarketText } from '../../src/Styles';
 import chain1 from '@images/chain1.svg';
@@ -13,7 +13,7 @@ import Chain, { Wrapper, ChainIllustration } from '../../src/components/Chain';
 
 describe('<Chain />', () => {
   it('renders section', () => {
-    const component = shallow(<Chain />);
+    const component = mount(<Chain />);
     const sectionComponent = component.find('section');
     expect(sectionComponent).to.have.length(1);
     expect(sectionComponent.props().id).to.equal('chains');

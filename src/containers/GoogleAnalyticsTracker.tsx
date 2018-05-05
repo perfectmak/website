@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import GoogleAnalytics from 'react-ga';
 import { RouterProps } from 'react-router';
+import EnvironmentConstant from '../constants/environment';
 
 const isClient = typeof window !== 'undefined';
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction =
+  EnvironmentConstant.getNodeEnv() ===
+  EnvironmentConstant.ENVIRONMENTS.PRODUCTION;
 
 const withGAPageView = (WrappedComponent: typeof Component) => {
   let gaInitialised = false;
