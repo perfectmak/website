@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-static';
-import { MarketText, BioModalContentWrap } from '@styledComponents';
+import { BioModalContentWrap, MarketText } from '@styledComponents';
 import CloseIcon from '@images/icons/close.svg';
 import EmailIcon from '@images/icons/email.svg';
 import LinkedInIcon from '@images/icons/linkedin.svg';
 import colors from '@styles/json/colors';
+import { TeamMember } from '../../containers/Team/config';
 
-class Bio extends React.Component {
-  constructor(props) {
+interface Props {
+  data: TeamMember;
+  unfocus: () => void;
+}
+
+class Bio extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
@@ -21,74 +27,66 @@ class Bio extends React.Component {
   }
 
   render() {
-    const {
-      name,
-      title,
-      img,
-      email,
-      linkedin,
-      bio,
-      shouldFillWholeWidth
-    } = this.props.data;
+    const { name, title, img, email, linkedin, bio } = this.props.data;
 
     return (
       <div
         style={{
+          alignItems: 'center',
+          backgroundColor: colors.darkGreyOpaque,
+          bottom: 0,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
-          position: 'fixed',
-          top: 0,
           left: 0,
+          position: 'fixed',
           right: 0,
-          bottom: 0,
-          backgroundColor: colors.darkGreyOpaque
+          top: 0
         }}
       >
         {/* clicking bg hides modal */}
         <div
           onClick={this.props.unfocus}
           style={{
-            zIndex: 1,
-            position: 'absolute',
-            top: 0,
+            bottom: 0,
             left: 0,
+            position: 'absolute',
             right: 0,
-            bottom: 0
+            top: 0,
+            zIndex: 1
           }}
         />
 
         {/* white bg modal */}
         <BioModalContentWrap
           style={{
-            zIndex: 2,
+            alignItems: 'center',
+            backgroundColor: colors.white,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: colors.white
+            zIndex: 2
           }}
         >
           {/* close icon */}
           <div
             style={{
+              cursor: 'pointer',
               display: 'flex',
-              justifyContent: 'flex-end',
-              width: '100%',
               height: 30,
-              cursor: 'pointer'
+              justifyContent: 'flex-end',
+              width: '100%'
             }}
           >
             <div
               className={'become-opaque-on-hover'}
               onClick={this.props.unfocus}
               style={{
-                display: 'flex',
-                justifyContent: 'center',
                 alignItems: 'center',
+                backgroundColor: colors.medGrey,
+                display: 'flex',
                 height: 32,
-                width: 32,
-                backgroundColor: colors.medGrey
+                justifyContent: 'center',
+                width: 32
               }}
             >
               <img src={CloseIcon} style={{ width: 26, height: 26 }} />
@@ -115,10 +113,10 @@ class Bio extends React.Component {
           {/* social links */}
           <div
             style={{
+              alignItems: 'center',
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
-              alignItems: 'center',
               padding: '0px 0px 30px 0px'
             }}
           >
