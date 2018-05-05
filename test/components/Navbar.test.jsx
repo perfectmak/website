@@ -4,7 +4,7 @@ import { Button, Layout, Menu, Popover } from 'antd';
 import { Link, scrollTo } from 'react-static';
 import logoImg from '@images/logo_light.svg';
 
-import Navbar, { StyledMenu, Logo } from '../src/components/Navbar';
+import Navbar, { StyledMenu, Logo } from '../../src/components/Navbar';
 
 describe('<Navbar />', () => {
   it('renders StyledMenu', () => {

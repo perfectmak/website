@@ -9,7 +9,7 @@ import Popup, {
   PopupButton,
   PopupButtonText,
   PopupClose
-} from '../src/components/Popup';
+} from '../../src/components/Popup';
 
 describe('<Popup />', () => {
   it('renders null if telegramDisplay is false', () => {

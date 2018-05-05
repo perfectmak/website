@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Col, Row } from 'antd';
 import heroIllustration from '@images/hero-illustration.svg';
-import Hero, { HeroText, HeroArt } from '../src/components/Hero';
+import Hero, { HeroText, HeroArt } from '../../src/components/Hero';
 
 describe('<Hero />', () => {
   it('renders section with minHeight 300px', () => {

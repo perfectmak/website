@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 import { Col, Row } from 'antd';
 import asset1 from '@images/asset_1.svg';
 import asset2 from '@images/asset_2.svg';
-import { MarketList, MarketText } from '../src/Styles';
+import { MarketList, MarketText } from '../../src/Styles';
 
-import Solution, { SectionWrapper } from '../src/components/Solution';
+import Solution, { SectionWrapper } from '../../src/components/Solution';
 
 describe('<Solution />', () => {
   it('renders SectionWrapper', () => {

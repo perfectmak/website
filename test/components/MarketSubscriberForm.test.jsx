@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Button, Form, Icon, Input } from 'antd';
 import { MarketText } from '@styledComponents';
 
-import MarketSubscriberForm from '../src/components/MarketSubscriberForm';
+import MarketSubscriberForm from '../../src/components/MarketSubscriberForm';
 
 describe('<MarketSubscriberForm />', () => {
   const getFieldDecoratorMock = jest.fn();

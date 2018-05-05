@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import GoogleAnalytics from 'react-ga';
 
-import withGAPageView from '../src/containers/GoogleAnalyticsTracker';
+import withGAPageView from '../../src/containers/GoogleAnalyticsTracker';
 
 describe('Google Analytics Tracker HOC', () => {
   const MockComponent = () => <div />;
