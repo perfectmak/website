@@ -15,7 +15,7 @@ interface State {
   focusedPerson?: TeamMember;
 }
 
-class Team extends React.Component<{}, State> {
+export class TeamComponent extends React.Component<{}, State> {
   state: State = {
     bioIsVisible: false,
     focusedPerson: null
@@ -51,11 +51,7 @@ class Team extends React.Component<{}, State> {
     return people.map((o, i) => {
       return (
         <Col key={i} xs={24} sm={24} md={8}>
-          <Person
-            data={o}
-            focus={() => this.focusPerson(o)}
-            unfocus={this.unfocusPerson}
-          />
+          <Person data={o} focus={() => this.focusPerson(o)} />
         </Col>
       );
     });
@@ -171,4 +167,4 @@ class Team extends React.Component<{}, State> {
   }
 }
 
-export default withGAPageView(Team);
+export default withGAPageView(TeamComponent);
