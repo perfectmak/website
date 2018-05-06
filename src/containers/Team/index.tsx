@@ -51,7 +51,7 @@ export class TeamComponent extends React.Component<{}, State> {
     return people.map((o, i) => {
       return (
         <Col key={i} xs={24} sm={24} md={8}>
-          <Person data={o} focus={() => this.focusPerson(o)} />
+          <Person data={o} focus={this.focusPerson.bind(this, o)} />
         </Col>
       );
     });

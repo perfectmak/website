@@ -17,12 +17,13 @@ class Bio extends React.Component<Props> {
     super(props);
   }
 
+  onEscKeyPress = (e: KeyboardEvent) => {
+    e.keyCode === 27 ? this.props.unfocus() : null;
+  }
+
   componentWillMount() {
     if (typeof window !== 'undefined') {
-      window.addEventListener(
-        'keydown',
-        e => (e.keyCode === 27 ? this.props.unfocus() : null)
-      );
+      window.addEventListener('keydown', this.onEscKeyPress);
     }
   }
 
