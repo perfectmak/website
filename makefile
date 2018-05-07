@@ -37,11 +37,6 @@ start:
 build:
 	npm run build
 
-# test a build locally
-serve:
-	npm run server
-
-
 ## remote deployment 
 
 
