@@ -77,6 +77,7 @@ class Team extends React.Component {
         }}
       >
         <Helmet>
+          <title>MARKET Protocol - Team, Founders and Advisors</title>
           <meta
             name="keywords"
             content="MARKET Protocol People, MARKET Protocol Team, MARKET Protocol Advisors, MARKET Protocol Founders"
