@@ -1,9 +1,7 @@
 import React from 'react';
 
-// souce image
-// https://www.pexels.com/photo/macro-photography-of-brown-and-black-lost-cat-signage-on-black-bare-tree-159868/
-// license https://www.pexels.com/photo-license/
-import image404 from '@images/404.jpeg';
+import image404 from '@images/asset_9.svg';
+import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
 
 export default () => (
   <div
@@ -14,33 +12,34 @@ export default () => (
       justifyContent: 'center'
     }}
   >
-    <div style={{ margin: '20px' }}>
+    <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
       <div style={{ textAlign: 'center' }}>
-        <h1>Opus!</h1>
-        <h2>LOOKS LIKE SOMETHING IS MISSING ...</h2>
+        <MarketText header>
+          {'Something went wrong and we cannot find what your looking for...'}
+        </MarketText>
+        <br />
+        <br />
         <img alt="404" src={image404} />
       </div>
-
-      <div style={{ margin: '20px', width: '600px' }}>
-        <h3>
-          You're seeing this page because we can't find the page you are looking
-          for, or because there's a problem with our site.
-        </h3>
-
-        <h2>Get back on track</h2>
+      <br />
+      <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
+        <MarketText header={true} align={'center'}>
+          {'Get back on track'}
+        </MarketText>
         <ul>
           <li>
-            Try looking on our <a href="https://marketprotocol.io/">homepage</a>
+            Try heading back to our{' '}
+            <a href="https://marketprotocol.io/">homepage</a>
           </li>
           <li>
-            Check our{' '}
+            Check out our{' '}
             <a href="https://docs.marketprotocol.io/#faq-general">FAQ</a>
           </li>
           <li>
-            Read our <a href="https://docs.marketprotocol.io/">document</a>
+            Read our <a href="https://docs.marketprotocol.io/">docs</a>
           </li>
         </ul>
-      </div>
-    </div>
+      </TeamDivWithResponsiveWidth>
+    </TeamDivWithResponsiveWidth>
   </div>
 );
