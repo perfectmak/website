@@ -24,6 +24,10 @@ class App extends React.Component {
       <Router>
         <Layout style={{ width: '100%' }}>
           <Helmet>
+            <title>
+              MARKET Protocol - 
+              Decentralized trading on the Ethereum blockchain - cryptocurrency derivatives, futures, and hedging
+            </title>
             <meta
               name="keywords"
               content="trustless trading, decentralized derivatives,
