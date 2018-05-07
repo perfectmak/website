@@ -66,8 +66,8 @@ export default {
             <link rel="shortcut icon" href="/favicon.png" />
             <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
-            <title>MARKET Protocol</title>
-            {renderMeta.helmet}
+            {renderMeta.helmet && (renderMeta.helmet.title.toComponent())}
+            {renderMeta.helmet && (renderMeta.helmet.meta.toComponent())}
             <meta httpEquiv="content-language" content="en" />
             <meta itemProp="name" content="MARKET Protocol" />
             <meta itemProp="description" content="Powering safe, solvent and trustless trading of any asset." />
