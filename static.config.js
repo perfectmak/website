@@ -1,6 +1,7 @@
-import axios from 'axios'
 import React, { Component } from 'react'
 import { ServerStyleSheet } from 'styled-components'
+import { Helmet } from "react-helmet";
+
 /*
 * For Less Support
 * */
@@ -47,6 +48,8 @@ export default {
     const sheet = new ServerStyleSheet()
     const html = render(sheet.collectStyles(<Comp />))
     meta.styleTags = sheet.getStyleElement()
+    const helmet = Helmet.renderStatic()
+    meta.helmet = helmet
     return html
   },
   Document: class CustomHtml extends Component {
@@ -63,22 +66,23 @@ export default {
             <link rel="shortcut icon" href="/favicon.png" />
             <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
             {renderMeta.styleTags}
-            <title>MARKET Protocol</title>
-            <meta name="description" content="Powering safe, solvent and trustless trading of any asset." />
+            {renderMeta.helmet && (renderMeta.helmet.title.toComponent())}
+            {renderMeta.helmet && (renderMeta.helmet.meta.toComponent())}
             <meta httpEquiv="content-language" content="en" />
             <meta itemProp="name" content="MARKET Protocol" />
             <meta itemProp="description" content="Powering safe, solvent and trustless trading of any asset." />
-            <meta itemProp="image" content="https://www.marketprotocol.io/social.jpg" />
+            <meta itemProp="image" content="https://marketprotocol.io/social.jpg" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@MarketProtocol" />
             <meta name="twitter:creator" content="@MarketProtocol" />
-            <meta name="twitter:image:src" content="https://www.marketprotocol.io/social.jpg" />
+            <meta name="twitter:image:src" content="https://marketprotocol.io/social.jpg" />
             <meta property="og:locale" content="en_US" />
             <meta name="language" content="English" />
-            <meta property="og:url" content="https://www.marketprotocol.io/" />
+            <meta property="og:url" content="https://marketprotocol.io/" />
             <meta property="og:title" content="MARKET Protocol" />
             <meta property="og:description" content="Powering safe, solvent and trustless trading of any asset." />
-            <meta property="og:image" content="https://www.marketprotocol.io/social.jpg" />
+            <meta property="og:image" content="https://marketprotocol.io/social.jpg" />
+            <meta name="robots" content="index,follow" />
           </Head>
           <Body>
             {children}
