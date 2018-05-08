@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import Page404 from '../src/containers/404';
 
 const expectedValues = {
-  h1Text: 'Opus!',
-  missingText: 'LOOKS LIKE SOMETHING IS MISSING ...',
+  headerText:
+    'Something went wrong and we cannot find what your looking for...',
   numberOfLinks: 3,
   homepageUrl: 'https://marketprotocol.io/',
   docsUrl: 'https://docs.marketprotocol.io/',
@@ -12,24 +12,14 @@ const expectedValues = {
 };
 
 describe(`/404 page`, () => {
-  it(`should render an h1 with text: "${expectedValues.h1Text}"`, () => {
+  it(`should render an h1 with text: "${expectedValues.headerText}"`, () => {
     const wrapper = mount(<Page404 />);
     expect(
       wrapper
         .find('h1')
         .at(0)
         .text()
-    ).toEqual(expectedValues.h1Text);
-  });
-
-  it(`should render an h2 with text: "${expectedValues.missingText}"`, () => {
-    const wrapper = mount(<Page404 />);
-    expect(
-      wrapper
-        .find('h2')
-        .at(0)
-        .text()
-    ).toEqual(expectedValues.missingText);
+    ).toEqual(expectedValues.headerText);
   });
 
   it(`should render ${expectedValues.numberOfLinks} links`, () => {
