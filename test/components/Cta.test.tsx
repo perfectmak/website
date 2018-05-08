@@ -22,15 +22,8 @@ describe('<Cta />', () => {
 
   it('renders MarketSubscriberForm on first column', () => {
     const component = shallow(<Cta />);
-    const firstColComponent = component.find(Col).at(0);
-    const marketSubscriberFormComponent = firstColComponent.find(
-      MarketSubscriberForm
-    );
+    const marketSubscriberFormComponent = component.find(MarketSubscriberForm).at(0);
     expect(marketSubscriberFormComponent).to.have.length(1);
-    expect(marketSubscriberFormComponent.props()).to.deep.equal({
-      title: 'Join our Newsletter',
-      hint: 'Enter your email here'
-    });
   });
 
   it('renders MarketText and Button on second column', () => {
