@@ -2,10 +2,10 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '../Styles';
+import { MarketList, MarketText } from '@src/Styles';
 import asset1 from '@images/asset_1.svg';
 import asset2 from '@images/asset_2.svg';
-import { device, size } from '../breakpoints';
+import { device, size } from '@src/breakpoints';
 
 const IllustrationContainer = styled.div`
   background-color: #00e2c1;

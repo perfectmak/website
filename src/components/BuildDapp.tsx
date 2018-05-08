@@ -3,9 +3,9 @@ import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
 
-import { MarketText } from '../Styles';
+import { MarketText } from '@src/Styles';
 import Protocol from '@images/protocol_illustration.svg';
-import { device, size } from '../breakpoints';
+import { device, size } from '@src/breakpoints';
 
 export const TextWrapper = styled.div`
   padding: 0px 10px;

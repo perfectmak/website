@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '../Styles';
-import { device, size } from '../breakpoints';
+import { MarketList, MarketText } from '@src/Styles';
+import { device, size } from '@src/breakpoints';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
 import asset5 from '@images/asset_5.svg';

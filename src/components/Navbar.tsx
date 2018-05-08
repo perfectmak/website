@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Dropdown, Icon, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
 import { Link, scrollTo } from 'react-static';
-import { size } from '../breakpoints';
+import { size } from '@src/breakpoints';
 import logoImg from '@images/logo_light.svg';
 
 const { Header } = Layout;

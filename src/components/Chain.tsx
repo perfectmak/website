@@ -11,7 +11,7 @@ import asset10 from '@images/asset_10.svg';
 import asset4 from '@images/asset_4.svg';
 import asset7 from '@images/asset_7.svg';
 import asset8 from '@images/asset_8.svg';
-import { device } from '../breakpoints';
+import { device } from '@src/breakpoints';
 
 export const Wrapper = styled.div`
   background-color: ${props => props.bg || '#fff'};

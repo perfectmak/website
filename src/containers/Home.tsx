@@ -3,8 +3,8 @@ import { withSiteData } from 'react-static';
 
 import withGAPageView from './GoogleAnalyticsTracker';
 
-import { MarketText } from '../Styles';
-import { device, size } from '../breakpoints';
+import { MarketText } from '@src/Styles';
+import { device, size } from '@src/breakpoints';
 
 import Hero from '@components/Hero';
 import Solution from '@components/Solution';

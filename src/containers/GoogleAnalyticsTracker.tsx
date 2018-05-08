@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GoogleAnalytics from 'react-ga';
 import { RouterProps } from 'react-router';
-import { getLocationOrigin } from '../helpers/url';
-import EnvironmentConstant from '../constants/environment';
+import { getLocationOrigin } from '@helpers/url';
+import EnvironmentConstant from '@constants/environment';
 
 const isClient = typeof window !== 'undefined';
 const isProduction =

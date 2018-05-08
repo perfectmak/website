@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import { Helmet } from 'react-helmet';
 
 import config, { TeamMember } from './config';
-import withGAPageView from '../GoogleAnalyticsTracker';
+import withGAPageView from '@containers/GoogleAnalyticsTracker';
 import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';

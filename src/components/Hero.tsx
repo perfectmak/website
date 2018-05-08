@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import styled from 'styled-components';
 //
 import heroIllustration from '@images/hero-illustration.svg';
-import { device, size } from '../breakpoints';
+import { device, size } from '@src/breakpoints';
 
 export const HeroArt = styled.div`
   text-align: right;

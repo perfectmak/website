@@ -5,7 +5,7 @@ import CloseIcon from '@images/icons/close.svg';
 import EmailIcon from '@images/icons/email.svg';
 import LinkedInIcon from '@images/icons/linkedin.svg';
 import colors from '@styles/json/colors';
-import { TeamMember } from '../../containers/Team/config';
+import { TeamMember } from '@containers/Team/config';
 
 interface Props {
   data: Partial<TeamMember>;
