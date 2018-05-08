@@ -150,13 +150,6 @@ const StyledSubMenu = styled(SubMenu)`
   }
 `;
 
-const mobileWhitepaperLinks = styled(Menu.Item)`
-  display: none;
-  @media (max-width: ${size.tablet}) {
-    display: block;
-  }
-`;
-
 interface LinkInterface {
   key: string;
   label: string;
@@ -251,11 +244,15 @@ class Navbar extends React.Component {
             triggerNode.parentNode as HTMLElement
           }
         >
-          <DropdownTrigger className="ant-dropdown-link" href="#">
-            Whitepapers <Icon type="down" />
+          <DropdownTrigger
+            className="ant-dropdown-link"
+            href="#"
+            style={{ padding: '0 20px' }}
+          >
+            Whitepaper
           </DropdownTrigger>
         </Dropdown>
-        <StyledSubMenu title={'Whitepapers'} trigger={'click'}>
+        <StyledSubMenu title={'Whitepaper'} trigger={'click'}>
           {whitepaperLinks}
         </StyledSubMenu>
         <Menu.Item key="/faq">
