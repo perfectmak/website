@@ -1,14 +1,18 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Page404 from '../src/containers/404';
+import Page404, {
+  headerText,
+  homepageUrl,
+  docsUrl,
+  faqUrl
+} from '../src/containers/404';
 
 const expectedValues = {
-  headerText:
-    'Something went wrong and we cannot find what your looking for...',
+  headerText,
   numberOfLinks: 3,
-  homepageUrl: 'https://marketprotocol.io/',
-  docsUrl: 'https://docs.marketprotocol.io/',
-  faqUrl: 'https://docs.marketprotocol.io/#faq-general'
+  homepageUrl,
+  docsUrl,
+  faqUrl
 };
 
 describe(`/404 page`, () => {
