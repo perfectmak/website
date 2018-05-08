@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Col, Row } from 'antd';
-import { MarketList, MarketText } from '../../src/Styles';
+import { MarketList, MarketText } from '@src/Styles';
 import chain1 from '@images/chain1.svg';
 import chain2 from '@images/chain2.svg';
 import asset4 from '@images/asset_4.svg';
@@ -9,7 +9,7 @@ import asset7 from '@images/asset_7.svg';
 import asset8 from '@images/asset_8.svg';
 import asset10 from '@images/asset_10.svg';
 
-import Chain, { Wrapper, ChainIllustration } from '../../src/components/Chain';
+import Chain, { Wrapper, ChainIllustration } from '@components/Chain';
 
 describe('<Chain />', () => {
   it('renders section', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Bio from '../../../src/components/Team/Bio';
+import Bio from '@components/Team/Bio';
 
 describe('<Bio />', () => {
   const mockUnfocus = jest.fn();

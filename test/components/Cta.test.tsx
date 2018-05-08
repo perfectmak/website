@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Col, Icon, Row } from 'antd';
-import MarketSubscriberForm from '../../src/components/MarketSubscriberForm';
-import { MarketText } from '../../src/Styles';
-import EmailConstant from '../../src/constants/email';
+import MarketSubscriberForm from '@components/MarketSubscriberForm';
+import { MarketText } from '@src/Styles';
+import EmailConstant from '@constants/email';
 
-import Cta, { SectionWrapper } from '../../src/components/Cta';
+import Cta, { SectionWrapper } from '@components/Cta';
 
 describe('<Cta />', () => {
   it('renders SectionWrapper', () => {

@@ -4,7 +4,7 @@ import { Button, Layout, Menu, Popover } from 'antd';
 import { Link, scrollTo } from 'react-static';
 import logoImg from '@images/logo_light.svg';
 
-import Navbar, { StyledMenu, Logo } from '../../src/components/Navbar';
+import Navbar, { StyledMenu, Logo } from '@components/Navbar';
 
 describe('<Navbar />', () => {
   it('renders StyledMenu', () => {
@@ -19,7 +19,7 @@ describe('<Navbar />', () => {
     expect(logoLink.props().to).to.equal('/');
     const logoImageProps = logoLink.find('img').props();
 
-    expect(logoImageProps.alt).to.equal('market-pool-logo');
+    expect(logoImageProps.alt).to.equal('MARKET Protocol Logo');
     expect(logoImageProps.width).to.equal('100%');
     expect(logoImageProps.src).to.equal(logoImg);
   });

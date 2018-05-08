@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Col, Row } from 'antd';
-import { MarketList, MarketText } from '../../src/Styles';
+import { MarketList, MarketText } from '@src/Styles';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
 import asset5 from '@images/asset_5.svg';
@@ -12,7 +12,7 @@ import Dapp, {
   Wrapper,
   ButtonWrapper,
   HeaderText
-} from '../../src/components/Dapp';
+} from '@components/Dapp';
 
 describe('<Dapp />', () => {
   it('renders SectionWrapper component', () => {

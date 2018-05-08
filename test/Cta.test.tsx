@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Cta from '../src/components/Cta.tsx';
-import MarketSubscriberForm from '../src/components/MarketSubscriberForm';
+import Cta from '@components/Cta.tsx';
+import MarketSubscriberForm from '@components/MarketSubscriberForm';
 
 
 it('render without crash', () => {

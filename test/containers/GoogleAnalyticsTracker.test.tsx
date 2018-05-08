@@ -7,13 +7,13 @@ import withGAPageView, {
   initializeGoogleAnalytics,
   trackPage,
   initializeTracking
-} from '../../src/containers/GoogleAnalyticsTracker';
+} from '@containers/GoogleAnalyticsTracker';
 
-import * as GoogleAnalyticsTracker from '../../src/containers/GoogleAnalyticsTracker';
+import * as GoogleAnalyticsTracker from '@containers/GoogleAnalyticsTracker';
 
-import * as urlHelper from '../../src/helpers/url';
+import * as urlHelper from '@helpers/url';
 
-import EnvironmentConstant from '../../src/constants/environment';
+import EnvironmentConstant from '@constants/environment';
 
 describe('Google Analytics Tracker HOC', () => {
   const MockComponent = () => <div />;

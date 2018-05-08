@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Col, Row } from 'antd';
 import Protocol from '@images/protocol_illustration.svg';
-import { MarketText } from '../../src/Styles';
+import { MarketText } from '@src/Styles';
 import { Link } from 'react-static';
 
 import BuildDapp, {
@@ -10,7 +10,7 @@ import BuildDapp, {
   SectionWrapper,
   TextWrapper,
   ButtonWrapper
-} from '../../src/components/BuildDapp';
+} from '@components/BuildDapp';
 
 describe('<BuildDapp />', () => {
   it('renders the SectionWrapper component', () => {

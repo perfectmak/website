@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import Home, { MarketMainText, HomeComponent } from '../../src/containers/Home';
+import Home, { MarketMainText, HomeComponent } from '@containers/Home';
 
 import Hero from '@components/Hero';
 import Solution from '@components/Solution';

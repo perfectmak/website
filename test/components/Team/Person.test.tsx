@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Person from '../../../src/components/Team/Person';
+import Person from '@components/Team/Person';
 
 describe('<Person />', () => {
   const mockFocus = jest.fn();

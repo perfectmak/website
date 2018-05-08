@@ -1,4 +1,4 @@
-import getWindowWidth from '../../src/helpers/getWindowWidth';
+import getWindowWidth from '@src/helpers/getWindowWidth';
 
 describe('getWindowWidth Util', () => {
   it('gives window width', () => {

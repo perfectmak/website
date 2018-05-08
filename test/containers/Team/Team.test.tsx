@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import Team, { TeamComponent } from '../../../src/containers/Team';
-import config from '../../../src/containers/Team/config';
+import Team, { TeamComponent } from '@containers/Team';
+import config from '@containers/Team/config';
 
 const expectedValues = {
   headerText: 'The Team',

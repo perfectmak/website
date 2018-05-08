@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import App from '../src/App.tsx';
+import App from '@src/App.tsx';
 
 it('render without crash', () => {
   mount(<App />);
