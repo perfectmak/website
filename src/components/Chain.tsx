@@ -2,7 +2,7 @@ import rightArrow from '@images/right_arrow.svg';
 import React from 'react';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '../Styles';
+import { MarketList, MarketText } from '@src/Styles';
 import chain1 from '@images/chain1.svg';
 import chain2 from '@images/chain2.svg';
 import { Col, Row } from 'antd';

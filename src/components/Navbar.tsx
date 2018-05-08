@@ -306,7 +306,7 @@ class Navbar extends React.Component {
               style={{ color: 'inherit', textDecoration: 'none' }}
               onClick={() => this.handleClick('/')}
             >
-              <img alt="market-pool-logo" width="100%" src={logoImg} />
+              <img alt="MARKET Protocol Logo" width="100%" src={logoImg} />
             </Link>
           </Logo>
           {this.renderMenuMarkup('desktop')}
