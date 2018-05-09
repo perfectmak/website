@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import heroIllustration from '@images/hero-illustration.svg';
 import { device, size } from '@src/breakpoints';
 
-const HeroArt = styled.div`
+export const HeroArt = styled.div`
   text-align: right;
 
   img {
@@ -32,7 +32,7 @@ const HeroArt = styled.div`
   }
 `;
 
-const HeroText = styled.div`
+export const HeroText = styled.div`
   color: #f0f0f0;
   font-size: 50px;
   margin: 150px 50px 0 50px;

@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Dropdown, Icon, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
 import { Link, scrollTo } from 'react-static';
-import { size } from '../breakpoints';
+import { size } from '@src/breakpoints';
 import logoImg from '@images/logo_light.svg';
 
 const { Header } = Layout;
 const { SubMenu } = Menu;
 const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram'];
 
-const Logo = styled.div`
+export const Logo = styled.div`
   line-height: 64px;
   margin: 0;
   float: left;
@@ -18,7 +18,7 @@ const Logo = styled.div`
   }
 `;
 
-const StyledMenu = styled(Menu)`
+export const StyledMenu = styled(Menu)`
   .ant-dropdown-menu {
     background: #fff;
     border-radius: 25px;
@@ -303,7 +303,7 @@ class Navbar extends React.Component {
               style={{ color: 'inherit', textDecoration: 'none' }}
               onClick={() => this.handleClick('/')}
             >
-              <img alt="react-static" width="100%" src={logoImg} />
+              <img alt="MARKET Protocol Logo" width="100%" src={logoImg} />
             </Link>
           </Logo>
           {this.renderMenuMarkup('desktop')}

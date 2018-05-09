@@ -2,28 +2,26 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import { Helmet } from 'react-helmet';
 
-import config from './config.js';
-import withGAPageView from '../GoogleAnalyticsTracker';
+import config, { TeamMember } from './config';
+import withGAPageView from '@containers/GoogleAnalyticsTracker';
 import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';
 import Bio from '@components/Team/Bio';
 import Person from '@components/Team/Person';
 
-class Team extends React.Component {
-  constructor(props: {}) {
-    super(props);
+interface State {
+  bioIsVisible: boolean;
+  focusedPerson?: TeamMember;
+}
 
-    this.state = {
-      bioIsVisible: false,
-      focusedPerson: null
-    };
+export class TeamComponent extends React.Component<{}, State> {
+  state: State = {
+    bioIsVisible: false,
+    focusedPerson: null
+  };
 
-    this.focusPerson = this.focusPerson.bind(this);
-    this.unfocusPerson = this.unfocusPerson.bind(this);
-  }
-
-  focusPerson(info: {}) {
+  focusPerson = (info: TeamMember) => {
     this.setState(
       {
         focusedPerson: info
@@ -35,7 +33,7 @@ class Team extends React.Component {
     );
   }
 
-  unfocusPerson() {
+  unfocusPerson = () => {
     this.setState({
       bioIsVisible: false
     });
@@ -49,15 +47,11 @@ class Team extends React.Component {
     );
   }
 
-  renderPeople(people: {}) {
+  renderPeople(people: TeamMember[]) {
     return people.map((o, i) => {
       return (
         <Col key={i} xs={24} sm={24} md={8}>
-          <Person
-            data={o}
-            focus={() => this.focusPerson(o)}
-            unfocus={this.unfocusPerson}
-          />
+          <Person data={o} focus={this.focusPerson.bind(this, o)} />
         </Col>
       );
     });
@@ -173,4 +167,4 @@ class Team extends React.Component {
   }
 }
 
-export default withGAPageView(Team);
+export default withGAPageView(TeamComponent);

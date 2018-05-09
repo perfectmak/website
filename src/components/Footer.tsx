@@ -9,7 +9,7 @@ import telegram from '@images/telegram.svg';
 import twitter from '@images/twitter.svg';
 import medium from '@images/medium.svg';
 import github from '@images/github.svg';
-import { device } from '../breakpoints';
+import { device } from '@src/breakpoints';
 
 const AboutMarketText = styled.div`
   margin-top: 35px;

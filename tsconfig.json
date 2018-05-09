@@ -16,8 +16,14 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@containers/*": [
+        "src/containers/*"
+      ],
       "@components/*": [
         "src/components/*"
+      ],
+      "@constants/*": [
+        "src/constants/*"
       ],
       "@styledComponents": [
         "src/Styles.tsx"

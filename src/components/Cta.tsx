@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, Col, Icon, Row } from 'antd';
 import styled from 'styled-components';
-import MarketSubscriberForm from '../components/MarketSubscriberForm';
-import { MarketText } from '../Styles';
-import { device } from '../breakpoints';
+import MarketSubscriberForm from './MarketSubscriberForm';
+import { MarketText } from '@src/Styles';
+import { device } from '@src/breakpoints';
+import EmailConstant from '@constants/email';
 
-
-const SectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
   background: #f0f0f0;
 
   @media ${device.mobileS} {
@@ -26,6 +26,10 @@ const PartnersEmail = {
   email: 'partnerships@marketprotocol.io',
   subject: 'Partnership%20with%20MARKET%20Protocol'
 };
+
+const emailLink = `mailto:${EmailConstant.PARTNERS_EMAIL.email}?subject=${
+  EmailConstant.PARTNERS_EMAIL.subject
+}&body=${EmailConstant.PARTNERS_EMAIL.body}`;
 
 class Cta extends React.Component {
   state = {
@@ -76,9 +80,7 @@ class Cta extends React.Component {
               Become a Partner
             </MarketText>
             <Button
-              href={`mailto:${PartnersEmail.email}?subject=${
-                PartnersEmail.subject
-              }&body=${PartnersEmail.body}`}
+              href={emailLink}
               type="primary"
               style={{ width: '100%', textAlign: 'left' }}
             >

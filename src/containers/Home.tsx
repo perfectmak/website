@@ -3,8 +3,8 @@ import { withSiteData } from 'react-static';
 
 import withGAPageView from './GoogleAnalyticsTracker';
 
-import { MarketText } from '../Styles';
-import { device, size } from '../breakpoints';
+import { MarketText } from '@src/Styles';
+import { device, size } from '@src/breakpoints';
 
 import Hero from '@components/Hero';
 import Solution from '@components/Solution';
@@ -14,7 +14,7 @@ import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
 import styled from 'styled-components';
 
-const MarketMainText = MarketText.extend`
+export const MarketMainText = MarketText.extend`
   font-size: 25px;
 
   @media ${device.mobileS} {
@@ -44,27 +44,27 @@ const AboutWrapper = styled.section`
   }
 `;
 
-export default withGAPageView(
-  withSiteData(() => (
-    <div>
-      <Hero />
-      <AboutWrapper>
-        <MarketMainText>
-          <span style={{ color: '#00E2C1', fontWeight: 'bold' }}>
-            MARKET Protocol
-          </span>{' '}
-          has been created to provide a secure, flexible, open source foundation
-          for decentralized trading on the Ethereum blockchain. We provide the
-          pieces necessary to create a decentralized exchange, including the
-          requisite clearing and collateral pool infrastructure, enabling third
-          parties to build applications for trading.
-        </MarketMainText>
-      </AboutWrapper>
-      <Solution />
-      <Chain />
-      <Dapp />
-      <BuildDapp />
-      <Cta />
-    </div>
-  ))
+export const HomeComponent = () => (
+  <div>
+    <Hero />
+    <AboutWrapper>
+      <MarketMainText>
+        <span style={{ color: '#00E2C1', fontWeight: 'bold' }}>
+          MARKET Protocol
+        </span>{' '}
+        has been created to provide a secure, flexible, open source foundation
+        for decentralized trading on the Ethereum blockchain. We provide the
+        pieces necessary to create a decentralized exchange, including the
+        requisite clearing and collateral pool infrastructure, enabling third
+        parties to build applications for trading.
+      </MarketMainText>
+    </AboutWrapper>
+    <Solution />
+    <Chain />
+    <Dapp />
+    <BuildDapp />
+    <Cta />
+  </div>
 );
+
+export default withGAPageView(withSiteData(HomeComponent));
