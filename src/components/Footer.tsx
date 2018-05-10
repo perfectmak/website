@@ -45,7 +45,7 @@ class MarketFooter extends React.Component {
     return (
       <Footer style={{ color: '#fff', height: '460px', padding: '0px' }}>
         <FooterWrapper>
-          <Row type="flex" className="hero" align="top">
+          <Row type="flex" className="hero" align="top" gutter={24}>
             <Col
               xs={24}
               sm={24}
