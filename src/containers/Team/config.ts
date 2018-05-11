@@ -120,6 +120,32 @@ const config: Config = {
     },
     {
       bio:
+        'Eswara is a passionate Frontend Developer proficient working with\
+        HTML, CSS & JavaScript. He is also experienced with\
+        JavaScript frameworks such as ReactJS and AngularJS which are majorly\
+        used in building dynamic single-page web applications.',
+      email: 'eswara@marketprotocol.io',
+      img: teamMemberImages.EswaraSai,
+      linkedin: 'https://www.linkedin.com/in/eswarasai/',
+      name: 'Eswara Sai',
+      title: 'Senior Frontend Developer'
+    },
+    {
+      bio:
+        'Robert combines a personal passion for investing and derivatives with\
+        decades of experience in software and Product Development. He\'s served in a\
+        variety of product and engineering leadership roles, from startups to F50 companies.\
+        Robert has a strong interest in DLT, smart contracts, and cryptocurrencies and\
+        is hopeful of a decentralized future where the individual controls their identity\
+        and data.',
+      email: 'robert@marketprotocol.io',
+      img: teamMemberImages.RobertJordan,
+      linkedin: 'https://www.linkedin.com/in/jrobertjordan',
+      name: 'Robert Jordan',
+      title: 'Product Manager'
+    },
+    {
+      bio:
         'Perfect is passionate about building smart solutions related to Android,\
         AI and Smart Contracts in order\
         to make people’s lives better. He also has experience with machine learning,\
@@ -130,18 +156,6 @@ const config: Config = {
       linkedin: 'https://www.linkedin.com/in/perfectmak/',
       name: 'Perfect Makanju',
       title: 'Software Developer'
-    },
-    {
-      bio:
-        'Eswara is a passionate Frontend Developer proficient working with\
-        HTML, CSS & JavaScript. He is also experienced with\
-        JavaScript frameworks such as ReactJS and AngularJS which are majorly\
-        used in building dynamic single-page web applications.',
-      email: 'eswara@marketprotocol.io',
-      img: teamMemberImages.EswaraSai,
-      linkedin: 'https://www.linkedin.com/in/eswarasai/',
-      name: 'Eswara Sai',
-      title: 'Senior Frontend Developer'
     },
     {
       bio:
@@ -179,20 +193,6 @@ const config: Config = {
       linkedin: '',
       name: 'Mauzy Keshavarzi',
       title: 'Community Manager'
-    },
-    {
-      bio:
-        'Robert combines a personal passion for investing and derivatives with\
-        decades of experience in software and Product Development. He\'s served in a\
-        variety of product and engineering leadership roles, from startups to F50 companies.\
-        Robert has a strong interest in DLT, smart contracts, and cryptocurrencies and\
-        is hopeful of a decentralized future where the individual controls their identity\
-        and data.',
-      email: 'robert@marketprotocol.io',
-      img: teamMemberImages.RobertJordan,
-      linkedin: 'https://www.linkedin.com/in/jrobertjordan',
-      name: 'Robert Jordan',
-      title: 'Product Development'
     }
   ]
 };
