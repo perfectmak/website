@@ -6,3 +6,4 @@ exports.PerfectMakanju = require('./perfect-makanju.svg');
 exports.PhilElsasser = require('./phil-elsasser.svg');
 exports.PrzemyslawSzulczynski = require('./przemyslaw-szulczynski.svg');
 exports.SethRubin = require('./seth-rubin.svg');
+exports.RobertJordan = require('./robert-jordan.svg');
