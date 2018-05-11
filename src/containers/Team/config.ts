@@ -182,11 +182,12 @@ const config: Config = {
     },
     {
       bio:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.\
-       Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh \
-       elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed \
-       augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent \
-       taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+        'Robert combines a personal passion for investing and derivatives with\
+        decades of experience in software and Product Development. He\'s served in a\
+        variety of product and engineering leadership roles, from startups to F50 companies.\
+        Robert has a strong interest in DLT, smart contracts, and cryptocurrencies and\
+        is hopeful of a decentralized future where the individual controls their identity\
+        and data.',
       email: 'robert@marketprotocol.io',
       img: teamMemberImages.RobertJordan,
       linkedin: 'https://www.linkedin.com/in/jrobertjordan',
