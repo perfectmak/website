@@ -69,6 +69,13 @@ deploy_prod:
 	cp -r ./assets ./dist/
 	aws s3 --profile $(PROD_PROFILE_NAME) cp dist/ $(PROD_BUCKET) --recursive
 
+# Generate sitemap for website
+sitemap:
+	npm run sitemap https://marketprotocol.io public/sitemap.xml
+
+# Generate sitemap for docs
+sitemap_docs:
+	npm run sitemap https://docs.marketprotocol.io public/docs_sitemap.xml
 
 
 

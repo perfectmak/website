@@ -46,6 +46,7 @@
     "lint-staged": "^7.0.5",
     "postcss-flexbugs-fixes": "^3.3.0",
     "prettier": "^1.12.1",
+    "sitemap-generator": "^8.1.1",
     "ts-jest": "^22.4.4",
     "ts-loader": "^3.5.0",
     "tslint": "^5.9.1",
@@ -63,7 +64,8 @@
     "copy:assets": "cp -r ./assets ./dist/",
     "precommit": "lint-staged",
     "lint-ts": "tslint --fix \"./src/**/*.{ts,tsx}\"",
-    "prettier-ts": "prettier --single-quote --parser typescript --write \"./src/**/*.{ts,tsx}\""
+    "prettier-ts": "prettier --single-quote --parser typescript --write \"./src/**/*.{ts,tsx}\"",
+    "sitemap": "node scripts/sitemap.js"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
