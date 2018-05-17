@@ -32,6 +32,11 @@ const FooterLink = styled.div`
   }
 `;
 
+const FooterText = styled.span`
+  margin: 22px 0;
+  font-weight: 100;
+`;
+
 const FooterWrapper = styled.div`
   padding: 70px 20px;
 
@@ -217,6 +222,9 @@ class MarketFooter extends React.Component {
               {/*Jobs (We're hiring!)*/}
               {/*</Link>*/}
               {/*</FooterLink>*/}
+              <FooterText>
+                4450 Arapahoe Ave, Suite 100 Boulder, CO 80303
+              </FooterText>
               <FooterLink>
                 <Link
                   to="mailto:info@marketprotocool.io"
