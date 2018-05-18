@@ -198,6 +198,14 @@ class MarketFooter extends React.Component {
                   Discord
                 </Link>
               </FooterLink>
+              <FooterLink>
+                <Link
+                  to="/press"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  Press
+                </Link>
+              </FooterLink>
             </Col>
             <Col xs={8} sm={8} md={4} lg={4} xl={4}>
               Organization

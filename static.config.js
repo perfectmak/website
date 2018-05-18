@@ -39,6 +39,10 @@ export default {
         component: 'src/containers/Team',
       },
       {
+        path: '/press',
+        component: 'src/containers/Press',
+      },
+      {
         is404: true,
         component: 'src/containers/404',
       },
