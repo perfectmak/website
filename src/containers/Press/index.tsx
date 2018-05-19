@@ -35,6 +35,7 @@ class Press extends Component {
           }}
         >
           <MarketText header>{'MARKET Protocol in the press'}</MarketText>
+          <br />
           {linkInfos.map((todo, i) => (
             <SingleLink key={i} displayDirection={displayDirection} {...todo} />
           ))}

@@ -25,18 +25,6 @@ const linkInfos: LinkInfo[] = [
     title: 'What Is the MARKET Protocol?'
   },
   {
-    boxColor: 'white',
-    imgSrc: CoinCrunch,
-    link: 'https://www.youtube.com/watch?v=iRipt7d5LPc',
-    paragraphs: [
-      `MARKET Protocol provides the interoperability necessary for order routing and other trading 
-      activities on the blockchain.`,
-      `Third party projects can build decentralized applications or “dApps” on top of the protocol, 
-      giving the non-technical Trader the ability to easily interact with the underlying blockchain technology.`
-    ],
-    title: 'MARKET Protocol Interview - Empowering DEXs - Better than 0x?'
-  },
-  {
     boxColor: 'darkgrey',
     imgSrc: Themerkle,
     link: 'https://themerkle.com/top-four-upcoming-cryptocurrencies-sans-icos/',
@@ -55,6 +43,38 @@ const linkInfos: LinkInfo[] = [
     title: 'Top 4 Upcoming Cryptocurrencies Sans ICOs'
   },
   {
+    boxColor: 'darkgrey',
+    imgSrc: FutureTechPodcast,
+    link:
+      'https://www.futuretechpodcast.com/podcasts/phil-elasser-cto-co-founder-market-protocol/',
+    paragraphs: [
+      `Market Protocol has been created to provide a 
+      secure, flexible, open source foundation for 
+      decentralized trading on the Ethereum blockchain. 
+      They provide the pieces necessary to create a 
+      decentralized exchange, including the requisite 
+      clearing and collateral pool infrastructure, 
+      enabling third parties to build applications 
+      for trading. Market Protocol is a proud open 
+      source product that encourages contributors to 
+      help create change.`
+    ],
+    title:
+      'Future Tech Podcast - Phil Elsasser CTO, Co-Founder of MARKET Protocol'
+  },
+  {
+    boxColor: 'white',
+    imgSrc: CoinCrunch,
+    link: 'https://www.youtube.com/watch?v=iRipt7d5LPc',
+    paragraphs: [
+      `MARKET Protocol provides the interoperability necessary for order routing and other trading 
+      activities on the blockchain.`,
+      `Third party projects can build decentralized applications or “dApps” on top of the protocol, 
+      giving the non-technical Trader the ability to easily interact with the underlying blockchain technology.`
+    ],
+    title: 'MARKET Protocol Interview - Empowering DEXs - Better than 0x?'
+  },
+  {
     boxColor: 'white',
     imgSrc: CryptoNinja,
     link:
@@ -67,7 +87,7 @@ const linkInfos: LinkInfo[] = [
       tokenization company bringing digital gold onto the 
       Ethereum blockchain.`
     ],
-    title: 'MARKET Protocol to integrate the DGX gold-backed '
+    title: 'MARKET Protocol to integrate the DGX gold-backed stablecoin'
   },
   {
     boxColor: 'darkgrey',
@@ -87,25 +107,6 @@ const linkInfos: LinkInfo[] = [
       the use of these dApps.`
     ],
     title: 'Market Protocol ICO: MKT Token Blockchain Trading Exchange?'
-  },
-  {
-    boxColor: 'darkgrey',
-    imgSrc: FutureTechPodcast,
-    link:
-      'https://www.futuretechpodcast.com/podcasts/phil-elasser-cto-co-founder-market-protocol/',
-    paragraphs: [
-      `Market Protocol has been created to provide a 
-      secure, flexible, open source foundation for 
-      decentralized trading on the Ethereum blockchain. 
-      They provide the pieces necessary to create a 
-      decentralized exchange, including the requisite 
-      clearing and collateral pool infrastructure, 
-      enabling third parties to build applications 
-      for trading. Market Protocol is a proud open 
-      source product that encourages contributors to 
-      help create change.`
-    ],
-    title: 'Phil Elsasser cto, co-founder of market protocol/'
   }
 ];
 
