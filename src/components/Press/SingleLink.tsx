@@ -44,7 +44,7 @@ const SingleLink = ({
           marginRight: '20px'
         }}
       >
-        <a style={{}} href={link}>
+        <a style={{}} href={link} target="_blank">
           <img
             style={{
               padding: '10px',
@@ -62,12 +62,15 @@ const SingleLink = ({
               color: 'black'
             }}
             href={link}
+            target="_blank"
           >
             {title}
           </a>
         </h2>
         {paragraphs.map((paragraph, i) => <p key={'p' + i}>{paragraph}</p>)}
-        <a href={link}>Read more »</a>
+        <a href={link} target="_blank">
+          Read more »
+        </a>
       </div>
     </div>
   );
@@ -87,7 +90,7 @@ const SingleLink = ({
           marginBottom: '20px'
         }}
       >
-        <a href={link}>
+        <a href={link} target="_blank">
           <img
             style={{
               padding: '15px',
@@ -104,12 +107,13 @@ const SingleLink = ({
             color: 'black'
           }}
           href={link}
+          target="_blank"
         >
           {title}
         </a>
       </h2>
       {paragraphs.map((paragraph, i) => <p key={'p' + i}>{paragraph}</p>)}
-      <a key="readMore" href={link}>
+      <a key="readMore" href={link} target="_blank">
         Read more »
       </a>
     </div>
