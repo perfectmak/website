@@ -6,11 +6,9 @@ import SingleLink, { DisplayDirection } from '@components/Press/SingleLink';
 import colors from '@styles/json/colors';
 
 class Press extends Component {
-  state: {
-    displayDirection: DisplayDirection;
-  };
+  state: { displayDirection?: DisplayDirection } = {};
 
-  componentWillMount() {
+  componentDidMount() {
     const displayDirection = window.innerWidth > 768 ? 'row' : 'column';
     this.setState({ displayDirection });
 
@@ -25,7 +23,7 @@ class Press extends Component {
   }
 
   render() {
-    const { displayDirection } = this.state;
+    const { displayDirection = 'row' } = this.state;
 
     return (
       <div>
