@@ -8,14 +8,14 @@ describe(`/team press`, () => {
     mount(<Press />);
   });
 
-  it(`should render an h1 with text: "The Press"`, () => {
+  it(`should render an h1 with text: "MARKET Protocol in the press"`, () => {
     const wrapper = mount(<Press />);
     expect(
       wrapper
         .find('h1')
         .at(0)
         .text()
-    ).toEqual('The Press');
+    ).toEqual('MARKET Protocol in the press');
   });
 
   it(`should render same number of SingleLinks as linkInfos`, () => {
@@ -31,7 +31,7 @@ describe(`/team press`, () => {
     setTimeout(() => {
       expect(wrapper.state().displayDirection).toEqual('column');
     }, 600);
-    
+
   }, 1000);
 
   it('should response width change - row style', () => {
@@ -41,7 +41,7 @@ describe(`/team press`, () => {
     setTimeout(() => {
       expect(wrapper.state().displayDirection).toEqual('row');
     }, 600);
-    
+
   }, 1000);
 
   it('should use row displayDirection when windowWidth > 768', () => {
