@@ -25,6 +25,7 @@ const webpack = require('webpack')
 
 //
 export default {
+  siteRoot: 'https://marketprotocol.io',
   getSiteData: () => ({
     title: 'MARKET Protocol',
   }),

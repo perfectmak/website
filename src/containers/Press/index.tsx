@@ -34,7 +34,7 @@ class Press extends Component {
             padding: '40px 35px'
           }}
         >
-          <MarketText header>{'The Press'}</MarketText>
+          <MarketText header>{'MARKET Protocol in the press'}</MarketText>
           {linkInfos.map((todo, i) => (
             <SingleLink key={i} displayDirection={displayDirection} {...todo} />
           ))}

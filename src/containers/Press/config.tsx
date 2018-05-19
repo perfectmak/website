@@ -25,7 +25,7 @@ const linkInfos: LinkInfo[] = [
     title: 'What Is the MARKET Protocol?'
   },
   {
-    boxColor: 'darkgrey',
+    boxColor: 'white',
     imgSrc: CoinCrunch,
     link: 'https://www.youtube.com/watch?v=iRipt7d5LPc',
     paragraphs: [
