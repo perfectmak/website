@@ -10,6 +10,13 @@ import { device, size } from '@src/breakpoints';
 const IllustrationContainer = styled.div`
   background-color: #00e2c1;
   padding: 100px;
+  text-align: center;
+
+  img {
+    @media ${device.desktopS} {
+      width: 70%;
+    }
+  }
 `;
 
 export const SectionWrapper = styled.section`
@@ -18,6 +25,10 @@ export const SectionWrapper = styled.section`
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
     padding: 0px;
+  }
+
+  @media ${device.desktopS} {
+    padding: 70px 150px;
   }
 `;
 
@@ -57,7 +68,7 @@ const Solution = () => {
           xl={{ span: 12, push: 12 }}
         >
           <IllustrationContainer>
-            <img alt="exchange" src={asset2} />
+            <img alt="exchange" src={asset2} width="80%" />
           </IllustrationContainer>
         </Col>
         <Col
