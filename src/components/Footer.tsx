@@ -235,7 +235,7 @@ class MarketFooter extends React.Component {
               </FooterText>
               <FooterLink>
                 <Link
-                  to="mailto:info@marketprotocool.io"
+                  to="mailto:info@marketprotocol.io"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   info@marketprotocol.io
