@@ -24,6 +24,7 @@ deploy:
     on:
       branch: develop
 script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run build:ci; fi'
   - npm test -- --coverage
 after_script:
   - npm run coveralls
