@@ -72,7 +72,7 @@ const linkInfos: LinkInfo[] = [
       `Third party projects can build decentralized applications or “dApps” on top of the protocol, 
       giving the non-technical Trader the ability to easily interact with the underlying blockchain technology.`
     ],
-    title: 'MARKET Protocol Interview - Empowering DEXs - Better than 0x?'
+    title: 'MARKET Protocol Interview - Empowering DEXs'
   },
   {
     boxColor: 'white',
