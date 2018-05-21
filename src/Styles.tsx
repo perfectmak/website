@@ -1,5 +1,5 @@
 import styled, { injectGlobal } from 'styled-components';
-import { size } from './breakpoints';
+import { device, size } from './breakpoints';
 
 injectGlobal`
 .bio-wrap {
@@ -32,6 +32,10 @@ const MarketText = styled.h1`
   @media (max-width: ${size.laptop}) {
     font-size: ${props => (props.header ? '28px;' : '14px;')};
   }
+
+  @media ${device.desktopS} {
+    font-size: ${props => (props.header ? '28px;' : '22px;')};
+  }
 `;
 
 const MarketList = styled.li`
@@ -57,6 +61,10 @@ const MarketList = styled.li`
     :before {
       margin-top: 5px;
     }
+  }
+
+  @media ${device.desktopS} {
+    font-size: 22px;
   }
 `;
 

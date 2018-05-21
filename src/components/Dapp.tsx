@@ -45,6 +45,10 @@ export const SectionWrapper = styled.section`
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
     padding: 0px;
   }
+
+  @media ${device.desktopS} {
+    padding: 120px;
+  }
 `;
 
 export const HeaderText = MarketText.extend`

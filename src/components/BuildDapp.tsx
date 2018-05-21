@@ -30,6 +30,12 @@ export const IllustrationWrapper = styled.div`
   flex-direction: column;
   text-align: center;
   padding: 70px
+  
+  img {
+    @media ${device.desktopS} {
+      width: 40%
+    }
+  }
 `;
 
 export const SectionWrapper = styled.section`
@@ -41,6 +47,10 @@ export const SectionWrapper = styled.section`
 
   @media ${device.laptop} {
     padding: 70px;
+  }
+
+  @media ${device.desktopS} {
+    padding: 120px;
   }
 `;
 

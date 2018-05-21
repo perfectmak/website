@@ -16,6 +16,10 @@ export const SectionWrapper = styled.section`
   @media ${device.tablet} {
     padding: 0 50px 70px 50px;
   }
+
+  @media ${device.desktopS} {
+    padding: 0 120px 70px 120px;
+  }
 `;
 
 // encoded
