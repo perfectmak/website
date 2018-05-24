@@ -42,8 +42,14 @@ class Cta extends React.Component {
 
   render() {
     const { subscriptionPopUpVisible } = this.state;
+    const { bg } = this.props;
     return (
-      <SectionWrapper id="subscribe">
+      <SectionWrapper
+        id="subscribe"
+        style={{
+          background: bg
+        }}
+      >
         <MarketSubscriberForm
           onCancel={() => this.setState({ subscriptionPopUpVisible: false })}
           visible={subscriptionPopUpVisible}

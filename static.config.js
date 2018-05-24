@@ -39,6 +39,10 @@ export default {
         component: 'src/containers/Team',
       },
       {
+        path: '/about',
+        component: 'src/containers/About',
+      },
+      {
         path: '/press',
         component: 'src/containers/Press',
       },
