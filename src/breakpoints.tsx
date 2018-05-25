@@ -8,7 +8,8 @@ export const size = {
   mobileL: '425px',
   mobileM: '375px',
   mobileS: '320px',
-  tablet: '768px'
+  tablet: '768px',
+  tabletL: '991px'
 };
 
 export const device = {

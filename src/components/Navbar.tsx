@@ -16,6 +16,10 @@ export const Logo = styled.div`
   @media (max-width: ${size.mobileS}) {
     max-width: 200px;
   }
+
+  @media (min-width: ${size.tablet}) and (max-width: ${size.tabletL}) {
+    max-width: 170px;
+  }
 `;
 
 export const StyledMenu = styled(Menu)`
@@ -49,6 +53,14 @@ export const StyledMenu = styled(Menu)`
         border-radius: 12px;
         background-color: #f1f1f1;
         color: #00ad94;
+      }
+    }
+  }
+
+  @media (min-width: ${size.tablet}) and (max-width: ${size.tabletL}) {
+    &.ant-menu {
+      .ant-menu-item {
+        padding: 0 15px;
       }
     }
   }
@@ -233,6 +245,14 @@ class Navbar extends React.Component {
         onClick={this.handleClick}
         selectedKeys={[this.state.current]}
       >
+        <Menu.Item key="/about">
+          <Link
+            to="/about"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            About
+          </Link>
+        </Menu.Item>
         <Menu.Item key="/team">
           <Link to="/team" style={{ color: 'inherit', textDecoration: 'none' }}>
             Team
@@ -278,15 +298,6 @@ class Navbar extends React.Component {
             target="_blank"
           >
             Blog
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="/telegram">
-          <Link
-            to="https://t.me/Market_Protocol_Chat"
-            style={{ color: 'inherit', textDecoration: 'none' }}
-            target="_blank"
-          >
-            Telegram
           </Link>
         </Menu.Item>
       </StyledMenu>
