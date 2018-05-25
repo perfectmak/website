@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
 import ethereum_blockchain from '@images/about/ethereum_blockchain.svg';
-import { MarketText } from '@src/Styles';
+import { MarketHeader } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 
 export const IllustrationWrapper = styled.div`
@@ -39,7 +39,7 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const HeaderText = MarketText.extend`
+export const HeaderText = MarketHeader.extend`
   max-width: 380px;
 
   @media ${device.mobileS} and (max-width: ${size.tablet}) {
@@ -106,12 +106,7 @@ class Trading extends React.Component {
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <TextWrapper>
-            <HeaderText
-              header
-              style={{
-                color: '#fff'
-              }}
-            >
+            <HeaderText style={{ color: '#fff' }}>
               Derivatives trading on the Ethereum blockchain
             </HeaderText>
             <AdditionalInfo>

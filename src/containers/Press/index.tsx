@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import linkInfos from './config';
-import { MarketText } from '@styledComponents';
+import { MarketHeader } from '@styledComponents';
 import { throttle } from 'lodash';
 import SingleLink, { DisplayDirection } from '@components/Press/SingleLink';
 import colors from '@styles/json/colors';
@@ -34,7 +34,7 @@ class Press extends Component {
             padding: '40px 35px'
           }}
         >
-          <MarketText header>{'MARKET Protocol in the press'}</MarketText>
+          <MarketHeader>{'MARKET Protocol in the press'}</MarketHeader>
           <br />
           {linkInfos.map((todo, i) => (
             <SingleLink key={i} displayDirection={displayDirection} {...todo} />

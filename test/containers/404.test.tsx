@@ -16,11 +16,11 @@ const expectedValues = {
 }
 
 describe('/404 page', () => {
-  it(`should render an h1 with text: "${expectedValues.headerText}"`, () => {
+  it(`should render an h2 with text: "${expectedValues.headerText}"`, () => {
     const wrapper = mount(<Page404 />)
     expect(
       wrapper
-        .find('h1')
+        .find('h2')
         .at(0)
         .text()
     ).toEqual(expectedValues.headerText)

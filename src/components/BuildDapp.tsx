@@ -3,7 +3,7 @@ import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
 
-import { MarketText } from '@src/Styles';
+import { MarketHeader, MarketText } from '@src/Styles';
 import Protocol from '@images/protocol_illustration.svg';
 import { device, size } from '@src/breakpoints';
 
@@ -80,8 +80,8 @@ class BuildDapp extends React.Component {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <TextWrapper>
-              <MarketText header>Build your dApp on MARKET Protocol</MarketText>
-              <MarketText style={{ margin: '40px 0' }}>
+              <MarketHeader>Build your dApp on MARKET Protocol</MarketHeader>
+              <MarketText style={{ margin: '20px 0' }}>
                 As a protocol, MARKET enables third parties to build
                 applications for trading, order routing and related activities.
                 The protocol is open source and available under the Apache 2.0

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Icon, Row } from 'antd';
 import styled from 'styled-components';
 import MarketSubscriberForm from './MarketSubscriberForm';
-import { MarketText } from '@src/Styles';
+import { MarketHeader } from '@src/Styles';
 import { device } from '@src/breakpoints';
 import EmailConstant from '@constants/email';
 
@@ -65,9 +65,9 @@ class Cta extends React.Component {
             xl={12}
             style={{ padding: '0 20px', marginTop: '40px' }}
           >
-            <MarketText style={{ fontSize: '24px', marginBottom: '30px' }}>
+            <MarketHeader style={{ fontSize: '24px', marginBottom: '30px' }}>
               Join our Newsletter
-            </MarketText>
+            </MarketHeader>
             <Button
               onClick={() => this.setState({ subscriptionPopUpVisible: true })}
               type="primary"
@@ -88,9 +88,9 @@ class Cta extends React.Component {
             xl={12}
             style={{ padding: '0 20px', marginTop: '40px' }}
           >
-            <MarketText style={{ fontSize: '24px', marginBottom: '30px' }}>
+            <MarketHeader style={{ fontSize: '24px', marginBottom: '30px' }}>
               Become a Partner
-            </MarketText>
+            </MarketHeader>
             <Button
               href={emailLink}
               type="primary"

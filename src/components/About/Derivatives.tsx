@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import shortSelling from '@images/about/short_selling.svg';
 import hedging from '@images/about/hedging.svg';
 import custody from '@images/about/custody.svg';
-import { MarketText } from '@src/Styles';
+import { MarketHeader, MarketText } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 
 export const DerivativeWrapper = styled.section`
@@ -16,7 +16,7 @@ export const DerivativeWrapper = styled.section`
   }
 `;
 
-export const HeaderText = MarketText.extend`
+export const HeaderText = MarketHeader.extend`
   padding-left: 50px;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
@@ -42,34 +42,32 @@ class Derivatives extends React.Component {
   render() {
     return (
       <DerivativeWrapper>
-        <HeaderText header>How Derivatives can help</HeaderText>
+        <HeaderText>How Derivatives can help</HeaderText>
         <Row type="flex">
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <Wrapper bg="#fff">
               <ImageContainer src={shortSelling} alt="Short Selling" />
-              <MarketText
-                header
+              <MarketHeader
                 style={{
                   fontSize: '18px'
                 }}
               >
                 Short Selling
-              </MarketText>
+              </MarketHeader>
               <MarketText>Can help reduce volatility</MarketText>
             </Wrapper>
           </Col>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <Wrapper bg="#181E26">
               <ImageContainer src={hedging} alt="Hedging" />
-              <MarketText
-                header
+              <MarketHeader
                 style={{
                   color: '#ffffff',
                   fontSize: '18px'
                 }}
               >
                 Hedging
-              </MarketText>
+              </MarketHeader>
               <MarketText
                 style={{
                   color: '#ffffff'
@@ -82,14 +80,13 @@ class Derivatives extends React.Component {
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <Wrapper bg="#00E2C1">
               <ImageContainer src={custody} alt="Custody Of Assets" />
-              <MarketText
-                header
+              <MarketHeader
                 style={{
                   fontSize: '18px'
                 }}
               >
                 Custody of Assets
-              </MarketText>
+              </MarketHeader>
               <MarketText>Price exposure is simpler</MarketText>
             </Wrapper>
           </Col>

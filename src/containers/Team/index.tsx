@@ -4,7 +4,11 @@ import { Helmet } from 'react-helmet';
 
 import config, { Advisor, TeamMember } from './config';
 import withGAPageView from '@containers/GoogleAnalyticsTracker';
-import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
+import {
+  MarketHeader,
+  MarketText,
+  TeamDivWithResponsiveWidth
+} from '@styledComponents';
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';
 import Bio from '@components/Team/Bio';
@@ -83,7 +87,7 @@ export class TeamComponent extends React.Component<{}, State> {
         </Helmet>
         {/* 'the team' title and info */}
         <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
-          <MarketText header>{'The Team'}</MarketText>
+          <MarketHeader>{'The Team'}</MarketHeader>
 
           <MarketText>
             {'Founding members of our team have been managing a 24-hour algorithmic trading group since 2014 and ' +
@@ -123,7 +127,7 @@ export class TeamComponent extends React.Component<{}, State> {
           }}
         >
           <TeamDivWithResponsiveWidth>
-            <MarketText header={true}>{'Advisors'}</MarketText>
+            <MarketHeader>{'Advisors'}</MarketHeader>
           </TeamDivWithResponsiveWidth>
 
           {/* advisors */}

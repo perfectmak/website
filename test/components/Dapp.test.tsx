@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Col, Row } from 'antd';
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketList, MarketText, MarketHeader } from '@src/Styles';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
 import asset5 from '@images/asset_5.svg';
@@ -10,7 +10,6 @@ import tablet from '@images/tablet.svg';
 import Dapp, {
   SectionWrapper,
   Wrapper,
-  ButtonWrapper,
   HeaderText
 } from '@components/Dapp';
 
@@ -47,14 +46,16 @@ describe('<Dapp />', () => {
       src: asset3
     });
 
-    expect(firstColComponent.find(MarketText)).to.have.length(2);
+    expect(firstColComponent.find(MarketHeader)).to.have.length(1);
+    expect(firstColComponent.find(MarketText)).to.have.length(1);
     const secondColComponent = firstRowComponent.find(Col).at(1);
     expect(secondColComponent.find(Wrapper).props().bg).to.equal('#181E26');
     expect(secondColComponent.find('img').props()).to.deep.equal({
       alt: 'Oracle provides external Data to Blockhain',
       src: asset9
     });
-    expect(secondColComponent.find(MarketText)).to.have.length(2);
+    expect(secondColComponent.find(MarketHeader)).to.have.length(1);
+    expect(secondColComponent.find(MarketText)).to.have.length(1);
 
     const thirdColComponent = firstRowComponent.find(Col).at(2);
     expect(thirdColComponent.find(Wrapper).props().bg).to.equal('#181E26');
@@ -62,7 +63,8 @@ describe('<Dapp />', () => {
       alt: 'Create derivatives on ethereum',
       src: asset5
     });
-    expect(thirdColComponent.find(MarketText)).to.have.length(2);
+    expect(thirdColComponent.find(MarketHeader)).to.have.length(1);
+    expect(thirdColComponent.find(MarketText)).to.have.length(1);
   });
 
   it('renders two columns on the second row', () => {

@@ -19,7 +19,7 @@ describe(`/team page`, () => {
     const wrapper = mount(<Team />);
     expect(
       wrapper
-        .find('h1')
+        .find('h2')
         .at(0)
         .text()
     ).toEqual(expectedValues.headerText);

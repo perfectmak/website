@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketHeader, MarketList, MarketText } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
@@ -51,7 +51,7 @@ export const SectionWrapper = styled.section`
   }
 `;
 
-export const HeaderText = MarketText.extend`
+export const HeaderText = MarketHeader.extend`
   padding-bottom: 70px;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
@@ -76,9 +76,7 @@ const Dapp = () => {
               alt="ERC20 Collateral Token for trustless trading"
               src={asset3}
             />
-            <MarketText header style={{ fontSize: '18px' }}>
-              Base Token
-            </MarketText>
+            <MarketHeader style={{ fontSize: '18px' }}>Base Token</MarketHeader>
             <MarketText>What ERC20 token is used for collateral?</MarketText>
           </Wrapper>
         </Col>
@@ -88,9 +86,9 @@ const Dapp = () => {
               alt="Oracle provides external Data to Blockhain"
               src={asset9}
             />
-            <MarketText header style={{ fontSize: '18px' }}>
+            <MarketHeader style={{ fontSize: '18px' }}>
               Oracle Solution
-            </MarketText>
+            </MarketHeader>
             <MarketText>
               Who provides the external data for trade settlement?
             </MarketText>
@@ -99,9 +97,9 @@ const Dapp = () => {
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
             <img alt="Create derivatives on ethereum" src={asset5} />
-            <MarketText header style={{ fontSize: '18px' }}>
+            <MarketHeader style={{ fontSize: '18px' }}>
               Reference Asset
-            </MarketText>
+            </MarketHeader>
             <MarketText>What is the underlying asset?</MarketText>
           </Wrapper>
         </Col>

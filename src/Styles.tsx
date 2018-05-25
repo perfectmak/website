@@ -25,16 +25,30 @@ injectGlobal`
 }
 `;
 
-const MarketText = styled.h1`
-  font-size: ${props => (props.header ? '36px;' : '18px;')};
-  font-weight: ${props => (props.header ? '500;' : '300;')};
+const MarketHeader = styled.h2`
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
 
   @media (max-width: ${size.laptop}) {
-    font-size: ${props => (props.header ? '28px;' : '14px;')};
+    font-size: 18px;
   }
 
   @media ${device.desktopS} {
-    font-size: ${props => (props.header ? '28px;' : '22px;')};
+    font-size: 28px;
+  }
+`;
+
+const MarketText = styled.div`
+  font-size: 18px;
+  font-weight: 300;
+
+  @media (max-width: ${size.laptop}) {
+    font-size: 14px;
+  }
+
+  @media ${device.desktopS} {
+    font-size: 22px;
   }
 `;
 
@@ -90,6 +104,7 @@ const BioModalContentWrap = styled.div`
 
 export {
   MarketList,
+  MarketHeader,
   MarketText,
   BioModalContentWrap,
   TeamDivWithResponsiveWidth

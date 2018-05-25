@@ -57,7 +57,7 @@ describe(`/partners Page`, () => {
       expect(component.find('.join-cta-banner').length).toEqual(1);
       expect(
         component
-          .find('.join-cta-banner h1')
+          .find('.join-cta-banner h2')
           .at(0)
           .text()
       ).toEqual('Join our mission');

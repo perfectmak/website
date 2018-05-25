@@ -8,11 +8,11 @@ describe(`/team press`, () => {
     mount(<Press />);
   });
 
-  it(`should render an h1 with text: "MARKET Protocol in the press"`, () => {
+  it(`should render an h2 with text: "MARKET Protocol in the press"`, () => {
     const wrapper = mount(<Press />);
     expect(
       wrapper
-        .find('h1')
+        .find('h2')
         .at(0)
         .text()
     ).toEqual('MARKET Protocol in the press');
