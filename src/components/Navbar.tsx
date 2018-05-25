@@ -100,6 +100,7 @@ const MobileMenuToggle = styled(Button)`
 `;
 
 const HeaderWrapper = styled.div`
+  z-index: 1;
   @media (max-width: ${size.mobileM}) {
     .ant-layout-header {
       padding-left: 30px;

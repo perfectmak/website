@@ -1,42 +1,44 @@
-import React, { Component } from 'react'
-import { ServerStyleSheet } from 'styled-components'
-import { Helmet } from "react-helmet";
+import React, { Component } from 'react';
+import { ServerStyleSheet } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 /*
 * For Less Support
 * */
-import autoprefixer from 'autoprefixer'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import postcssFlexbugsFixes from 'postcss-flexbugs-fixes'
+import autoprefixer from 'autoprefixer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import postcssFlexbugsFixes from 'postcss-flexbugs-fixes';
 
 /*
 * For TypeScript Support
 * */
-const typescriptWebpackPaths = require('./webpack.config.js')
+const typescriptWebpackPaths = require('./webpack.config.js');
 
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
+const fs = require('fs');
 
-const lessToJs = require('less-vars-to-js')
+const lessToJs = require('less-vars-to-js');
 
-const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, 'src/theme-ant-overwrite.less'), 'utf8'))
+const themeVariables = lessToJs(
+  fs.readFileSync(path.join(__dirname, 'src/theme-ant-overwrite.less'), 'utf8')
+);
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 //
 export default {
   getSiteData: () => ({
-    title: 'MARKET Protocol',
+    title: 'MARKET Protocol'
   }),
   getRoutes: async () => {
     return [
       {
         path: '/',
-        component: 'src/containers/Home',
+        component: 'src/containers/Home'
       },
       {
         path: '/team',
-        component: 'src/containers/Team',
+        component: 'src/containers/Team'
       },
       {
         path: '/about',
@@ -44,59 +46,80 @@ export default {
       },
       {
         path: '/press',
-        component: 'src/containers/Press',
+        component: 'src/containers/Press'
+      },
+      {
+        path: '/partners',
+        component: 'src/containers/Partners'
       },
       {
         is404: true,
-        component: 'src/containers/404',
-      },
-    ]
+        component: 'src/containers/404'
+      }
+    ];
   },
   renderToHtml: (render, Comp, meta) => {
-    const sheet = new ServerStyleSheet()
-    const html = render(sheet.collectStyles(<Comp />))
-    meta.styleTags = sheet.getStyleElement()
-    const helmet = Helmet.renderStatic()
-    meta.helmet = helmet
-    return html
+    const sheet = new ServerStyleSheet();
+    const html = render(sheet.collectStyles(<Comp />));
+    meta.styleTags = sheet.getStyleElement();
+    const helmet = Helmet.renderStatic();
+    meta.helmet = helmet;
+    return html;
   },
   Document: class CustomHtml extends Component {
-    render () {
-      const {
-        Html, Head, Body, children, renderMeta,
-      } = this.props
+    render() {
+      const { Html, Head, Body, children, renderMeta } = this.props;
 
       return (
         <Html itemScope itemType="http://schema.org/Article">
           <Head>
             <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
             <link rel="shortcut icon" href="/favicon.png" />
-            <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700" rel="stylesheet" />
+            <link
+              href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700"
+              rel="stylesheet"
+            />
             {renderMeta.styleTags}
-            {renderMeta.helmet && (renderMeta.helmet.title.toComponent())}
-            {renderMeta.helmet && (renderMeta.helmet.meta.toComponent())}
+            {renderMeta.helmet && renderMeta.helmet.title.toComponent()}
+            {renderMeta.helmet && renderMeta.helmet.meta.toComponent()}
             <meta httpEquiv="content-language" content="en" />
             <meta itemProp="name" content="MARKET Protocol" />
-            <meta itemProp="description" content="Powering safe, solvent and trustless trading of any asset." />
-            <meta itemProp="image" content="https://marketprotocol.io/social.jpg" />
+            <meta
+              itemProp="description"
+              content="Powering safe, solvent and trustless trading of any asset."
+            />
+            <meta
+              itemProp="image"
+              content="https://marketprotocol.io/social.jpg"
+            />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@MarketProtocol" />
             <meta name="twitter:creator" content="@MarketProtocol" />
-            <meta name="twitter:image:src" content="https://marketprotocol.io/social.jpg" />
+            <meta
+              name="twitter:image:src"
+              content="https://marketprotocol.io/social.jpg"
+            />
             <meta property="og:locale" content="en_US" />
             <meta name="language" content="English" />
             <meta property="og:url" content="https://marketprotocol.io/" />
             <meta property="og:title" content="MARKET Protocol" />
-            <meta property="og:description" content="Powering safe, solvent and trustless trading of any asset." />
-            <meta property="og:image" content="https://marketprotocol.io/social.jpg" />
+            <meta
+              property="og:description"
+              content="Powering safe, solvent and trustless trading of any asset."
+            />
+            <meta
+              property="og:image"
+              content="https://marketprotocol.io/social.jpg"
+            />
             <meta name="robots" content="index,follow" />
           </Head>
-          <Body>
-            {children}
-          </Body>
+          <Body>{children}</Body>
         </Html>
-      )
+      );
     }
   },
   webpack: (config, { stage, defaultLoaders }) => {
@@ -105,15 +128,15 @@ export default {
     * */
 
     // Add .ts and .tsx extension to resolver
-    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.extensions.push('.ts', '.tsx');
 
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
-    config.resolve.alias = typescriptWebpackPaths.resolve.alias
+    config.resolve.alias = typescriptWebpackPaths.resolve.alias;
 
     // Needed for momoent js resolution in React 16
     // See: https://github.com/moment/moment/issues/2979#issuecomment-332217206
-    config.resolve.alias.moment$ = 'moment/moment.js'
+    config.resolve.alias.moment$ = 'moment/moment.js';
 
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably
@@ -122,53 +145,102 @@ export default {
       exclude: defaultLoaders.jsLoader.exclude, // as std jsLoader exclude
       use: [
         {
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         },
         {
           loader: 'ts-loader',
           options: {
-            transpileOnly: true,
-          },
-        },
-      ],
-    }
-
+            transpileOnly: true
+          }
+        }
+      ]
+    };
 
     /*
     * Less Support
     * */
 
     // Add .less & .css to resolver
-    config.resolve.extensions.push('.less')
-    config.resolve.extensions.push('.css')
+    config.resolve.extensions.push('.less');
+    config.resolve.extensions.push('.css');
 
     // Loader depending on stage. Same format as the default cssLoader.
-    let lessLoader = {}
+    let lessLoader = {};
 
     if (stage === 'dev') {
       // Enable Hot Module Replacement
-      config.plugins.push(new webpack.HotModuleReplacementPlugin())
+      config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
       // In-Line with style-loader
-      lessLoader =
-        {
-          test: /\.less$/,
+      lessLoader = {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              minimize: false,
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: () => [
+                postcssFlexbugsFixes,
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true,
+              modifyVars: themeVariables,
+              javascriptEnabled: true
+            }
+          }
+        ]
+      };
+    } else {
+      // Extract to style.css
+      lessLoader = {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              hmr: false,
+              sourceMap: false
+            }
+          },
           use: [
-            'style-loader',
             {
               loader: 'css-loader',
               options: {
                 importLoaders: 1,
-                minimize: false,
-                sourceMap: true,
-              },
+                minimize: true,
+                sourceMap: false
+              }
             },
             {
               loader: 'postcss-loader',
               options: {
                 // Necessary for external CSS imports to work
                 // https://github.com/facebookincubator/create-react-app/issues/2677
-                sourceMap: true,
                 ident: 'postcss',
                 plugins: () => [
                   postcssFlexbugsFixes,
@@ -177,76 +249,24 @@ export default {
                       '>1%',
                       'last 4 versions',
                       'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
+                      'not ie < 9' // React doesn't support IE8 anyway
                     ],
-                    flexbox: 'no-2009',
-                  }),
-                ],
-              },
+                    flexbox: 'no-2009'
+                  })
+                ]
+              }
             },
             {
               loader: 'less-loader',
               options: {
-                sourceMap: true,
-                modifyVars: themeVariables,
-                javascriptEnabled: true,
-              },
-            },
-          ],
-        }
-    } else {
-      // Extract to style.css
-      lessLoader =
-        {
-          test: /\.less$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: {
-              loader: 'style-loader',
-              options: {
-                hmr: false,
                 sourceMap: false,
-              },
-            },
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                  minimize: true,
-                  sourceMap: false,
-                },
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  // Necessary for external CSS imports to work
-                  // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident: 'postcss',
-                  plugins: () => [
-                    postcssFlexbugsFixes,
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                  ],
-                },
-              },
-              {
-                loader: 'less-loader',
-                options: {
-                  sourceMap: false,
-                  modifyVars: themeVariables,
-                  javascriptEnabled: true,
-                },
-              },
-            ],
-          }),
-        }
+                modifyVars: themeVariables,
+                javascriptEnabled: true
+              }
+            }
+          ]
+        })
+      };
     }
 
     /*
@@ -258,21 +278,20 @@ export default {
           jsTsLoader,
           lessLoader,
           defaultLoaders.cssLoader,
-          defaultLoaders.fileLoader,
-        ],
-      },
-    ]
+          defaultLoaders.fileLoader
+        ]
+      }
+    ];
 
     // Update ExtractTextPlugin with current instance
-    config.plugins[2] =
-      new ExtractTextPlugin({
-        filename: getPath => {
-          process.env.extractedCSSpath = 'styles.css'
-          return getPath('styles.css')
-        },
-        allChunks: true,
-      })
+    config.plugins[2] = new ExtractTextPlugin({
+      filename: getPath => {
+        process.env.extractedCSSpath = 'styles.css';
+        return getPath('styles.css');
+      },
+      allChunks: true
+    });
 
-    return config
-  },
-}
+    return config;
+  }
+};
