@@ -26,24 +26,6 @@ const linkInfos: LinkInfo[] = [
   },
   {
     boxColor: 'darkgrey',
-    imgSrc: Themerkle,
-    link: 'https://themerkle.com/top-four-upcoming-cryptocurrencies-sans-icos/',
-    paragraphs: [
-      `Prior to the explosion of the cryptocurrency sphere as 
-      a whole in 2017, most new projects launched in the 
-      absence of initial coin offerings. While this funding 
-      method has become the norm throughout the community, 
-      it has done so in the presence of massive controversy 
-      in regards to the ethics and legitimacy of the ICO 
-      model. While it seems as if every upcoming project 
-      involves such a crowdsale, it’s important to recognize 
-      that there are legitimate ventures operating sans ICOs. 
-      Here are four to check out:`
-    ],
-    title: 'Top 4 Upcoming Cryptocurrencies Sans ICOs'
-  },
-  {
-    boxColor: 'darkgrey',
     imgSrc: FutureTechPodcast,
     link:
       'https://www.futuretechpodcast.com/podcasts/phil-elasser-cto-co-founder-market-protocol/',
@@ -61,6 +43,24 @@ const linkInfos: LinkInfo[] = [
     ],
     title:
       'Future Tech Podcast - Phil Elsasser CTO, Co-Founder of MARKET Protocol'
+  },
+  {
+    boxColor: 'darkgrey',
+    imgSrc: Themerkle,
+    link: 'https://themerkle.com/top-four-upcoming-cryptocurrencies-sans-icos/',
+    paragraphs: [
+      `Prior to the explosion of the cryptocurrency sphere as 
+      a whole in 2017, most new projects launched in the 
+      absence of initial coin offerings. While this funding 
+      method has become the norm throughout the community, 
+      it has done so in the presence of massive controversy 
+      in regards to the ethics and legitimacy of the ICO 
+      model. While it seems as if every upcoming project 
+      involves such a crowdsale, it’s important to recognize 
+      that there are legitimate ventures operating sans ICOs. 
+      Here are four to check out:`
+    ],
+    title: 'Top 4 Upcoming Cryptocurrencies Sans ICOs'
   },
   {
     boxColor: 'white',
@@ -107,6 +107,20 @@ const linkInfos: LinkInfo[] = [
       the use of these dApps.`
     ],
     title: 'Market Protocol ICO: MKT Token Blockchain Trading Exchange?'
+  },
+  {
+    boxColor: 'white',
+    imgSrc: CoinCrunch,
+    link: 'https://coincrunch.io/marketprotocol/',
+    paragraphs: [
+      `Market Protocol has been created to provide a secure, 
+      flexible, open source foundation for decentralized trading on the 
+      Ethereum blockchain. It provides the pieces necessary to create a 
+      decentralized exchange, including the requisite clearing and collateral 
+      pool infrastructure, enabling third parties to build applications 
+      for trading.`
+    ],
+    title: 'Seth Rubin On Understanding Crypto Derivatives'
   }
 ];
 
