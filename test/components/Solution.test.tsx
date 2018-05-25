@@ -26,7 +26,7 @@ describe('<Solution />', () => {
       .at(0)
       .find('img')
       .props();
-    expect(imgComponentProps.alt).to.equal('exchange');
+    expect(imgComponentProps.alt).to.equal('decentralized derivative exchange');
     expect(imgComponentProps.src).to.equal(asset1);
   });
 
@@ -50,7 +50,7 @@ describe('<Solution />', () => {
       .at(2)
       .find('img')
       .props();
-    expect(imgComponentProps.alt).to.equal('exchange');
+    expect(imgComponentProps.alt).to.equal('short cryptocurrency');
     expect(imgComponentProps.src).to.equal(asset2);
   });
 

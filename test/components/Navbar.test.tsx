@@ -19,7 +19,7 @@ describe('<Navbar />', () => {
     expect(logoLink.props().to).to.equal('/');
     const logoImageProps = logoLink.find('img').props();
 
-    expect(logoImageProps.alt).to.equal('MARKET Protocol Logo');
+    expect(logoImageProps.alt).to.equal('Decentralized derivatives and exchange');
     expect(logoImageProps.width).to.equal('100%');
     expect(logoImageProps.src).to.equal(logoImg);
   });

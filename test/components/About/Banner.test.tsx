@@ -49,7 +49,7 @@ describe('<Banner />', () => {
       .find(HeroArt)
       .find('img')
       .props();
-    expect(imgComponentProps.alt).to.equal('hero');
+    expect(imgComponentProps.alt).to.equal('crypto asset volatility');
     expect(imgComponentProps.src).to.equal(header);
   });
 });

@@ -47,10 +47,10 @@ describe('<Chain />', () => {
         .text()
     ).to.equal('Volatile');
     expect(secondColComponent.find('img').props().src).to.equal(chain1);
-    expect(secondColComponent.find('img').props().alt).to.equal('exchange');
+    expect(secondColComponent.find('img').props().alt).to.equal('cryptocurrency hedging');
     expect(thirdColComponent.find(Wrapper).props().bg).to.equal('#00E2C1');
     expect(thirdColComponent.find('img').props().src).to.equal(chain2);
-    expect(thirdColComponent.find('img').props().alt).to.equal('exchange');
+    expect(thirdColComponent.find('img').props().alt).to.equal('decentralized exchange');
     expect(
       thirdColComponent
         .find(MarketText)
@@ -79,14 +79,14 @@ describe('<Chain />', () => {
       asset10
     );
     expect(secondColComponent.find(ChainIllustration).props().alt).to.equal(
-      'bitcoin'
+      'bitcoin shorting'
     );
     expect(thirdColComponent.find(Wrapper).props().bg).to.equal('#00E2C1');
     expect(thirdColComponent.find(ChainIllustration).props().src).to.equal(
       asset8
     );
     expect(thirdColComponent.find(ChainIllustration).props().alt).to.equal(
-      'etherium'
+      'ethereum'
     );
   });
 
@@ -110,14 +110,14 @@ describe('<Chain />', () => {
       asset4
     );
     expect(secondColComponent.find(ChainIllustration).props().alt).to.equal(
-      'tether'
+      'hedging crypto derivative'
     );
     expect(thirdColComponent.find(Wrapper).props().bg).to.equal('#00E2C1');
     expect(thirdColComponent.find(ChainIllustration).props().src).to.equal(
       asset7
     );
     expect(thirdColComponent.find(ChainIllustration).props().alt).to.equal(
-      'aapl'
+      'aapl stock short'
     );
   });
 });

@@ -43,7 +43,7 @@ describe('<Dapp />', () => {
     const firstColComponent = firstRowComponent.find(Col).at(0);
     expect(firstColComponent.find(Wrapper).props().bg).to.equal('#181E26');
     expect(firstColComponent.find('img').props()).to.deep.equal({
-      alt: 'baseToken',
+      alt: 'ERC20 Collateral Token for trustless trading',
       src: asset3
     });
 
@@ -51,7 +51,7 @@ describe('<Dapp />', () => {
     const secondColComponent = firstRowComponent.find(Col).at(1);
     expect(secondColComponent.find(Wrapper).props().bg).to.equal('#181E26');
     expect(secondColComponent.find('img').props()).to.deep.equal({
-      alt: 'baseToken',
+      alt: 'Oracle provides external Data to Blockhain',
       src: asset9
     });
     expect(secondColComponent.find(MarketText)).to.have.length(2);
@@ -59,7 +59,7 @@ describe('<Dapp />', () => {
     const thirdColComponent = firstRowComponent.find(Col).at(2);
     expect(thirdColComponent.find(Wrapper).props().bg).to.equal('#181E26');
     expect(thirdColComponent.find('img').props()).to.deep.equal({
-      alt: 'baseToken',
+      alt: 'Create derivatives on ethereum',
       src: asset5
     });
     expect(thirdColComponent.find(MarketText)).to.have.length(2);

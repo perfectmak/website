@@ -51,7 +51,7 @@ describe('<Hero />', () => {
       .find(HeroArt)
       .find('img')
       .props();
-    expect(imgComponentProps.alt).to.equal('hero');
+    expect(imgComponentProps.alt).to.equal('trade stocks ethereum blockhain derivatives');
     expect(imgComponentProps.src).to.equal(heroIllustration);
   });
 });

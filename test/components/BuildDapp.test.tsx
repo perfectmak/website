@@ -35,7 +35,7 @@ describe('<BuildDapp />', () => {
     expect(illustrationWrapperComponent).to.have.length(1);
     expect(imgComponent).to.have.length(1);
     expect(imgComponent.props()).to.deep.equal({
-      alt: 'tablet',
+      alt: 'build dApp ethereum trading',
       src: Protocol,
       width: '50%',
       style: { margin: '0 auto' }

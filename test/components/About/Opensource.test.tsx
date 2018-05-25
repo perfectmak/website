@@ -23,7 +23,7 @@ describe('<Opensource />', () => {
             .props();
         expect(firstImage.alt)
             .to
-            .equal('Protocol');
+            .equal('Open Source Derivatives Protocol');
         expect(firstImage.src)
             .to
             .equal(protocol)
