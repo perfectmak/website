@@ -84,7 +84,7 @@ class Popup extends React.Component {
             <PopupButton type="primary">
               <PopupButtonText>
                 <img
-                  alt="telegram"
+                  alt="crypto trading telegram"
                   src={telegram}
                   height="100%"
                   fill="#FFFFFF"

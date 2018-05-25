@@ -62,7 +62,7 @@ const Chain = () => {
         <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
             <img
-              alt="exchange"
+              alt="cryptocurrency hedging"
               src={chain1}
               style={{ marginTop: '80px' }}
               width="100%"
@@ -75,12 +75,12 @@ const Chain = () => {
         <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <Wrapper bg="#00E2C1">
             <Arrow
-              alt="rightarrow"
+              alt="crypto derivatives"
               src={rightArrow}
               style={{ paddingBottom: '35px' }}
             />
             <img
-              alt="exchange"
+              alt="decentralized exchange"
               src={chain2}
               style={{ marginTop: '80px' }}
               width="100%"
@@ -115,11 +115,11 @@ const Chain = () => {
         >
           <Wrapper bg="#181E26">
             <Arrow
-              alt="leftarrow"
+              alt="atomic swap ethereum"
               src={leftArrow}
               style={{ right: '0px', marginTop: '30px', marginRight: '-1px' }}
             />
-            <ChainIllustration alt="bitcoin" src={asset10} />
+            <ChainIllustration alt="bitcoin shorting" src={asset10} />
           </Wrapper>
         </Col>
         <Col
@@ -130,11 +130,11 @@ const Chain = () => {
         >
           <Wrapper bg="#00E2C1">
             <Arrow
-              alt="exchange"
+              alt="decentralized exchange derivatives"
               src={rightArrow}
               style={{ marginLeft: '-1px' }}
             />
-            <ChainIllustration alt="etherium" src={asset8} />
+            <ChainIllustration alt="ethereum" src={asset8} />
           </Wrapper>
         </Col>
       </Row>
@@ -151,21 +151,21 @@ const Chain = () => {
         <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
             <Arrow
-              alt="leftarrow"
+              alt="ethereum stock trading"
               src={leftArrow}
               style={{ right: '0px', marginTop: '30px', marginRight: '-1px' }}
             />
-            <ChainIllustration alt="tether" src={asset4} />
+            <ChainIllustration alt="hedging crypto derivative" src={asset4} />
           </Wrapper>
         </Col>
         <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <Wrapper bg="#00E2C1">
             <Arrow
-              alt="rightarrow"
+              alt="stable coin use"
               src={rightArrow}
               style={{ marginLeft: '-1px' }}
             />
-            <ChainIllustration alt="aapl" src={asset7} />
+            <ChainIllustration alt="aapl stock short" src={asset7} />
           </Wrapper>
         </Col>
       </Row>

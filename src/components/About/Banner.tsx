@@ -111,7 +111,7 @@ class Banner extends React.Component {
           </Col>
           <Col xs={24} md={14}>
             <HeroArt>
-              <img alt="hero" src={header} />
+              <img alt="crypto asset volatility" src={header} />
             </HeroArt>
           </Col>
         </Row>

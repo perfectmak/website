@@ -68,13 +68,13 @@ class Timeline extends React.Component {
             className="desktop"
             src={timeline}
             width="100%"
-            alt="Timeline"
+            alt="ICO timeline for token sale"
           />
           <ImageWrapper
             className="mobile"
             src={MobileTimeline}
             width="100%"
-            alt="Timeline"
+            alt="ICO timeline for token sale"
           />
         </Wrapper>
       </SectionWrapper>

@@ -46,7 +46,7 @@ const Solution = () => {
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <IllustrationContainer>
-            <img alt="exchange" src={asset1} />
+            <img alt="decentralized derivative exchange" src={asset1} />
           </IllustrationContainer>
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
@@ -68,7 +68,7 @@ const Solution = () => {
           xl={{ span: 12, push: 12 }}
         >
           <IllustrationContainer>
-            <img alt="exchange" src={asset2} width="80%" />
+            <img alt="short cryptocurrency" src={asset2} width="80%" />
           </IllustrationContainer>
         </Col>
         <Col

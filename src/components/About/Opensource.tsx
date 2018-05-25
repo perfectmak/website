@@ -178,7 +178,7 @@ class Opensource extends React.Component {
           <Row type="flex" align="middle">
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <IllustrationContainer>
-                <img alt="Protocol" src={protocol} />
+                <img alt="Open Source Derivatives Protocol" src={protocol} />
               </IllustrationContainer>
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>

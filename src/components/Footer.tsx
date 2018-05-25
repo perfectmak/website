@@ -59,7 +59,7 @@ class MarketFooter extends React.Component {
               xl={12}
               style={{ marginBottom: '100px' }}
             >
-              <img alt="hero" src={logoImg} />
+              <img alt="Bitcoin derivatives and shorting" src={logoImg} />
               <AboutMarketText>
                 MARKET Protocol provides the open source building blocks
                 powering decentralized derivatives trading and exchanges on the
@@ -72,7 +72,11 @@ class MarketFooter extends React.Component {
                   style={{ marginRight: '10px' }}
                 >
                   <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
-                    <img alt="telegram" src={telegram} width="80%" />
+                    <img
+                      alt="crypto derivatives telegram"
+                      src={telegram}
+                      width="80%"
+                    />
                   </Link>
                 </Button>
                 <Button
@@ -84,7 +88,11 @@ class MarketFooter extends React.Component {
                     to="https://twitter.com/MarketProtocol/"
                     target="_blank"
                   >
-                    <img alt="twitter" src={twitter} width="80%" />
+                    <img
+                      alt="decentralized exchange twitter"
+                      src={twitter}
+                      width="80%"
+                    />
                   </Link>
                 </Button>
                 <Button
@@ -93,7 +101,11 @@ class MarketFooter extends React.Component {
                   style={{ marginRight: '10px' }}
                 >
                   <Link to="https://medium.com/market-protocol" target="_blank">
-                    <img alt="medium" src={medium} width="80%" />
+                    <img
+                      alt="ethereum derivatives medium"
+                      src={medium}
+                      width="80%"
+                    />
                   </Link>
                 </Button>
                 <Button
@@ -102,7 +114,11 @@ class MarketFooter extends React.Component {
                   style={{ marginRight: '10px' }}
                 >
                   <Link to="https://github.com/MARKETProtocol/" target="_blank">
-                    <img alt="github" src={github} width="80%" />
+                    <img
+                      alt="open source ethereum dApp"
+                      src={github}
+                      width="80%"
+                    />
                   </Link>
                 </Button>
               </div>

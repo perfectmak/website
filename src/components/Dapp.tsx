@@ -72,7 +72,10 @@ const Dapp = () => {
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
-            <img alt="baseToken" src={asset3} />
+            <img
+              alt="ERC20 Collateral Token for trustless trading"
+              src={asset3}
+            />
             <MarketText header style={{ fontSize: '18px' }}>
               Base Token
             </MarketText>
@@ -81,7 +84,10 @@ const Dapp = () => {
         </Col>
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
-            <img alt="baseToken" src={asset9} />
+            <img
+              alt="Oracle provides external Data to Blockhain"
+              src={asset9}
+            />
             <MarketText header style={{ fontSize: '18px' }}>
               Oracle Solution
             </MarketText>
@@ -92,7 +98,7 @@ const Dapp = () => {
         </Col>
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">
-            <img alt="baseToken" src={asset5} />
+            <img alt="Create derivatives on ethereum" src={asset5} />
             <MarketText header style={{ fontSize: '18px' }}>
               Reference Asset
             </MarketText>
@@ -130,7 +136,11 @@ const Dapp = () => {
           </TextWrapper>
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <img alt="tablet" src={tablet} width="100%" />
+          <img
+            alt="dApp to short crypto, decentralized derivatives"
+            src={tablet}
+            width="100%"
+          />
         </Col>
       </Row>
     </SectionWrapper>

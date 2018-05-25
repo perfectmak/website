@@ -71,7 +71,7 @@ class BuildDapp extends React.Component {
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <IllustrationWrapper>
               <img
-                alt="tablet"
+                alt="build dApp ethereum trading"
                 src={Protocol}
                 width="50%"
                 style={{ margin: '0 auto' }}

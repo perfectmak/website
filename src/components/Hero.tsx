@@ -69,7 +69,10 @@ class Hero extends React.Component {
           </Col>
           <Col xs={24} md={14}>
             <HeroArt>
-              <img alt="hero" src={heroIllustration} />
+              <img
+                alt="trade stocks ethereum blockhain derivatives"
+                src={heroIllustration}
+              />
             </HeroArt>
           </Col>
         </Row>
