@@ -66,6 +66,6 @@ describe('<BuildDapp />', () => {
       .find(Link);
     expect(firstLinkProps.to).to.equal('https://github.com/MARKETProtocol');
     expect(firstLinkProps.target).to.equal('_blank');
-    expect(secondLinkComponent.props().to).to.equal('/team');
+    expect(secondLinkComponent.props().to).to.equal('/partners');
   });
 });
