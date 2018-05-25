@@ -11,6 +11,18 @@ import {
 // press page config, add more link will change press view
 const linkInfos: LinkInfo[] = [
   {
+    boxColor: 'white',
+    imgSrc: CoinCrunch,
+    link: 'https://coincrunch.io/marketprotocol/',
+    paragraphs: [
+      `In this episode of The Crunch we speak with Seth about derivatives, not 
+      just in crypto context but Seth explains us a lot about how they work  and 
+      what they are. We also discuss the future of crypto market, at what stage 
+      it is compared to other asset classes and what kind of investors are there.`
+    ],
+    title: 'Seth Rubin On Understanding Crypto Derivatives'
+  },
+  {
     boxColor: 'darkgrey',
     imgSrc: Themerkle,
     link: 'https://themerkle.com/what-is-the-market-protocol/',
@@ -107,20 +119,6 @@ const linkInfos: LinkInfo[] = [
       the use of these dApps.`
     ],
     title: 'Market Protocol ICO: MKT Token Blockchain Trading Exchange?'
-  },
-  {
-    boxColor: 'white',
-    imgSrc: CoinCrunch,
-    link: 'https://coincrunch.io/marketprotocol/',
-    paragraphs: [
-      `Market Protocol has been created to provide a secure, 
-      flexible, open source foundation for decentralized trading on the 
-      Ethereum blockchain. It provides the pieces necessary to create a 
-      decentralized exchange, including the requisite clearing and collateral 
-      pool infrastructure, enabling third parties to build applications 
-      for trading.`
-    ],
-    title: 'Seth Rubin On Understanding Crypto Derivatives'
   }
 ];
 

@@ -225,11 +225,15 @@ class MarketFooter extends React.Component {
                   Partners (coming soon)
                 </Link>
               </FooterLink>
-              {/*<FooterLink>*/}
-              {/*<Link to="#" style={{color: 'inherit', textDecoration: 'none'}}>*/}
-              {/*Jobs (We're hiring!)*/}
-              {/*</Link>*/}
-              {/*</FooterLink>*/}
+              <FooterLink>
+                <Link
+                  to="https://angel.co/market-protocol-1/jobs"
+                  target="_blank"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  Jobs (We're hiring!)
+                </Link>
+              </FooterLink>
               <FooterText>
                 4450 Arapahoe Ave, Suite 100 Boulder, CO 80303
               </FooterText>
