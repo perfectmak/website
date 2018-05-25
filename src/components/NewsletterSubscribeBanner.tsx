@@ -1,0 +1,201 @@
+import React from 'react';
+import { Button, Col, Form, Icon, Input, Row } from 'antd';
+import styled from 'styled-components';
+
+import { emailLink } from '@components/Cta';
+import { device, size } from '@src/breakpoints';
+
+const NewsletterSubscribeBannerWrapper = styled.div`
+  padding: 80px 20px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: ${size.laptop}) {
+    flex-wrap: wrap;
+    padding: 40px 20px;
+  }
+`;
+
+export const StyledCol = styled.div`
+  padding-left: 20px;
+  padding-right: 20px;
+  flex: 1;
+
+  @media (max-width: ${size.tablet}) {
+    margin-top: 0;
+    flex: 0 0 100%;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+`;
+
+export const SectionTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: 300;
+
+  @media (max-width: ${size.laptop}) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+`;
+export const JoinNewsletterWrapper = styled.div`
+  input {
+    border-radius: 25px;
+    background-color: #f0f0f0;
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #000;
+    }
+    ::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #000;
+    }
+    ::-ms-input-placeholder {
+      /* IE 10+ */
+      color: #000;
+    }
+    ::-moz-placeholder {
+      /* Firefox 18- */
+      color: #000;
+    }
+  }
+`;
+export const LearnAboutTeamWrapper = styled.div`
+  input {
+    border-radius: 25px;
+    background-color: #00e2c1;
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #000;
+      font-weight: 700;
+    }
+    ::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #000;
+      font-weight: 700;
+    }
+    ::-ms-input-placeholder {
+      /* IE 10+ */
+      color: #000;
+      font-weight: 700;
+    }
+    ::-moz-placeholder {
+      /* Firefox 18- */
+      color: #000;
+      font-weight: 700;
+    }
+  }
+`;
+export const SocialLinksWrapper = styled.div``;
+
+export const InputWrapper = styled.div`
+  position: relative;
+  input {
+    padding-left: 20px;
+    padding-right: 44px;
+  }
+`;
+
+export const InputIconButton = styled(Button)`
+  &.ant-btn.ant-btn-circle.ant-btn-lg {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 44px;
+    height: 44px;
+  }
+`;
+
+interface NewsletterSubscribeBannerProps {
+  form?: Form;
+}
+export class NewsletterSubscribeBannerComponent extends React.Component<
+  NewsletterSubscribeBannerProps,
+  {}
+> {
+  render() {
+    const { form } = this.props;
+
+    return (
+      <NewsletterSubscribeBannerWrapper>
+        <StyledCol lg={12}>
+          <JoinNewsletterWrapper>
+            <SectionTitle>Join our Newsletter</SectionTitle>
+            <Form
+              action="https://marketprotocol.us17.list-manage.com/subscribe/post"
+              onSubmit={e => {
+                form.validateFields((errors, _) => {
+                  if (errors) {
+                    e.preventDefault();
+                  }
+                });
+              }}
+              acceptCharset="utf-8"
+              method="post"
+            >
+              <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
+              <input type="hidden" name="id" value="491f750dec" />
+              <Form.Item>
+                <InputWrapper style={{ display: 'flex' }}>
+                  {form.getFieldDecorator('email', {
+                    rules: [
+                      {
+                        message: 'Please input an Email!',
+                        required: true
+                      },
+                      {
+                        message: 'Please input a correct Email',
+                        type: 'email'
+                      }
+                    ]
+                  })(
+                    <Input
+                      name="MERGE0"
+                      type="email"
+                      placeholder="Enter your email"
+                    />
+                  )}
+                  <InputIconButton
+                    type="primary"
+                    shape="circle"
+                    size={'large'}
+                    htmlType="submit"
+                    icon="arrow-right"
+                  />
+                </InputWrapper>
+              </Form.Item>
+            </Form>
+          </JoinNewsletterWrapper>
+        </StyledCol>
+        <StyledCol lg={12}>
+          <LearnAboutTeamWrapper>
+            <SectionTitle>Learn more about our team</SectionTitle>
+            <Button
+              size={'large'}
+              href={'/team'}
+              style={{
+                alignItems: 'center',
+                backgroundColor: '#00E2C1',
+                color: '#000',
+                display: 'flex',
+                fontSize: 14,
+                justifyContent: 'space-between',
+                width: '100%'
+              }}
+            >
+              <b>The minds behind MARKETProtocol</b>
+              <Icon type="arrow-right" style={{ fontSize: 18 }} />
+            </Button>
+          </LearnAboutTeamWrapper>
+        </StyledCol>
+      </NewsletterSubscribeBannerWrapper>
+    );
+  }
+}
+
+const NewsletterSubscribeBanner = Form.create()(
+  NewsletterSubscribeBannerComponent
+);
+
+export default NewsletterSubscribeBanner;

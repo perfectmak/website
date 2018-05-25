@@ -31,9 +31,11 @@ const PartnersEmail = {
   subject: 'Partnership%20with%20MARKET%20Protocol'
 };
 
-const emailLink = `mailto:${EmailConstant.PARTNERS_EMAIL.email}?subject=${
-  EmailConstant.PARTNERS_EMAIL.subject
-}&body=${EmailConstant.PARTNERS_EMAIL.body}`;
+export const emailLink = `mailto:${
+  EmailConstant.PARTNERS_EMAIL.email
+}?subject=${EmailConstant.PARTNERS_EMAIL.subject}&body=${
+  EmailConstant.PARTNERS_EMAIL.body
+}`;
 
 class Cta extends React.Component {
   state = {

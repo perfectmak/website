@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import { Helmet } from 'react-helmet';
 
-import config, { TeamMember } from './config';
+import config, { Advisor, TeamMember } from './config';
 import withGAPageView from '@containers/GoogleAnalyticsTracker';
 import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
 import colors from '@styles/json/colors';
@@ -47,7 +47,7 @@ export class TeamComponent extends React.Component<{}, State> {
     );
   }
 
-  renderPeople(people: TeamMember[]) {
+  renderPeople(people: TeamMember[] | Advisor[]): JSX.Element[] {
     return people.map((o, i) => {
       return (
         <Col key={i} xs={24} sm={24} md={8}>
