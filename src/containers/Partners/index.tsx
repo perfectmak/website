@@ -287,10 +287,10 @@ class PartnersComponent extends Component {
             <div className="join-cta-banner">
               <MarketText header={true}>Join our mission</MarketText>
               <p>
-                Whether you’re an existing blockchain company or a traditional
-                marketplace thinking about blockchain technology, we’d love to
-                hear from you. Fill out the form below and we will get back to
-                you shortly.
+                Whether you’re an existing decentralized exchange or a
+                traditional financial services group thinking about blockchain
+                technology, we’d love to hear from you. Drop us an email and we
+                will get back to you shortly.
               </p>
             </div>
             <div>

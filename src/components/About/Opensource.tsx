@@ -187,9 +187,8 @@ class Opensource extends React.Component {
                   We love open source! Contribute to our project!
                 </HeaderText>
                 <AdditionalInfo>
-                  MARKET Protocol (“MARKET”) has created the open source
-                  foundation needed to build decentralized exchanges and conduct
-                  trading activities on the Ethereum blockchain.
+                  Come join the development community that is building MARKET
+                  Protocol
                 </AdditionalInfo>
                 <Row type="flex" align="middle">
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -260,7 +259,7 @@ class Opensource extends React.Component {
                 />
                 <AdditionalInfo className="info">
                   Dont forget to join us for Engineering Weekly, our technical
-                  community call every week!
+                  community call that is open to everyone!
                 </AdditionalInfo>
 
                 <HeaderText

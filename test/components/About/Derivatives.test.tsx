@@ -1,10 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Col, Row } from 'antd';
-import { MarketList, MarketText } from '@src/Styles';
-import shortSelling from '@images/about/short_selling.svg';
-import hedging from '@images/about/hedging.svg';
-import custody_of_assets from '@images/about/custody_of_assets.svg';
+
 
 import Derivatives, {
   DerivativeWrapper,

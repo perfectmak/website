@@ -184,7 +184,7 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
                 width: '100%'
               }}
             >
-              <b>The minds behind MARKETProtocol</b>
+              <b>The minds behind MARKET Protocol</b>
               <Icon type="arrow-right" style={{ fontSize: 18 }} />
             </Button>
           </LearnAboutTeamWrapper>

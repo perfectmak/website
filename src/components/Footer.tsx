@@ -238,7 +238,7 @@ class MarketFooter extends React.Component {
                   to="#"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  Partners (coming soon)
+                  Partners
                 </Link>
               </FooterLink>
               <FooterLink>

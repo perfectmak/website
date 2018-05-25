@@ -98,10 +98,10 @@ class BuildDapp extends React.Component {
               </ButtonWrapper>
               <ButtonWrapper type="primary" style={{ padding: '0 7.5%' }}>
                 <Link
-                  to="/team"
+                  to="/partners"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  Learn more about us
+                  Learn more about our partners
                 </Link>
               </ButtonWrapper>
             </TextWrapper>
