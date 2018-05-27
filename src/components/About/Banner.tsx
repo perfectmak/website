@@ -69,6 +69,7 @@ export const HeroInfo = styled.p`
   color: #fff;
   font-size: 22px;
   max-width: 470px;
+  font-weight: 300;
 
   @media ${device.mobileS} {
     font-size: 18px;

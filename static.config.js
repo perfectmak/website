@@ -80,7 +80,7 @@ export default {
             />
             <link rel="shortcut icon" href="/favicon.png" />
             <link
-              href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700"
+              href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700"
               rel="stylesheet"
             />
             {renderMeta.styleTags}

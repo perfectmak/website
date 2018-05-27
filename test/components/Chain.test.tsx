@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Col, Row } from 'antd';
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketList, MarketText, MarketHeader } from '@src/Styles';
 import chain1 from '@images/chain1.svg';
 import chain2 from '@images/chain2.svg';
 import asset4 from '@images/asset_4.svg';
@@ -34,7 +34,7 @@ describe('<Chain />', () => {
     expect(firstColComponent.find(Wrapper).props().bg).to.equal('#fff');
     expect(
       firstColComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('On-chain');
@@ -69,7 +69,7 @@ describe('<Chain />', () => {
     expect(firstColComponent.find(Wrapper).props().bg).to.equal('#fff');
     expect(
       firstColComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('Cross-chain');
@@ -100,7 +100,7 @@ describe('<Chain />', () => {
     expect(firstColComponent.find(Wrapper).props().bg).to.equal('#fff');
     expect(
       firstColComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('Off-chain');

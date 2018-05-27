@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button, Col, Icon, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 import MarketSubscriberForm from '@components/MarketSubscriberForm';
-import { MarketText } from '@src/Styles';
+import { MarketHeader } from '@src/Styles';
 import EmailConstant from '@constants/email';
 
 import Cta, { SectionWrapper } from '@components/Cta';
@@ -31,7 +31,7 @@ describe('<Cta />', () => {
     const secondColComponent = component.find(Col).at(1);
     expect(
       secondColComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('Become a Partner');

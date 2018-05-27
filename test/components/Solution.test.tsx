@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Col, Row } from 'antd';
 import asset1 from '@images/asset_1.svg';
 import asset2 from '@images/asset_2.svg';
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketList, MarketHeader } from '@src/Styles';
 
 import Solution, { SectionWrapper } from '@components/Solution';
 
@@ -30,16 +30,16 @@ describe('<Solution />', () => {
     expect(imgComponentProps.src).to.equal(asset1);
   });
 
-  it('renders one MarketText and four MarketList components on second column', () => {
+  it('renders one MarketHeader and four MarketList components on second column', () => {
     const component = shallow(<Solution />);
     const colComponent = component.find(Col).at(1);
     expect(
       colComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('Issues with current exchanges');
-    expect(colComponent.find(MarketText)).to.have.length(1);
+    expect(colComponent.find(MarketHeader)).to.have.length(1);
     expect(colComponent.find(MarketList)).to.have.length(4);
   });
 
@@ -54,16 +54,16 @@ describe('<Solution />', () => {
     expect(imgComponentProps.src).to.equal(asset2);
   });
 
-  it('renders one MarketText and three MarketList components on fourth column', () => {
+  it('renders one MarketHeader and three MarketList components on fourth column', () => {
     const component = shallow(<Solution />);
     const colComponent = component.find(Col).at(3);
     expect(
       colComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .render()
         .text()
     ).to.equal('How we solve these issues');
-    expect(colComponent.find(MarketText)).to.have.length(1);
+    expect(colComponent.find(MarketHeader)).to.have.length(1);
     expect(colComponent.find(MarketList)).to.have.length(3);
   });
 });

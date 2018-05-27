@@ -3,7 +3,7 @@ import React from 'react';
 import withGAPageView from './GoogleAnalyticsTracker';
 
 import image404 from '@images/asset_9.svg';
-import { MarketText, TeamDivWithResponsiveWidth } from '@styledComponents';
+import { MarketHeader, TeamDivWithResponsiveWidth } from '@styledComponents';
 
 export const headerText =
   'Something went wrong and we cannot find what you\'re looking for...';
@@ -24,15 +24,13 @@ class Page404 extends React.Component {
       >
         <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
           <div style={{ textAlign: 'center' }}>
-            <MarketText header={true}>{headerText}</MarketText>
+            <MarketHeader>{headerText}</MarketHeader>
             <br />
             <img alt="404" src={image404} />
           </div>
 
           <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
-            <MarketText header={true} align={'center'}>
-              Get back on track
-            </MarketText>
+            <MarketHeader align={'center'}>Get back on track</MarketHeader>
             <ul>
               <li>
                 Try heading back to our <a href={homepageUrl}>homepage</a>

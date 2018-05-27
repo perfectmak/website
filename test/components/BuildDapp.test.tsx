@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 import Protocol from '@images/protocol_illustration.svg';
-import { MarketText } from '@src/Styles';
+import { MarketHeader, MarketText } from '@src/Styles';
 import { Link } from 'react-static';
 
 import BuildDapp, {
@@ -20,7 +20,6 @@ describe('<BuildDapp />', () => {
   it('renders one Row and two Col components', () => {
     const component = shallow(<BuildDapp />);
     const rowComponent = component.find(Row);
-    const rowComponentProps = rowComponent.props();
     const colComponents = rowComponent.find(Col);
     expect(rowComponent).to.have.length(1);
     expect(colComponents).to.have.length(2);
@@ -46,10 +45,11 @@ describe('<BuildDapp />', () => {
     const component = shallow(<BuildDapp />);
     const secondColComponent = component.find(Col).at(1);
     expect(secondColComponent.find(TextWrapper)).to.have.length(1);
-    expect(secondColComponent.find(MarketText)).to.have.length(2);
+    expect(secondColComponent.find(MarketHeader)).to.have.length(1);
+    expect(secondColComponent.find(MarketText)).to.have.length(1);
     expect(
       secondColComponent
-        .find(MarketText)
+        .find(MarketHeader)
         .at(0)
         .render()
         .text()

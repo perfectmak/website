@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
-import { MarketText } from '@src/Styles';
+import { MarketHeader, MarketText } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 import mobile from '@images/about/mobile.svg';
 import protocol from '@images/about/protocol.svg';
@@ -85,7 +85,7 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const HeaderText = MarketText.extend`
+export const HeaderText = MarketHeader.extend`
   @media ${device.mobileS} and (max-width: ${size.tablet}) {
     padding: 0px 0px;
     font-size: 32px;
@@ -183,7 +183,7 @@ class Opensource extends React.Component {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <TextWrapper>
-                <HeaderText header>
+                <HeaderText>
                   We love open source! Contribute to our project!
                 </HeaderText>
                 <AdditionalInfo>

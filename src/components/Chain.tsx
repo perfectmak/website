@@ -1,11 +1,11 @@
+import { Col, Row } from 'antd';
 import rightArrow from '@images/right_arrow.svg';
-import React from 'react';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketHeader, MarketList, MarketText } from '@src/Styles';
 import chain1 from '@images/chain1.svg';
 import chain2 from '@images/chain2.svg';
-import { Col, Row } from 'antd';
+import React from 'react';
 import leftArrow from '@images/left_arrow.svg';
 import asset10 from '@images/asset_10.svg';
 import asset4 from '@images/asset_4.svg';
@@ -50,7 +50,7 @@ const Chain = () => {
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#fff" padded>
-            <MarketText header>On-chain</MarketText>
+            <MarketHeader>On-chain</MarketHeader>
             <MarketList>
               easily short crypto assets without borrowing
             </MarketList>
@@ -99,7 +99,7 @@ const Chain = () => {
           xl={{ span: 8, push: 16 }}
         >
           <Wrapper bg="#fff" padded>
-            <MarketText header>Cross-chain</MarketText>
+            <MarketHeader>Cross-chain</MarketHeader>
             <MarketList>
               gain cross-chain exposure without taking custody of the underlying
               asset
@@ -141,7 +141,7 @@ const Chain = () => {
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#fff" padded>
-            <MarketText header>Off-chain</MarketText>
+            <MarketHeader>Off-chain</MarketHeader>
             <MarketList>
               recreate traditional off-chain relationships like AAPL/USDT using
               stable coins such as Tether or Maker Dai

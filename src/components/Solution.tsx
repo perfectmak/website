@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
 //
-import { MarketList, MarketText } from '@src/Styles';
+import { MarketHeader, MarketList } from '@src/Styles';
 import asset1 from '@images/asset_1.svg';
 import asset2 from '@images/asset_2.svg';
 import { device, size } from '@src/breakpoints';
@@ -51,7 +51,7 @@ const Solution = () => {
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <TextWrapper>
-            <MarketText header>Issues with current exchanges</MarketText>
+            <MarketHeader>Issues with current exchanges</MarketHeader>
             <MarketList>centralized, limited access</MarketList>
             <MarketList>security, safety, and custody of funds</MarketList>
             <MarketList>hard to short or hedge digital assets</MarketList>
@@ -79,8 +79,8 @@ const Solution = () => {
           xl={{ span: 12, pull: 12 }}
         >
           <TextWrapper>
-            <MarketText header>How we solve these issues</MarketText>
-            <p style={{ fontSize: '18px' }}>
+            <MarketHeader>How we solve these issues</MarketHeader>
+            <p style={{ fontSize: '18px', fontWeight: 300 }}>
               MARKET Protocol Smart Contracts decentralize accounting, custody
               of funds and position management.
             </p>

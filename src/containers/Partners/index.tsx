@@ -6,7 +6,7 @@ import { Button, Col, Row } from 'antd';
 
 import config, { PartnerProject } from './config';
 import { HeroArt } from '@components/Hero';
-import { MarketText } from '@src/Styles';
+import { MarketHeader, MarketText } from '@src/Styles';
 import NewsletterSubscribeBanner from '@components/NewsletterSubscribeBanner';
 import PartnerImages from '@images/partners';
 import { device, size } from '@src/breakpoints';
@@ -279,13 +279,13 @@ class PartnersComponent extends Component {
           </Row>
         </HeroWrapper>
         <ContentWrapper>
-          <MarketText header={true}>Partner Projects</MarketText>
+          <MarketHeader>Partner Projects</MarketHeader>
           <PartnerBlockWrapper>
             {this.renderPartnerBlocks(partnerProjects)}
           </PartnerBlockWrapper>
           <JoinCTAWrapper>
             <div className="join-cta-banner">
-              <MarketText header={true}>Join our mission</MarketText>
+              <MarketHeader>Join our mission</MarketHeader>
               <p>
                 Whether you’re an existing decentralized exchange or a
                 traditional financial services group thinking about blockchain

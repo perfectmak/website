@@ -32,10 +32,12 @@ export const HeroArt = styled.div`
   }
 `;
 
-export const HeroText = styled.div`
+export const HeroText = styled.h1`
   color: #f0f0f0;
   font-size: 50px;
   margin: 150px 50px 0 50px;
+  font-weight: 700;
+  line-height: 1.2;
 
   @media ${device.mobileS} {
     font-size: 22px;
