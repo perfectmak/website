@@ -4,7 +4,7 @@ import { Button, Form, Input, Modal } from 'antd';
 const FormItem = Form.Item;
 
 /**
- * Simple subscription form to subscriping to different GetResponse Lists.
+ * Simple subscription form to subscribing to different GetResponse Lists.
  * Just specify the campaignToken for the list and it should work out of the box
  *
  */
@@ -41,7 +41,6 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
     >
       <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
       <input type="hidden" name="id" value="491f750dec" />{' '}
-      {/* <input type="text" name="MERGE1" id="MERGE1" /> */}{' '}
       <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
         Join Our Newsletter
       </h2>
@@ -50,7 +49,8 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           rules: [
             {
               message: 'Please input your first name!',
-              required: true
+              required: true,
+              whitespace: true
             }
           ]
         })(
@@ -70,7 +70,8 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           rules: [
             {
               message: 'Please input your last name!',
-              required: true
+              required: true,
+              whitespace: true
             }
           ]
         })(

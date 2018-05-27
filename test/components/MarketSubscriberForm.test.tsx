@@ -42,6 +42,30 @@ describe('<MarketSubscriberForm />', () => {
     expect(hiddenInputs.at(1).props().name).to.equal('id');
   });
 
+  it('adds validation for first name', () => {
+    const component = mount(<MarketSubscriberForm visible />);
+    const firstNameInput = component.find('input[name="MERGE1"]');
+    firstNameInput.simulate('change', { target: { value: '  ' }});
+    expect(
+      component
+      .find('.ant-form-explain')
+      .render()
+      .text()
+    ).to.equal('Please input your first name!');
+  });
+
+  it('adds validation for last name', () => {
+    const component = mount(<MarketSubscriberForm visible />);
+    const lastNameInput = component.find('input[name="MERGE2"]');
+    lastNameInput.simulate('change', { target: { value: '  ' } });
+    expect(
+      component
+        .find('.ant-form-explain')
+        .render()
+        .text()
+    ).to.equal('Please input your last name!');
+  });
+
   it('adds validation for email field', () => {
     const component = mount(<MarketSubscriberForm visible />);
     const emailInput = component.find('input[name="MERGE0"]');
