@@ -15,6 +15,7 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
+      tags: true
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID_DEV
     secret_access_key: $AWS_SECRET_ACCESS_KEY_DEV
@@ -23,6 +24,13 @@ deploy:
     skip_cleanup: true
     on:
       branch: develop
+  - provider: npm
+    email: phil@marketprotocol.io
+    api_key:
+      secure: DMpVVsLRTpND+iFF1mZmYQp05sgu0vu5Sb4928L2bs9IiBm7kwd8+xhUL6kIe7ufzqe5KunPu3SFUqIQxRPn8NCvvXw9Ms3kO9XElVCu0lyQ269YxrbJfhdeMYOlkRjPzYdU3brg4KHon+fhfLCRv+jDsNi2QhAH3sCdekrV5FiBUFW0eKGdq4mJvhPgOnQy4lalKDW7pR1eUCt7aKXip03A15Y3juKoFTr420q1pXgH0pQZLBKKvUG7MmLIGu0ED7jPJA7cSKu+cQ+tGK8rWw1SMhyuDL3A+aFNYE6Zrbr4D3Q+I7orbngR8izdbLw/7tntq5vx5UYzHkM55eD1oNw37Wh2j5bRfi8rgQOLBzjRLT7tneIrsVsBwZKIyiHWjfry68Tioro9toGsFAgJ51EQA6UI7gUeSulS7XYVwLP+IRrh49XuWaqUtgjgGryjFzAuBUyKV0Uijc4pGgG+45KHAUxFYGcP8vypl+SsWbX27ZXpTOsim8dNfhgdS0JLqpvHuzyKn1WGg6eES+e8pLeQE/Iw3hlVOI12Ehd40V2D1JulFF5v+JFEly+KatXC7X9g/x1mRdlYirSDkQs7IpuPH1AVbf6pNSM86cGjVEeaPRWaS8v5gIH3nDKWc/GJkCStJCeKR3BJ9SHYlBrlUu66P1Vlk7W1oPAfoN7P4G0=
+    on:
+      branch: master
+      tags: true
 script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run build:ci; fi'
   - npm test -- --coverage --maxWorkers=4
