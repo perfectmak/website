@@ -280,6 +280,7 @@ class Navbar extends React.Component {
           <Link
             to="https://docs.marketprotocol.io/#faq-general"
             style={{ color: 'inherit', textDecoration: 'none' }}
+            target="_blank"
           >
             FAQs
           </Link>
