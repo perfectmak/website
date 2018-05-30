@@ -1,18 +1,20 @@
 import React from 'react';
-import { Button, Col, Form, Icon, Input, Row } from 'antd';
+import { Button, Form, Icon, Input } from 'antd';
 import styled from 'styled-components';
-
-import { emailLink } from '@components/Cta';
 import { device, size } from '@src/breakpoints';
 
 const NewsletterSubscribeBannerWrapper = styled.div`
-  padding: 80px 20px;
+  padding: 70px 20%;
   display: flex;
   justify-content: space-between;
 
   @media (max-width: ${size.laptop}) {
     flex-wrap: wrap;
-    padding: 40px 20px;
+    padding: 70px 30px;
+  }
+
+  @media ${device.tablet} and (max-width: ${size.laptop}) {
+    padding: 70px 5%;
   }
 `;
 
@@ -32,7 +34,7 @@ export const StyledCol = styled.div`
 export const SectionTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 40px;
-  font-weight: 300;
+  font-weight: 500;
 
   @media (max-width: ${size.laptop}) {
     font-size: 20px;
@@ -170,7 +172,7 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
         </StyledCol>
         <StyledCol lg={12}>
           <LearnAboutTeamWrapper>
-            <SectionTitle>Learn more about our team</SectionTitle>
+            <SectionTitle>Learn about our team</SectionTitle>
             <Button
               size={'large'}
               href={'/team'}
@@ -179,7 +181,8 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
                 backgroundColor: '#00E2C1',
                 color: '#000',
                 display: 'flex',
-                fontSize: 14,
+                fontSize: 12,
+                fontWeight: 300,
                 justifyContent: 'space-between',
                 width: '100%'
               }}

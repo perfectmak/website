@@ -8,7 +8,7 @@ import colors from '@styles/json/colors';
 import { TeamMember } from '@containers/Team/config';
 
 interface Props {
-  data: Partial<TeamMember>;
+  background: Partial<TeamMember>;
   unfocus: () => void;
 }
 
@@ -98,11 +98,12 @@ class Bio extends React.Component<Props> {
           <img src={img} style={{ width: 100, height: 100, marginTop: 10 }} />
 
           {/* name and title */}
-          <MarketText style={{ textAlign: 'center', padding: '10px 0 0 0' }}>
+          <MarketText
+            style={{ textAlign: 'center', paddingTop: 10, fontWeight: 400 }}
+          >
             {name}
-            <br />
-            {title}
           </MarketText>
+          <p style={{ fontWeight: '300' }}>{title}</p>
 
           {/* bio */}
           <MarketText
@@ -118,7 +119,7 @@ class Bio extends React.Component<Props> {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
-              padding: '0px 0px 30px 0px'
+              padding: '30px 0px 30px 0px'
             }}
           >
             {/* email */

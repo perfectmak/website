@@ -39,11 +39,12 @@ const Person = ({ data, focus }: Props) => {
       />
 
       {/* name and title */}
-      <MarketText style={{ textAlign: 'center', paddingTop: 10 }}>
+      <MarketText
+        style={{ textAlign: 'center', paddingTop: 10, fontWeight: 400 }}
+      >
         {name}
-        <br />
-        {title}
       </MarketText>
+      <p style={{ fontWeight: '300' }}>{title}</p>
 
       {/* social links */}
       <div

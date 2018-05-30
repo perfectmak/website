@@ -12,6 +12,7 @@ import {
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';
 import Bio from '@components/Team/Bio';
+import Hero from '@components/Team/Hero';
 import Person from '@components/Team/Person';
 
 interface State {
@@ -85,26 +86,10 @@ export class TeamComponent extends React.Component<{}, State> {
             content="MARKET Protocol People - Team, Founders and Advisors"
           />
         </Helmet>
+        <Hero />
         {/* 'the team' title and info */}
         <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
-          <MarketHeader>{'The Team'}</MarketHeader>
-
-          <MarketText>
-            {'Founding members of our team have been managing a 24-hour algorithmic trading group since 2014 and ' +
-              'cumulatively have over 30 years of electronic trading experience. ' +
-              'We have expertise in market microstructure, order routing, ' +
-              'order management and have written directly to exchanges across the globe.'}
-            <br />
-            <br />
-            {
-              'The rest of the MARKET team comes from a diverse set of technical backgrounds.'
-            }
-            <br />
-            <br />
-            {'Together, we quickly realized how immature the crypto exchanges were. ' +
-              'This created an opportunity for conceptualization and development of MARKET which provided ' +
-              'us a blank slate to address issues with both the crypto and traditional exchange models.'}
-          </MarketText>
+          <MarketHeader>Core Team</MarketHeader>
         </TeamDivWithResponsiveWidth>
 
         {/* team members */}
@@ -145,21 +130,9 @@ export class TeamComponent extends React.Component<{}, State> {
           </TeamDivWithResponsiveWidth>
         </div>
 
-        {/* thin divider line */}
-        <div style={{ width: '100%', backgroundColor: colors.lightGrey }}>
-          <div
-            style={{
-              backgroundColor: colors.medGrey,
-              height: 1,
-              marginLeft: '12.5%',
-              width: '75%'
-            }}
-          />
-        </div>
-
         {/* contact */}
         <div style={{ width: '100%' }}>
-          <Cta />
+          <Cta bg="#fff" />
         </div>
 
         {/* bio overlay */}

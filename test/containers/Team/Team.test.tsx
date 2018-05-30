@@ -4,7 +4,7 @@ import Team, { TeamComponent } from '@containers/Team';
 import config from '@containers/Team/config';
 
 const expectedValues = {
-  headerText: 'The Team',
+  headerText: 'Core Team',
   numberOfTeam: config.teamMembers.length,
   numberOfAdvisors: config.advisors.length
 };

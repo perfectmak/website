@@ -6,8 +6,8 @@ import { MarketHeader, MarketText } from '@src/Styles';
 import { Link } from 'react-static';
 
 import BuildDapp, {
+  BuildDappWrapper,
   IllustrationWrapper,
-  SectionWrapper,
   TextWrapper,
   ButtonWrapper
 } from '@components/BuildDapp';
@@ -15,7 +15,7 @@ import BuildDapp, {
 describe('<BuildDapp />', () => {
   it('renders the SectionWrapper component', () => {
     const component = shallow(<BuildDapp />);
-    expect(component.find(SectionWrapper)).to.have.length(1);
+    expect(component.find(BuildDappWrapper)).to.have.length(1);
   });
   it('renders one Row and two Col components', () => {
     const component = shallow(<BuildDapp />);

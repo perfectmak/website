@@ -1,5 +1,4 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import GoogleAnalytics from 'react-ga';
 
 import withGAPageView, {
@@ -9,14 +8,11 @@ import withGAPageView, {
   initializeTracking
 } from '@containers/GoogleAnalyticsTracker';
 
-import * as GoogleAnalyticsTracker from '@containers/GoogleAnalyticsTracker';
-
 import * as urlHelper from '@helpers/url';
 
 import EnvironmentConstant from '@constants/environment';
 
 describe('Google Analytics Tracker HOC', () => {
-  const MockComponent = () => <div />;
   beforeEach(() => {
     GoogleAnalytics.initialize = jest.fn();
     GoogleAnalytics.set = jest.fn();
@@ -24,7 +20,6 @@ describe('Google Analytics Tracker HOC', () => {
   });
 
   it('does not initializes GA if not client or not in production environment', () => {
-    const component = withGAPageView(MockComponent);
     expect(GoogleAnalytics.initialize.mock.calls.length).to.equal(0);
   });
 

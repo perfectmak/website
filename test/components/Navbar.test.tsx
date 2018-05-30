@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button, Layout, Menu, Popover } from 'antd';
-import { Link, scrollTo } from 'react-static';
+import { Popover } from 'antd';
+import { Link } from 'react-static';
 import logoImg from '@images/logo_light.svg';
 
 import Navbar, { StyledMenu, Logo } from '@components/Navbar';

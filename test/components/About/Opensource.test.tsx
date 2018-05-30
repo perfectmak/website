@@ -3,7 +3,8 @@ import {shallow} from 'enzyme';
 import {Col, Row} from 'antd';
 import protocol from '@images/about/protocol.svg';
 
-import Opensource, {IllustrationContainer, SectionWrapper} from '@components/About/Opensource';
+import Opensource, {IllustrationContainer1 } from '@components/About/Opensource';
+import {SectionWrapper} from "@src/Styles";
 
 describe('<Opensource />', () => {
     it('renders SectionWrapper component', () => {
@@ -18,7 +19,7 @@ describe('<Opensource />', () => {
         const colComponents = component.find(Col);
         const firstImage = colComponents
             .at(0)
-            .find(IllustrationContainer)
+            .find(IllustrationContainer1)
             .find('img')
             .props();
         expect(firstImage.alt)
@@ -34,6 +35,6 @@ describe('<Opensource />', () => {
         expect(component.find(Row))
             .to
             .have
-            .length(2);
+            .length(1);
     });
 });

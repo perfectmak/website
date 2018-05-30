@@ -1,18 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button, Col, Row } from 'antd';
-
+import { Row } from 'antd';
+import {SectionWrapper} from "@src/Styles";
 
 import Derivatives, {
-  DerivativeWrapper,
   HeaderText,
-  Wrapper,
 } from '@components/About/Derivatives';
+
 
 describe('<Derivatives />', () => {
   it('renders DerivativeWrapper component', () => {
     const component = shallow(<Derivatives />);
-    expect(component.find(DerivativeWrapper)).to.have.length(1);
+    expect(component.find(SectionWrapper)).to.have.length(1);
   });
 
   it('renders a header', () => {

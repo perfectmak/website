@@ -3,6 +3,7 @@ import { Col, Row } from 'antd';
 import styled from 'styled-components';
 import header from '@images/about/header.svg';
 import { device, size } from '@src/breakpoints';
+import { HeroText } from '@src/Styles';
 
 export const HeroArt = styled.div`
   text-align: right;
@@ -11,79 +12,62 @@ export const HeroArt = styled.div`
     width: 80%;
   }
   
-  @media (max-width: ${size.mobileS}) and (max-width: ${size.mobileL}) {
+  @media ${device.mobileS} and (max-width: 767px) {
     opacity: 0.4
     margin-top: -80px;
+    z-index: -1;
+    text-align: right;
     
     img {
       width: 50%;
     }
   }
   
-  @media ${device.mobileS} and (max-width: 767px) {
+  @media ${device.mobileL} and (max-width: ${size.tablet}) {
     opacity: 0.4
     margin-top: -80px;
-    z-index: -1;
     
     img {
       width: 50%;
+      margin-top: -10%;
     }
   }
 `;
 
 export const TextWrapper = styled.div`
-  margin: 50px 0px 120px 70px;
+  margin: 50px 0px 120px 50px;
 
-  @media ${device.mobileS} and (max-width: ${size.tablet}) {
-    margin: 0px 0px 0px 20px;
-  }
-`;
-
-export const HeroText = styled.div`
-  color: #f0f0f0;
-  font-size: 50px;
-  font-weight: 600;
-  margin-bottom: 30px;
-
-  @media ${device.mobileS} {
-    font-size: 22px;
-    margin-bottom: 0px;
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    margin: 30px;
   }
 
-  @media ${size.mobileS} and (max-width: ${size.tablet}) {
-    font-size: 38px;
-    margin-bottom: 0px;
-  }
-
-  @media ${device.tablet} {
-    font-size: 38px;
-    margin-bottom: 30px;
-  }
-
-  @media ${device.laptop} {
-    font-size: 60px;
+  @media ${device.mobileL} and (max-width: ${size.tablet}) {
+    margin: 50px 50px 100px 50px;
   }
 `;
 
 export const HeroInfo = styled.p`
   color: #fff;
-  font-size: 22px;
-  max-width: 470px;
   font-weight: 300;
+  margin-top: 20px;
 
   @media ${device.mobileS} {
-    font-size: 18px;
+    font-size: 14px;
   }
-  @media ${device.tablet} {
+  @media ${device.mobileL} {
     font-size: 18px;
   }
 
   @media ${device.laptop} {
     font-size: 22px;
   }
+
+  @media ${device.laptopL} {
+    font-size: 24px;
+  }
 `;
 
-class Banner extends React.Component {
+class Hero extends React.Component {
   render() {
     return (
       <section
@@ -93,7 +77,7 @@ class Banner extends React.Component {
         }}
       >
         <Row type="flex" className="hero" align="middle">
-          <Col xs={24} md={10}>
+          <Col xs={24} sm={24} md={14} lg={12} xl={12}>
             <TextWrapper>
               <HeroText>About</HeroText>
               <HeroInfo>
@@ -110,9 +94,9 @@ class Banner extends React.Component {
               </HeroInfo>
             </TextWrapper>
           </Col>
-          <Col xs={24} md={14}>
+          <Col xs={24} sm={24} md={10} lg={12} xl={12}>
             <HeroArt>
-              <img alt="crypto asset volatility" src={header} />
+              <img alt="about MARKET" src={header} />
             </HeroArt>
           </Col>
         </Row>
@@ -120,4 +104,4 @@ class Banner extends React.Component {
     );
   }
 }
-export default Banner;
+export default Hero;

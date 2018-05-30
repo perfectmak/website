@@ -117,7 +117,7 @@ const Chain = () => {
             <Arrow
               alt="atomic swap ethereum"
               src={leftArrow}
-              style={{ right: '0px', marginTop: '30px', marginRight: '-1px' }}
+              style={{ right: '0px', marginTop: '6.3%', marginRight: '-1px' }}
             />
             <ChainIllustration alt="bitcoin shorting" src={asset10} />
           </Wrapper>
@@ -153,7 +153,7 @@ const Chain = () => {
             <Arrow
               alt="ethereum stock trading"
               src={leftArrow}
-              style={{ right: '0px', marginTop: '30px', marginRight: '-1px' }}
+              style={{ right: '0px', marginTop: '6.3%', marginRight: '-1px' }}
             />
             <ChainIllustration alt="hedging crypto derivative" src={asset4} />
           </Wrapper>

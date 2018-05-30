@@ -25,7 +25,7 @@ const HeaderText = styled.h2`
 
 const FooterLink = styled.div`
   margin: 22px 0;
-  font-weight: 100;
+  font-weight: 300;
 
   :hover {
     color: #00e2c1;
@@ -43,6 +43,12 @@ const FooterWrapper = styled.div`
   @media ${device.tablet} {
     padding: 70px;
   }
+`;
+
+const SocialButtons = styled(Button)`
+  margin-right: 10px;
+  height: 40px !important;
+  width: 40px;
 `;
 
 class MarketFooter extends React.Component {
@@ -66,11 +72,7 @@ class MarketFooter extends React.Component {
                 Ethereum blockchain.
               </AboutMarketText>
               <div style={{ marginTop: '35px' }}>
-                <Button
-                  size="small"
-                  type="primary"
-                  style={{ marginRight: '10px' }}
-                >
+                <SocialButtons size="small" type="primary">
                   <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
                     <img
                       alt="crypto derivatives telegram"
@@ -78,12 +80,8 @@ class MarketFooter extends React.Component {
                       width="80%"
                     />
                   </Link>
-                </Button>
-                <Button
-                  size="small"
-                  type="primary"
-                  style={{ marginRight: '10px' }}
-                >
+                </SocialButtons>
+                <SocialButtons size="small" type="primary">
                   <Link
                     to="https://twitter.com/MarketProtocol/"
                     target="_blank"
@@ -94,12 +92,8 @@ class MarketFooter extends React.Component {
                       width="80%"
                     />
                   </Link>
-                </Button>
-                <Button
-                  size="small"
-                  type="primary"
-                  style={{ marginRight: '10px' }}
-                >
+                </SocialButtons>
+                <SocialButtons size="small" type="primary">
                   <Link to="https://medium.com/market-protocol" target="_blank">
                     <img
                       alt="ethereum derivatives medium"
@@ -107,12 +101,8 @@ class MarketFooter extends React.Component {
                       width="80%"
                     />
                   </Link>
-                </Button>
-                <Button
-                  size="small"
-                  type="primary"
-                  style={{ marginRight: '10px' }}
-                >
+                </SocialButtons>
+                <SocialButtons size="small" type="primary">
                   <Link to="https://github.com/MARKETProtocol/" target="_blank">
                     <img
                       alt="open source ethereum dApp"
@@ -120,7 +110,7 @@ class MarketFooter extends React.Component {
                       width="80%"
                     />
                   </Link>
-                </Button>
+                </SocialButtons>
               </div>
               <AboutMarketText>
                 <span style={{ marginTop: '35px', display: 'block' }}>

@@ -1,25 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MarketHeader } from '@src/Styles';
+import { MarketHeader, SectionWrapper } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
-import MobileTimeline from '@images/about/timeline-mobile.svg';
+import mobileTimeline from '@images/about/timeline-mobile.svg';
 import timeline from '@images/about/timeline.svg';
 
-export const SectionWrapper = styled.section`
-  padding: 50px;
-  background: #fff;
-
-  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 0px;
-    margin: 20px 0;
-  }
-`;
-
 export const HeaderText = MarketHeader.extend`
-  padding-left: 70px;
+  padding-bottom: 40px;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 20px 20px;
+    padding: 60px 20px 20px 20px;
     font-size: 24px;
   }
 `;
@@ -61,7 +51,7 @@ export const ImageWrapper = styled.img``;
 class Timeline extends React.Component {
   render() {
     return (
-      <SectionWrapper>
+      <SectionWrapper style={{ background: '#fff' }}>
         <HeaderText>Timeline</HeaderText>
         <Wrapper>
           <ImageWrapper
@@ -72,7 +62,7 @@ class Timeline extends React.Component {
           />
           <ImageWrapper
             className="mobile"
-            src={MobileTimeline}
+            src={mobileTimeline}
             width="100%"
             alt="ICO timeline for token sale"
           />

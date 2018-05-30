@@ -7,12 +7,9 @@ import NewsletterSubscribeBanner, {
   SectionTitle,
   LearnAboutTeamWrapper
 } from '@components/NewsletterSubscribeBanner';
-import { emailLink } from '@components/Cta';
 
-import SocialLinks from '@components/SocialLinks';
 
 describe('<NewsletterSubscribeBanner />', () => {
-  const getFieldDecoratorMock = jest.fn();
 
   it('renders without crashing', () => {
     const component = mount(<NewsletterSubscribeBanner />);
@@ -41,7 +38,7 @@ describe('<NewsletterSubscribeBanner />', () => {
           .find(SectionTitle)
           .at(1)
           .text()
-      ).toEqual('Learn more about our team');
+      ).toEqual('Learn about our team');
     });
   });
 

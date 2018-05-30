@@ -1,9 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Col, Row} from 'antd';
-import timeline from '@images/about/timeline.svg';
 
-import Timeline, {HeaderText, SectionWrapper, Wrapper, ImageWrapper} from '@components/About/Timeline';
+import Timeline, {HeaderText, ImageWrapper} from '@components/About/Timeline';
+import {SectionWrapper} from "@src/Styles";
 
 describe('<Timeline />', () => {
     it('renders SectionWrapper component', () => {

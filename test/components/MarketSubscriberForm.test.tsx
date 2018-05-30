@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Button, Form, Icon, Input } from 'antd';
-import { MarketText } from '@styledComponents';
+import { Form } from 'antd';
 
 import MarketSubscriberForm from '@components/MarketSubscriberForm';
 

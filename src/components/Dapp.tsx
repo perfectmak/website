@@ -2,7 +2,12 @@ import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 //
-import { MarketHeader, MarketList, MarketText } from '@src/Styles';
+import {
+  MarketHeader,
+  MarketList,
+  MarketText,
+  SectionWrapper
+} from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
@@ -38,19 +43,6 @@ const TextWrapper = styled.div`
   }
 `;
 
-export const SectionWrapper = styled.section`
-  padding: 70px;
-  background: #f0f0f0;
-
-  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 0px;
-  }
-
-  @media ${device.desktopS} {
-    padding: 120px;
-  }
-`;
-
 export const HeaderText = MarketHeader.extend`
   padding-bottom: 70px;
 
@@ -67,7 +59,7 @@ export const ButtonWrapper = styled(Button)`
 
 const Dapp = () => {
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ background: '#f0f0f0' }}>
       <HeaderText header>Easily create new contracts</HeaderText>
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>

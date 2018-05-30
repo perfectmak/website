@@ -4,24 +4,14 @@ import styled from 'styled-components';
 import shortSelling from '@images/about/short_selling.svg';
 import hedging from '@images/about/hedging.svg';
 import custody from '@images/about/custody.svg';
-import { MarketHeader, MarketText } from '@src/Styles';
+import { MarketHeader, MarketText, SectionWrapper } from '@src/Styles';
 import { device, size } from '@src/breakpoints';
 
-export const DerivativeWrapper = styled.section`
-  padding: 50px;
-  background: #f0f0f0;
-
-  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 0px;
-  }
-`;
-
 export const HeaderText = MarketHeader.extend`
-  padding-left: 50px;
+  padding-bottom: 40px;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 40px 20px;
-    font-size: 24px;
+    padding: 60px 20px 20px 20px;
   }
 `;
 
@@ -32,7 +22,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 420px;
+
+  @media ${device.mobileL} {
+    height: 420px;
+  }
 `;
 export const ImageContainer = styled.img`
   margin: 0px auto;
@@ -41,7 +34,7 @@ export const ImageContainer = styled.img`
 class Derivatives extends React.Component {
   render() {
     return (
-      <DerivativeWrapper>
+      <SectionWrapper style={{ background: '#f0f0f0' }}>
         <HeaderText>How Derivatives can help</HeaderText>
         <Row type="flex">
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
@@ -91,7 +84,7 @@ class Derivatives extends React.Component {
             </Wrapper>
           </Col>
         </Row>
-      </DerivativeWrapper>
+      </SectionWrapper>
     );
   }
 }

@@ -1,14 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button, Col, Row } from 'antd';
-import { MarketList, MarketText, MarketHeader } from '@src/Styles';
+import { Col, Row } from 'antd';
+import { MarketList, MarketText, MarketHeader, SectionWrapper } from '@src/Styles';
 import asset3 from '@images/asset_3.svg';
 import asset9 from '@images/asset_9.svg';
 import asset5 from '@images/asset_5.svg';
 import tablet from '@images/tablet.svg';
 
 import Dapp, {
-  SectionWrapper,
   Wrapper,
   HeaderText
 } from '@components/Dapp';

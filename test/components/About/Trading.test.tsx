@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import {Col, Row} from 'antd';
 import ethereum_blockchain from '@images/about/ethereum_blockchain.svg';
 
-import Trading, {IllustrationWrapper, TextWrapper} from '@components/About/Trading';
+import Trading, {IllustrationWrapper} from '@components/About/Trading';
 
 describe('<Trading />', () => {
     it('renders one Row component', () => {

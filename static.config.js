@@ -79,10 +79,7 @@ export default {
               content="width=device-width, initial-scale=1"
             />
             <link rel="shortcut icon" href="/favicon.png" />
-            <link
-              href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700"
-              rel="stylesheet"
-            />
+            <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet" />
             {renderMeta.styleTags}
             {renderMeta.helmet && renderMeta.helmet.title.toComponent()}
             {renderMeta.helmet && renderMeta.helmet.meta.toComponent()}

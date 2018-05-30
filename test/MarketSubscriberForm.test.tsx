@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import MarketSubscriberForm from '@components/MarketSubscriberForm';
-import { Button } from 'antd';
 
 it('render without crash', () => {
   mount(<MarketSubscriberForm visible />);

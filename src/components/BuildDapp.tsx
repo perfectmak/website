@@ -3,23 +3,19 @@ import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
 
-import { MarketHeader, MarketText } from '@src/Styles';
+import { MarketHeader, MarketText, SectionWrapper } from '@src/Styles';
 import Protocol from '@images/protocol_illustration.svg';
 import { device, size } from '@src/breakpoints';
 
 export const TextWrapper = styled.div`
-  padding: 0px 10px;
+  padding: 20px;
 
-  @media ${device.mobileS} and (max-width: ${size.tablet}) {
-    padding: 30px 0;
+  @media ${device.tablet} and (max-width: ${size.laptopL}) {
+    padding: 0 40px;
   }
 
-  @media ${device.tablet} and (max-width: ${size.laptop}) {
-    padding: 0px 30px;
-  }
-
-  @media ${device.laptop} {
-    padding: 0 50px 0 50px;
+  @media ${device.laptopL} {
+    padding: 0 80px;
   }
 `;
 
@@ -38,35 +34,30 @@ export const IllustrationWrapper = styled.div`
   }
 `;
 
-export const SectionWrapper = styled.section`
-  padding: 50px 20px;
-
-  @media ${device.tablet} {
-    padding: 30px;
-  }
-
-  @media ${device.laptop} {
-    padding: 70px;
-  }
-
-  @media ${device.desktopS} {
-    padding: 120px;
-  }
-`;
-
 export const ButtonWrapper = styled(Button)`
   margin-top: 20px;
   margin-right: 20px;
+  width: 65%;
 
-  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+  @media ${device.mobileS} and (max-width: ${size.laptop}) {
     width: 100%;
+  }
+
+  @media ${device.desktopS} {
+    width: 50%;
+  }
+`;
+
+export const BuildDappWrapper = SectionWrapper.extend`
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    padding: 30px;
   }
 `;
 
 class BuildDapp extends React.Component {
   render() {
     return (
-      <SectionWrapper>
+      <BuildDappWrapper>
         <Row type="flex" align="middle">
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <IllustrationWrapper>
@@ -87,7 +78,7 @@ class BuildDapp extends React.Component {
                 The protocol is open source and available under the Apache 2.0
                 license.
               </MarketText>
-              <ButtonWrapper type="primary" style={{ padding: '0 5%' }}>
+              <ButtonWrapper type="primary">
                 <Link
                   to="https://github.com/MARKETProtocol"
                   target="_blank"
@@ -96,7 +87,7 @@ class BuildDapp extends React.Component {
                   Check us out on Github
                 </Link>
               </ButtonWrapper>
-              <ButtonWrapper type="primary" style={{ padding: '0 7.5%' }}>
+              <ButtonWrapper type="primary">
                 <Link
                   to="/partners"
                   style={{ color: 'inherit', textDecoration: 'none' }}
@@ -107,7 +98,7 @@ class BuildDapp extends React.Component {
             </TextWrapper>
           </Col>
         </Row>
-      </SectionWrapper>
+      </BuildDappWrapper>
     );
   }
 }

@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 
 import About, { AboutComponent } from '@containers/About';
 
-import Banner from '@components/About/Banner';
+import Hero from '@components/About/Hero';
 import Derivatives from '@components/About/Derivatives';
 import Trading from '@components/About/Trading';
 import Timeline from '@components/About/Timeline';
@@ -19,7 +19,7 @@ describe('<About />', () => {
   it('renders all site components', () => {
     const component = shallow(<AboutComponent />);
     expect(component.find('div')).to.have.length(1);
-    expect(component.find(Banner)).to.have.length(1);
+    expect(component.find(Hero)).to.have.length(1);
     expect(component.find(Derivatives)).to.have.length(1);
     expect(component.find(Trading)).to.have.length(1);
     expect(component.find(Timeline)).to.have.length(1);

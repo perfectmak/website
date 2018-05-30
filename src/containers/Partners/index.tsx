@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Button, Col, Row } from 'antd';
 
 import config, { PartnerProject } from './config';
-import { HeroArt } from '@components/Hero';
+import Hero from '@components/Partners/Hero';
 import { MarketHeader, MarketText } from '@src/Styles';
 import NewsletterSubscribeBanner from '@components/NewsletterSubscribeBanner';
 import PartnerImages from '@images/partners';
@@ -23,7 +23,7 @@ const ContentWrapper = styled.section`
     padding: 80px;
   }
   @media ${device.laptopL} {
-    padding: 160px;
+    padding: 80px 160px 160px 160px;
   }
 `;
 
@@ -125,9 +125,13 @@ const PartnerBlock = styled.div`
     align-items: center
     justify-content: center;
     background-color: #fff;
-    padding: 60px;
     text-align: center;
     height: 100%;
+    transition: all 150ms ease;
+    
+    :hover {
+      box-shadow: 0 20px 25px 0 rgba(0,0,0,0.12);
+    }
   }
 
   img {
@@ -240,44 +244,7 @@ class PartnersComponent extends Component {
             content="MARKET Protocol - Partner Projects"
           />
         </Helmet>
-        <HeroWrapper>
-          <Row type="flex" className="hero" align="middle">
-            <Col xs={24} md={12}>
-              <HeroText>
-                <HeroHeaderText>
-                  Build on top of <br /> MARKET Protocol
-                </HeroHeaderText>
-                <HeroParagraphText>
-                  Teams all over the world are building applications and
-                  exchanges on top of MARKET Protocol’s unique infrastructure.
-                  We are looking for exceptional teams to help us build the
-                  decentralized future! Join us.
-                </HeroParagraphText>
-                <Button
-                  type="primary"
-                  size={'large'}
-                  href={emailLink}
-                  style={{
-                    color: '#000',
-                    fontWeight: 'bold',
-                    minWidth: 200
-                  }}
-                >
-                  Become a Partner
-                </Button>
-              </HeroText>
-            </Col>
-            <Col xs={24} md={12}>
-              <HeroArt>
-                <img
-                  style={{ maxHeight: 800 }}
-                  alt="hero"
-                  src={PartnerImages.HeroIllustration}
-                />
-              </HeroArt>
-            </Col>
-          </Row>
-        </HeroWrapper>
+        <Hero />
         <ContentWrapper>
           <MarketHeader>Partner Projects</MarketHeader>
           <PartnerBlockWrapper>

@@ -27,14 +27,14 @@ injectGlobal`
 
 const MarketHeader = styled.h2`
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.1;
 
   @media (max-width: ${size.laptop}) {
-    font-size: 18px;
+    font-size: 26px;
   }
 
-  @media ${device.desktopS} {
+  @media ${device.laptop} and (max-width: 1120px) {
     font-size: 28px;
   }
 `;
@@ -102,10 +102,55 @@ const BioModalContentWrap = styled.div`
   }
 `;
 
+const SectionWrapper = styled.section`
+  padding: 70px;
+
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    padding: 0px;
+  }
+
+  @media ${device.mobileL} and (max-width: ${size.laptop}) {
+    padding: 50px;
+  }
+
+  @media ${device.desktopS} {
+    padding: 150px;
+  }
+`;
+
+const HeroText = styled.div`
+  color: #f0f0f0;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.2;
+
+  @media ${device.mobileS} {
+    font-size: 28px;
+    margin-bottom: 0px;
+  }
+
+  @media ${size.mobileS} and (max-width: ${size.tablet}) {
+    font-size: 38px;
+    margin-bottom: 0px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 38px;
+    margin-bottom: 30px;
+  }
+
+  @media ${device.laptop} {
+    font-size: 60px;
+  }
+`;
+
 export {
   MarketList,
   MarketHeader,
   MarketText,
+  HeroText,
   BioModalContentWrap,
-  TeamDivWithResponsiveWidth
+  TeamDivWithResponsiveWidth,
+  SectionWrapper
 };
