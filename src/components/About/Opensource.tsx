@@ -169,6 +169,15 @@ class Opensource extends React.Component {
               <p style={{ fontSize: '24px', fontWeight: '500' }}>
                 Every Thurdsay 8AM MT
               </p>
+              <ButtonWrapper type="primary">
+                <Link
+                  to="https://github.com/MARKETProtocol/community/blob/master/docs/engineering-weekly.md"
+                  target="_blank"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  Learn more
+                </Link>
+              </ButtonWrapper>
             </TextWrapper>
           </Col>
         </Row>
