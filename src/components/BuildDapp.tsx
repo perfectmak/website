@@ -78,23 +78,23 @@ class BuildDapp extends React.Component {
                 The protocol is open source and available under the Apache 2.0
                 license.
               </MarketText>
-              <ButtonWrapper type="primary">
-                <Link
-                  to="https://github.com/MARKETProtocol"
-                  target="_blank"
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
+              <Link
+                to="https://github.com/MARKETProtocol"
+                target="_blank"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">
                   Check us out on Github
-                </Link>
-              </ButtonWrapper>
-              <ButtonWrapper type="primary">
-                <Link
-                  to="/partners"
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
+                </ButtonWrapper>
+              </Link>
+              <Link
+                to="/partners"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">
                   Learn more about our partners
-                </Link>
-              </ButtonWrapper>
+                </ButtonWrapper>
+              </Link>
             </TextWrapper>
           </Col>
         </Row>

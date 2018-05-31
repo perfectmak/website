@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import withGAPageView from '@containers/GoogleAnalyticsTracker';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { Button, Col, Row } from 'antd';
+import { Button } from 'antd';
 
 import config, { PartnerProject } from './config';
 import Hero from '@components/Partners/Hero';
-import { MarketHeader, MarketText } from '@src/Styles';
+import { MarketHeader } from '@src/Styles';
 import NewsletterSubscribeBanner from '@components/NewsletterSubscribeBanner';
-import PartnerImages from '@images/partners';
 import { device, size } from '@src/breakpoints';
 import { emailLink } from '@components/Cta';
 
@@ -24,90 +23,6 @@ const ContentWrapper = styled.section`
   }
   @media ${device.laptopL} {
     padding: 80px 160px 160px 160px;
-  }
-`;
-
-const HeroWrapper = styled.section`
-  background-color: #181e26;
-  min-height: 662px;
-  overflow: hidden;
-  @media (max-width: ${size.tablet}) {
-    .hero > div:last-child {
-      position: absolute;
-      top: 0px;
-      width: 100%;
-      > div {
-        opacity: 0.4;
-        margin-top: -80px;
-        z-index: -1;
-      }
-    }
-  }
-  @media (max-width: ${size.mobileL}) {
-    .hero > div:last-child {
-      top: 150px;
-    }
-  }
-`;
-
-const HeroText = styled.div`
-  color: #f0f0f0;
-  font-size: 50px;
-  margin: 150px 50px 0 50px;
-  @media ${device.mobileS} {
-    font-size: 22px;
-    margin: 70px 50px 0 50px;
-  }
-  @media ${device.mobileL} and (max-width: ${size.tablet}) {
-    font-size: 24px;
-    margin: 170px 40px 0 40px;
-    background-color: transparent;
-  }
-  @media ${device.tablet} {
-    font-size: 38px;
-    margin: 50px 0 0 50px;
-  }
-  @media (max-width: 900px) {
-    margin-top: 50px;
-  }
-  @media (max-width: ${size.tablet}) {
-    margin-top: 150px;
-  }
-  @media (max-width: ${size.mobileL}) {
-    margin-top: 70px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  @media ${device.laptop} {
-    font-size: 50px;
-  }
-`;
-
-const HeroHeaderText = styled.h1`
-  color: #fff;
-  line-height: 1;
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  @media (max-width: ${size.mobileL}) {
-    font-size: 24px;
-  }
-  @media (max-width: 900px) {
-    font-size: 32px;
-  }
-`;
-
-const HeroParagraphText = styled.p`
-  color: #fff;
-  font-weight: 100;
-  font-size: 24px;
-  max-width: 540px;
-  margin-bottom: 40px;
-  @media (max-width: ${size.mobileL}) {
-    font-size: 16px;
-  }
-  @media (max-width: 900px) {
-    font-size: 18px;
   }
 `;
 

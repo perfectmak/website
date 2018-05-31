@@ -9,6 +9,7 @@ import telegram from '@images/telegram.svg';
 import twitter from '@images/twitter.svg';
 import medium from '@images/medium.svg';
 import github from '@images/github.svg';
+import youtube from '@images/youtube.svg';
 import { device } from '@src/breakpoints';
 
 const AboutMarketText = styled.div`
@@ -72,45 +73,54 @@ class MarketFooter extends React.Component {
                 Ethereum blockchain.
               </AboutMarketText>
               <div style={{ marginTop: '35px' }}>
-                <SocialButtons size="small" type="primary">
-                  <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
+                <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
+                  <SocialButtons size="small" type="primary">
                     <img
                       alt="crypto derivatives telegram"
                       src={telegram}
                       width="80%"
                     />
-                  </Link>
-                </SocialButtons>
-                <SocialButtons size="small" type="primary">
-                  <Link
-                    to="https://twitter.com/MarketProtocol/"
-                    target="_blank"
-                  >
+                  </SocialButtons>
+                </Link>
+                <Link to="https://twitter.com/MarketProtocol/" target="_blank">
+                  <SocialButtons size="small" type="primary">
                     <img
                       alt="decentralized exchange twitter"
                       src={twitter}
                       width="80%"
                     />
-                  </Link>
-                </SocialButtons>
-                <SocialButtons size="small" type="primary">
-                  <Link to="https://medium.com/market-protocol" target="_blank">
+                  </SocialButtons>
+                </Link>
+                <Link to="https://medium.com/market-protocol" target="_blank">
+                  <SocialButtons size="small" type="primary">
                     <img
                       alt="ethereum derivatives medium"
                       src={medium}
                       width="80%"
                     />
-                  </Link>
-                </SocialButtons>
-                <SocialButtons size="small" type="primary">
-                  <Link to="https://github.com/MARKETProtocol/" target="_blank">
+                  </SocialButtons>
+                </Link>
+                <Link to="https://github.com/MARKETProtocol/" target="_blank">
+                  <SocialButtons size="small" type="primary">
                     <img
                       alt="open source ethereum dApp"
                       src={github}
                       width="80%"
                     />
-                  </Link>
-                </SocialButtons>
+                  </SocialButtons>
+                </Link>
+                <Link
+                  to="https://www.youtube.com/c/MARKETProtocol"
+                  target="_blank"
+                >
+                  <SocialButtons size="small" type="primary">
+                    <img
+                      alt="trading any assets youtube"
+                      src={youtube}
+                      width="80%"
+                    />
+                  </SocialButtons>
+                </Link>
               </div>
               <AboutMarketText>
                 <span style={{ marginTop: '35px', display: 'block' }}>

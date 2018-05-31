@@ -115,14 +115,14 @@ const Dapp = () => {
               Exiting a position is as easy as trading with another user or
               holding the contract until expiration
             </MarketList>
-            <ButtonWrapper
-              type="primary"
-              style={{ padding: '0 5%', marginTop: '20px' }}
-            >
-              <a href="https://dapp.marketprotocol.io" target="_blank">
+            <a href="https://dapp.marketprotocol.io" target="_blank">
+              <ButtonWrapper
+                type="primary"
+                style={{ padding: '0 5%', marginTop: '20px' }}
+              >
                 Try out our demo dApp
-              </a>
-            </ButtonWrapper>
+              </ButtonWrapper>
+            </a>
           </TextWrapper>
         </Col>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
