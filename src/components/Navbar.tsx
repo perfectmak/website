@@ -13,7 +13,7 @@ export const Logo = styled.div`
   line-height: 64px;
   margin: 0;
   float: left;
-  @media (max-width: ${size.mobileS}) {
+  @media (max-width: ${size.mobileL}) {
     max-width: 200px;
   }
 

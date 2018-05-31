@@ -54,16 +54,14 @@ describe('<BuildDapp />', () => {
         .render()
         .text()
     ).to.equal('Build your dApp on MARKET Protocol');
-    expect(secondColComponent.find(ButtonWrapper)).to.have.length(2);
+    expect(secondColComponent.find(Link)).to.have.length(2);
     const firstLinkProps = secondColComponent
-      .find(ButtonWrapper)
-      .at(0)
       .find(Link)
+      .at(0)
       .props();
     const secondLinkComponent = secondColComponent
-      .find(ButtonWrapper)
+      .find(Link)
       .at(1)
-      .find(Link);
     expect(firstLinkProps.to).to.equal('https://github.com/MARKETProtocol');
     expect(firstLinkProps.target).to.equal('_blank');
     expect(secondLinkComponent.props().to).to.equal('/partners');

@@ -2,7 +2,7 @@
   "name": "marketprotocol.io",
   "version": "2.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "antd": "3.3.0",
     "lodash": "^4.17.10",

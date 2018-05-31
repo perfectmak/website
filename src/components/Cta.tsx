@@ -15,7 +15,7 @@ export const SectionWrapper = styled.section`
   padding: 70px 70px;
 
   @media ${device.mobileS} and (max-width: ${size.tablet}) {
-    padding: 70px 50px 0px 50px;
+    padding: 70px 30px 0px 30px;
   }
 `;
 

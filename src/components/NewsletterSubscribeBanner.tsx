@@ -89,7 +89,6 @@ export const LearnAboutTeamWrapper = styled.div`
     }
   }
 `;
-export const SocialLinksWrapper = styled.div``;
 
 export const InputWrapper = styled.div`
   position: relative;

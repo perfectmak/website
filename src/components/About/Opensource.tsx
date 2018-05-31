@@ -122,24 +122,22 @@ class Opensource extends React.Component {
                 Come join the development community that is building MARKET
                 Protocol
               </OpenSourceText>
-              <ButtonWrapper type="primary">
-                <Link
-                  to="https://docs.marketprotocol.io/#contributing"
-                  target="_blank"
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                  Contribution Guide
-                </Link>
-              </ButtonWrapper>
-              <ButtonWrapper type="primary">
-                <Link
-                  to="https://github.com/orgs/MARKETProtocol/projects/1"
-                  target="_blank"
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
+              <Link
+                to="https://docs.marketprotocol.io/#contributing"
+                target="_blank"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">Contribution Guide</ButtonWrapper>
+              </Link>
+              <Link
+                to="https://github.com/orgs/MARKETProtocol/projects/1"
+                target="_blank"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">
                   Check out open issues on Github
-                </Link>
-              </ButtonWrapper>
+                </ButtonWrapper>
+              </Link>
             </TextWrapper>
           </Col>
           <Col
@@ -166,9 +164,16 @@ class Opensource extends React.Component {
                 Dont forget to join us for Engineering Weekly, our technical
                 community call that is open to everyone!
               </OpenSourceText>
-              <p style={{ fontSize: '24px', fontWeight: '500' }}>
+              <p style={{ fontSize: '22px', fontWeight: '400' }}>
                 Every Thurdsay 8AM MT
               </p>
+              <Link
+                to="https://github.com/MARKETProtocol/community/blob/master/docs/engineering-weekly.md"
+                target="_blank"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">Learn more</ButtonWrapper>
+              </Link>
             </TextWrapper>
           </Col>
         </Row>
