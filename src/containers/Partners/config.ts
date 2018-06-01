@@ -37,6 +37,16 @@ const config: Config = {
       image: partnerProjectImages.Virtuse,
       name: 'Virtuse',
       url: 'https://virtuse.exchange/'
+    },
+    {
+      image: partnerProjectImages.DDEX,
+      name: 'DDEX',
+      url: 'https://ddex.io/'
+    },
+    {
+      image: partnerProjectImages.SharkRelay,
+      name: 'Shark Relay',
+      url: 'https://sharkrelay.com/'
     }
   ]
 };
