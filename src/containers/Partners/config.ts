@@ -13,6 +13,21 @@ interface Config {
 const config: Config = {
   partnerProjects: [
     {
+      image: partnerProjectImages.DDEX,
+      name: 'DDEX',
+      url: 'https://ddex.io/'
+    },
+    {
+      image: partnerProjectImages.SharkRelay,
+      name: 'Shark Relay',
+      url: 'https://sharkrelay.com/'
+    },
+    {
+      image: partnerProjectImages.Virtuse,
+      name: 'Virtuse',
+      url: 'https://virtuse.exchange/'
+    },
+    {
       image: partnerProjectImages.Amadeus,
       name: 'Amadeus',
       url: 'http://www.amadeus.com/'
@@ -32,21 +47,6 @@ const config: Config = {
       name: 'Maker',
 
       url: 'https://makerdao.com/'
-    },
-    {
-      image: partnerProjectImages.Virtuse,
-      name: 'Virtuse',
-      url: 'https://virtuse.exchange/'
-    },
-    {
-      image: partnerProjectImages.DDEX,
-      name: 'DDEX',
-      url: 'https://ddex.io/'
-    },
-    {
-      image: partnerProjectImages.SharkRelay,
-      name: 'Shark Relay',
-      url: 'https://sharkrelay.com/'
     }
   ]
 };
