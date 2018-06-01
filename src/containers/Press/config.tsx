@@ -4,6 +4,7 @@ import {
   CoinCrunch,
   CryptoNinja,
   FutureTechPodcast,
+  PressureCast,
   Themerkle
 } from '@images/press';
 // import { LinkInfo } from '@components/Press/SingleLink';
@@ -21,6 +22,21 @@ const linkInfos: LinkInfo[] = [
       it is compared to other asset classes and what kind of investors are there.`
     ],
     title: 'Seth Rubin On Understanding Crypto Derivatives'
+  },
+  {
+    boxColor: 'white',
+    imgSrc: PressureCast,
+    link: 'https://pressurecast.simplecast.fm/9de17399',
+    paragraphs: [
+      `Price volatility is one factor limiting growth in the blockchain space.. 
+      Currently [hodlers have] no effective way to manage their price exposure… 
+      MARKET Protocol enables derivatives trading of crypto assets allowing 
+      businesses and traders to hedge the price volatility associated with 
+      these assets.`
+    ],
+    title: `Phil Elsasser (CTO @ Market Protocol) on Adding Complex Financial Instruments, 
+      Concerns About Central Exchanges, and Decreasing Digital Asset Volatility 
+      with Market Protocol`
   },
   {
     boxColor: 'darkgrey',
