@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import linkInfos from './config';
 import { MarketHeader } from '@styledComponents';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 import SingleLink, { DisplayDirection } from '@components/Press/SingleLink';
 import colors from '@styles/json/colors';
 
