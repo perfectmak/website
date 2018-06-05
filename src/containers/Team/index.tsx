@@ -4,11 +4,7 @@ import { Helmet } from 'react-helmet';
 
 import config, { Advisor, TeamMember } from './config';
 import withGAPageView from '@containers/GoogleAnalyticsTracker';
-import {
-  MarketHeader,
-  MarketText,
-  TeamDivWithResponsiveWidth
-} from '@styledComponents';
+import { MarketHeader, TeamDivWithResponsiveWidth } from '@styledComponents';
 import colors from '@styles/json/colors';
 import Cta from '@components/Cta';
 import Bio from '@components/Team/Bio';

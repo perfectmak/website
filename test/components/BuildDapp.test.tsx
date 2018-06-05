@@ -8,8 +8,7 @@ import { Link } from 'react-static';
 import BuildDapp, {
   BuildDappWrapper,
   IllustrationWrapper,
-  TextWrapper,
-  ButtonWrapper
+  TextWrapper
 } from '@components/BuildDapp';
 
 describe('<BuildDapp />', () => {

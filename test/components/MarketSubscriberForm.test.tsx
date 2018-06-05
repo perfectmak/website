@@ -5,8 +5,6 @@ import { Form } from 'antd';
 import MarketSubscriberForm from '@components/MarketSubscriberForm';
 
 describe('<MarketSubscriberForm />', () => {
-  const getFieldDecoratorMock = jest.fn();
-
   it('renders h2 with header text', () => {
     const component = mount(<MarketSubscriberForm visible />);
     expect(component.find('h2')).to.have.length(1);

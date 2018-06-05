@@ -3,7 +3,6 @@ import linkInfos from './config';
 import { MarketHeader } from '@styledComponents';
 import { throttle } from 'lodash';
 import SingleLink, { DisplayDirection } from '@components/Press/SingleLink';
-import colors from '@styles/json/colors';
 
 class Press extends Component {
   state: { displayDirection?: DisplayDirection } = {};

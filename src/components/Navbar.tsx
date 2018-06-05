@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Dropdown, Icon, Layout, Menu, Popover } from 'antd';
+import { Button, Dropdown, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
 import { Link, scrollTo } from 'react-static';
 import { size } from '@src/breakpoints';
