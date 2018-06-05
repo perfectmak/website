@@ -91,14 +91,15 @@ class Hero extends React.Component {
                 written directly to exchanges across the globe.
               </HeroInfo>
               <HeroInfo>
-                The rest of the MARKET team comes from a diverse set of
+                The rest of the MARKET Protocol team comes from a diverse set of
                 technical backgrounds.
               </HeroInfo>
               <HeroInfo>
                 Together, we quickly realized how immature the crypto exchanges
                 were. This created an opportunity for conceptualization and
-                development of MARKET which provided us a blank slate to address
-                issues with both the crypto and traditional exchange models.
+                development of MARKET Protocol which provided us a blank slate
+                to address issues with both the crypto and traditional exchange
+                models.
               </HeroInfo>
             </TextWrapper>
           </Col>
