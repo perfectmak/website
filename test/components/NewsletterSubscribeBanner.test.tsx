@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import { mount } from 'enzyme';
 import { Form, Input } from 'antd';
 
@@ -10,9 +11,15 @@ import NewsletterSubscribeBanner, {
 
 
 describe('<NewsletterSubscribeBanner />', () => {
+  let component: typeof NewsletterSubscribeBanner;
+
+  beforeEach(() => {
+    component = mount(
+      <MemoryRouter><NewsletterSubscribeBanner/></MemoryRouter>
+    );
+  });
 
   it('renders without crashing', () => {
-    const component = mount(<NewsletterSubscribeBanner />);
     expect(component.find('NewsletterSubscribeBannerComponent').length).toEqual(
       1
     );
@@ -20,12 +27,10 @@ describe('<NewsletterSubscribeBanner />', () => {
 
   describe('layout', () => {
     it('renders 2 StyledCol', () => {
-      const component = mount(<NewsletterSubscribeBanner />);
       expect(component.find(StyledCol).length).toBe(2);
     });
 
-    it("renders 2 SectionTitle's with the correct text", () => {
-      const component = mount(<NewsletterSubscribeBanner />);
+    it('renders 2 SectionTitle\'s with the correct text', () => {
       expect(component.find(SectionTitle).length).toBe(2);
       expect(
         component
@@ -44,7 +49,6 @@ describe('<NewsletterSubscribeBanner />', () => {
 
   describe('Newsletter signup form', () => {
     it('renders a Form with the correct action url', () => {
-      const component = mount(<NewsletterSubscribeBanner />);
       expect(component.find(Form).length).toBe(1);
       expect(
         component
@@ -55,7 +59,6 @@ describe('<NewsletterSubscribeBanner />', () => {
     });
 
     it('renders a text Input', () => {
-      const component = mount(<NewsletterSubscribeBanner />);
       expect(component.find(Form).find(Input).length).toBe(1);
       expect(
         component
@@ -67,7 +70,6 @@ describe('<NewsletterSubscribeBanner />', () => {
     });
 
     it('indicates an email error', () => {
-      const component = mount(<NewsletterSubscribeBanner />);
       component.find('form').simulate('submit');
       expect(
         component
@@ -78,14 +80,15 @@ describe('<NewsletterSubscribeBanner />', () => {
     });
   });
 
-  describe('Become a Partner email link', () => {
-    const component = mount(<NewsletterSubscribeBanner />);
-    expect(component.find(LearnAboutTeamWrapper).find('a').length).toBe(1);
-    expect(
-      component
-        .find(LearnAboutTeamWrapper)
-        .find('a')
-        .props().href
-    ).toEqual('/team');
+  describe('Learn more about team', () => {
+    it('renders a link to team page', () => {
+      expect(component.find(LearnAboutTeamWrapper).find('a').length).toBe(1);
+      expect(
+        component
+          .find(LearnAboutTeamWrapper)
+          .find('a')
+          .props().href
+      ).toEqual('/team');
+    });
   });
 });

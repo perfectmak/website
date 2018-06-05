@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-static';
 import { Button, Form, Icon, Input } from 'antd';
 import styled from 'styled-components';
 import { device, size } from '@src/breakpoints';
@@ -172,23 +173,24 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
         <StyledCol lg={12}>
           <LearnAboutTeamWrapper>
             <SectionTitle>Learn about our team</SectionTitle>
-            <Button
-              size={'large'}
-              href={'/team'}
-              style={{
-                alignItems: 'center',
-                backgroundColor: '#00E2C1',
-                color: '#000',
-                display: 'flex',
-                fontSize: 12,
-                fontWeight: 300,
-                justifyContent: 'space-between',
-                width: '100%'
-              }}
-            >
-              <b>The minds behind MARKET Protocol</b>
-              <Icon type="arrow-right" style={{ fontSize: 18 }} />
-            </Button>
+            <Link to="/team">
+              <Button
+                size={'large'}
+                style={{
+                  alignItems: 'center',
+                  backgroundColor: '#00E2C1',
+                  color: '#000',
+                  display: 'flex',
+                  fontSize: 12,
+                  fontWeight: 300,
+                  justifyContent: 'space-between',
+                  width: '100%'
+                }}
+              >
+                <b>The minds behind MARKET Protocol</b>
+                <Icon type="arrow-right" style={{ fontSize: 18 }} />
+              </Button>
+            </Link>
           </LearnAboutTeamWrapper>
         </StyledCol>
       </NewsletterSubscribeBannerWrapper>
