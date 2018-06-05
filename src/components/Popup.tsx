@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Icon, Row } from 'antd';
+import { Button, Icon } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
 //

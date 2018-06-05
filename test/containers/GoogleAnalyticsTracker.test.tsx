@@ -1,8 +1,6 @@
-import React from 'react';
 import GoogleAnalytics from 'react-ga';
 
-import withGAPageView, {
-  getLocation,
+import {
   initializeGoogleAnalytics,
   trackPage,
   initializeTracking

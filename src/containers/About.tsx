@@ -1,7 +1,6 @@
 import React from 'react';
 import { withSiteData } from 'react-static';
 import withGAPageView from './GoogleAnalyticsTracker';
-import { device, size } from '@src/breakpoints';
 import Hero from '@components/About/Hero';
 import Derivatives from '@components/About/Derivatives';
 import Trading from '@components/About/Trading';

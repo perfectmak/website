@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Popover } from 'antd';
 import { Link } from 'react-static';
 import logoImg from '@images/logo_light.svg';
 
