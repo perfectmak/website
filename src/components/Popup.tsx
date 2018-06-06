@@ -67,7 +67,7 @@ class Popup extends React.Component {
           telegramDisplay: true
         });
       }.bind(this),
-      3000
+      1000
     );
   }
   closeTelegramDisplay() {
