@@ -6,6 +6,8 @@ cache:
     - node_modules
 before_deploy:
   - npm run build:ci
+  - pip install --user awscli
+  - ./scripts/clean_bucket.sh
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID

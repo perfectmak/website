@@ -37,7 +37,7 @@ start:
 build:
 	npm run build
 
-## remote deployment 
+## remote deployment
 
 
 # DEV - display contents of deployed site
@@ -46,7 +46,7 @@ ls_dev:
 
 # DEV - remove deployed site from s3 bucket
 rm_dev:
-	aws s3 --profile $(DEV_PROFILE_NAME) rm $(DEV_BUCKET) --recursive
+	aws s3 --profile $(DEV_PROFILE_NAME) rm $(DEV_BUCKET) --recursive --exclude="telegram" --exclude="discord"
 
 # DEV - deploy site to s3 bucket
 deploy_dev:
@@ -61,7 +61,7 @@ ls_prod:
 
 # PROD - remove deployed site from s3 bucket
 rm_prod:
-	aws s3 --profile $(PROD_PROFILE_NAME) rm $(PROD_BUCKET) --recursive
+	aws s3 --profile $(PROD_PROFILE_NAME) rm $(PROD_BUCKET) --recursive --exclude="telegram" --exclude="discord"
 
 # PROD - deploy site to s3 bucket
 deploy_prod:
