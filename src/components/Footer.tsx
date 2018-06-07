@@ -55,7 +55,9 @@ const SocialButtons = styled(Button)`
 class MarketFooter extends React.Component {
   render() {
     return (
-      <Footer style={{ color: '#fff', height: '460px', padding: '0px' }}>
+      <Footer
+        style={{ color: '#fff', height: '460px', padding: '0px', zIndex: 2 }}
+      >
         <FooterWrapper>
           <Row type="flex" className="hero" align="top" gutter={24}>
             <Col
