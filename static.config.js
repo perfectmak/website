@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+// blog dependencies
+import klaw from 'klaw';
+import matter from 'gray-matter';
+import marked from 'marked';
+
 /*
 * For Less Support
 * */
@@ -25,12 +30,62 @@ const themeVariables = lessToJs(
 
 const webpack = require('webpack');
 
+
+// getBlogPosts
 //
+// walks through ./src/blogPosts array, which contains blog posts in the form
+// of markdown files, and returns an array containing processed versions of
+// them via promise resolution.
+//
+// used by getData function of /blog route
+function getBlogPosts() {
+  let posts = []
+  let getPosts = new Promise((resolve) => {
+    // make sure post directory exists
+    if (fs.existsSync('./src/blogPosts')) {
+
+      // walk through post directory
+      klaw('./src/blogPosts')
+
+      // process post file
+      .on('data', (item) => {
+        if ('.md' === path.extname(item.path)) {
+          const data = fs.readFileSync(item.path, 'utf8')
+          const dataObj = matter(data)
+          console.log(dataObj)
+          // dataObj.content = marked(data.content)
+          dataObj.data.slug = dataObj.data.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+          dataObj.data.thumbnail = dataObj.data.thumbnail.replace('/public/uploads/', '')
+          posts.push(dataObj)
+        }
+      })
+
+      // log error
+      .on('error', (e) => {
+        console.log(e)
+      })
+
+      // resolve promise with array processed posts
+      .on('end', () => {
+        resolve(posts)
+      })
+    } else {
+      // resolve promise with empty array
+      resolve(posts)
+    }
+  })
+
+  return getPosts
+}
+
+
 export default {
   getSiteData: () => ({
     title: 'MARKET Protocol'
   }),
   getRoutes: async () => {
+    const blogPosts = await getBlogPosts()
+
     return [
       {
         path: '/',
@@ -51,6 +106,16 @@ export default {
       {
         path: '/partners',
         component: 'src/containers/Partners'
+      },
+      {
+        path: '/blog',
+        component: 'src/containers/Blog',
+        getData: () => ({ blogPosts }),
+        children: blogPosts.map((post) => ({
+          path: `/post/${post.data.slug}`,
+          component: 'src/containers/BlogPost',
+          getData: () => ({ post })
+        }))
       },
       {
         is404: true,
