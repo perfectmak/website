@@ -6,11 +6,11 @@ import heroIllustration from '@images/whitepaper/hero_illustration.svg';
 import Banner, { SectionWrapper } from '@components/WhitePaper/Banner';
 
 describe('<Banner />', () => {
-  it('renders section with minHeight 100vh', () => {
+  it('renders section with minHeight 10vh', () => {
     const component = shallow(<Banner />);
     expect(component.find(SectionWrapper).props().style).to.deep.equal({
       background: '#181e26',
-      minHeight: '100vh'
+      minHeight: '10vh'
     });
   });
 
@@ -31,14 +31,14 @@ describe('<Banner />', () => {
   it('first image renders MarketProtocol image', () => {
     const component = shallow(<Banner />).find('img');
     const imgComponentProps = component.at(0).props();
-    expect(imgComponentProps.alt).to.equal('MarketProtocol');
+    expect(imgComponentProps.alt).to.equal('MARKET Protocol white paper');
     expect(imgComponentProps.src).to.equal(logo_light);
   });
 
   it('first image renders MarketProtocol image', () => {
     const component = shallow(<Banner />).find('img');
     const imgComponentProps = component.at(1).props();
-    expect(imgComponentProps.alt).to.equal('Market Protocol Illustration');
+    expect(imgComponentProps.alt).to.equal('MARKET Protocol Ethereum derivatives trading');
     expect(imgComponentProps.src).to.equal(heroIllustration);
   });
 });

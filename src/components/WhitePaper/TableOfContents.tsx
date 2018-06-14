@@ -44,7 +44,7 @@ class TableOfContents extends React.Component {
       <Section
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex">
@@ -58,7 +58,7 @@ class TableOfContents extends React.Component {
               </ItemWrapper>
               <ItemWrapper>
                 <Link to="#problems">
-                  <span>Problems Addressed By MARKET</span>
+                  <span>Problems Addressed By MARKET Protocol</span>
                 </Link>
               </ItemWrapper>
               <ItemWrapper>
@@ -83,7 +83,7 @@ class TableOfContents extends React.Component {
               </ItemWrapper>
               <ItemWrapper>
                 <Link to="#contract">
-                  <span>MARKET Contract Examples</span>
+                  <span>MARKET Protocol Contract Examples</span>
                 </Link>
               </ItemWrapper>
               <ItemWrapper>

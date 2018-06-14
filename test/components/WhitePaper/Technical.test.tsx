@@ -4,12 +4,12 @@ import {Row} from 'antd';
 import Technical, {Section} from '@components/WhitePaper/Technical';
 
 describe('<Technical />', () => {
-  it('renders section with minHeight 100vh', () => {
+  it('renders section with minHeight 10vh', () => {
     const component = shallow(<Technical/>);
     expect(component.find(Section).props().style)
       .to
       .deep
-      .equal({background: '#ffffff', minHeight: '100vh'});
+      .equal({background: '#ffffff', minHeight: '10vh'});
   });
 
   it('renders one Row component', () => {

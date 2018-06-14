@@ -95,7 +95,7 @@ class Technical extends React.Component {
         id="technical"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
@@ -104,13 +104,13 @@ class Technical extends React.Component {
               <Header>Technical Specifications</Header>
               <SubHeading>Overview</SubHeading>
               <ContentWrapper>
-                MARKET allows third parties to create “markets” by hosting an
-                order book. The order book hosts, referred to hereafter as
-                “nodes”, are incentivized to host order books by collecting
-                transaction fees, which they set and control. MARKET simplifies
-                the complexity of securing collateral, validating
-                creditworthiness, executing settlement and the custody of
-                customer funds with smart contracts.
+                MARKET Protocol allows third parties to create “markets” by
+                hosting an order book. The order book hosts, referred to
+                hereafter as “nodes”, are incentivized to host order books by
+                collecting transaction fees, which they set and control. MARKET
+                Protocol simplifies the complexity of securing collateral,
+                validating creditworthiness, executing settlement and the
+                custody of customer funds with smart contracts.
               </ContentWrapper>
               <ContentWrapper>
                 At this time, nodes are not responsible for the matching of
@@ -122,18 +122,18 @@ class Technical extends React.Component {
                 the trade.
               </ContentWrapper>
               <ContentWrapper>
-                In the future, MARKET may pursue alternative node solutions,
-                such as a fully decentralized order book and matching, as well
-                as other scaling implementations.
+                In the future, MARKET Protocol may pursue alternative node
+                solutions, such as a fully decentralized order book and
+                matching, as well as other scaling implementations.
               </ContentWrapper>
               <SubHeading>Contract Creation and Clearing</SubHeading>
               <ContentWrapper>
-                MARKET allows users to create a contract, specify its terms,
-                publish those terms, and provide a mechanism for automated
-                settlement while ensuring contract solvency through collateral
-                pools. Any trader can create a new contract by outlining the
-                contract specifications. The contract creator will be presented
-                with the following options:
+                MARKET Protocol allows users to create a contract, specify its
+                terms, publish those terms, and provide a mechanism for
+                automated settlement while ensuring contract solvency through
+                collateral pools. Any trader can create a new contract by
+                outlining the contract specifications. The contract creator will
+                be presented with the following options:
               </ContentWrapper>
               <MarketList>
                 Underlying Instrument: What is the underlying asset for pricing?
@@ -161,10 +161,10 @@ class Technical extends React.Component {
               </ContentWrapper>
               <SubHeading>Shared Collateral Pool</SubHeading>
               <ContentWrapper>
-                Each MARKET contract is comprised of multiple smart contracts
-                that create the shared collateral pool and needed accounting of
-                an individual traders’ balances denoted in the defined base
-                token (any ERC20 ).
+                Each MARKET Protocol contract is comprised of multiple smart
+                contracts that create the shared collateral pool and needed
+                accounting of an individual traders’ balances denoted in the
+                defined base token (any ERC20 ).
               </ContentWrapper>
               <ContentWrapper>
                 Traders will deposit collateral in the form of ERC20-compatible
@@ -209,7 +209,7 @@ class Technical extends React.Component {
                   width: '100%'
                 }}
                 src={SharedCollateralPool}
-                alt="Market Protocol Shared Collateral Pool"
+                alt="MARKET Protocol ethereum margin trading"
               />
               <ContentWrapper>
                 This collateral remains in the pool until the trade is closed.
@@ -218,10 +218,10 @@ class Technical extends React.Component {
               </ContentWrapper>
               <SubHeading>Leverage and Contract Range</SubHeading>
               <ContentWrapper>
-                MARKET contracts offer continuous profit and loss exposure
-                derived from an underlying asset up to a PRICE_CAP and
+                MARKET Protocol contracts offer continuous profit and loss
+                exposure derived from an underlying asset up to a PRICE_CAP and
                 PRICE_FLOOR specified during contract creation defining the
-                contract range. Leverage offered through the MARKET protocol
+                contract range. Leverage offered through the MARKET Protocol
                 differs from traditional leverage, which runs the risk of forced
                 liquidations and unfunded positions.
               </ContentWrapper>
@@ -242,7 +242,7 @@ class Technical extends React.Component {
                 this functionality to ensure that the market remains solvent.
                 <span>
                   This process is one of the most important features of the
-                  contract framework and the MARKET protocol.
+                  contract framework and the MARKET Protocol.
                 </span>
                 The amount of leverage afforded to an open position depends on
                 where the price of the trade executed relative to the ranges of
@@ -252,26 +252,27 @@ class Technical extends React.Component {
               <ContentWrapper>
                 Traders can replicate uncapped payoff structures by stripping
                 together a series of contracts. We expect third-party
-                implementations of MARKET to provide multiple strikes per
-                contract and an easy, cost-effective way for traders to create
-                the exposure they want. This may present traders with arbitrage
-                opportunities as traders can spread-trade multiple contracts
-                against each other.
+                implementations of MARKET Protocol to provide multiple strikes
+                per contract and an easy, cost-effective way for traders to
+                create the exposure they want. This may present traders with
+                arbitrage opportunities as traders can spread-trade multiple
+                contracts against each other.
               </ContentWrapper>
               <ContentWrapper>
-                Two detailed examples of trading the MARKET protocol are
+                Two detailed examples of trading the MARKET Protocol are
                 including later in the document.
               </ContentWrapper>
               <SubHeading>Short Selling</SubHeading>
               <ContentWrapper>
                 Currently, there are limited and inefficient options to short
-                crypto assets. However, a MARKET contract makes shorting simple.
+                crypto assets. However, a MARKET Protocol contract makes
+                shorting simple.
               </ContentWrapper>
               <ContentWrapper>
                 If two parties are willing to transact at a predefined price
                 they can trade. There is no need for the short to locate or
-                borrow the underlying asset. With MARKET, if a contract is
-                listed and has liquidity, it can be shorted.
+                borrow the underlying asset. With MARKET Protocol, if a contract
+                is listed and has liquidity, it can be shorted.
               </ContentWrapper>
               <SubHeading>Order Submission and Execution</SubHeading>
               <ContentWrapper>
@@ -300,7 +301,7 @@ class Technical extends React.Component {
               <img
                 className="order"
                 src={OrderSubmissionAndExecution}
-                alt="Market Protocol Order Submission and Execution"
+                alt="MARKET Protocol decentralized exchange"
               />
               <ContentWrapper>
                 If multiple executions exist, positions are exited in a LIFO
@@ -312,19 +313,19 @@ class Technical extends React.Component {
               <img
                 src={UserNetPosition}
                 className="userNetPosition"
-                alt="Market Protocol User Net Position"
+                alt="MARKET Protocol ethereum exchange"
               />
               <SubHeading>Expiration and Settlement</SubHeading>
               <ContentWrapper>
                 Upon the expiration of a contract, functionality built into
-                MARKET allows contracts to be settled using an oracle such as
-                Oraclize.it or Thomson Reuters Block1IQ. Oracles provide
+                MARKET Protocol allows contracts to be settled using an oracle
+                such as Oraclize.it or Thomson Reuters Block1IQ. Oracles provide
                 external data to the blockchain. The contract creator will have
                 the ability to set the frequency for oracle queries.
               </ContentWrapper>
               <IllustrationWrapper
                 src={Callback}
-                alt="Market Protocol Expiration and Settlement"
+                alt="MARKET Protocol crypto futures"
               />
               <ContentWrapper>
                 Typically, the oracle is queried once a day to determine if a
@@ -337,7 +338,7 @@ class Technical extends React.Component {
               </ContentWrapper>
               <IllustrationWrapper
                 src={Settlement}
-                alt="Market Protocol Check Settlement"
+                alt="MARKET Protocol leverage trading"
               />
               <ContentWrapper>
                 Contracts can be settled to the price of any actively traded
@@ -357,8 +358,8 @@ class Technical extends React.Component {
               <ContentWrapper>
                 In the event of a settlement dispute, a backup oracle or group
                 of backup oracles can be used to obtain a settlement value. As
-                crowd based consensus mechanisms evolve MARKET intends to
-                implement additional resolution mechanisms. Until that point,
+                crowd based consensus mechanisms evolve MARKET Protocol intends
+                to implement additional resolution mechanisms. Until that point,
                 disputed settlements may also get resolved through a more
                 centralized process to ensure funds are equitably returned to
                 participants and not permanently trapped in the contract.

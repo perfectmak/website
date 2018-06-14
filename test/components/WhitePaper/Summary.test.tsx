@@ -4,11 +4,11 @@ import { Row } from 'antd';
 import Summary, { Section } from '@components/WhitePaper/Summary';
 
 describe('<Summary />', () => {
-  it('renders section with minHeight 100vh', () => {
+  it('renders section with minHeight 10vh', () => {
     const component = shallow(<Summary />);
     expect(component.find(Section).props().style).to.deep.equal({
       background: '#ffffff',
-      minHeight: '100vh'
+      minHeight: '10vh'
     });
   });
 

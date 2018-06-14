@@ -52,7 +52,7 @@ class MarketProtocol extends React.Component {
         id="market"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
@@ -61,29 +61,30 @@ class MarketProtocol extends React.Component {
               <MarketHeader>MARKET Protocol</MarketHeader>
 
               <ContentWrapper>
-                MARKET provides developers with a trustless and secure framework
-                to create decentralized exchanges, including the necessary
-                clearing and collateral pool infrastructure. As a protocol,
-                MARKET enables third parties to build applications for trading,
-                order routing and related activities.
+                MARKET Protocol provides developers with a trustless and secure
+                framework to create decentralized exchanges, including the
+                necessary clearing and collateral pool infrastructure. As a
+                protocol, MARKET enables third parties to build applications for
+                trading, order routing and related activities.
               </ContentWrapper>
               <ContentWrapper>
                 The decentralized protocol facilitates risk transference and a
                 trustless trading system through smart contracts on the Ethereum
-                blockchain. MARKET contracts derive their price from an
+                blockchain. MARKET Protocol contracts derive their price from an
                 underlying asset, either digital or real-world. traders are not
                 limited to owned or existing ERC20 tokens, allowing price
                 exposure to other cryptocurrencies like Bitcoin, Ripple, and
                 Monero.
               </ContentWrapper>
               <ContentWrapper>
-                As derivatives, MARKET contracts offer users continuous price
-                exposure and future settlement. Traders can quickly enter long
-                or short positions in any contract where they find liquidity.
-                Trade participants then contribute funds to a collateral pool
-                before trade execution. The contract then distributes funds in a
-                rule-based manner at an agreed-upon settlement date or when
-                traders exit positions before the settlement date.
+                As derivatives, MARKET Protocol contracts offer users continuous
+                price exposure and future settlement. Traders can quickly enter
+                long or short positions in any contract where they find
+                liquidity. Trade participants then contribute funds to a
+                collateral pool before trade execution. The contract then
+                distributes funds in a rule-based manner at an agreed-upon
+                settlement date or when traders exit positions before the
+                settlement date.
               </ContentWrapper>
               <ContentWrapper>
                 The clearing functionality provides a safe and secure framework
@@ -96,9 +97,9 @@ class MarketProtocol extends React.Component {
               <ContentWrapper>
                 Participants will govern the protocol in a democratic and
                 equitable fashion. Traders of the protocol will be the owners
-                and decision makers. The goal of MARKET is to provide users the
-                most efficient, safe, and secure environment possible while
-                creating a robust and fair marketplace.
+                and decision makers. The goal of MARKET Protocol is to provide
+                users the most efficient, safe, and secure environment possible
+                while creating a robust and fair marketplace.
               </ContentWrapper>
             </TextWrapper>
           </Col>

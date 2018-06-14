@@ -64,7 +64,7 @@ class DApps extends React.Component {
         id="dapps"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
@@ -72,16 +72,17 @@ class DApps extends React.Component {
             <TextWrapper>
               <Header>dAPPS</Header>
               <ContentWrapper>
-                In order to get the most out of MARKET for the non-technical
-                user, distributed apps or “dApps” will be built by MARKET for
-                use on the MARKET Protocol in addition to third party
+                In order to get the most out of MARKET Protocol for the
+                non-technical user, distributed apps or “dApps” will be built by
+                MARKET for use on the MARKET Protocol in addition to third party
                 developers. MARKET plans to create simple user interfaces that
                 intuitively explain the process of selecting contract variables
-                and deploying MARKET contracts to the blockchain. Additionally,
-                a contract explorer will provide the ability to search
-                previously deployed MARKET contracts and their specifications.
-                Users will also be able to test their oracle queries to ensure
-                they function as expected prior to contract deployment.
+                and deploying MARKET Protocol contracts to the blockchain.
+                Additionally, a contract explorer will provide the ability to
+                search previously deployed MARKET contracts and their
+                specifications. Users will also be able to test their oracle
+                queries to ensure they function as expected prior to contract
+                deployment.
               </ContentWrapper>
             </TextWrapper>
           </Col>

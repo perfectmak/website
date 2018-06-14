@@ -4,11 +4,11 @@ import { Row } from 'antd';
 import TableOfContents, { Section } from '@components/WhitePaper/TableOfContents';
 
 describe('<TableOfContents />', () => {
-  it('renders section with minHeight 100vh', () => {
+  it('renders section with minHeight 10vh', () => {
     const component = shallow(<TableOfContents />);
     expect(component.find(Section).props().style).to.deep.equal({
       background: '#ffffff',
-      minHeight: '100vh'
+      minHeight: '10vh'
     });
   });
 

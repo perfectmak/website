@@ -46,10 +46,14 @@ class Banner extends React.Component {
       <SectionWrapper
         style={{
           background: '#181e26',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
-        <img className="img" src={logo_light} alt="MarketProtocol" />
+        <img
+          className="img"
+          src={logo_light}
+          alt="MARKET Protocol white paper"
+        />
         <h3>Powering safe, solvent & trustless trading of any asset</h3>
         <p>April 2018</p>
         <Row type="flex" justify="center">
@@ -59,7 +63,7 @@ class Banner extends React.Component {
               width: '10rem'
             }}
             src={heroIllustration}
-            alt="Market Protocol Illustration"
+            alt="MARKET Protocol Ethereum derivatives trading"
           />
         </Row>
       </SectionWrapper>

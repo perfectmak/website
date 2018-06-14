@@ -51,7 +51,7 @@ class Summary extends React.Component {
         id="summary"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
@@ -79,7 +79,7 @@ class Summary extends React.Component {
                 assets in a safe, solvent and trustless marketplace.
               </ContentWrapper>
               <ContentWrapper>
-                MARKET Contracts are an agreement between two or more
+                MARKET Protocol Contracts are an agreement between two or more
                 individuals and similar to traditional derivatives which settle
                 in the future based on the price of a reference asset. Financial
                 derivatives are often used to manage risk, airlines hedge jet
@@ -90,18 +90,20 @@ class Summary extends React.Component {
                 traders can buy or sell with no need to borrow or take custody
                 of the underlying assets drastically simplifying trading. Short
                 selling is an necessary piece of an efficient marketplace and
-                can help reduce overall volatility. MARKET Contracts also enable
-                contracts involving traditional assets like Tesla stock (TSLA)
-                which makes relationships like TSLA/ETH or TSLA/DAI tradeable
-                without converting to fiat currency or taking custody of TSLA.
+                can help reduce overall volatility. MARKET Protocol Contracts
+                also enable contracts involving traditional assets like Tesla
+                stock (TSLA) which makes relationships like TSLA/ETH or TSLA/DAI
+                tradeable without converting to fiat currency or taking custody
+                of TSLA.
               </ContentWrapper>
               <ContentWrapper>
                 Third party projects can build decentralized applications or
                 “dApps” on top of the protocol, enabling non-technical traders
                 to easily interact with the underlying blockchain. MARKET
-                Protocol is preparing to release the first dApp for public beta,
-                which allows users to deploy MARKET Contracts, test oracle
-                queries and explore those created by others.
+                Protocol Protocol is preparing to release the first dApp for
+                public beta, which allows users to deploy MARKET Protocol
+                Contracts, test oracle queries and explore those created by
+                others.
               </ContentWrapper>
               <ContentWrapper>
                 The MARKET Protocol team comes from diverse technical and

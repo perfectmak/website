@@ -70,7 +70,7 @@ class MKTToken extends React.Component {
         id="mkt"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
@@ -78,11 +78,12 @@ class MKTToken extends React.Component {
             <TextWrapper>
               <Header>MKT Token</Header>
               <ContentWrapper>
-                MKT will be the base token of the MARKET ecosystem and benefits
-                from integration into all facets of MARKET. Peer-to-peer trading
-                is free on MARKET and no fees are native to the protocol. Nodes
-                providing order book hosting and management will have the option
-                to set and collect transaction fees for offering this service.
+                MKT will be the base token of the MARKET Protocol ecosystem and
+                benefits from integration into all facets of MARKET Protocol.
+                Peer-to-peer trading is free on MARKET Protocol and no fees are
+                native to the protocol. Nodes providing order book hosting and
+                management will have the option to set and collect transaction
+                fees for offering this service.
               </ContentWrapper>
               <ContentWrapper>
                 Orders submitted without the required transaction fee may be
@@ -113,9 +114,9 @@ class MKTToken extends React.Component {
                 Dispute Resolution: For accuracy and autonomy, most contracts
                 will automatically settle to publicly accessible oracle
                 solutions. In the event of a settlement disagreement, or a
-                disrupted settlement process, MARKET intends to a employ number
-                of solutions including, backup oracles or a crowd sourced
-                resolution pulled from the pool of MKT holders.
+                disrupted settlement process, MARKET Protocol intends to a
+                employ number of solutions including, backup oracles or a crowd
+                sourced resolution pulled from the pool of MKT holders.
               </MarketList>
               <MarketList>
                 Contract Creation: Initially, users will be required to hold a

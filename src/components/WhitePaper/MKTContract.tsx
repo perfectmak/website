@@ -84,22 +84,22 @@ class MKTContract extends React.Component {
         id="contract"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <TextWrapper>
-              <Header>MKT Contract Examples</Header>
+              <Header>MARKET Protocol Contract Examples</Header>
               <SubHeading>Example A - Single Stock Contract</SubHeading>
               <ContentWrapper>
-                In this example, we showcase how the MARKET protocol can be used
+                In this example, we showcase how the MARKET Protocol can be used
                 to create a derivative contract between ETH and a traditional
                 security, Tesla stock (NASDAQ, TSLA).
               </ContentWrapper>
               <IllustrationWrapper
                 src={MKTContractImage}
-                alt="MarketProtocol Single Stock Contract"
+                alt="MARKET Protocol - Blockchain Futures"
               />
               <ContentWrapper>User A will define:</ContentWrapper>
               <MarketList>
@@ -138,7 +138,7 @@ class MKTContract extends React.Component {
               <div style={{ textAlign: 'center' }}>
                 <ExampleIllustrationWrapper
                   src={PreTrade}
-                  alt="MarketProtocol Whitepaper"
+                  alt="MARKET Protocol Trustless Collateral"
                 />
               </div>
               <SubHeading>Placing and Order</SubHeading>
@@ -155,7 +155,7 @@ class MKTContract extends React.Component {
               </MarketList>
               <IllustrationWrapper
                 src={PlacingOrder}
-                alt="MarketProtocol Placing Order"
+                alt="MARKET Protocol ethereum decentralized trading"
               />
               <MarketList>
                 Node accepts order, and displays a bid for 1 TSLA/ETH at price
@@ -169,11 +169,12 @@ class MKTContract extends React.Component {
               </MarketList>
               <MarketList>
                 User B then takes User A’s order calling the fill trade function
-                to the MARKET smart contract with the order information.
+                to the MARKET Protocol smart contract with the order
+                information.
               </MarketList>
               <MarketList>
-                The MARKET smart contract then fills the order and allocates
-                positions.
+                The MARKET Protocol smart contract then fills the order and
+                allocates positions.
               </MarketList>
               <MarketList>
                 Collateral balances and user balances are updated. Each user has
@@ -185,7 +186,7 @@ class MKTContract extends React.Component {
               </MarketList>
               <IllustrationWrapper
                 src={TradeExecution}
-                alt="MarketProtocol Trade Execution"
+                alt="MARKET Protocol Bitcoin Trade Execution"
               />
               <SubHeading>Post-Trade</SubHeading>
               <ContentWrapper>
@@ -229,7 +230,7 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <IllustrationWrapper
                 src={PostTrade}
-                alt="MarketProtocol Post Trade"
+                alt="MARKET Protocol Derivatives Settlement"
               />
               <SubHeading>Scenario 2:</SubHeading>
               <ContentWrapper>
@@ -252,7 +253,7 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <IllustrationWrapper
                 src={PostTrade}
-                alt="MarketProtocol Post Trade"
+                alt="MARKET Protocol Decentralized Derivatives"
               />
               <SubHeading>Scenario 3:</SubHeading>
               <ContentWrapper>Contract Hits CAP of 15</ContentWrapper>
@@ -272,7 +273,7 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <IllustrationWrapper
                 src={PostTrade}
-                alt="MarketProtocol Post Trade"
+                alt="MARKET Protocol Ethereum Futures"
               />
               <ContentWrapper>
                 <span>
@@ -285,15 +286,15 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <SubHeading>Example B – Hedging a Utility Token</SubHeading>
               <ContentWrapper>
-                Users can hedge utility tokens with MARKET removing price
-                movement both up and down. The majority of existing and future
-                ICO tokens provide the owner some benefit or utility. These
-                tokens, however, may have considerable price volatility which
-                could actually outweigh any potential benefit associated with
-                the token. MARKET provides owners of utility tokens a way to
-                hedge their price exposure while maintaining the utility
-                associated with owning the tokens. Token owners never sell or
-                transfer their tokens.
+                Users can hedge utility tokens with MARKET Protocol removing
+                price movement both up and down. The majority of existing and
+                future ICO tokens provide the owner some benefit or utility.
+                These tokens, however, may have considerable price volatility
+                which could actually outweigh any potential benefit associated
+                with the token. MARKET Protocol provides owners of utility
+                tokens a way to hedge their price exposure while maintaining the
+                utility associated with owning the tokens. Token owners never
+                sell or transfer their tokens.
               </ContentWrapper>
               <ContentWrapper>
                 In this example, we will use SALT lending tokens. SALT is a peer
@@ -303,8 +304,8 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <ContentWrapper>
                 Since they were issued, SALT tokens have traded from the low $2s
-                to a high of over $17. With MARKET traders can hedge this price
-                volatility.
+                to a high of over $17. With MARKET Protocol traders can hedge
+                this price volatility.
               </ContentWrapper>
               <ContentWrapper>
                 To illustrate this example, suppose Trader A owns a number of
@@ -313,7 +314,7 @@ class MKTContract extends React.Component {
               <div style={{ textAlign: 'center' }}>
                 <ExampleIllustrationWrapper
                   src={ContractSpecs}
-                  alt="MarketProtocol Whitepaper"
+                  alt="MARKET Protocol cryptocurrecny hedging"
                 />
               </div>
               <SubHeading>Pre-Trade</SubHeading>
@@ -333,7 +334,7 @@ class MKTContract extends React.Component {
               <div style={{ textAlign: 'center' }}>
                 <ExampleIllustrationWrapper
                   src={ExampleBPreTrade}
-                  alt="MarketProtocol Whitepaper"
+                  alt="MARKET Protocol ERC20 derviatives"
                 />
               </div>
               <ContentWrapper>
@@ -356,7 +357,7 @@ class MKTContract extends React.Component {
               <div style={{ textAlign: 'center' }}>
                 <ExampleIllustrationWrapper
                   src={ExampleBPostTradeScenario1}
-                  alt="MarketProtocol Whitepaper"
+                  alt="MARKET Protocol ethereum derivatives"
                 />
               </div>
               <ContentWrapper>
@@ -378,14 +379,14 @@ class MKTContract extends React.Component {
                 his actual token holdings offsetting the loss.
               </ContentWrapper>
               <ContentWrapper>
-                If Trader A did not hedge his holdings with MARKET they would be
-                exposed to the loss.
+                If Trader A did not hedge his holdings with MARKET Protocol they
+                would be exposed to the loss.
               </ContentWrapper>
               <ContentWrapper>
                 Trader B never owned any SALT tokens but through the SALT/ETH
-                MARKET contract bought the equivalent of 10 tokens which
-                decreased from 0.5 ETH to 0.375 ETH and provided a loss of 1.25
-                ETH. This which is the same as if they owned 10 SALT tokens
+                MARKET Protocol contract bought the equivalent of 10 tokens
+                which decreased from 0.5 ETH to 0.375 ETH and provided a loss of
+                1.25 ETH. This which is the same as if they owned 10 SALT tokens
                 without ever touching the original tokens.
               </ContentWrapper>
               <SubHeading>Scenario 2:</SubHeading>
@@ -395,7 +396,7 @@ class MKTContract extends React.Component {
               <div style={{ textAlign: 'center' }}>
                 <ExampleIllustrationWrapper
                   src={ExampleBPostTradeScenario2}
-                  alt="MarketProtocol Whitepaper"
+                  alt="MARKET Protocol blockchain derivatives trading"
                 />
               </div>
               <ContentWrapper>
@@ -418,10 +419,10 @@ class MKTContract extends React.Component {
               </ContentWrapper>
               <ContentWrapper>
                 Trader B never owned any SALT tokens but through the SALT/ETH
-                MARKET contract bought the equivalent of 10 tokens which
-                increased from 0.5 ETH to 0.625 ETH and provided a gain of 1.25
-                ETH which is the same as if they owned 10 SALT tokens without
-                ever touching the original tokens.
+                MARKET Protocol contract bought the equivalent of 10 tokens
+                which increased from 0.5 ETH to 0.625 ETH and provided a gain of
+                1.25 ETH which is the same as if they owned 10 SALT tokens
+                without ever touching the original tokens.
               </ContentWrapper>
             </TextWrapper>
           </Col>

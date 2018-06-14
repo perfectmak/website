@@ -63,13 +63,13 @@ class Problems extends React.Component {
         id="problems"
         style={{
           background: '#ffffff',
-          minHeight: '100vh'
+          minHeight: '10vh'
         }}
       >
         <Row type="flex" align="left">
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <TextWrapper>
-              <Header>Problems Addressed By Market</Header>
+              <Header>Problems Addressed By MARKET Protocol</Header>
               <SubHeading>
                 Decoupling Price from Utilty - A Scaling Issue
               </SubHeading>

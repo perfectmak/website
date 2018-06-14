@@ -4,11 +4,11 @@ import { Row } from 'antd';
 import MarketProtocol, { Section } from '@components/WhitePaper/MarketProtocol';
 
 describe('<MarketProtocol />', () => {
-  it('renders section with minHeight 100vh', () => {
+  it('renders section with minHeight 10vh', () => {
     const component = shallow(<MarketProtocol />);
     expect(component.find(Section).props().style).to.deep.equal({
       background: '#ffffff',
-      minHeight: '100vh'
+      minHeight: '10vh'
     });
   });
 
