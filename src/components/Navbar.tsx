@@ -180,6 +180,11 @@ const whitepapers: LinkInterface[] = [
     label: 'Chinese',
     url:
       'https://www.marketprotocol.io/assets/MARKET_Protocol-Whitepaper-Chinese.pdf'
+  },
+  {
+    key: '/whitepaper',
+    label: 'Web Version',
+    url: '/whitepaper'
   }
 ];
 
