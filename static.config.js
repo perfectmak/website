@@ -126,6 +126,10 @@ export default {
         component: 'src/containers/Partners'
       },
       {
+        path: '/whitepaper',
+        component: 'src/containers/WhitePaper'
+      },
+      {
         path: '/blog',
         component: 'src/containers/Blog',
         getData: () => blogData,
