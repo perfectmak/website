@@ -30,7 +30,9 @@ class Page404 extends React.Component {
           </div>
 
           <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
-            <MarketHeader align={'center'}>Get back on track</MarketHeader>
+            <MarketHeader style={{ textAlign: 'center' }}>
+              Get back on track
+            </MarketHeader>
             <ul>
               <li>
                 Try heading back to our <a href={homepageUrl}>homepage</a>

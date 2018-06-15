@@ -15,6 +15,7 @@ export const size = {
 export const device = {
   desktop: `(min-width: ${size.desktop})`,
   desktopL: `(min-width: ${size.desktopL})`,
+  desktopM: `(min-width: ${size.desktopM})`,
   desktopS: `(min-width: ${size.desktopS})`,
   laptop: `(min-width: ${size.laptop})`,
   laptopL: `(min-width: ${size.laptopL})`,

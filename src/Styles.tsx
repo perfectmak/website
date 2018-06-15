@@ -39,7 +39,7 @@ const MarketHeader = styled.h2`
   }
 `;
 
-const MarketText = styled.div`
+const MarketText = styled.p`
   font-size: 18px;
   font-weight: 300;
 
@@ -82,6 +82,40 @@ const MarketList = styled.li`
   }
 `;
 
+const MarketDescriptionText = MarketText.extend`
+  font-size: 25px;
+
+  @media ${device.mobileS} {
+    font-size: 16px;
+  }
+  @media ${device.tablet} {
+    font-size: 22px;
+  }
+  @media ${device.laptop} {
+    font-size: 25px;
+  }
+`;
+
+const MarketDescriptionWrapper = styled.section`
+  padding: 50px;
+
+  @media ${device.mobileL} and (max-width: ${size.tablet}) {
+    padding: 70px;
+  }
+
+  @media ${device.tablet} {
+    padding: 100px;
+  }
+
+  @media ${device.laptopL} {
+    padding: 100px 150px;
+  }
+
+  @media ${device.desktopS} {
+    padding: 150px 350px;
+  }
+`;
+
 const TeamDivWithResponsiveWidth = styled.div`
   width: 60%;
 
@@ -114,7 +148,11 @@ const SectionWrapper = styled.section`
   }
 
   @media ${device.desktopS} {
-    padding: 150px;
+    padding: 100px 150px;
+  }
+
+  @media ${device.desktopM} {
+    padding: 100px 250px;
   }
 `;
 
@@ -152,5 +190,7 @@ export {
   HeroText,
   BioModalContentWrap,
   TeamDivWithResponsiveWidth,
-  SectionWrapper
+  SectionWrapper,
+  MarketDescriptionText,
+  MarketDescriptionWrapper
 };

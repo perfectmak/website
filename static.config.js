@@ -38,8 +38,8 @@ function getBlogData() {
   const matter = require('gray-matter');
   const klaw = require('klaw');
 
-  let posts: Array<PostData> = []
-  let categories: Array<string> = ['All']
+  let posts = []
+  let categories = ['All']
 
   let getPosts = new Promise((resolve) => {
 
@@ -50,10 +50,10 @@ function getBlogData() {
       klaw('./src/blogPosts')
 
       // process post files
-      .on('data', (item: PostFile) => {
+      .on('data', (item) => {
         if ('.md' === path.extname(item.path)) {
           const data = fs.readFileSync(item.path, 'utf8')
-          const dataObj: any = matter(data)
+          const dataObj = matter(data)
 
           // process markdown content
           // dataObj.content = marked(data.content)
@@ -75,7 +75,7 @@ function getBlogData() {
       })
 
       // log error
-      .on('error', (e: any) => {
+      .on('error', (e) => {
         console.log(e)
       })
 
@@ -128,6 +128,10 @@ export default {
       {
         path: '/whitepaper',
         component: 'src/containers/WhitePaper'
+      },
+      {
+        path: '/jobs',
+        component: 'src/containers/Jobs'
       },
       {
         path: '/blog',

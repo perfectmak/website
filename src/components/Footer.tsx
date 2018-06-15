@@ -14,7 +14,8 @@ import { device } from '@src/breakpoints';
 
 const AboutMarketText = styled.div`
   margin-top: 35px;
-  font-size: 12px @media ${device.tablet} {
+
+  @media ${device.tablet} {
     padding-right: 100px;
   }
 `;
@@ -59,7 +60,7 @@ class MarketFooter extends React.Component {
         style={{ color: '#fff', height: '460px', padding: '0px', zIndex: 2 }}
       >
         <FooterWrapper>
-          <Row type="flex" className="hero" align="top" gutter={24}>
+          <Row type="flex" align="top" gutter={24}>
             <Col
               xs={24}
               sm={24}
@@ -68,7 +69,7 @@ class MarketFooter extends React.Component {
               xl={12}
               style={{ marginBottom: '100px' }}
             >
-              <img alt="Bitcoin derivatives and shorting" src={logoImg} />
+              <img alt="MARKET Protocol logo" src={logoImg} />
               <AboutMarketText>
                 MARKET Protocol provides the open source building blocks
                 powering decentralized derivatives trading and exchanges on the
@@ -226,7 +227,7 @@ class MarketFooter extends React.Component {
               </FooterLink>
             </Col>
             <Col xs={8} sm={8} md={4} lg={4} xl={4}>
-              Organization
+              <HeaderText>Organization</HeaderText>
               <FooterLink>
                 <Link
                   to="/team"
@@ -245,8 +246,7 @@ class MarketFooter extends React.Component {
               </FooterLink>
               <FooterLink>
                 <Link
-                  to="https://angel.co/market-protocol-1/jobs"
-                  target="_blank"
+                  to="/jobs"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   Jobs (We're hiring!)

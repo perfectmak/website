@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Waypoint from 'react-waypoint';
 import { size } from '@src/breakpoints';
-import { withRouteData } from 'react-static';
 import Hero from '@components/Hero';
 import Cta from '@components/Cta';
 import PostPreview from '@components/Blog/PostPreview';

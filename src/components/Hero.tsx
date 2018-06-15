@@ -14,7 +14,7 @@ export const HeroArt = styled.div`
   }
 
   @media (max-width: ${size.mobileS}) and (max-width: ${size.mobileL}) {
-    opacity: 0.4
+    opacity: 0.4;
     margin-top: -80px;
 
     img {
@@ -23,7 +23,7 @@ export const HeroArt = styled.div`
   }
 
   @media ${device.mobileS} and (max-width: 767px) {
-    opacity: 0.4
+    opacity: 0.4;
     margin-top: -80px;
     z-index: -1;
 
@@ -69,7 +69,7 @@ class Hero extends React.Component<{ text?: string }, {}> {
     return (
       <section style={{ background: '#181E26', minHeight: '300px' }}>
         <Row type="flex" className="hero" align="middle">
-          <Col xs={24} md={10} style={{ zIndex: '1' }}>
+          <Col xs={24} md={10} style={{ zIndex: 1 }}>
             <HeroText>
               {this.props.text ||
                 'Powering safe, solvent and trustless trading of any asset.'}

@@ -11,6 +11,10 @@ interface Props {
   onlyShowSubscribeButton?: boolean;
 }
 
+interface CtaState {
+  subscriptionPopUpVisible: boolean;
+}
+
 export const SectionWrapper = styled.section`
   background: #f0f0f0;
   padding: 70px 70px;
@@ -29,22 +33,7 @@ const ButtonContainer = styled(Col)`
     padding: 0px;
     margin-bottom: 70px;
   }
-
-  @media ${device.tablet} and (max-width: ${size.tabletL}) {
-  }
-
-  @media ${device.tabletL} and (max-width: ${size.laptopL}) {
-  }
 `;
-
-// encoded
-const PartnersEmail = {
-  body:
-    'Please%20explain%20your%20company%20and%20your%20interest%20' +
-    'in%20the%20protocol%20as%20well%20as%20any%20other%20helpful%20details.',
-  email: 'partnerships@marketprotocol.io',
-  subject: 'Partnership%20with%20MARKET%20Protocol'
-};
 
 export const emailLink = `mailto:${
   EmailConstant.PARTNERS_EMAIL.email
@@ -52,7 +41,7 @@ export const emailLink = `mailto:${
   EmailConstant.PARTNERS_EMAIL.body
 }`;
 
-class Cta extends React.Component<Props> {
+class Cta extends React.Component<Props, CtaState> {
   constructor(props: Props) {
     super(props);
 
