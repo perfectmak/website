@@ -115,6 +115,37 @@ const config: Config = {
       linkedin: 'https://www.linkedin.com/in/btraidman/',
       name: 'Brent Traidman',
       title: 'Chief Revenue Officer, Bread'
+    },
+    {
+      bio:
+        'Rob Behnke is a 5-year cryptocurrency trader, token sale growth hacker,\
+         and entrepreneur currently living in San Francisco. His prior startups - \
+         The Brooklyn Salsa Company and the MicSwap iOS App have been featured in Forbes,\
+          Techcrunch and the New York Times. He is the founder\
+           of Token Agency - a premier, full-service marketing and strategy\
+            agency for the blockchain startup space that\
+         successfully launched and worked with multiple ICOs / Token Sales / Token Generation Events.',
+      email: '',
+      img: advisorImages.RobBehnke,
+      linkedin: 'https://www.linkedin.com/in/rbehnke/',
+      name: 'Rob Behnke',
+      title: 'Founder, Token Agency'
+    },
+    {
+      bio:
+        'Kevin Owocki is the founder of Gitcoin.co. He is a software engineer interested in hacking,\
+         learning, and writing about the intersection of next-generation technologies,\
+          especially machine learning, computer vision, VR, AR, & plenoptic photography.\
+           He has a BS in Computer Science,\
+            10 years of engineering leadership experience in startups and Open Source Software.\
+             He also is a community organizer in the Boulder Colorado Blockchain Tech Scene,\
+              helping many notable events planning, like ETHDenver with\
+               one of MARKET Protocol co-founders Phil Elsasser.',
+      email: '',
+      img: advisorImages.KevinOwocki,
+      linkedin: 'https://www.linkedin.com/in/owocki/',
+      name: 'Kevin Owocki',
+      title: 'Founder, GitCoin'
     }
   ],
   teamMembers: [
@@ -235,6 +266,21 @@ const config: Config = {
       linkedin: 'https://www.linkedin.com/in/przemyslaw-szulczynski-2a96a41/',
       name: 'Przemyslaw Szulczynski',
       title: 'Software Developer'
+    },
+    {
+      bio:
+        'Robert combines a personal passion for investing and derivatives \
+        with decades of experience in software and Product Development. \
+        He\'s served in a variety of product and engineering leadership roles,\
+         from startups to F50 companies. Robert has a strong interest in DLT, \
+         smart contracts, and cryptocurrencies and is hopeful of a \
+         decentralized future where the individual controls their identity \
+         and data.',
+      email: 'robert@marketprotocol.io',
+      img: teamMemberImages.RobertJordan,
+      linkedin: 'https://www.linkedin.com/in/jrobertjordan',
+      name: 'Robert Jordan',
+      title: 'Product Manager'
     }
   ]
 };
