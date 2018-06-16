@@ -65,7 +65,7 @@ class JobList extends Component<Props> {
             style={{ textDecoration: 'none' }}
           >
             {' '}
-            info@marketprotocol.io
+            jobs@marketprotocol.io
           </a>
         </MarketSmallText>
       </MarketDescriptionWrapper>
