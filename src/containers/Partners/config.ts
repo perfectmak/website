@@ -34,8 +34,8 @@ const config: Config = {
     },
     {
       image: partnerProjectImages.Haven,
-      name: 'Haven',
-      url: 'https://havenprotocol.com/'
+      name: 'Havven',
+      url: 'https://havven.io/'
     },
     {
       image: partnerProjectImages.Dg,
