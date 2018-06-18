@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  min-height: 330px;
 
   @media ${device.tablet} {
     margin-right: 10px;
@@ -39,7 +40,7 @@ export const ImageContainer = styled.img`
     width: 50%;
   }
   @media ${device.tablet} and (max-width: ${size.laptop}) {
-    width: 100%;
+    width: 80%;
   }
 `;
 
@@ -49,7 +50,7 @@ const JobPerksText = MarketText.extend`
   margin: 0 auto;
   font-size: 25px;
 
-  @media ${device.mobileS} and (max-width: ${size.tablet}) {
+  @media ${device.mobileS} and (max-width: 1200px) {
     font-size: 18px;
   }
 

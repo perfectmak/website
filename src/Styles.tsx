@@ -91,9 +91,6 @@ const MarketDescriptionText = MarketText.extend`
   @media ${device.tablet} {
     font-size: 22px;
   }
-  @media ${device.laptop} {
-    font-size: 25px;
-  }
 `;
 
 const MarketDescriptionWrapper = styled.section`
