@@ -22,7 +22,7 @@ const ContentWrapper = styled.section`
     padding: 80px;
   }
   @media ${device.laptopL} {
-    padding: 80px 160px 160px 160px;
+    padding: 80px 250px 80px 250px;
   }
 `;
 
@@ -128,8 +128,6 @@ const JoinCTAWrapper = styled.div`
 `;
 
 class PartnersComponent extends Component {
-  state: {};
-
   renderPartnerBlocks(partners: PartnerProject[]): null | JSX.Element[] {
     if (partners && partners.length) {
       return partners.map(p => {

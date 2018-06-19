@@ -8,7 +8,7 @@ import colors from '@styles/json/colors';
 import { TeamMember } from '@containers/Team/config';
 
 interface Props {
-  background: Partial<TeamMember>;
+  data: Partial<TeamMember>;
   unfocus: () => void;
 }
 

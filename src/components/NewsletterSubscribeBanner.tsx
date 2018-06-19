@@ -3,6 +3,7 @@ import { Link } from 'react-static';
 import { Button, Form, Icon, Input } from 'antd';
 import styled from 'styled-components';
 import { device, size } from '@src/breakpoints';
+import { FormComponentProps } from 'antd/lib/form';
 
 const NewsletterSubscribeBannerWrapper = styled.div`
   padding: 70px 20%;
@@ -109,25 +110,22 @@ export const InputIconButton = styled(Button)`
   }
 `;
 
-interface NewsletterSubscribeBannerProps {
-  form?: Form;
-}
-export class NewsletterSubscribeBannerComponent extends React.Component<
-  NewsletterSubscribeBannerProps,
-  {}
+class NewsletterSubscribeBannerComponent extends React.Component<
+  FormComponentProps
 > {
   render() {
     const { form } = this.props;
+    const { getFieldDecorator } = form;
 
     return (
       <NewsletterSubscribeBannerWrapper>
-        <StyledCol lg={12}>
+        <StyledCol>
           <JoinNewsletterWrapper>
             <SectionTitle>Join our Newsletter</SectionTitle>
             <Form
               action="https://marketprotocol.us17.list-manage.com/subscribe/post"
               onSubmit={e => {
-                form.validateFields((errors, _) => {
+                form.validateFields(errors => {
                   if (errors) {
                     e.preventDefault();
                   }
@@ -140,7 +138,7 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
               <input type="hidden" name="id" value="491f750dec" />
               <Form.Item>
                 <InputWrapper style={{ display: 'flex' }}>
-                  {form.getFieldDecorator('email', {
+                  {getFieldDecorator('email', {
                     rules: [
                       {
                         message: 'Please input an Email!',
@@ -170,7 +168,7 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
             </Form>
           </JoinNewsletterWrapper>
         </StyledCol>
-        <StyledCol lg={12}>
+        <StyledCol>
           <LearnAboutTeamWrapper>
             <SectionTitle>Learn about our team</SectionTitle>
             <Link to="/team">
@@ -198,7 +196,7 @@ export class NewsletterSubscribeBannerComponent extends React.Component<
   }
 }
 
-const NewsletterSubscribeBanner = Form.create()(
+const NewsletterSubscribeBanner = Form.create<FormComponentProps>()(
   NewsletterSubscribeBannerComponent
 );
 

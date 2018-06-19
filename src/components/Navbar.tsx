@@ -7,7 +7,7 @@ import logoImg from '@images/logo_light.svg';
 
 const { Header } = Layout;
 const { SubMenu } = Menu;
-const externalLinks = ['/whitepaper', '/blog', '/faq', '/telegram'];
+const externalLinks = ['/whitepaper', '/faq', '/telegram'];
 
 export const Logo = styled.div`
   line-height: 64px;
@@ -180,6 +180,11 @@ const whitepapers: LinkInterface[] = [
     label: 'Chinese',
     url:
       'https://www.marketprotocol.io/assets/MARKET_Protocol-Whitepaper-Chinese.pdf'
+  },
+  {
+    key: '/whitepaper',
+    label: 'Web Version',
+    url: '/whitepaper'
   }
 ];
 
@@ -190,8 +195,17 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     if (!externalLinks.includes(location.pathname)) {
+      // fix an issue where 'Blog' isn't highlighted in navbar while reading
+      // a blog post
+      let current = location.pathname;
+      const currPageIsABlogPost =
+        location.pathname !== '/blog' && location.pathname.includes('/blog');
+      if (currPageIsABlogPost) {
+        current = '/blog';
+      }
+
       this.setState({
-        current: location.pathname
+        current
       });
     }
   }

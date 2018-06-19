@@ -25,12 +25,85 @@ const themeVariables = lessToJs(
 
 const webpack = require('webpack');
 
-//
+/**
+  * getBlogData
+  * ------------
+  * walks through ./src/blogPosts array, which contains blog posts in the form
+  * of markdown files, and returns an array containing processed versions of
+  * them via promise resolution.
+  * ------------
+  * used by getData function of /blog route
+**/
+function getBlogData() {
+  const matter = require('gray-matter');
+  const klaw = require('klaw');
+
+  let posts = []
+  let categories = ['All']
+
+  let getPosts = new Promise((resolve) => {
+
+    // make sure post directory exists
+    if (fs.existsSync('./src/blogPosts')) {
+
+      // walk through post directory
+      klaw('./src/blogPosts')
+
+      // process post files
+      .on('data', (item) => {
+        if ('.md' === path.extname(item.path)) {
+          const data = fs.readFileSync(item.path, 'utf8')
+          const dataObj = matter(data)
+
+          // process markdown content
+          // dataObj.content = marked(data.content)
+
+          // create slug for post's url
+          dataObj.data.slug = dataObj.data.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+
+          // localize img src url
+          if (dataObj.data.thumbnail)
+            dataObj.data.thumbnail = dataObj.data.thumbnail.replace('/public/uploads/', '')
+
+          // add to posts arr
+          posts.push(dataObj)
+
+          // add to categories arr
+          if (!categories.includes(dataObj.data.category))
+            categories.push(dataObj.data.category)
+        }
+      })
+
+      // log error
+      .on('error', (e) => {
+        console.log(e)
+      })
+
+      // sort posts newest to oldest
+      // then resolve promise, returning posts and categories arrays
+      .on('end', () => {
+        posts = posts.sort((p1, p2) => {
+          return new Date(p2.data.published_at).getTime() - new Date(p1.data.published_at).getTime()
+        })
+
+        resolve({posts, categories})
+      })
+    } else {
+      // resolve promise, returning posts and categories arrays
+      resolve({posts, categories})
+    }
+  })
+
+  return getPosts
+}
+
 export default {
   getSiteData: () => ({
     title: 'MARKET Protocol'
   }),
   getRoutes: async () => {
+    const blogData = await getBlogData()
+
     return [
       {
         path: '/',
@@ -52,6 +125,24 @@ export default {
         path: '/partners',
         component: 'src/containers/Partners'
       },
+      {
+        path: '/whitepaper',
+        component: 'src/containers/WhitePaper'
+      },
+      {
+        path: '/jobs',
+        component: 'src/containers/Jobs'
+      },
+      // {
+      //   path: '/blog',
+      //   component: 'src/containers/Blog',
+      //   getData: () => blogData,
+      //   children: blogData.posts.map((post) => ({
+      //     path: `/post/${post.data.slug}`,
+      //     component: 'src/containers/BlogPost',
+      //     getData: () => ({ post })
+      //   }))
+      // },
       {
         is404: true,
         component: 'src/containers/404'

@@ -8,6 +8,11 @@ import EmailConstant from '@constants/email';
 
 interface Props {
   bg: string;
+  onlyShowSubscribeButton?: boolean;
+}
+
+interface CtaState {
+  subscriptionPopUpVisible: boolean;
 }
 
 export const SectionWrapper = styled.section`
@@ -28,22 +33,7 @@ const ButtonContainer = styled(Col)`
     padding: 0px;
     margin-bottom: 70px;
   }
-
-  @media ${device.tablet} and (max-width: ${size.tabletL}) {
-  }
-
-  @media ${device.tabletL} and (max-width: ${size.laptopL}) {
-  }
 `;
-
-// encoded
-const PartnersEmail = {
-  body:
-    'Please%20explain%20your%20company%20and%20your%20interest%20' +
-    'in%20the%20protocol%20as%20well%20as%20any%20other%20helpful%20details.',
-  email: 'partnerships@marketprotocol.io',
-  subject: 'Partnership%20with%20MARKET%20Protocol'
-};
 
 export const emailLink = `mailto:${
   EmailConstant.PARTNERS_EMAIL.email
@@ -51,7 +41,7 @@ export const emailLink = `mailto:${
   EmailConstant.PARTNERS_EMAIL.body
 }`;
 
-class Cta extends React.Component<Props> {
+class Cta extends React.Component<Props, CtaState> {
   constructor(props: Props) {
     super(props);
 
@@ -62,7 +52,32 @@ class Cta extends React.Component<Props> {
 
   render() {
     const { subscriptionPopUpVisible } = this.state;
-    const { bg } = this.props;
+    const { bg, onlyShowSubscribeButton } = this.props;
+
+    if (onlyShowSubscribeButton) {
+      return (
+        <div style={{ width: '100%', height: '100%' }}>
+          <Button
+            onClick={() => this.setState({ subscriptionPopUpVisible: true })}
+            id={'subscribe-button'}
+            type="primary"
+            style={{ width: '100%', textAlign: 'left' }}
+          >
+            Click To Subscribe{' '}
+            <Icon
+              type="arrow-right"
+              style={{ position: 'absolute', top: '35%', right: '15px' }}
+            />
+          </Button>
+
+          <MarketSubscriberForm
+            onCancel={() => this.setState({ subscriptionPopUpVisible: false })}
+            visible={subscriptionPopUpVisible}
+          />
+        </div>
+      );
+    }
+
     return (
       <SectionWrapper
         id="subscribe"
@@ -84,6 +99,7 @@ class Cta extends React.Component<Props> {
                 onClick={() =>
                   this.setState({ subscriptionPopUpVisible: true })
                 }
+                id={'subscribe-button'}
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >
@@ -102,6 +118,7 @@ class Cta extends React.Component<Props> {
               </MarketHeader>
               <Button
                 href={emailLink}
+                id={'email-button'}
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >

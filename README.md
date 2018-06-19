@@ -18,5 +18,7 @@ $ make start
 
 ## Notes
 
-This site has been created using `react-static` and specifically the 
-[`less-antdesign`](https://github.com/nozzle/react-static/tree/master/examples/less-antdesign) template.
+This site has been created using:
+- `react-static` and the [`less-antdesign`](https://github.com/nozzle/react-static/tree/master/examples/less-antdesign) template
+- [`styled-components`](https://www.styled-components.com/docs/)
+- [Ant Design](https://ant.design/components)

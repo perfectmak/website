@@ -12,6 +12,8 @@ elif [[ -v TRAVIS_TAG ]]
 then
   echo "Clearing Production Bucket Prior To Deployment (Leaving Discord and Telegram redirects)"
   aws s3 rm s3://marketprotocol.io --recursive --exclude="telegram" --exclude="discord"
+  echo "Invalidating CloudFront Cache"
+  aws cloudfront create-invalidation --distribution-id E3DYM2Y6H3UC3 --paths "/*"
 else
   echo "No deployment on this branch"
 fi
