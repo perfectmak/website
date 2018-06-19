@@ -133,16 +133,16 @@ export default {
         path: '/jobs',
         component: 'src/containers/Jobs'
       },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => blogData,
-        children: blogData.posts.map((post) => ({
-          path: `/post/${post.data.slug}`,
-          component: 'src/containers/BlogPost',
-          getData: () => ({ post })
-        }))
-      },
+      // {
+      //   path: '/blog',
+      //   component: 'src/containers/Blog',
+      //   getData: () => blogData,
+      //   children: blogData.posts.map((post) => ({
+      //     path: `/post/${post.data.slug}`,
+      //     component: 'src/containers/BlogPost',
+      //     getData: () => ({ post })
+      //   }))
+      // },
       {
         is404: true,
         component: 'src/containers/404'
