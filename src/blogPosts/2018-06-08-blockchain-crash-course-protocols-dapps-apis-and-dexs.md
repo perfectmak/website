@@ -6,7 +6,9 @@ medium_link: >-
 author: Lazar Jovanovic
 category: Crash Courses
 thumbnail: /uploads/asdf.jpeg
+readtime: 5
 ---
+
 The current primary focus of the MARKET protocol team is to build the product and grow community around it! While doing so, we have noticed some confusion in our interactions with interested parties about what MARKET Protocol is. The initial common misconception is that we are building a decentralized exchange where various assets, futures, and derivatives are traded. Well, that is not exactly the case.
 
 To be precise, MARKET Protocol is a decentralized and trustless Ethereum-based derivatives trading protocol. It is a set of rules to replace the classic notion of traditional exchanges with a ‘decentralized exchange protocol’. An accompanying ecosystem of APIs and dApps will operate in a decentralized, user-friendly, reputable, and adjustable manner on the Ethereum network. The MARKET Protocol will give traders the opportunity to enter into trades by relying on the protocol and exchanges — third-party nodes to facilitate them.

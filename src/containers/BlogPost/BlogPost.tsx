@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Waypoint from 'react-waypoint';
-import TwitterIcon from '@images/twitter.svg';
+import TwitterIcon from '@images/icons/twitter-white.svg';
 import MediumIcon from '@images/medium.svg';
-import TelegramIcon from '@images/telegram.svg';
-import Category from '@components/Blog/Category';
+import TwitterDefaultIcon from '@images/twitter.svg';
+import FacebookIcon from '@images/icons/facebook-white.svg';
+
 import { Button } from 'antd';
 import { size } from '@src/breakpoints';
 import { Link } from 'react-static';
@@ -12,13 +13,14 @@ import Moment from 'react-moment';
 import Markdown from 'react-markdown';
 
 import ProgressBar from '@components/Blog/ProgressBar';
+import MarketSubscriberForm from '@components/MarketSubscriberForm';
+import VerticalPostPreview from '@components/Blog/VerticalPostPreview';
 
 const BlogPostWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
 
   > * {
     width: 75%;
@@ -27,35 +29,6 @@ const BlogPostWrap = styled.div`
       width: 95%;
     }
   }
-
-  img#thumbnail {
-    margin-top: 40px;
-    width: 60%;
-    border-radius: 10px;
-    @media screen and (max-width: ${size.tablet}) {
-      width: 90%;
-    }
-  }
-
-  div#body {
-    text-align: left;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    img {
-      width: 60%;
-      @media screen and (max-width: ${size.tablet}) {
-        width: 90%;
-      }
-    }
-  }
-
-  div#afterword {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid #f0f0f0;
-    padding: 40px 0px 80px 0px;
   }
 
   .header-wrap {
@@ -117,6 +90,130 @@ const BlogPostWrap = styled.div`
     }
   }
 `;
+const BackgroundContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #181f26 0%,
+    #181f26 15%,
+    #f6f6f6 15%,
+    #f6f6f6 100%
+  );
+  padding-bottom: 40px;
+`;
+const OuterContainer = styled.div`
+  width: 65%;
+  padding: 20px;
+  @media screen and (max-width: ${size.tablet}) {
+    width: 95%;
+  }
+`;
+const ColumnContainer = styled.div`
+  flex-direction: column;
+`;
+const BlogContrainer = styled.div`
+  background-color: #fff;
+  text-align: left;
+`;
+const Croppit = styled.div`
+  width: 100%
+  height: 300px;
+  overflow: hidden;
+`;
+const BlogImage = styled.img`
+  width: 100%;
+`;
+const ContentContainer = styled.div`
+  color: #a5a5a8;
+  padding: 20px;
+  margin-bottom: 20px;
+  img {
+    max-width: 100%;
+  }
+`;
+const TitleContainer = styled.p`
+  color: #000;
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 20px;
+  @media screen and (max-width: ${size.tablet}) {
+    font-size: 22px;
+  }
+`;
+const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const CategoryContainer = styled.div`
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #000;
+  padding: 1px 4px 1px 4px;
+  margin-right: 10px;
+`;
+const ReadTimeContainer = styled.p`
+  font-size: 0.8rem;
+`;
+const LogoContainer = styled.img`
+  margin-left: 5px;
+  max-width: 25px;
+  max-height: 25px;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background-color: #000;
+  padding: 4px;
+`;
+
+const SubmitAndSignContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+const SignUpContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 38%;
+  background-color: #fff;
+  padding: 20px;
+  @media screen and (max-width: ${size.tabletL}) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+`;
+const Text = styled.div`
+  text-align: start;
+  color: #a5a5a8;
+`;
+const Bold = styled.div`
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 15px;
+`;
+const SubmitContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  width: 58%;
+  @media screen and (max-width: ${size.tabletL}) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+`;
+const PostListContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 interface Post {
   data: {
@@ -127,6 +224,7 @@ interface Post {
     thumbnail: string;
     slug: string;
     category: string;
+    readtime: number;
   };
   content: string;
 }
@@ -137,16 +235,16 @@ interface BlogPostProps {
 
 interface BlogPostState {
   headerIsVisible: boolean;
+  subscriptionPopUpVisible: boolean;
 }
 
 class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
   constructor(props: BlogPostProps) {
     super(props);
-
     this.state = {
-      headerIsVisible: false
+      headerIsVisible: false,
+      subscriptionPopUpVisible: false
     };
-
     this.showHeader = this.showHeader.bind(this);
     this.hideHeader = this.hideHeader.bind(this);
     this.renderSocialButtons = this.renderSocialButtons.bind(this);
@@ -162,6 +260,27 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
     this.setState({
       headerIsVisible: false
     });
+  }
+  filterPosts(posts: Post[], post: Post, n: number) {
+    if (!post || !posts) {
+      return undefined;
+    }
+    const filteredById = posts.filter(el => el.data.title !== post.data.title);
+    if (filteredById.length <= n) {
+      return filteredById;
+    }
+    const filteredByCat = filteredById.filter(
+      el => el.data.category === post.data.category
+    );
+    if (filteredByCat.length >= n) {
+      return filteredByCat.slice(0, n);
+    } else {
+      return filteredByCat
+        .concat(
+          filteredById.filter(el => el.data.category !== post.data.category)
+        )
+        .slice(0, n);
+    }
   }
 
   renderSocialButtons(section: string) {
@@ -213,7 +332,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
               {'Share via Twitter'}
               <img
                 alt={'Share via Twitter'}
-                src={TwitterIcon}
+                src={TwitterDefaultIcon}
                 width={'18px'}
                 style={{ marginLeft: 12 }}
               />
@@ -239,7 +358,11 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
             target={'_blank'}
             title={'Share via Twitter'}
           >
-            <img alt={'Share via Twitter'} src={TwitterIcon} width={'26px'} />
+            <img
+              alt={'Share via Twitter'}
+              src={TwitterDefaultIcon}
+              width={'26px'}
+            />
           </Link>
         </div>
       );
@@ -247,7 +370,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
   }
 
   render() {
-    const { headerIsVisible } = this.state;
+    const { headerIsVisible, subscriptionPopUpVisible } = this.state;
     const { post } = this.props;
 
     return (
@@ -265,60 +388,162 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
           {this.renderSocialButtons('header')}
         </div>
 
-        {/* category */}
-        <Category cat={post.data.category} showBorder={false} dontPad />
-
-        {/* title */}
-        <h1 style={{ color: '#181E26', margin: 0 }}>{post.data.title}</h1>
-
-        {/* author */}
-        <h3 style={{ color: '#4E5668', margin: 0 }}>
-          {`${post.data.author} • `}
-          <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
-        </h3>
-
-        {/* share via twitter and read on medium buttons */}
-        <div
-          style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}
-        >
-          {this.renderSocialButtons('body')}
-        </div>
-
         {/* trigger point for displaying progress bar */}
         <Waypoint onEnter={this.hideHeader} onLeave={this.showHeader} />
 
-        {/* thumbnail */}
-        <img
-          className={'image'}
-          src={post.data.thumbnail}
-          alt={''}
-          id={'thumbnail'}
-        />
-
-        {/* body */}
-        <div id={'body'}>
-          <Markdown source={post.content} escapeHtml={false} />
-        </div>
-
-        {/* afterword */}
-        <div id={'afterword'}>
-          <h2>{'Want to talk more about this post?'}</h2>
-
-          <Link to={'https://t.me/Market_Protocol_Chat'} target={'_blank'}>
-            <Button
-              type="primary"
-              style={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                textAlign: 'left',
-                width: 220
-              }}
+        <BackgroundContainer>
+          <OuterContainer>
+            <ColumnContainer>
+              <Link to="/blog">
+                <Button
+                  type="primary"
+                  icon="arrow-left"
+                  style={{
+                    fontSize: '20px',
+                    height: 40,
+                    marginBottom: 20,
+                    width: 40
+                  }}
+                />
+              </Link>
+              <BlogContrainer>
+                <Croppit>
+                  <BlogImage src={post.data.thumbnail} alt={''} />
+                </Croppit>
+                <ContentContainer>
+                  <RowContainer>
+                    <CategoryContainer className="category">
+                      {post.data.category.toUpperCase()}
+                    </CategoryContainer>
+                    <Moment format={'MMMM Do, YYYY'}>
+                      {post.data.published_at}
+                    </Moment>
+                  </RowContainer>
+                  <TitleContainer className="titled">
+                    {post.data.title}
+                  </TitleContainer>
+                  <RowContainer
+                    style={{
+                      justifyContent: 'space-between',
+                      marginBottom: '15px'
+                    }}
+                  >
+                    <ReadTimeContainer className="readtime">
+                      Reading time: {post.data.readtime} minutes
+                    </ReadTimeContainer>
+                    <div>
+                      <Link
+                        to={`https://twitter.com/intent/tweet?url=https://marketprotocol.io/blog/post/${
+                          this.props.post.data.slug
+                        }&via=MarketProtocol`}
+                        target={'_blank'}
+                        title={'Share via Twitter'}
+                      >
+                        <LogoContainer
+                          src={TwitterIcon}
+                          width="25px"
+                          height="25px"
+                        />
+                      </Link>
+                      <Link
+                        to={`https://www.facebook.com/sharer/sharer.php?u=https://marketprotocol.io/blog/post/${
+                          this.props.post.data.slug
+                        }`}
+                        target={'_blank'}
+                        title={'Share via Facebook'}
+                      >
+                        <LogoContainer
+                          src={FacebookIcon}
+                          width="25px"
+                          height="25px"
+                        />
+                      </Link>
+                    </div>
+                  </RowContainer>
+                  <Markdown source={post.content} escapeHtml={false} />
+                </ContentContainer>
+              </BlogContrainer>
+              <SubmitAndSignContainer>
+                <SignUpContainer>
+                  <Text>
+                    <Bold>Want to Learn More?</Bold>
+                    <p>Chat with the founders and engineering team</p>
+                  </Text>
+                  <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
+                    <Button className="btntelegram" type="primary">
+                      <span
+                        style={{
+                          fontSize: '1.1rem',
+                          fontWeight: 'bold',
+                          padding: '5px'
+                        }}
+                      >
+                        Join our Telegram
+                      </span>
+                    </Button>
+                  </Link>
+                </SignUpContainer>
+                <SubmitContainer>
+                  <Text>
+                    <Bold>Sign up for our newsletter</Bold>
+                    <p>
+                      Recieve our newsletter to stay on top of latest posts.
+                    </p>
+                  </Text>
+                  <div>
+                    <MarketSubscriberForm
+                      onCancel={() =>
+                        this.setState({ subscriptionPopUpVisible: false })
+                      }
+                      visible={subscriptionPopUpVisible}
+                    />
+                    <Button
+                      className="btnsubscribe"
+                      onClick={() =>
+                        this.setState({ subscriptionPopUpVisible: true })
+                      }
+                      htmlType="submit"
+                      type="primary"
+                    >
+                      <span
+                        style={{
+                          fontSize: '1.1rem',
+                          fontWeight: 'bold',
+                          padding: '5px'
+                        }}
+                      >
+                        Subscribe
+                      </span>
+                    </Button>
+                  </div>
+                </SubmitContainer>
+              </SubmitAndSignContainer>
+            </ColumnContainer>
+            <Bold
+              className="readersenjoy"
+              style={{ margin: '40px', fontSize: '1.4rem' }}
             >
-              {'Join our Telegram'}
-              <img alt={'Telegram'} src={TelegramIcon} width={'22px'} />
-            </Button>
-          </Link>
-        </div>
+              Readers also enjoyed
+            </Bold>
+            <PostListContainer>
+              {this.props.blogData && this.props.blogData.posts.length > 0 ? (
+                this.filterPosts(this.props.blogData.posts, post, 3).map(el => (
+                  <VerticalPostPreview key={el.data.title} post={el} />
+                ))
+              ) : (
+                <Bold
+                  style={{
+                    color: '#a5a5a8',
+                    fontSize: '1.2rem',
+                    margin: '20px'
+                  }}
+                >
+                  No posts
+                </Bold>
+              )}
+            </PostListContainer>
+          </OuterContainer>
+        </BackgroundContainer>
       </BlogPostWrap>
     );
   }

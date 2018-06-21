@@ -74,6 +74,7 @@ interface Post {
     medium_link: string;
     thumbnail: string;
     slug: string;
+    readtime: number;
   };
   content: string;
 }
@@ -90,7 +91,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedPageIndex: 0,
       sideMenuIsFixed: false
     };
-
     this.toggleFixedSideMenu = this.toggleFixedSideMenu.bind(this);
     this.untoggleFixedSideMenu = this.untoggleFixedSideMenu.bind(this);
   }
