@@ -1,52 +1,65 @@
 import React from 'react';
-import styled from 'styled-components';
 import Waypoint from 'react-waypoint';
 import { size } from '@src/breakpoints';
 import Hero from '@components/Hero';
 import Cta from '@components/Cta';
-import PostPreview from '@components/Blog/PostPreview';
 import CategorySelector from '@components/Blog/CategorySelector';
+import styled from 'styled-components';
+import Follow from '@components/Blog/Follow';
+import PostPreview from '@components/Blog/PostPreview';
+import RecentTweets from '@components/Blog/RecentTweets';
+import SignUp from '@components/Blog/SignUp';
+import Subscribe from '@components/Blog/Subscribe';
+import throttle from 'lodash/throttle';
+import { Button, Col, Row } from 'antd';
 
-const BlogWrap = styled.div`
-  display: flex;
-  flex-direction: row;
+const RootWrap = styled.div`
+  > #root {
+    background: #eeeeee;
+    display: block;
 
-  > div.posts-wrap {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #fff;
-    padding-bottom: 40px;
-  }
-
-  > div.categories-wrap {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    z-index: 1;
-
-    &.fixed {
-      position: fixed;
-      top: 0;
-      right: 0;
-    }
-  }
-
-  @media screen and (max-width: ${size.laptop}) {
-    flex-direction: column;
-
-    > div.posts-wrap {
+    #header {
       width: 100%;
+      height: 361px;
+      background: #181e26;
+
+      #headerTitle {
+        color: #ffffff;
+        font-size: 48px;
+        font-weight: bold;
+        line-height: 260px;
+        text-align: center;
+      }
     }
 
-    > div.categories-wrap {
-      display: none;
+    #gridContainer {
+      max-width: 100%;
+      margin: 0 auto;
+      width: 1180px;
+      padding: 24px;
+
+      #blogs {
+        margin-top: -154px;
+      }
+    }
+
+    #row {
+      margin-top: 24px;
+    }
+
+    #subtitle {
+      color: #646469;
+      font-size: 14px;
+      line-heigh: 20px;
+      margin-top: 10px;
+    }
+
+    #load-more-button {
+      display: block;
+      font-size: 20px;
+      margin: 100px auto;
+      padding: 0 65px;
+      text-align: center;
     }
   }
 `;
@@ -83,33 +96,29 @@ class Blog extends React.Component<BlogProps, BlogState> {
   constructor(props: BlogProps) {
     super(props);
 
+    this.handleScroll = throttle(() => {
+      this.forceUpdate();
+    }, 10);
+
     this.state = {
       filteredPosts: [],
       numPostsPerPage: 5,
       pagifiedPosts: [[]],
       selectedCat: 'All',
-      selectedPageIndex: 0,
-      sideMenuIsFixed: false
+      selectedPageIndex: 0
     };
-    this.toggleFixedSideMenu = this.toggleFixedSideMenu.bind(this);
-    this.untoggleFixedSideMenu = this.untoggleFixedSideMenu.bind(this);
   }
 
   componentDidMount() {
     const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleScroll);
     this.setState({ pagifiedPosts });
   }
 
-  toggleFixedSideMenu() {
-    this.setState({
-      sideMenuIsFixed: true
-    });
-  }
-
-  untoggleFixedSideMenu() {
-    this.setState({
-      sideMenuIsFixed: false
-    });
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleScroll);
   }
 
   splitPostsIntoPages(posts: Post[]) {
@@ -142,19 +151,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
     return pages;
   }
 
-  onSelectPage(i: number) {
-    if (i === this.state.selectedPageIndex) {
-      return 'cancelled invocation';
-    }
-
-    this.setState({ selectedPageIndex: i }, () => {
-      // scroll to top of post list
-      if (document && document.getElementById('top-of-post-list-anchor')) {
-        document.getElementById('top-of-post-list-anchor').scrollIntoView();
-      }
-    });
-  }
-
   onSelectCat(cat: string) {
     this.setState({ selectedCat: cat }, () => this.filterPosts());
   }
@@ -181,128 +177,102 @@ class Blog extends React.Component<BlogProps, BlogState> {
     });
   }
 
-  renderPaginationButtons(styles?: {}) {
-    const { selectedPageIndex, pagifiedPosts } = this.state;
-    const numPages = pagifiedPosts.length;
-    const isFirstPage = selectedPageIndex === 0;
-    const isLastPage = numPages === 1 || selectedPageIndex === numPages - 1;
+  renderCategorySelector(shouldRender: boolean) {
+    if (!shouldRender) {
+      return;
+    }
+
+    const { categories } = this.props;
+    const { selectedCat } = this.state;
 
     return (
-      <div
-        className={'pagination-buttons'}
-        style={Object.assign({}, styles || {}, {
-          display: 'flex',
-          marginBottom: 10
-        })}
+      <Row xs={{ span: 24 }} id="row">
+        <CategorySelector
+          selectedCat={selectedCat}
+          categories={categories}
+          onSelectCat={this.onSelectCat.bind(this)}
+        />
+      </Row>
+    );
+  }
+
+  renderSidebar() {
+    return (
+      <Col
+        xs={{ span: 24 }}
+        sm={{ span: 24 }}
+        md={{ span: 8 }}
+        lg={{ span: 6 }}
       >
-        <p
-          onClick={() =>
-            isFirstPage ? null : this.onSelectPage(selectedPageIndex - 1)
-          }
-          style={{
-            backgroundColor: '#f6f6f6',
-            borderRadius: 6,
-            color: isFirstPage ? '#A9AEB7' : '#181E26',
-            cursor: isFirstPage ? 'default' : 'pointer',
-            margin: 3,
-            padding: '4px 14px 4px 14px'
-          }}
-        >
-          {'<'}
-        </p>
-
-        {pagifiedPosts.map((page, i) => (
-          <p
-            onClick={() => this.onSelectPage(i)}
-            style={{
-              backgroundColor: '#f6f6f6',
-              borderRadius: 6,
-              color: selectedPageIndex === i ? '#00E2C1' : '#181E26',
-              cursor: 'pointer',
-              margin: 3,
-              padding: '4px 14px 4px 14px'
-            }}
-            key={i}
-          >
-            {`${i + 1}`}
-          </p>
-        ))}
-
-        <p
-          onClick={() =>
-            isLastPage ? null : this.onSelectPage(selectedPageIndex + 1)
-          }
-          style={{
-            backgroundColor: '#f6f6f6',
-            borderRadius: 6,
-            color: isLastPage ? '#A9AEB7' : '#181E26',
-            cursor: isLastPage ? 'default' : 'pointer',
-            margin: 3,
-            padding: '4px 14px 4px 14px'
-          }}
-        >
-          {'>'}
-        </p>
-      </div>
+        <Row>
+          <SignUp />
+        </Row>
+        <Row id="row">
+          <Subscribe />
+        </Row>
+        {this.renderCategorySelector(window.innerWidth >= 768)}
+        <Row xs={{ span: 24 }} id="row">
+          <Follow />
+        </Row>
+        <Row id="row">
+          <RecentTweets />
+        </Row>
+      </Col>
     );
   }
 
   render() {
-    const { categories } = this.props;
-    const {
-      selectedPageIndex,
-      selectedCat,
-      pagifiedPosts,
-      sideMenuIsFixed
-    } = this.state;
+    const { selectedPageIndex, pagifiedPosts } = this.state;
     const postsToRender = pagifiedPosts[selectedPageIndex];
 
     return (
-      <div>
-        {/* header */}
-        <Waypoint
-          onEnter={this.untoggleFixedSideMenu}
-          onLeave={this.toggleFixedSideMenu}
-        >
-          <div>
-            <Hero text={'Welcome to the MARKET Protocol blog.'} />
+      <RootWrap>
+        <div id="root">
+          <div id="header">
+            <div id="headerTitle">Blog</div>
           </div>
-        </Waypoint>
-
-        <BlogWrap>
-          {/* post previews  and pagination buttons */}
-          <div className={'posts-wrap'}>
-            <div id={'top-of-post-list-anchor'} />
-
-            {/* post previews */
-            postsToRender.map((post, i) => {
-              return <PostPreview key={`post#${i}`} post={post} i={i} />;
-            })}
-
-            {/* pagination buttons */
-            this.renderPaginationButtons({ margin: '20px 0px 0px 0px' })}
+          <div id="gridContainer">
+            <Row gutter={24}>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 26 }}
+                md={{ span: 16 }}
+                lg={{ span: 18 }}
+                id="blogs"
+              >
+                <Row gutter={24} id="row">
+                  <Col xs={{ span: 24 }} id="row">
+                    <PostPreview post={postsToRender[0]} featured={true} />
+                    {this.renderCategorySelector(window.innerWidth <= 768)}
+                  </Col>
+                  {(postsToRender || [])
+                    .slice(1, postsToRender.length)
+                    .map((post, i) => {
+                      return (
+                        <Col
+                          xs={{ span: 24 }}
+                          sm={{ span: 12 }}
+                          md={{ span: 12 }}
+                          lg={{ span: 12 }}
+                          id="row"
+                          key={i}
+                        >
+                          <PostPreview key={`post#${i}`} post={post} i={i} />
+                        </Col>
+                      );
+                    })}
+                  <Col xs={{ span: 24 }}>
+                    <Button type="primary" id="load-more-button">
+                      Load more
+                    </Button>
+                  </Col>
+                </Row>
+              </Col>
+              {this.renderSidebar()}
+            </Row>
           </div>
-
-          {/* pagination buttons, category selectors and newsletter cta */}
-          <div
-            className={['categories-wrap', sideMenuIsFixed && 'fixed'].join(
-              ' '
-            )}
-          >
-            <h2>Categories</h2>
-            <CategorySelector
-              selectedCat={selectedCat}
-              categories={categories}
-              onSelectCat={(cat: string) => this.onSelectCat(cat)}
-            />
-
-            <div style={{ width: '80%', marginTop: 10 }}>
-              <h2>Join our newsletter</h2>
-              <Cta onlyShowSubscribeButton />
-            </div>
-          </div>
-        </BlogWrap>
-      </div>
+        </div>
+      </RootWrap>
     );
   }
 }

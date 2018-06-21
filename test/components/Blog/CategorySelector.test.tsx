@@ -14,21 +14,23 @@ describe('<CategorySelector />', () => {
 
   it('renders 1 wrapper div', () => {
     const c = mount(<CategorySelector selectedCat={selectedCat} categories={categories} onSelectCat={onSelectCat} />);
-    expect(c.find('div').length).toEqual(1);
+    expect(c.find('#root').length).toEqual(1);
   });
 
   it('renders the correct number of categories', () => {
     const c = mount(<CategorySelector selectedCat={selectedCat} categories={categories} onSelectCat={onSelectCat} />);
-    expect(c.find('div').children().length).toEqual(categories.length);
+    expect(c.find('#root').children().length).toEqual(categories.length + 3);
   });
-
+  
   it('invokes props.onSelectCat function when an unselected <Category /> is clicked', () => {
     const mockOnSelectCat = jest.fn();
     const c = mount(<CategorySelector selectedCat={selectedCat} categories={categories} onSelectCat={mockOnSelectCat} />);
 
-    const cat1 = c.find('div').childAt(0);
-    const cat2 = c.find('div').childAt(1);
-    const cat3 = c.find('div').childAt(2);
+    const root = c.find('#root');
+
+    const cat1 = root.childAt(3);
+    const cat2 = root.childAt(4);
+    const cat3 = root.childAt(5);
 
     cat1.simulate('click');
     cat2.simulate('click');

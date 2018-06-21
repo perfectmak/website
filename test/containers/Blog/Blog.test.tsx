@@ -49,14 +49,6 @@ describe('<Blog />', () => {
     expect(component.exists());
   });
 
-  it('renders a <Hero /> component', () => {
-    expect(component.find(Hero).length).toEqual(1);
-  });
-
-  it('renders a <Waypoint /> component', () => {
-    expect(component.find(Waypoint).length).toEqual(1);
-  });
-
   it('pagifies posts correctly', () => {
     let instance = component.instance();
     let { numPostsPerPage } = instance.state;
@@ -95,55 +87,6 @@ describe('<Blog />', () => {
     expect(observed.numPages).toEqual(expected.numPages);
     expect(observed.numPosts).toEqual(expected.numPosts);
     expect(observed.postsAreUnique);
-  });
-
-  it('toggles side menu position using toggleFixedSideMenu and untoggleFixedSideMenu functions', () => {
-    let instance = component.instance();
-    instance.toggleFixedSideMenu();
-    expect(component.state().sideMenuIsFixed).toEqual(true);
-    instance.untoggleFixedSideMenu();
-    expect(component.state().sideMenuIsFixed).toEqual(false);
-  });
-
-  it('updates state.selectedPageIndex when pagination buttons are clicked', () => {
-    let buttonComponents = component.find('.pagination-buttons');
-    let numButtons = buttonComponents.children().length
-    let buttons = {
-      left: buttonComponents.childAt(0),
-      thirdPage: buttonComponents.childAt(3),
-      lastPage: buttonComponents.childAt(numButtons - 2),
-      right: buttonComponents.childAt(numButtons - 1),
-    }
-
-    // test paging left when first page is already selected
-    buttons.left.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(0);
-
-    // test paging right
-    buttons.right.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(1);
-
-    // test paging left
-    buttons.left.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(0);
-
-    // test directly paging to third page
-    buttons.thirdPage.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(2);
-
-    // test directly paging to last page
-    buttons.lastPage.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(5);
-
-    // test paging right when last page is already selected
-    buttons.right.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(5);
-  });
-
-  it('cancels invocation of onSelectPage if user is already on the target page', () => {
-    let instance = component.instance();
-    let returnValue = instance.onSelectPage(0);
-    expect(returnValue).toEqual('cancelled invocation');
   });
 
   it('updates selectedCat state var with onSelectCat function', () => {
@@ -186,5 +129,14 @@ describe('<Blog />', () => {
       let newPages = component.state().pagifiedPosts
       expect(newPages === origPages).toBeFalsy();
     });
+  });
+
+  it('scrolls without crashing', () => {
+    let instance = component.instance();
+    instance.handleScroll();
+  });
+
+  it('unmounts without crashing', () => {
+    component.unmount();
   });
 });

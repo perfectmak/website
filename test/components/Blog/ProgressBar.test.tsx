@@ -12,4 +12,15 @@ describe('<ProgressBar />', () => {
     const c = shallow(<ProgressBar />);
     expect(c.find('#progress').length).toEqual(1);
   });
+  
+  it('scrolls without crashing', () => {
+    const c = shallow(<ProgressBar />);
+    const instance = c.instance();
+    instance.onScroll();
+  });
+
+  it('unmounts without crashing', () => {
+    const c = shallow(<ProgressBar />);
+    c.unmount();
+  });
 });

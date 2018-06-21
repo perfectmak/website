@@ -8,30 +8,15 @@ describe('<Category />', () => {
     expect(c.exists());
   });
 
-  it('renders an h3 component', () => {
+  it('renders an div component', () => {
     const c = shallow(<Category cat={'Development'} />);
-    expect(c.find('h3').length).toEqual(1);
+    expect(c.find('div').length).toEqual(1);
   });
 
   it('displays the category', () => {
     const cat = 'Development'
     const c = shallow(<Category cat={cat} />);
-    expect(c.find('h3').text()).toEqual(cat);
-  });
-
-  it('determines its text color based on cat prop', () => {
-    const TheTeam = shallow(<Category cat={'The Team'} />);
-    const Development = shallow(<Category cat={'Development'} />);
-    const CrashCourses = shallow(<Category cat={'Crash Courses'} />);
-    const colorMap = {
-      'The Team': '#3a4fdf',
-      'Development': '#47df5b',
-      'Crash Courses': '#b32deb'
-    }
-
-    expect(TheTeam.find('h3').props().style.color).toEqual(colorMap['The Team']);
-    expect(Development.find('h3').props().style.color).toEqual(colorMap['Development']);
-    expect(CrashCourses.find('h3').props().style.color).toEqual(colorMap['Crash Courses']);
+    expect(c.find('div').text()).toEqual(cat);
   });
 
   it("invokes onClick prop function on click", () => {
