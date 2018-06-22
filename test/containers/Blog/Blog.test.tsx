@@ -1,8 +1,9 @@
 import React from 'react';
 import Waypoint from 'react-waypoint';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
 import Hero from '@components/Hero';
+import WithData from '@containers/Blog/index/';
 
 interface Post {
   data: {
@@ -19,9 +20,9 @@ interface Post {
 
 describe('<Blog />', () => {
   let component = typeof Blog;
-  let posts: Post[] = [];
-  let numPostsToTest = 28
-  let categories: string[] = ['cat1', 'cat2', 'cat3'];
+  const posts: Post[] = [];
+  const numPostsToTest = 28;
+  const categories: string[] = ['cat1', 'cat2', 'cat3'];
 
   // populate posts[]
   for (let i = 0; i < numPostsToTest; i++) {
@@ -50,39 +51,40 @@ describe('<Blog />', () => {
   });
 
   it('pagifies posts correctly', () => {
-    let instance = component.instance();
-    let { numPostsPerPage } = instance.state;
+    const instance = component.instance();
+    const { numPostsPerPage } = instance.state;
 
     // run pagification function
-    let pagifiedPosts = instance.splitPostsIntoPages(posts);
+    const pagifiedPosts = instance.splitPostsIntoPages(posts);
 
     // define expected results
-    let expected = {
+    const expected = {
       numPages: Math.ceil(numPostsToTest / numPostsPerPage),
       numPosts: numPostsToTest,
-    }
+    };
 
     // define observed results
-    let observed = {
+    const observed = {
       numPages: pagifiedPosts.length,
       numPosts: 0,
       postsAreUnique: false
-    }
+    };
 
     // used to test for post uniqueness
-    let postTitles = []
+    const postTitles = [];
 
     // loop through posts, counting them and testing for uniqueness
     pagifiedPosts.map((page, i) => {
       observed.numPosts += pagifiedPosts[i].length;
       page.map((post, i) => {
-        if (!postTitles.includes(post.title))
+        if (!postTitles.includes(post.title)) {
           postTitles.push(post.title);
+        }
       });
     });
 
     // updated observed post uniqueness value
-    observed.postsAreUnique = postTitles.length === observed.numPages
+    observed.postsAreUnique = postTitles.length === observed.numPages;
 
     expect(observed.numPages).toEqual(expected.numPages);
     expect(observed.numPosts).toEqual(expected.numPosts);
@@ -90,53 +92,62 @@ describe('<Blog />', () => {
   });
 
   it('updates selectedCat state var with onSelectCat function', () => {
-    let instance = component.instance();
+    const instance = component.instance();
     instance.onSelectCat('All');
     expect(component.state().selectedCat).toEqual('All');
   });
 
   describe('filterPosts function', () => {
     it('updates filteredPosts state var with posts that have the specified category', () => {
-      let instance = component.instance();
+      const instance = component.instance();
 
-      let expected = {
+      const expected = {
         numPostsWithCategoriesOtherThanCat1: 0
-      }
+      };
 
-      let observed = {
+      const observed = {
         numPostsWithCategoriesOtherThanCat1: 0
-      }
+      };
 
       instance.setState({ selectedCat: 'cat1' });
       instance.filterPosts();
 
-      let { filteredPosts } = component.state();
+      const { filteredPosts } = component.state();
 
       for (let i = 0; i < filteredPosts.length; i++) {
-        let curr = filteredPosts[i];
-        if (curr.data.category !== 'cat1')
+        const curr = filteredPosts[i];
+        if (curr.data.category !== 'cat1') {
           observed.numPostsWithCategoriesOtherThanCat1++;
+        }
       }
 
       expect(observed.numPostsWithCategoriesOtherThanCat1).toEqual(expected.numPostsWithCategoriesOtherThanCat1);
     });
 
     it('repagifies filtered posts', () => {
-      let instance = component.instance();
-      let origPages = component.state().pagifiedPosts
+      const instance = component.instance();
+      const origPages = component.state().pagifiedPosts;
       instance.setState({ selectedCat: 'cat1' });
       instance.filterPosts();
-      let newPages = component.state().pagifiedPosts
+      const newPages = component.state().pagifiedPosts;
       expect(newPages === origPages).toBeFalsy();
     });
   });
 
   it('scrolls without crashing', () => {
-    let instance = component.instance();
+    const instance = component.instance();
     instance.handleScroll();
   });
 
   it('unmounts without crashing', () => {
     component.unmount();
+  });
+});
+
+describe('With data', () => {
+  it('renders without crashing', () => {
+    const component = shallow(
+      <WithData />
+    );
   });
 });
