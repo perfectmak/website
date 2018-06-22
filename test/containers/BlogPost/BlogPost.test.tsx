@@ -8,6 +8,7 @@ import ProgressBar from '@components/Blog/ProgressBar'
 import BlogPost, {CategoryContainer} from '@containers/BlogPost/BlogPost'
 import VerticalPostPreview from '@components/Blog/VerticalPostPreview'
 import MarketSubscriberForm from '@components/MarketSubscriberForm'
+import WithData from '@containers/BlogPost/index';
 
 describe('<BlogPost />', () => {
   let component = typeof BlogPost
@@ -175,4 +176,12 @@ describe('<BlogPost />', () => {
       expect(component.state().subscriptionPopUpVisible).toEqual(false);
     })
   });
+})
+
+describe('With data', () => {
+  it('renders without crashing', () => {
+    const component = shallow(
+      <WithData />
+    );
+  })
 })

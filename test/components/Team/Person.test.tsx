@@ -25,4 +25,14 @@ describe('<Person />', () => {
     imgComponent.simulate('click');
     expect(mockFocus.mock.calls).to.have.length(1);
   });
+
+  it('handles no or incorrect props passed', () => {
+    props.data.bio = null;
+    const component = shallow(<Person {...props} />);
+    const imgComponent = component.find('img').at(0);
+    expect(imgComponent.props().className).to.equal('');
+    expect(imgComponent.props().style.cursor).to.equal('default');
+    imgComponent.simulate('click');
+    expect(mockFocus.mock.calls).to.have.length(1);
+  });
 });

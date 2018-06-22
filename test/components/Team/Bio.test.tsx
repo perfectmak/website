@@ -23,6 +23,12 @@ describe('<Bio />', () => {
     expect(mockUnfocus.mock.calls).to.have.length(1);
   });
 
+  it('not call unfocus prop event on other key', () => {
+    const component = shallow(<Bio {...props} />);
+    component.instance().onEscKeyPress({ keyCode: 66 });
+    expect(mockUnfocus.mock.calls).to.have.length(1);
+  });
+
   it('hides modal on clicking background', () => {
     const component = shallow(<Bio {...props} />);
     const backgroundComponent = component.find('div').at(1);
