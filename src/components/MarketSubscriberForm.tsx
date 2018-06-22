@@ -121,9 +121,8 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
       You can change your mind at any time by clicking the unsubscribe link in
       the footer of any email you receive from us, or by contacting us at{' '}
       <a href="info@marketprotocol.io">info@marketprotocol.io</a>. We will treat
-      your information with respect. For more information about our privacy
-      practices please visit our website. By clicking below, you agree that we
-      may process your information in accordance with these terms.
+      your information with respect. By clicking above, you agree that we may
+      process your information in accordance with these terms.
     </small>
     {/* These are the field name for these parameters in mailchimp */}
     {/* <input type="text" name="MERGE1" id="MERGE1" /> */} {/*First Name*/}
