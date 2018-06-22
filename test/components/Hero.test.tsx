@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { MarketText } from '@styledComponents';
 import { Col, Row } from 'antd';
 import heroIllustration from '@images/hero-illustration.svg';
 import Hero, { HeroText, HeroArt } from '@components/Hero';
+import Cta from '@components/Cta';
 
 describe('<Hero />', () => {
   it('renders section with minHeight 300px', () => {
@@ -29,10 +31,14 @@ describe('<Hero />', () => {
     const firstColComponentProps = colComponents.at(0).props();
     const secondColComponentProps = colComponents.at(1).props();
     expect(colComponents).to.have.length(2);
+
     expect(firstColComponentProps.xs).to.equal(24);
-    expect(firstColComponentProps.md).to.equal(10);
+    expect(firstColComponentProps.md).to.equal(12);
+    expect(firstColComponentProps.lg).to.equal(10);
+
     expect(secondColComponentProps.xs).to.equal(24);
-    expect(secondColComponentProps.md).to.equal(14);
+    expect(secondColComponentProps.md).to.equal(12);
+    expect(secondColComponentProps.lg).to.equal(14);
   });
 
   it('renders HeroText with title text', () => {
@@ -43,6 +49,18 @@ describe('<Hero />', () => {
         .render()
         .text()
     ).to.equal('Powering safe, solvent and trustless trading of any asset.');
+  });
+
+  it('renders Cta with text', () => {
+    const component = shallow(<Hero />);
+    const marketTextProps = component.find(MarketText).props();
+    expect(marketTextProps.children).to.equal('Sign Up For Our Newsletter');
+  });
+
+  it('renders Cta button', () => {
+    const component = shallow(<Hero />);
+    const ctaButton = component.find(Cta);
+    expect(ctaButton).to.have.length(1);
   });
 
   it('renders HeroArt with image', () => {

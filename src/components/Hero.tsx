@@ -4,6 +4,26 @@ import styled from 'styled-components';
 //
 import heroIllustration from '@images/hero-illustration.svg';
 import { device, size } from '@src/breakpoints';
+import { MarketText } from '@src/Styles';
+
+import Cta from '@components/Cta';
+
+export const CtaContainer = styled.div`
+  margin-left: 50px;
+  width: 50%;
+
+  @media ${device.laptop} {
+    margin-top: 7rem;
+  }
+
+  @media ${device.tablet} {
+    margin-top: 4rem;
+  }
+
+  @media ${device.mobileS} {
+    margin-top: 2rem;
+  }
+`;
 
 export const HeroArt = styled.div`
   text-align: right;
@@ -51,7 +71,7 @@ export const HeroText = styled.h1`
   }
 
   @media ${device.tablet} {
-    font-size: 38px;
+    font-size: 30px;
     margin: -50px 0 0 50px;
   }
 
@@ -69,13 +89,19 @@ class Hero extends React.Component<{ text?: string }, {}> {
     return (
       <section style={{ background: '#181E26', minHeight: '300px' }}>
         <Row type="flex" className="hero" align="middle">
-          <Col xs={24} md={10} style={{ zIndex: 1 }}>
+          <Col xs={24} md={12} lg={10} style={{ zIndex: 1 }}>
             <HeroText>
               {this.props.text ||
                 'Powering safe, solvent and trustless trading of any asset.'}
             </HeroText>
+            <CtaContainer>
+              <MarketText style={{ color: '#fff' }}>
+                Sign Up For Our Newsletter
+              </MarketText>
+              <Cta onlyShowSubscribeButton />
+            </CtaContainer>
           </Col>
-          <Col xs={24} md={14}>
+          <Col xs={24} md={12} lg={14}>
             <HeroArt>
               <img
                 alt="trade stocks ethereum blockhain derivatives"

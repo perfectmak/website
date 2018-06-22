@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Link } from 'react-static';
 import telegram from '@images/telegram.svg';
+import Cta from '@components/Cta';
 
 import Popup, {
   PopupArt,
@@ -39,6 +40,16 @@ describe('<Popup />', () => {
     ).to.equal('Join our Telegram.');
     expect(component.find('img').props().src).to.equal(telegram);
   });
+
+  it('renders Cta with text', () => {
+    const component = shallow(<Popup />);
+    component.setState({ telegramDisplay: true });
+    const ctaButton = component.find(Cta).props();
+    expect(ctaButton.afterIcon).to.equal(false)
+    expect(ctaButton.text).to.equal('Join Our Email List');
+    expect(ctaButton.onlyShowSubscribeButton).to.equal(true)
+  });
+
 
   it('sets telegramDisplay to true on componentDidMount after a timeout', () => {
     jest.useFakeTimers();

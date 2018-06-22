@@ -2,21 +2,25 @@ import React from 'react';
 import { Button, Icon } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-static';
+import EmailConstant from '@constants/email';
 //
 import telegram from '@images/telegram.svg';
+import mail from '@images/mail.svg';
+import Cta from '@components/Cta';
+import { device, size } from '@src/breakpoints';
 
 export const PopupArt = styled.div`
   /*layout*/
   background-color: #fff;
   border-radius: 0.1rem;
   font-size: 1rem;
-  height: 6rem;
   width: 18rem;
   text-align: center;
 
   /*positioning*/
   bottom: 1.5rem;
   right: 1.5rem;
+  padding: 10px;
   position: fixed;
 
   /*material*/
@@ -27,7 +31,6 @@ export const PopupArt = styled.div`
 /*text stuff*/
 export const PopupText = styled.div`
   color: #000000;
-  padding: 4px;
 `;
 
 export const PopupButton = styled(Button)`
@@ -51,6 +54,22 @@ export const PopupClose = styled(Icon)`
     color: #26e1c1;
   }
 `;
+
+export const CtaWrapper = styled.div`
+  width: 14rem;
+  margin: 0 auto;
+  margin-top: 10px;
+
+  @media ${device.mobileS} and (max-width: 767px) {
+    display: none;
+  }
+`;
+
+export const emailLink = `mailto:${
+  EmailConstant.PARTNERS_EMAIL.email
+}?subject=${EmailConstant.PARTNERS_EMAIL.subject}&body=${
+  EmailConstant.PARTNERS_EMAIL.body
+}`;
 
 class Popup extends React.Component {
   constructor() {
@@ -94,6 +113,14 @@ class Popup extends React.Component {
               </PopupButtonText>
             </PopupButton>
           </Link>
+          <CtaWrapper>
+            <Cta
+              beforeIcon={mail}
+              onlyShowSubscribeButton
+              text="Join Our Email List"
+              afterIcon={false}
+            />
+          </CtaWrapper>
           <PopupClose type="close" onClick={this.closeTelegramDisplay} />
         </PopupArt>
       );

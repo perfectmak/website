@@ -14,7 +14,6 @@ const style = {
   boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
   display: 'flex',
   flexDirection: 'column',
-  height: '25rem',
   justifyContent: 'space-evenly',
   padding: '1.2rem'
 };
@@ -24,7 +23,7 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
     bodyStyle={style}
     visible={visible}
     footer={null}
-    width="20rem"
+    width="30rem"
     onCancel={onCancel}
   >
     <Form
@@ -118,6 +117,14 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
         Submit
       </Button>
     </Form>
+    <small style={{ fontSize: '9px', marginTop: '1.2rem' }}>
+      You can change your mind at any time by clicking the unsubscribe link in
+      the footer of any email you receive from us, or by contacting us at{' '}
+      <a href="info@marketprotocol.io">info@marketprotocol.io</a>. We will treat
+      your information with respect. For more information about our privacy
+      practices please visit our website. By clicking below, you agree that we
+      may process your information in accordance with these terms.
+    </small>
     {/* These are the field name for these parameters in mailchimp */}
     {/* <input type="text" name="MERGE1" id="MERGE1" /> */} {/*First Name*/}
     {/* <input type="text" name="MERGE2" id="MERGE2" /> */} {/*Last Name*/}

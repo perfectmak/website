@@ -8,6 +8,9 @@ import EmailConstant from '@constants/email';
 
 interface Props {
   bg: string;
+  beforeIcon?: string;
+  text?: string;
+  afterIcon?: boolean;
   onlyShowSubscribeButton?: boolean;
 }
 
@@ -52,7 +55,13 @@ class Cta extends React.Component<Props, CtaState> {
 
   render() {
     const { subscriptionPopUpVisible } = this.state;
-    const { bg, onlyShowSubscribeButton } = this.props;
+    const {
+      bg,
+      beforeIcon = '',
+      onlyShowSubscribeButton,
+      text,
+      afterIcon = true
+    } = this.props;
 
     if (onlyShowSubscribeButton) {
       return (
@@ -61,13 +70,29 @@ class Cta extends React.Component<Props, CtaState> {
             onClick={() => this.setState({ subscriptionPopUpVisible: true })}
             id={'subscribe-button'}
             type="primary"
-            style={{ width: '100%', textAlign: 'left' }}
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              fontSize: '1rem',
+              justifyContent: afterIcon ? 'space-between' : 'center',
+              width: '100%'
+            }}
           >
-            Click To Subscribe{' '}
-            <Icon
-              type="arrow-right"
-              style={{ position: 'absolute', top: '35%', right: '15px' }}
-            />
+            {!!beforeIcon && (
+              <img
+                alt="join mailing list"
+                src={beforeIcon}
+                fill="#FFFFFF"
+                style={{ marginRight: '5px', width: '19px' }}
+              />
+            )}
+            {text || `Click To Subscribe${' '}`}
+            {afterIcon && (
+              <Icon
+                type="arrow-right"
+                style={{ position: 'absolute', top: '35%', right: '15px' }}
+              />
+            )}
           </Button>
 
           <MarketSubscriberForm
