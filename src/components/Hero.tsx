@@ -4,24 +4,32 @@ import styled from 'styled-components';
 //
 import heroIllustration from '@images/hero-illustration.svg';
 import { device, size } from '@src/breakpoints';
-import { MarketText } from '@src/Styles';
 
 import Cta from '@components/Cta';
 
 export const CtaContainer = styled.div`
   margin-left: 50px;
-  width: 50%;
+  margin-top: 3rem;
+  width: 40%;
 
-  @media ${device.laptop} {
-    margin-top: 7rem;
+  @media ${device.mobileS} and (max-width: ${size.mobileL}) {
+    width: 60%;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
-  @media ${device.tablet} {
-    margin-top: 4rem;
+  @media ${device.mobileL} and (max-width: ${size.tablet}) {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 45%;
   }
 
-  @media ${device.mobileS} {
-    margin-top: 2rem;
+  @media ${device.tablet} and (max-width: ${size.tabletL}) {
+    width: 50%;
+  }
+
+  @media ${device.laptop} and (max-width: ${size.laptopM}) {
+    width: 60%;
   }
 `;
 
@@ -62,12 +70,12 @@ export const HeroText = styled.h1`
 
   @media ${device.mobileS} {
     font-size: 22px;
-    margin: 70px 50px 0 50px;
+    margin: 70px 30px 0 30px;
   }
 
   @media ${device.mobileL} and (max-width: ${size.tablet}) {
-    font-size: 38px;
-    margin: 150px 70px 0 70px;
+    font-size: 32px;
+    margin: 150px 50px 0 50px;
   }
 
   @media ${device.tablet} {
@@ -95,9 +103,6 @@ class Hero extends React.Component<{ text?: string }, {}> {
                 'Powering safe, solvent and trustless trading of any asset.'}
             </HeroText>
             <CtaContainer>
-              <MarketText style={{ color: '#fff' }}>
-                Sign Up For Our Newsletter
-              </MarketText>
               <Cta onlyShowSubscribeButton />
             </CtaContainer>
           </Col>

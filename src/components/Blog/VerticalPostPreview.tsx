@@ -4,25 +4,40 @@ import { size } from '@src/breakpoints';
 import Moment from 'react-moment';
 import Markdown from 'react-markdown';
 import { cropContent } from '@helpers/cropContent';
+import { Link } from 'react-static';
 
 const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
+  color: #a5a5a8;
+  font-size: 0.7rem;
+  justify-content: space-between;
+  padding: 20px;
 `;
 const Text = styled.div`
-  text-align: start;
-  color: #a5a5a8;
+  text-align: left;
+  color: #646469;
+  padding: 0 20px;
+  font-size: 0.8rem;
 `;
 const Bold = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
   color: #000;
   margin-bottom: 15px;
+  padding: 0 20px;
+  text-align: left;
 `;
 const PostItemContainer = styled.div`
   width: 32%
   background-color: #fff;
   margin-bottom: 20px;
+  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.05);
+  transition: all 300ms;
+  
+  :hover {
+    box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15)
+  }
   @media screen and (max-width: ${size.tabletL}) {
     width: 48%;
     margin-bottom: 20px;
@@ -64,39 +79,35 @@ interface Props {
   post: Post;
 }
 
-export default ({ post }: Props) => {
-  if (!post) {
-    return null;
+class VerticalPostPreview extends React.Component<Props> {
+  render() {
+    const { post } = this.props;
+    if (!post) {
+      return null;
+    }
+    return (
+      <PostItemContainer>
+        <a href={`/blog/post/${post.data.slug}`}>
+          <Cropper>
+            <PostItemImage src={post.data.thumbnail} />
+          </Cropper>
+          <RowContainer>
+            <CategoryContainer style={{ fontSize: '0.6rem' }}>
+              {post.data.category.toUpperCase()} {''}
+            </CategoryContainer>
+            <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
+          </RowContainer>
+          <Bold>{post.data.title}</Bold>
+          <Text>
+            <Markdown
+              source={cropContent(post.content, 20)}
+              escapeHtml={false}
+            />
+          </Text>
+        </a>
+      </PostItemContainer>
+    );
   }
+}
 
-  return (
-    <PostItemContainer>
-      <a href={`/blog/post/${post.data.slug}`}>
-        <Cropper>
-          <PostItemImage src={post.data.thumbnail} />
-        </Cropper>
-        <RowContainer
-          style={{
-            color: '#a5a5a8',
-            fontSize: '0.7rem',
-            justifyContent: 'space-between',
-            margin: '5%'
-          }}
-        >
-          <CategoryContainer style={{ fontSize: '0.6rem' }}>
-            {post.data.category.toUpperCase()} {''}
-          </CategoryContainer>
-          <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
-        </RowContainer>
-        <Bold
-          style={{ margin: '10px', fontSize: '0.9rem', textAlign: 'start' }}
-        >
-          {post.data.title}
-        </Bold>
-        <Text style={{ margin: '10px', fontSize: '0.8rem' }}>
-          <Markdown source={cropContent(post.content, 20)} escapeHtml={false} />
-        </Text>
-      </a>
-    </PostItemContainer>
-  );
-};
+export default VerticalPostPreview;

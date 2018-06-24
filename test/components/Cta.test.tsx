@@ -44,7 +44,7 @@ describe('<Cta />', () => {
   it('renders just the subscribe button if onlyShowSubscribeButton prop is present', () => {
     const component = shallow(<Cta onlyShowSubscribeButton />);
     expect(component.find(Button).length).toEqual(1);
-    expect(component.find(Button).render().text().trim()).toEqual("Click To Subscribe");
+    expect(component.find(Button).render().text().trim()).toEqual("Join our Newsletter");
     expect(component.find(Button).find(Icon).length).toEqual(1);
     expect(component.find(MarketSubscriberForm).length).toEqual(1);
   });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Modal } from 'antd';
+import styled from 'styled-components';
 
 const FormItem = Form.Item;
 
@@ -18,6 +19,12 @@ const style = {
   padding: '1.2rem'
 };
 
+const DisclaimerText = styled('small')`
+  font-size: 9px;
+  margin-top: 2rem;
+  opacity: 0.6;
+`;
+
 export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
   <Modal
     bodyStyle={style}
@@ -35,12 +42,13 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           }
         });
       }}
+      style={{ textAlign: 'center' }}
       acceptCharset="utf-8"
       method="post"
     >
       <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
       <input type="hidden" name="id" value="491f750dec" />{' '}
-      <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+      <h2 style={{ textAlign: 'center', margin: '1rem 0  2rem 0' }}>
         Join Our Newsletter
       </h2>
       <FormItem>
@@ -110,20 +118,20 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
         type="primary"
         htmlType="submit"
         style={{
-          textAlign: 'center',
-          width: '6rem'
+          marginTop: '1rem',
+          width: '10rem'
         }}
       >
         Submit
       </Button>
     </Form>
-    <small style={{ fontSize: '9px', marginTop: '1.2rem' }}>
+    <DisclaimerText>
       You can change your mind at any time by clicking the unsubscribe link in
       the footer of any email you receive from us, or by contacting us at{' '}
       <a href="info@marketprotocol.io">info@marketprotocol.io</a>. We will treat
       your information with respect. By clicking above, you agree that we may
       process your information in accordance with these terms.
-    </small>
+    </DisclaimerText>
     {/* These are the field name for these parameters in mailchimp */}
     {/* <input type="text" name="MERGE1" id="MERGE1" /> */} {/*First Name*/}
     {/* <input type="text" name="MERGE2" id="MERGE2" /> */} {/*Last Name*/}

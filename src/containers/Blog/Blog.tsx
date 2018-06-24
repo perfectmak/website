@@ -1,8 +1,4 @@
 import React from 'react';
-import Waypoint from 'react-waypoint';
-import { size } from '@src/breakpoints';
-import Hero from '@components/Hero';
-import Cta from '@components/Cta';
 import CategorySelector from '@components/Blog/CategorySelector';
 import styled from 'styled-components';
 import Follow from '@components/Blog/Follow';

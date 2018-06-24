@@ -7,7 +7,7 @@ import { device, size } from '@src/breakpoints';
 import EmailConstant from '@constants/email';
 
 interface Props {
-  bg: string;
+  bg?: string;
   beforeIcon?: string;
   text?: string;
   afterIcon?: boolean;
@@ -68,25 +68,24 @@ class Cta extends React.Component<Props, CtaState> {
         <div style={{ width: '100%', height: '100%' }}>
           <Button
             onClick={() => this.setState({ subscriptionPopUpVisible: true })}
-            id={'subscribe-button'}
             type="primary"
+            id="subscribe-button"
             style={{
               alignItems: 'center',
               display: 'flex',
-              fontSize: '1rem',
               justifyContent: afterIcon ? 'space-between' : 'center',
-              width: '100%'
+              padding: afterIcon || beforeIcon ? '' : '0 4rem',
+              width: afterIcon || beforeIcon ? '100%' : ''
             }}
           >
             {!!beforeIcon && (
               <img
                 alt="join mailing list"
                 src={beforeIcon}
-                fill="#FFFFFF"
-                style={{ marginRight: '5px', width: '19px' }}
+                style={{ marginRight: '10px', width: '19px' }}
               />
             )}
-            {text || `Click To Subscribe${' '}`}
+            {text || `Join our Newsletter${' '}`}
             {afterIcon && (
               <Icon
                 type="arrow-right"
@@ -124,7 +123,7 @@ class Cta extends React.Component<Props, CtaState> {
                 onClick={() =>
                   this.setState({ subscriptionPopUpVisible: true })
                 }
-                id={'subscribe-button'}
+                id="subscribe-button"
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >
@@ -143,7 +142,7 @@ class Cta extends React.Component<Props, CtaState> {
               </MarketHeader>
               <Button
                 href={emailLink}
-                id={'email-button'}
+                id="email-button"
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >

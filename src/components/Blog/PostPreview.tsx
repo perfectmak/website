@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { size } from '@src/breakpoints';
-import Category from '@components/Blog/Category';
 import SocialLinks from './SocialLinks';
 import Moment from 'react-moment';
 import Dotdotdot from 'react-dotdotdot';
-import medium from '@images/medium-white.svg';
+import { Link } from 'react-static';
 
 const RootWrap = styled.div`
   > #root {
@@ -95,15 +93,6 @@ const RootWrap = styled.div`
   }
 `;
 
-const classes = {
-  card: {
-    background: '#FFFFFF',
-    boxShadow: '0 2px 14px 0 rgba(0,0,0,0.05)',
-    padding: '30px',
-    width: '100%'
-  }
-};
-
 interface Post {
   data: {
     title: string;
@@ -119,7 +108,7 @@ interface Post {
 
 interface Props {
   post: Post;
-  featured: boolean;
+  featured?: boolean;
 }
 
 export default ({ post, featured = false }: Props) => {

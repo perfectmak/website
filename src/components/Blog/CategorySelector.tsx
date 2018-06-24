@@ -47,10 +47,10 @@ export default ({
     <RootWrap>
       <div id="root">
         <h2 id="title">About Our Blog</h2>
-        <h3 id="subtitle">
+        <p id="subtitle">
           Mauris ornare lacus est, eu efficitur felis faucibus tristique. Nam
           sit amet magna eu nisi gravida convallis.
-        </h3>
+        </p>
         <h2 id="categories">Categories</h2>
         {categories.map((cat, i) => (
           <Category

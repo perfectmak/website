@@ -103,7 +103,7 @@ const HeaderWrapper = styled.div`
   background-color: rgb(24, 30, 38);
   z-index: 9999;
   overflow: hidden;
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.mobileL}) {
     .ant-layout-header {
       padding-left: 30px;
       padding-right: 30px;
@@ -316,8 +316,8 @@ class Navbar extends React.Component {
         <Menu.Item key="/blog">
           <Link
             to="https://medium.com/market-protocol"
-            style={{ color: 'inherit', textDecoration: 'none' }}
             target="_blank"
+            style={{ color: 'inherit', textDecoration: 'none' }}
           >
             Blog
           </Link>

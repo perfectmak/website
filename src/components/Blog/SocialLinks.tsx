@@ -25,8 +25,8 @@ const RootWrap = styled.div`
 `;
 
 interface Props {
-  size: number;
-  slug: string;
+  size?: number;
+  slug?: string;
 }
 
 const SocialLinks = ({ size = 30, slug }: Props) => {

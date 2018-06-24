@@ -51,12 +51,6 @@ describe('<Hero />', () => {
     ).to.equal('Powering safe, solvent and trustless trading of any asset.');
   });
 
-  it('renders Cta with text', () => {
-    const component = shallow(<Hero />);
-    const marketTextProps = component.find(MarketText).props();
-    expect(marketTextProps.children).to.equal('Sign Up For Our Newsletter');
-  });
-
   it('renders Cta button', () => {
     const component = shallow(<Hero />);
     const ctaButton = component.find(Cta);

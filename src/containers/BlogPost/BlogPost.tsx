@@ -1,19 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Waypoint from 'react-waypoint';
-import TwitterIcon from '@images/icons/twitter-white.svg';
-import MediumIcon from '@images/medium.svg';
-import TwitterDefaultIcon from '@images/twitter.svg';
-import FacebookIcon from '@images/icons/facebook-white.svg';
-
 import { Button } from 'antd';
 import { size } from '@src/breakpoints';
 import { Link } from 'react-static';
 import Moment from 'react-moment';
 import Markdown from 'react-markdown';
 
-import ProgressBar from '@components/Blog/ProgressBar';
-import MarketSubscriberForm from '@components/MarketSubscriberForm';
+import Subscribe from '@components/Blog/Subscribe';
+import SocialLinks from '@components/Blog/SocialLinks';
 import VerticalPostPreview from '@components/Blog/VerticalPostPreview';
 
 const BlogPostWrap = styled.div`
@@ -114,9 +108,10 @@ const OuterContainer = styled.div`
 const ColumnContainer = styled.div`
   flex-direction: column;
 `;
-const BlogContrainer = styled.div`
+const BlogContainer = styled.div`
   background-color: #fff;
   text-align: left;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
 `;
 const Croppit = styled.div`
   width: 100%
@@ -128,7 +123,7 @@ const BlogImage = styled.img`
 `;
 const ContentContainer = styled.div`
   color: #a5a5a8;
-  padding: 20px;
+  padding: 30px;
   margin-bottom: 20px;
   img {
     max-width: 100%;
@@ -139,6 +134,7 @@ const TitleContainer = styled.p`
   font-weight: bold;
   font-size: 30px;
   padding-top: 20px;
+  margin-bottom: 0px;
   @media screen and (max-width: ${size.tablet}) {
     font-size: 22px;
   }
@@ -157,52 +153,41 @@ export const CategoryContainer = styled.div`
 const ReadTimeContainer = styled.p`
   font-size: 0.8rem;
 `;
-const LogoContainer = styled.img`
-  margin-left: 5px;
-  max-width: 25px;
-  max-height: 25px;
-  height: 25px;
-  width: 25px;
-  border-radius: 100%;
-  background-color: #000;
-  padding: 4px;
-`;
-
 const SubmitAndSignContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  text-align: left;
   justify-content: space-between;
 `;
 const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 38%;
+  width: 48%;
   background-color: #fff;
-  padding: 20px;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+  padding: 30px;
   @media screen and (max-width: ${size.tabletL}) {
     width: 100%;
     margin-bottom: 20px;
   }
 `;
-const Text = styled.div`
+const SignUpText = styled.div`
   text-align: start;
-  color: #a5a5a8;
+  color: #646469;
 `;
 const Bold = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
   color: #000;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 const SubmitContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
-  padding: 20px;
-  width: 58%;
+  width: 50%;
   @media screen and (max-width: ${size.tabletL}) {
     width: 100%;
     margin-bottom: 20px;
@@ -213,6 +198,10 @@ const PostListContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+`;
+const BlogContent = styled.div`
+  font-weight: 400;
+  color: #646469;
 `;
 
 interface Post {
@@ -229,38 +218,21 @@ interface Post {
   content: string;
 }
 
+interface BlogData {
+  posts: Post[];
+  categories: string[];
+}
+
 interface BlogPostProps {
   post: Post;
+  blogData: BlogData;
 }
 
-interface BlogPostState {
-  headerIsVisible: boolean;
-  subscriptionPopUpVisible: boolean;
-}
-
-class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
+class BlogPost extends React.Component<BlogPostProps, {}> {
   constructor(props: BlogPostProps) {
     super(props);
-    this.state = {
-      headerIsVisible: false,
-      subscriptionPopUpVisible: false
-    };
-    this.showHeader = this.showHeader.bind(this);
-    this.hideHeader = this.hideHeader.bind(this);
-    this.renderSocialButtons = this.renderSocialButtons.bind(this);
   }
 
-  showHeader() {
-    this.setState({
-      headerIsVisible: true
-    });
-  }
-
-  hideHeader() {
-    this.setState({
-      headerIsVisible: false
-    });
-  }
   filterPosts(posts: Post[], post: Post, n: number) {
     if (!post || !posts) {
       return undefined;
@@ -283,114 +255,11 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
     }
   }
 
-  renderSocialButtons(section: string) {
-    if ('body' === section) {
-      return (
-        <div id={'links-body'}>
-          <Link
-            to={this.props.post.data.medium_link}
-            target={'_blank'}
-            title={'Read on Medium'}
-          >
-            <Button
-              type="primary"
-              style={{
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'space-around',
-                padding: '0 18px 0 18px',
-                textAlign: 'left'
-              }}
-            >
-              {'Read on Medium'}
-              <img
-                alt={'Read on Medium'}
-                src={MediumIcon}
-                width={'18px'}
-                style={{ marginLeft: 12 }}
-              />
-            </Button>
-          </Link>
-
-          <Link
-            to={`https://twitter.com/intent/tweet?url=https://marketprotocol.io/blog/post/${
-              this.props.post.data.slug
-            }&via=MarketProtocol`}
-            target={'_blank'}
-            title={'Share via Twitter'}
-          >
-            <Button
-              type="primary"
-              style={{
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'space-around',
-                padding: '0 18px 0 18px',
-                textAlign: 'left'
-              }}
-            >
-              {'Share via Twitter'}
-              <img
-                alt={'Share via Twitter'}
-                src={TwitterDefaultIcon}
-                width={'18px'}
-                style={{ marginLeft: 12 }}
-              />
-            </Button>
-          </Link>
-        </div>
-      );
-    } else if ('header' === section) {
-      return (
-        <div id={'links-header'}>
-          <Link
-            to={this.props.post.data.medium_link}
-            target={'_blank'}
-            title={'Read on Medium'}
-          >
-            <img alt={'Read on Medium'} src={MediumIcon} width={'26px'} />
-          </Link>
-
-          <Link
-            to={`https://twitter.com/intent/tweet?url=https://marketprotocol.io/blog/post/${
-              this.props.post.data.slug
-            }&via=MarketProtocol`}
-            target={'_blank'}
-            title={'Share via Twitter'}
-          >
-            <img
-              alt={'Share via Twitter'}
-              src={TwitterDefaultIcon}
-              width={'26px'}
-            />
-          </Link>
-        </div>
-      );
-    }
-  }
-
   render() {
-    const { headerIsVisible, subscriptionPopUpVisible } = this.state;
     const { post } = this.props;
 
     return (
       <BlogPostWrap>
-        {/* header with progress bar, title, twitter share button, and read on medium button */}
-        <div
-          className={['header-wrap', headerIsVisible && 'visible'].join(' ')}
-        >
-          <ProgressBar />
-
-          <div id={'title'}>
-            <p>{post.data.title}</p>
-          </div>
-
-          {this.renderSocialButtons('header')}
-        </div>
-
-        {/* trigger point for displaying progress bar */}
-        <Waypoint onEnter={this.hideHeader} onLeave={this.showHeader} />
-
         <BackgroundContainer>
           <OuterContainer>
             <ColumnContainer>
@@ -406,7 +275,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
                   }}
                 />
               </Link>
-              <BlogContrainer>
+              <BlogContainer>
                 <Croppit>
                   <BlogImage src={post.data.thumbnail} alt={''} />
                 </Croppit>
@@ -425,6 +294,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
                   <RowContainer
                     style={{
                       justifyContent: 'space-between',
+                      lineHeight: '45px',
                       marginBottom: '15px'
                     }}
                   >
@@ -432,50 +302,25 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
                       Reading time: {post.data.readtime} minutes
                     </ReadTimeContainer>
                     <div>
-                      <Link
-                        to={`https://twitter.com/intent/tweet?url=https://marketprotocol.io/blog/post/${
-                          this.props.post.data.slug
-                        }&via=MarketProtocol`}
-                        target={'_blank'}
-                        title={'Share via Twitter'}
-                      >
-                        <LogoContainer
-                          src={TwitterIcon}
-                          width="25px"
-                          height="25px"
-                        />
-                      </Link>
-                      <Link
-                        to={`https://www.facebook.com/sharer/sharer.php?u=https://marketprotocol.io/blog/post/${
-                          this.props.post.data.slug
-                        }`}
-                        target={'_blank'}
-                        title={'Share via Facebook'}
-                      >
-                        <LogoContainer
-                          src={FacebookIcon}
-                          width="25px"
-                          height="25px"
-                        />
-                      </Link>
+                      <SocialLinks slug={post.data.slug} />
                     </div>
                   </RowContainer>
-                  <Markdown source={post.content} escapeHtml={false} />
+                  <BlogContent>
+                    <Markdown source={post.content} escapeHtml={false} />
+                  </BlogContent>
                 </ContentContainer>
-              </BlogContrainer>
+              </BlogContainer>
               <SubmitAndSignContainer>
                 <SignUpContainer>
-                  <Text>
+                  <SignUpText>
                     <Bold>Want to Learn More?</Bold>
                     <p>Chat with the founders and engineering team</p>
-                  </Text>
+                  </SignUpText>
                   <Link to="https://t.me/Market_Protocol_Chat" target="_blank">
                     <Button className="btntelegram" type="primary">
                       <span
                         style={{
-                          fontSize: '1.1rem',
-                          fontWeight: 'bold',
-                          padding: '5px'
+                          padding: '0 1rem'
                         }}
                       >
                         Join our Telegram
@@ -484,38 +329,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
                   </Link>
                 </SignUpContainer>
                 <SubmitContainer>
-                  <Text>
-                    <Bold>Sign up for our newsletter</Bold>
-                    <p>
-                      Recieve our newsletter to stay on top of latest posts.
-                    </p>
-                  </Text>
-                  <div>
-                    <MarketSubscriberForm
-                      onCancel={() =>
-                        this.setState({ subscriptionPopUpVisible: false })
-                      }
-                      visible={subscriptionPopUpVisible}
-                    />
-                    <Button
-                      className="btnsubscribe"
-                      onClick={() =>
-                        this.setState({ subscriptionPopUpVisible: true })
-                      }
-                      htmlType="submit"
-                      type="primary"
-                    >
-                      <span
-                        style={{
-                          fontSize: '1.1rem',
-                          fontWeight: 'bold',
-                          padding: '5px'
-                        }}
-                      >
-                        Subscribe
-                      </span>
-                    </Button>
-                  </div>
+                  <Subscribe />
                 </SubmitContainer>
               </SubmitAndSignContainer>
             </ColumnContainer>

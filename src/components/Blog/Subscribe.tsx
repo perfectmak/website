@@ -7,27 +7,27 @@ const RootWrap = styled.div`
     background: #ffffff;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
     padding: 30px;
-    width: 100%;
-    display: block;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    justify-content: space-between;
 
     #title {
       font-size: 18px;
       font-weight: bold;
-      line-height: 21px;
+      margin-bottom: 0px;
     }
 
     #subtitle {
       color: #646469;
-      font-size: 14px;
-      line-heigh: 20px;
       margin-top: 10px;
-    }
-
-    #subscribe-button {
-      margin-top: 12px;
-      width: 100%;
+      font-size: 14px;
     }
   }
+`;
+
+const CtaContainer = styled.div`
+  text-align: center;
 `;
 
 export default () => {
@@ -35,10 +35,17 @@ export default () => {
     <RootWrap>
       <div id="root">
         <h2 id="title">Sign up for our newsletter</h2>
-        <h3 id="subtitle">
+        <p id="subtitle">
           Receive our newsletter to stay on top of the latest posts.
-        </h3>
-        <Cta onlyShowSubscribeButton={true} id="button" />
+        </p>
+        <CtaContainer>
+          <Cta
+            onlyShowSubscribeButton={true}
+            id="button"
+            text="Subscribe"
+            afterIcon={false}
+          />
+        </CtaContainer>
       </div>
     </RootWrap>
   );

@@ -9,13 +9,12 @@ const RootWrap = styled.div`
     padding: 30px;
     width: 100%;
     display: block;
+    text-align: center;
 
     #title {
       font-size: 18px;
       font-weight: bold;
-      line-height: 21px;
-      maragin-bottom: 27px;
-      text-align: center;
+      margin-bottom: 25px;
     }
   }
 `;
