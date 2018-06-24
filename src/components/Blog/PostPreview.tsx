@@ -12,6 +12,11 @@ const RootWrap = styled.div`
     padding: 30px;
     width: 100%;
     display: block;
+    transition: all 300ms;
+
+    :hover {
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);
+    }
 
     #blogStats {
       #blogStatsCategory {
@@ -48,6 +53,7 @@ const RootWrap = styled.div`
     #blogTitle {
       font-weight: bold;
       margin-top: 12px;
+      color: #000;
     }
 
     #blogContent {
@@ -82,6 +88,8 @@ const RootWrap = styled.div`
 
           #arrow {
             margin-top: -1px;
+            position: absolute;
+            margin-left: -2px;
           }
         }
       }
@@ -117,51 +125,53 @@ export default ({ post, featured = false }: Props) => {
   }
 
   return (
-    <RootWrap>
-      <div id="root">
-        <div
-          id="blogImage"
-          style={{
-            backgroundImage: `url(${post.data.thumbnail})`,
-            height: featured ? '280px' : '132px'
-          }}
-        />
-        <div id="blogStats">
-          <div id="blogStatsCategory">{post.data.category}</div>
-          <div id="blogStatsTime">
-            <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
-          </div>
-        </div>
-        <div
-          id="blogTitle"
-          style={{
-            fontSize: featured ? '28px' : '21px',
-            lineHeight: featured ? '33px' : '29px'
-          }}
-        >
-          <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
-        </div>
-        <div
-          style={{
-            fontSize: featured ? '18px' : '14px',
-            lineHeight: featured ? '24px' : '20px'
-          }}
-          id="blogContent"
-        >
-          <Dotdotdot clamp={4}>{post.content}</Dotdotdot>
-        </div>
-        <div id="blogActions">
-          <a id="blogLink" href={`/blog/post/${post.data.slug}`}>
-            Continue Reading{' '}
-            <div id="arrow-container">
-              <div id="arrow">›</div>
+    <a id="blogLink" href={`/blog/post/${post.data.slug}`}>
+      <RootWrap>
+        <div id="root">
+          <div
+            id="blogImage"
+            style={{
+              backgroundImage: `url(${post.data.thumbnail})`,
+              height: featured ? '280px' : '132px'
+            }}
+          />
+          <div id="blogStats">
+            <div id="blogStatsCategory">{post.data.category}</div>
+            <div id="blogStatsTime">
+              <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
             </div>
-          </a>
-          <div id="socialLinksWrapper">
-            <SocialLinks slug={post.data.slug} />
+          </div>
+          <div
+            id="blogTitle"
+            style={{
+              fontSize: featured ? '28px' : '21px',
+              lineHeight: featured ? '33px' : '29px'
+            }}
+          >
+            <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
+          </div>
+          <div
+            style={{
+              fontSize: featured ? '18px' : '14px',
+              lineHeight: featured ? '24px' : '20px'
+            }}
+            id="blogContent"
+          >
+            <Dotdotdot clamp={4}>{post.content}</Dotdotdot>
+          </div>
+          <div id="blogActions">
+            <div id="blogLink">
+              Continue Reading{' '}
+              <div id="arrow-container">
+                <span id="arrow">›</span>
+              </div>
+            </div>
+            <div id="socialLinksWrapper">
+              <SocialLinks slug={post.data.slug} />
+            </div>
           </div>
         </div>
-      </div>
-    </RootWrap>
+      </RootWrap>
+    </a>
   );
 };

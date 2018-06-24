@@ -36,7 +36,7 @@ const PostItemContainer = styled.div`
   transition: all 300ms;
   
   :hover {
-    box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15)
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,0.15);
   }
   @media screen and (max-width: ${size.tabletL}) {
     width: 48%;
