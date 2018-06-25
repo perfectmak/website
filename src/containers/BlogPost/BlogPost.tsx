@@ -117,6 +117,8 @@ const Croppit = styled.div`
   width: 100%
   height: 300px;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 `;
 const BlogImage = styled.img`
   width: 100%;
@@ -276,9 +278,11 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
                 />
               </Link>
               <BlogContainer>
-                <Croppit>
-                  <BlogImage src={post.data.thumbnail} alt={''} />
-                </Croppit>
+                <Croppit
+                  style={{
+                    backgroundImage: `url(${post.data.thumbnail})`
+                  }}
+                />
                 <ContentContainer>
                   <RowContainer>
                     <CategoryContainer className="category">
