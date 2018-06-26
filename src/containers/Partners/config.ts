@@ -45,8 +45,12 @@ const config: Config = {
     {
       image: partnerProjectImages.Maker,
       name: 'Maker',
-
       url: 'https://makerdao.com/'
+    },
+    {
+      image: partnerProjectImages.Bluzelle,
+      name: 'Bluzelle',
+      url: 'https://bluzelle.com/'
     }
   ]
 };
