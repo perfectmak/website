@@ -87,7 +87,7 @@ class VerticalPostPreview extends React.Component<Props> {
     }
     return (
       <PostItemContainer>
-        <a href={`/blog/post/${post.data.slug}`}>
+        <Link to={`/blog/post/${post.data.slug}`}>
           <Cropper>
             <PostItemImage src={post.data.thumbnail} />
           </Cropper>
@@ -104,7 +104,7 @@ class VerticalPostPreview extends React.Component<Props> {
               escapeHtml={false}
             />
           </Text>
-        </a>
+        </Link>
       </PostItemContainer>
     );
   }
