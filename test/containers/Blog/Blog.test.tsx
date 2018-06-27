@@ -41,7 +41,7 @@ describe('<Blog />', () => {
   }
 
   beforeEach(() => {
-    component = mount(
+    component = shallow(
       <Blog posts={posts} categories={categories} />
     );
   });

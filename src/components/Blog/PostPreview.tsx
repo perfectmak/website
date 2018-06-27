@@ -125,7 +125,7 @@ export default ({ post, featured = false }: Props) => {
   }
 
   return (
-    <a id="blogLink" href={`/blog/post/${post.data.slug}`}>
+    <Link id="blogLink" to={`/blog/post/${post.data.slug}`}>
       <RootWrap>
         <div id="root">
           <div
@@ -172,6 +172,6 @@ export default ({ post, featured = false }: Props) => {
           </div>
         </div>
       </RootWrap>
-    </a>
+    </Link>
   );
 };
