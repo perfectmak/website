@@ -7,7 +7,15 @@ import RecentTweets from '@components/Blog/RecentTweets';
 import SignUp from '@components/Blog/SignUp';
 import Subscribe from '@components/Blog/Subscribe';
 import throttle from 'lodash/throttle';
+import queryString from 'query-string';
+
 import { Button, Col, Row } from 'antd';
+
+const categoriesMap: CategoriesMap = {
+  'crash-courses': 'Crash Courses',
+  development: 'Development',
+  'the-team': 'The Team'
+};
 
 const RootWrap = styled.div`
   > #root {
@@ -65,6 +73,7 @@ const isClient = typeof window !== 'undefined';
 interface BlogProps {
   posts: Post[];
   categories: string[];
+  history: History[];
 }
 
 interface BlogState {
@@ -74,6 +83,16 @@ interface BlogState {
   pagifiedPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
+}
+
+interface History {
+  location: string;
+}
+
+interface CategoriesMap {
+  development?: string;
+  'crash-courses'?: string;
+  'the-team'?: string;
 }
 
 interface Post {
@@ -108,6 +127,8 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedCat: 'All',
       selectedPageIndex: 0
     };
+
+    this.setCategory = this.setCategory.bind(this);
   }
 
   componentDidMount() {
@@ -121,13 +142,23 @@ class Blog extends React.Component<BlogProps, BlogState> {
       pagifiedPosts
     });
     }
-}
+
+    this.setCategory(this.props.history);
+  }
 
   componentWillUnmount() {
     if (isClient) {
       window.removeEventListener('scroll', this.handleScroll);
       window.removeEventListener('resize', this.handleScroll);
     }
+  }
+
+  setCategory(history: History[]) {
+    const { search } = history.location;
+    const { category } = queryString.parse(search);
+    const selectedCat = categoriesMap[category];
+
+    this.setState({ selectedCat }, () => this.filterPosts());
   }
 
   splitPostsIntoPages(posts: Post[]) {
