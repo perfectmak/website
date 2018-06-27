@@ -74,14 +74,15 @@
     "clean": "rm -rf ./dist/",
     "copy:assets": "cp -r ./assets ./dist/",
     "precommit": "lint-staged",
-    "lint-ts": "tslint --fix \"./src/**/*.{ts,tsx}\"",
+    "lint": "tslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "tslint --fix \"./src/**/*.{ts,tsx}\"",
     "prettier-ts": "prettier --single-quote --parser typescript --write \"./src/**/*.{ts,tsx}\"",
     "sitemap": "node scripts/sitemap.js"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
       "npm run prettier-ts",
-      "npm run lint-ts",
+      "npm run lint:fix",
       "git add"
     ],
     "./src/**/*.js": [
