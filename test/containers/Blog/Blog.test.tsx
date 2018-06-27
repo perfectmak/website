@@ -2,6 +2,7 @@ import React from 'react';
 import Waypoint from 'react-waypoint';
 import { mount, shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
+import { createMemoryHistory } from 'history';
 import Hero from '@components/Hero';
 import WithData from '@containers/Blog/index/';
 
@@ -40,9 +41,11 @@ describe('<Blog />', () => {
     });
   }
 
+  const history = createMemoryHistory('/blog');
+
   beforeEach(() => {
-    component = shallow(
-      <Blog posts={posts} categories={categories} />
+    component = mount(
+      <Blog posts={posts} categories={categories} history={history} />
     );
   });
 

@@ -2,6 +2,7 @@ import React from 'react';
 import CategorySelector from '@components/Blog/CategorySelector';
 import styled from 'styled-components';
 import Follow from '@components/Blog/Follow';
+import About from '@components/Blog/About';
 import PostPreview from '@components/Blog/PostPreview';
 import RecentTweets from '@components/Blog/RecentTweets';
 import SignUp from '@components/Blog/SignUp';
@@ -31,7 +32,12 @@ const RootWrap = styled.div`
         color: #ffffff;
         font-size: 48px;
         font-weight: bold;
-        line-height: 260px;
+        text-align: center;
+      }
+
+      #headerSubtitle {
+        color: #ffffff;
+        font-size: 22px;
         text-align: center;
       }
     }
@@ -73,7 +79,7 @@ const isClient = typeof window !== 'undefined';
 interface BlogProps {
   posts: Post[];
   categories: string[];
-  history: History[];
+  history?: History[];
 }
 
 interface BlogState {
@@ -132,7 +138,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
   }
 
   componentDidMount() {
-    const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
+    const { history, posts } = this.props;
+    const pagifiedPosts = this.splitPostsIntoPages(posts);
+
     if (isClient) {
     const loadMore = this.props.posts.length;
     window.addEventListener('scroll', this.handleScroll);
@@ -143,7 +151,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
     });
     }
 
-    this.setCategory(this.props.history);
+    if (history.location.search) {
+      this.setCategory(history);
+    }
   }
 
   componentWillUnmount() {
@@ -195,6 +205,10 @@ class Blog extends React.Component<BlogProps, BlogState> {
     this.setState({ selectedCat: cat }, () => this.filterPosts());
   }
 
+  deselectCat() {
+    this.setState({ selectedCat: 'All' }, () => this.filterPosts());
+  }
+
   filterPosts() {
     const { selectedPageIndex, selectedCat } = this.state;
     const { posts } = this.props;
@@ -232,6 +246,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <CategorySelector
           selectedCat={selectedCat}
           categories={categories}
+          deselectCat={this.deselectCat.bind(this)}
           onSelectCat={this.onSelectCat.bind(this)}
         />
       </Row>
@@ -246,9 +261,12 @@ class Blog extends React.Component<BlogProps, BlogState> {
         md={{ span: 8 }}
         lg={{ span: 6 }}
       >
-        <Row>
-          <SignUp />
+        {this.renderCategorySelector(window.innerWidth >= 768)}
+
+        <Row id="row">
+          <About />
         </Row>
+
         <Row id="row">
           <Subscribe />
         </Row>
@@ -270,7 +288,8 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedPageIndex,
       pagifiedPosts,
       loadMore,
-      numPostsPerPage
+      numPostsPerPage,
+      selectedCat,
     } = this.state;
     const postsToRender = pagifiedPosts[selectedPageIndex];
 
@@ -279,6 +298,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <div id="root">
           <div id="header">
             <div id="headerTitle">Blog</div>
+            {selectedCat !== 'All' && (
+              <div id="headerSubtitle">{selectedCat}</div>
+            )}
           </div>
           <div id="gridContainer">
             <Row gutter={24}>
