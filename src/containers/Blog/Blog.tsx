@@ -60,6 +60,8 @@ const RootWrap = styled.div`
   }
 `;
 
+const isClient = typeof window !== 'undefined';
+
 interface BlogProps {
   posts: Post[];
   categories: string[];
@@ -71,7 +73,6 @@ interface BlogState {
   pagifiedPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
-  sideMenuIsFixed: boolean;
 }
 
 interface Post {
@@ -89,6 +90,8 @@ interface Post {
 }
 
 class Blog extends React.Component<BlogProps, BlogState> {
+  private handleScroll: EventListener;
+
   constructor(props: BlogProps) {
     super(props);
 
@@ -107,14 +110,19 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
   componentDidMount() {
     const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleScroll);
     this.setState({ pagifiedPosts });
+
+    if (isClient) {
+      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleScroll);
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleScroll);
+    if (isClient) {
+      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.handleScroll);
+    }
   }
 
   splitPostsIntoPages(posts: Post[]) {
@@ -182,7 +190,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
     const { selectedCat } = this.state;
 
     return (
-      <Row xs={{ span: 24 }} id="row">
+      <Row id="row">
         <CategorySelector
           selectedCat={selectedCat}
           categories={categories}
@@ -206,8 +214,10 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <Row id="row">
           <Subscribe />
         </Row>
-        {this.renderCategorySelector(window.innerWidth >= 768)}
-        <Row xs={{ span: 24 }} id="row">
+        {this.renderCategorySelector(
+          isClient ? window.innerWidth >= 768 : true
+        )}
+        <Row id="row">
           <Follow />
         </Row>
         <Row id="row">
@@ -239,7 +249,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
                 <Row gutter={24} id="row">
                   <Col xs={{ span: 24 }} id="row">
                     <PostPreview post={postsToRender[0]} featured={true} />
-                    {this.renderCategorySelector(window.innerWidth <= 768)}
+                    {this.renderCategorySelector(
+                      isClient ? window.innerWidth <= 768 : true
+                    )}
                   </Col>
                   {(postsToRender || [])
                     .slice(1, postsToRender.length)
