@@ -2,7 +2,6 @@ import React from 'react';
 import CategorySelector from '@components/Blog/CategorySelector';
 import styled from 'styled-components';
 import Follow from '@components/Blog/Follow';
-import About from '@components/Blog/About';
 import PostPreview from '@components/Blog/PostPreview';
 import RecentTweets from '@components/Blog/RecentTweets';
 import SignUp from '@components/Blog/SignUp';
@@ -262,10 +261,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
         lg={{ span: 6 }}
       >
         {this.renderCategorySelector(window.innerWidth >= 768)}
-
-        <Row id="row">
-          <About />
-        </Row>
 
         <Row id="row">
           <Subscribe />

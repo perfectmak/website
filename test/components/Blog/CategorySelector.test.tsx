@@ -30,9 +30,9 @@ describe('<CategorySelector />', () => {
 
     const root = c.find('#root').at(0);
 
-    const cat1 = root.childAt(1);
-    const cat2 = root.childAt(2);
-    const cat3 = root.childAt(3);
+    const cat1 = root.childAt(3);
+    const cat2 = root.childAt(4);
+    const cat3 = root.childAt(5);
 
     cat1.simulate('click');
     cat2.simulate('click');
