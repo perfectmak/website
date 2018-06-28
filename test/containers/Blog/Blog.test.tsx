@@ -44,7 +44,7 @@ describe('<Blog />', () => {
   const history = createMemoryHistory('/blog');
 
   beforeEach(() => {
-    component = mount(
+    component = shallow(
       <Blog posts={posts} categories={categories} history={history} />
     );
   });
