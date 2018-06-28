@@ -4,6 +4,7 @@ import { mount, shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
 import { createMemoryHistory } from 'history';
 import Hero from '@components/Hero';
+import queryString from 'query-string';
 import WithData from '@containers/Blog/index/';
 
 interface Post {
@@ -41,9 +42,10 @@ describe('<Blog />', () => {
     });
   }
 
-  const history = createMemoryHistory('/blog');
-
   beforeEach(() => {
+    const history = createMemoryHistory();
+    history.push('/blog');
+
     component = shallow(
       <Blog posts={posts} categories={categories} history={history} />
     );
@@ -100,6 +102,13 @@ describe('<Blog />', () => {
     expect(component.state().selectedCat).toEqual('All');
   });
 
+  it('updates selectedCat from search params', () => {
+    const instance = component.instance();
+    instance.props.history.push({ search: '?category=development' })
+    instance.setCategory(instance.props.history);
+    expect(component.state().selectedCat).toEqual('Development');
+  });
+
   describe('filterPosts function', () => {
     it('updates filteredPosts state var with posts that have the specified category', () => {
       const instance = component.instance();
@@ -135,6 +144,7 @@ describe('<Blog />', () => {
       const newPages = component.state().pagifiedPosts;
       expect(newPages === origPages).toBeFalsy();
     });
+    
   });
 
   it('scrolls without crashing', () => {
@@ -144,7 +154,8 @@ describe('<Blog />', () => {
 
   it('unmounts without crashing', () => {
     component.unmount();
-  });
+});
+
 });
 
 describe('With data', () => {
