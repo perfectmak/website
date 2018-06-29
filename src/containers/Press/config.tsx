@@ -73,6 +73,20 @@ const linkInfos: LinkInfo[] = [
       'Future Tech Podcast - Phil Elsasser CTO, Co-Founder of MARKET Protocol'
   },
   {
+    boxColor: 'white',
+    imgSrc: CryptoNinja,
+    link:
+      'https://www.cryptoninjas.net/2018/06/27/market-protocol-partners-with-bluzelle-to-improve-crypto-data-storage/',
+    paragraphs: [
+      `MARKET Protocol, a decentralized framework allowing derivative trading 
+      of all assets has announced a partnership with Bluzelle, a decentralized 
+      database service. Utilizing Bluzelle’s database solutions allows exchanges, 
+      applications, and traders a way to store trading and market data.`
+    ],
+    title:
+      'MARKET Protocol partners with Bluzelle to improve crypto data storage'
+  },
+  {
     boxColor: 'darkgrey',
     imgSrc: Themerkle,
     link: 'https://themerkle.com/top-four-upcoming-cryptocurrencies-sans-icos/',
