@@ -161,24 +161,7 @@ export default {
   },
   Document: class CustomHtml extends Component {
     render () {
-      const { Html, Head, children, renderMeta } = this.props
-
-      const isClient = typeof window !== 'undefined'
-      const isProduction =
-        EnvironmentConstant.getNodeEnv() ===
-        EnvironmentConstant.ENVIRONMENTS.PRODUCTION
-
-      const getGtmId = () => {
-        const origin = getLocationOrigin()
-
-        if (origin.indexOf(EnvironmentConstant.STAGING.URL) !== -1) {
-          return EnvironmentConstant.STAGING.GOOGLE_TAG_MANAGER
-        } else if (origin.indexOf(EnvironmentConstant.PROD.URL) !== -1) {
-          return EnvironmentConstant.PROD.GOOGLE_TAG_MANAGER
-        }
-
-        return ''
-      };
+      const { Body, children, Html, Head, renderMeta } = this.props
 
       return (
         <Html itemScope itemType="http://schema.org/Article">
@@ -194,16 +177,6 @@ export default {
             {renderMeta.styleTags}
             {renderMeta.helmet && renderMeta.helmet.title.toComponent()}
             {renderMeta.helmet && renderMeta.helmet.meta.toComponent()}
-
-            {isClient &&
-            isProduction && (
-              <script type="text/javascript" dangerouslySetInnerHTML={{__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${getGtmId()}');`}}>
-              </script>
-            )}
 
             <meta httpEquiv="content-language" content="en" />
             <meta itemProp="name" content="MARKET Protocol" />
@@ -227,21 +200,9 @@ export default {
             <meta property="og:image" content="https://marketprotocol.io/social.jpg" />
             <meta name="robots" content="index,follow" />
           </Head>
-          <body>
-            {isClient &&
-            isProduction && (
-              <noscript>
-                <iframe
-                  src={`https://www.googletagmanager.com/ns.html?id=${getGtmId()}`}
-                  height="0"
-                  width="0"
-                  style={{ display: 'none', visibility: 'hidden' }}>
-                </iframe>
-              </noscript>
-            )}
-
+          <Body>
             {children}
-          </body>
+          </Body>
         </Html>
       )
     }
