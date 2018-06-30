@@ -11,12 +11,6 @@ import queryString from 'query-string';
 
 import { Button, Col, Row } from 'antd';
 
-const categoriesMap: CategoriesMap = {
-  'crash-courses': 'Crash Courses',
-  development: 'Development',
-  'the-team': 'The Team'
-};
-
 const RootWrap = styled.div`
   > #root {
     background: #eeeeee;
@@ -94,12 +88,6 @@ interface History {
   location: string;
 }
 
-interface CategoriesMap {
-  development?: string;
-  'crash-courses'?: string;
-  'the-team'?: string;
-}
-
 interface Post {
   data: {
     title: string;
@@ -108,17 +96,31 @@ interface Post {
     published_at: number;
     medium_link: string;
     thumbnail: string;
+
     slug: string;
     readtime: number;
   };
   content: string;
 }
 
+interface CategoriesMap {
+  development?: string;
+  'crash-courses'?: string;
+  'the-team'?: string;
+}
+
 class Blog extends React.Component<BlogProps, BlogState> {
   private handleScroll: EventListener;
+  private categoriesMap: CategoriesMap;
 
   constructor(props: BlogProps) {
     super(props);
+
+    this.categoriesMap = {
+      'crash-courses': 'Crash Courses',
+      development: 'Development',
+      'the-team': 'The Team'
+    };
 
     this.handleScroll = throttle(() => {
       this.forceUpdate();
@@ -165,7 +167,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
   setCategory(history: History[]) {
     const { search } = history.location;
     const { category } = queryString.parse(search);
-    const selectedCat = categoriesMap[category];
+    const selectedCat = this.categoriesMap[category];
 
     this.setState({ selectedCat }, () => this.filterPosts());
   }

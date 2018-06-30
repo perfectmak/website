@@ -25,6 +25,11 @@ describe('<Blog />', () => {
   const posts: Post[] = [];
   const numPostsToTest = 28;
   const categories: string[] = ['cat1', 'cat2', 'cat3'];
+  const categoriesMap = {
+    cat1: 'cat1',
+    cat2: 'cat2',
+    cat3: 'cat3',
+  };
 
   // populate posts[]
   for (let i = 0; i < numPostsToTest; i++) {
@@ -102,13 +107,6 @@ describe('<Blog />', () => {
     expect(component.state().selectedCat).toEqual('All');
   });
 
-  it('updates selectedCat from search params', () => {
-    const instance = component.instance();
-    instance.props.history.push({ search: '?category=development' })
-    instance.setCategory(instance.props.history);
-    expect(component.state().selectedCat).toEqual('Development');
-  });
-
   describe('filterPosts function', () => {
     it('updates filteredPosts state var with posts that have the specified category', () => {
       const instance = component.instance();
@@ -154,7 +152,17 @@ describe('<Blog />', () => {
 
   it('unmounts without crashing', () => {
     component.unmount();
-});
+  });
+
+  it('updates selectedCat from search params', () => {
+    const instance = component.instance();
+    instance.props.history.push({ search: '?category=cat1' })
+    instance.categoriesMap = categoriesMap;
+
+    instance.setCategory(instance.props.history);
+
+    expect(component.state().selectedCat).toEqual('cat1');
+  });
 
 });
 
