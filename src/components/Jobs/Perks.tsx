@@ -48,13 +48,21 @@ const JobPerksText = MarketText.extend`
   color: #ffffff;
   text-align: center;
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 18px;
 
   @media ${device.mobileS} and (max-width: 1200px) {
     font-size: 18px;
   }
 
+  @media ${device.tablet} and (max-width: ${size.laptop}) {
+    font-size: 17px;
+  }
+
   @media ${device.laptop} and (max-width: 1200px) {
+    font-size: 17px;
+  }
+
+  @media ${device.desktop} {
     font-size: 18px;
   }
 `;

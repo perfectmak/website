@@ -69,6 +69,7 @@ interface BlogProps {
 
 interface BlogState {
   filteredPosts: Post[];
+  loadMore: number;
   numPostsPerPage: number;
   pagifiedPosts: Post[][];
   selectedCat: string;
@@ -101,6 +102,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
     this.state = {
       filteredPosts: [],
+      loadMore: 0,
       numPostsPerPage: 5,
       pagifiedPosts: [[]],
       selectedCat: 'All',
@@ -110,13 +112,16 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
   componentDidMount() {
     const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
-    this.setState({ pagifiedPosts });
-
     if (isClient) {
-      window.addEventListener('scroll', this.handleScroll);
-      window.addEventListener('resize', this.handleScroll);
+    const loadMore = this.props.posts.length;
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleScroll);
+    this.setState({
+      loadMore,
+      pagifiedPosts
+    });
     }
-  }
+}
 
   componentWillUnmount() {
     if (isClient) {
@@ -167,6 +172,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
         ? posts
         : posts.filter(post => post.data.category === selectedCat);
     const pagified = this.splitPostsIntoPages(filtered);
+    const loadMoreBtn = filtered.length === 0 ? posts.length : filtered.length;
 
     // if currently selected page is going to vanish after re-pagination,
     // select last page in post-pagination post list
@@ -174,6 +180,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
     this.setState({
       filteredPosts: filtered,
+      loadMore: loadMoreBtn,
       pagifiedPosts: pagified,
       selectedPageIndex: selectedPageExists
         ? selectedPageIndex
@@ -228,7 +235,12 @@ class Blog extends React.Component<BlogProps, BlogState> {
   }
 
   render() {
-    const { selectedPageIndex, pagifiedPosts } = this.state;
+    const {
+      selectedPageIndex,
+      pagifiedPosts,
+      loadMore,
+      numPostsPerPage
+    } = this.state;
     const postsToRender = pagifiedPosts[selectedPageIndex];
 
     return (
@@ -270,9 +282,11 @@ class Blog extends React.Component<BlogProps, BlogState> {
                       );
                     })}
                   <Col xs={{ span: 24 }}>
-                    <Button type="primary" id="load-more-button">
-                      Load more
-                    </Button>
+                    {loadMore > numPostsPerPage && (
+                      <Button type="primary" id="load-more-button">
+                        Load more
+                      </Button>
+                    )}
                   </Col>
                 </Row>
               </Col>
