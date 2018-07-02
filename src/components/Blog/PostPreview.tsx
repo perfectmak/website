@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SocialLinks from './SocialLinks';
 import Moment from 'react-moment';
 import Dotdotdot from 'react-dotdotdot';
+import Markdown from 'react-markdown';
 import { Link } from 'react-static';
 
 const RootWrap = styled.div`
@@ -157,7 +158,9 @@ export default ({ post, featured = false }: Props) => {
             }}
             id="blogContent"
           >
-            <Dotdotdot clamp={4}>{post.content}</Dotdotdot>
+            <Dotdotdot clamp={4}>
+              <Markdown source={post.content} escapeHtml={false} />
+            </Dotdotdot>
           </div>
           <div id="blogActions">
             <div id="blogLink">

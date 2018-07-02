@@ -2,7 +2,8 @@
 title: Introducing MARKET Protocol
 author: Phil Elsasser
 category: Development
-published_at: '2018-02-15T17:43:00-07:00'
+published_at: '2018-02-15T00:00:00-07:00'
+readtime: 2
 medium_link: 'https://medium.com/market-protocol/introducing-market-protocol-e9765098e541'
 thumbnail: /uploads/mp-header.jpeg
 ---
@@ -26,4 +27,4 @@ Some of our founding team will be attending EthDenver (https://ethdenver.com/) t
 
 
 
-Please visit [marketprotocol.io](https://marketprotocol.io) for more info, or join our Telegram channel to interact directly with the founding team.
+Please join our [Telegram](http://t.me/Market_protocol_Chat) channel to interact directly with the founding team.

@@ -315,7 +315,7 @@ class Navbar extends React.Component {
         </Menu.Item>
         <Menu.Item key="/blog">
           <Link
-            to="https://medium.com/market-protocol"
+            to="/blog"
             target="_blank"
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
