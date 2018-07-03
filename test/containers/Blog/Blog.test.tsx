@@ -2,7 +2,9 @@ import React from 'react';
 import Waypoint from 'react-waypoint';
 import { mount, shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
+import { createMemoryHistory } from 'history';
 import Hero from '@components/Hero';
+import queryString from 'query-string';
 import WithData from '@containers/Blog/index/';
 
 interface Post {
@@ -23,6 +25,11 @@ describe('<Blog />', () => {
   const posts: Post[] = [];
   const numPostsToTest = 28;
   const categories: string[] = ['cat1', 'cat2', 'cat3'];
+  const categoriesMap = {
+    cat1: 'cat1',
+    cat2: 'cat2',
+    cat3: 'cat3',
+  };
 
   // populate posts[]
   for (let i = 0; i < numPostsToTest; i++) {
@@ -41,8 +48,11 @@ describe('<Blog />', () => {
   }
 
   beforeEach(() => {
+    const history = createMemoryHistory();
+    history.push('/blog');
+
     component = shallow(
-      <Blog posts={posts} categories={categories} />
+      <Blog posts={posts} categories={categories} history={history} />
     );
   });
 
@@ -132,6 +142,7 @@ describe('<Blog />', () => {
       const newPages = component.state().pagifiedPosts;
       expect(newPages === origPages).toBeFalsy();
     });
+    
   });
 
   it('scrolls without crashing', () => {
@@ -142,6 +153,17 @@ describe('<Blog />', () => {
   it('unmounts without crashing', () => {
     component.unmount();
   });
+
+  it('updates selectedCat from search params', () => {
+    const instance = component.instance();
+    instance.props.history.push({ search: '?category=cat1' })
+    instance.categoriesMap = categoriesMap;
+
+    instance.setCategory(instance.props.history);
+
+    expect(component.state().selectedCat).toEqual('cat1');
+  });
+
 });
 
 describe('With data', () => {

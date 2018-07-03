@@ -36,12 +36,14 @@ interface CategorySelectorProps {
   selectedCat: string;
   categories: string[];
   onSelectCat: (cat: string) => void;
+  deselectCat: () => void;
 }
 
 export default ({
   selectedCat,
   categories,
-  onSelectCat
+  onSelectCat,
+  deselectCat
 }: CategorySelectorProps) => {
   return (
     <RootWrap>
@@ -51,11 +53,13 @@ export default ({
           Mauris ornare lacus est, eu efficitur felis faucibus tristique. Nam
           sit amet magna eu nisi gravida convallis.
         </p>
-        <h2 id="categories">Categories</h2>
+        <h2 id="title">Categories</h2>
         {categories.map((cat, i) => (
           <Category
             key={`cat#${i}`}
             cat={cat}
+            selectedCat={selectedCat}
+            deselectCat={deselectCat}
             onClick={() => (selectedCat === cat ? null : onSelectCat(cat))}
           />
         ))}

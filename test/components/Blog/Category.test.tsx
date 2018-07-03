@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Category from '@components/Blog/Category';
 
 describe('<Category />', () => {
@@ -24,5 +24,14 @@ describe('<Category />', () => {
     const c = shallow(<Category cat={'Development'} onClick={mockOnClick} />);
     c.simulate('click');
     expect(mockOnClick.mock.calls.length).toEqual(1);
+  });
+
+  it("invokes deselect prop function on click", () => {
+    const mockDeselect = jest.fn();
+    const c = mount(<Category cat={'Development'} deselectCat={mockDeselect} selectedCat={'Development'} />);
+    const close = c.find('div').at(2);
+
+    close.simulate('click');
+    expect(mockDeselect.mock.calls.length).toEqual(1);
   });
 });

@@ -7,6 +7,8 @@ import RecentTweets from '@components/Blog/RecentTweets';
 import SignUp from '@components/Blog/SignUp';
 import Subscribe from '@components/Blog/Subscribe';
 import throttle from 'lodash/throttle';
+import queryString from 'query-string';
+
 import { Button, Col, Row } from 'antd';
 
 const RootWrap = styled.div`
@@ -23,7 +25,12 @@ const RootWrap = styled.div`
         color: #ffffff;
         font-size: 48px;
         font-weight: bold;
-        line-height: 260px;
+        text-align: center;
+      }
+
+      #headerSubtitle {
+        color: #ffffff;
+        font-size: 22px;
         text-align: center;
       }
     }
@@ -65,6 +72,7 @@ const isClient = typeof window !== 'undefined';
 interface BlogProps {
   posts: Post[];
   categories: string[];
+  history?: History[];
 }
 
 interface BlogState {
@@ -76,6 +84,10 @@ interface BlogState {
   selectedPageIndex: number;
 }
 
+interface History {
+  location: string;
+}
+
 interface Post {
   data: {
     title: string;
@@ -84,17 +96,31 @@ interface Post {
     published_at: number;
     medium_link: string;
     thumbnail: string;
+
     slug: string;
     readtime: number;
   };
   content: string;
 }
 
+interface CategoriesMap {
+  development?: string;
+  'crash-courses'?: string;
+  'the-team'?: string;
+}
+
 class Blog extends React.Component<BlogProps, BlogState> {
   private handleScroll: EventListener;
+  private categoriesMap: CategoriesMap;
 
   constructor(props: BlogProps) {
     super(props);
+
+    this.categoriesMap = {
+      'crash-courses': 'Crash Courses',
+      development: 'Development',
+      'the-team': 'The Team'
+    };
 
     this.handleScroll = throttle(() => {
       this.forceUpdate();
@@ -108,10 +134,14 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedCat: 'All',
       selectedPageIndex: 0
     };
+
+    this.setCategory = this.setCategory.bind(this);
   }
 
   componentDidMount() {
-    const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
+    const { history, posts } = this.props;
+    const pagifiedPosts = this.splitPostsIntoPages(posts);
+
     if (isClient) {
     const loadMore = this.props.posts.length;
     window.addEventListener('scroll', this.handleScroll);
@@ -121,13 +151,25 @@ class Blog extends React.Component<BlogProps, BlogState> {
       pagifiedPosts
     });
     }
-}
+
+    if (history.location.search) {
+      this.setCategory(history);
+    }
+  }
 
   componentWillUnmount() {
     if (isClient) {
       window.removeEventListener('scroll', this.handleScroll);
       window.removeEventListener('resize', this.handleScroll);
     }
+  }
+
+  setCategory(history: History[]) {
+    const { search } = history.location;
+    const { category } = queryString.parse(search);
+    const selectedCat = this.categoriesMap[category];
+
+    this.setState({ selectedCat }, () => this.filterPosts());
   }
 
   splitPostsIntoPages(posts: Post[]) {
@@ -162,6 +204,10 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
   onSelectCat(cat: string) {
     this.setState({ selectedCat: cat }, () => this.filterPosts());
+  }
+
+  deselectCat() {
+    this.setState({ selectedCat: 'All' }, () => this.filterPosts());
   }
 
   filterPosts() {
@@ -201,6 +247,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <CategorySelector
           selectedCat={selectedCat}
           categories={categories}
+          deselectCat={this.deselectCat.bind(this)}
           onSelectCat={this.onSelectCat.bind(this)}
         />
       </Row>
@@ -215,9 +262,8 @@ class Blog extends React.Component<BlogProps, BlogState> {
         md={{ span: 8 }}
         lg={{ span: 6 }}
       >
-        <Row>
-          <SignUp />
-        </Row>
+        {this.renderCategorySelector(window.innerWidth >= 768)}
+
         <Row id="row">
           <Subscribe />
         </Row>
@@ -239,7 +285,8 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedPageIndex,
       pagifiedPosts,
       loadMore,
-      numPostsPerPage
+      numPostsPerPage,
+      selectedCat,
     } = this.state;
     const postsToRender = pagifiedPosts[selectedPageIndex];
 
@@ -248,6 +295,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <div id="root">
           <div id="header">
             <div id="headerTitle">Blog</div>
+            {selectedCat !== 'All' && (
+              <div id="headerSubtitle">{selectedCat}</div>
+            )}
           </div>
           <div id="gridContainer">
             <Row gutter={24}>
