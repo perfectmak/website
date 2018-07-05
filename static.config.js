@@ -53,7 +53,7 @@ function getBlogData () {
         .on('data', (item) => {
           if (path.extname(item.path) === '.md') {
             const data = fs.readFileSync(item.path, 'utf8')
-            const dataObj: any = matter(data)
+            const dataObj = matter(data)
             // process markdown content
             // dataObj.content = marked(data.content)
 
@@ -137,7 +137,7 @@ export default {
       },
       {
         path: '/blog',
-         component: 'src/containers/Blog',
+        component: 'src/containers/Blog',
         getData: () => blogData,
         children: blogData.posts.map((post) => ({
           path: `/post/${post.data.slug}`,

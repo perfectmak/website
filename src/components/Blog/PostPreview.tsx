@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import SocialLinks from './SocialLinks';
 import Moment from 'react-moment';
 import Dotdotdot from 'react-dotdotdot';
 import Markdown from 'react-markdown';
-import { Link } from 'react-static';
+import { History } from 'history';
+
+import SocialLinks from './SocialLinks';
 
 const RootWrap = styled.div`
   > #root {
     background: #ffffff;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: block;
     padding: 30px;
     width: 100%;
-    display: block;
     transition: all 300ms;
 
     :hover {
@@ -66,13 +68,9 @@ const RootWrap = styled.div`
       margin-top: 38px;
 
       #blogLink {
-        vertical-align: top;
-        line-height: 30px;
-        width: calc(100% - 80px);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        color: #00e2c1;
         display: inline-block;
+        line-height: 30px;
 
         #arrow-container {
           background: #00e2c1;
@@ -116,65 +114,64 @@ interface Post {
 }
 
 interface Props {
-  post: Post;
+  history: History;
   featured?: boolean;
+  post: Post;
 }
 
-export default ({ post, featured = false }: Props) => {
+export default ({ history, featured = false, post }: Props) => {
   if (!post) {
     return null;
   }
 
   return (
-    <Link id="blogLink" to={`/blog/post/${post.data.slug}`}>
-      <RootWrap>
-        <div id="root">
-          <div
-            id="blogImage"
-            style={{
-              backgroundImage: `url(${post.data.thumbnail})`,
-              height: featured ? '280px' : '132px'
-            }}
-          />
-          <div id="blogStats">
-            <div id="blogStatsCategory">{post.data.category}</div>
-            <div id="blogStatsTime">
-              <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
-            </div>
-          </div>
-          <div
-            id="blogTitle"
-            style={{
-              fontSize: featured ? '28px' : '21px',
-              lineHeight: featured ? '33px' : '29px'
-            }}
-          >
-            <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
-          </div>
-          <div
-            style={{
-              fontSize: featured ? '18px' : '14px',
-              lineHeight: featured ? '24px' : '20px'
-            }}
-            id="blogContent"
-          >
-            <Dotdotdot clamp={4}>
-              <Markdown source={post.content} escapeHtml={false} />
-            </Dotdotdot>
-          </div>
-          <div id="blogActions">
-            <div id="blogLink">
-              Continue Reading{' '}
-              <div id="arrow-container">
-                <span id="arrow">›</span>
-              </div>
-            </div>
-            <div id="socialLinksWrapper">
-              <SocialLinks slug={post.data.slug} />
-            </div>
+    <RootWrap onClick={() => history.push(`/blog/post/${post.data.slug}`)}>
+      <div id="root">
+        <div
+          id="blogImage"
+          style={{
+            backgroundImage: `url(${post.data.thumbnail})`,
+            height: featured ? '280px' : '132px'
+          }}
+        />
+        <div id="blogStats">
+          <div id="blogStatsCategory">{post.data.category}</div>
+          <div id="blogStatsTime">
+            <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
           </div>
         </div>
-      </RootWrap>
-    </Link>
+        <div
+          id="blogTitle"
+          style={{
+            fontSize: featured ? '28px' : '21px',
+            lineHeight: featured ? '33px' : '29px'
+          }}
+        >
+          <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
+        </div>
+        <div
+          style={{
+            fontSize: featured ? '18px' : '14px',
+            lineHeight: featured ? '24px' : '20px'
+          }}
+          id="blogContent"
+        >
+          <Dotdotdot clamp={4}>
+            <Markdown source={post.content} escapeHtml={false} />
+          </Dotdotdot>
+        </div>
+        <div id="blogActions">
+          <div id="blogLink">
+            Continue Reading{' '}
+            <div id="arrow-container">
+              <span id="arrow">›</span>
+            </div>
+          </div>
+          <div id="socialLinksWrapper">
+            <SocialLinks slug={post.data.slug} />
+          </div>
+        </div>
+      </div>
+    </RootWrap>
   );
 };

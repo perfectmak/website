@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { size } from '@src/breakpoints';
 import Moment from 'react-moment';
 import Markdown from 'react-markdown';
+import { History } from 'history';
+
+import { size } from '@src/breakpoints';
 import { cropContent } from '@helpers/cropContent';
-import { Link } from 'react-static';
 
 const RowContainer = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ const Bold = styled.div`
 const PostItemContainer = styled.div`
   width: 32%
   background-color: #fff;
+  cursor: pointer;
   margin-bottom: 20px;
   box-shadow: 0 2px 14px 0 rgba(0,0,0,0.05);
   transition: all 300ms;
@@ -76,35 +78,35 @@ interface Post {
 }
 
 interface Props {
+  history: History;
   post: Post;
 }
 
 class VerticalPostPreview extends React.Component<Props> {
   render() {
-    const { post } = this.props;
+    const { history, post } = this.props;
+
     if (!post) {
       return null;
     }
+
     return (
-      <PostItemContainer>
-        <Link to={`/blog/post/${post.data.slug}`}>
-          <Cropper>
-            <PostItemImage src={post.data.thumbnail} />
-          </Cropper>
-          <RowContainer>
-            <CategoryContainer style={{ fontSize: '0.6rem' }}>
-              {post.data.category.toUpperCase()} {''}
-            </CategoryContainer>
-            <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
-          </RowContainer>
-          <Bold>{post.data.title}</Bold>
-          <Text>
-            <Markdown
-              source={cropContent(post.content, 20)}
-              escapeHtml={false}
-            />
-          </Text>
-        </Link>
+      <PostItemContainer
+        onClick={() => history.push(`/blog/post/${post.data.slug}`)}
+      >
+        <Cropper>
+          <PostItemImage src={post.data.thumbnail} />
+        </Cropper>
+        <RowContainer>
+          <CategoryContainer style={{ fontSize: '0.6rem' }}>
+            {post.data.category.toUpperCase()} {''}
+          </CategoryContainer>
+          <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
+        </RowContainer>
+        <Bold>{post.data.title}</Bold>
+        <Text>
+          <Markdown source={cropContent(post.content, 20)} escapeHtml={false} />
+        </Text>
       </PostItemContainer>
     );
   }

@@ -1,15 +1,14 @@
 import React from 'react';
-import CategorySelector from '@components/Blog/CategorySelector';
+import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import Follow from '@components/Blog/Follow';
-import PostPreview from '@components/Blog/PostPreview';
-import RecentTweets from '@components/Blog/RecentTweets';
-import SignUp from '@components/Blog/SignUp';
-import Subscribe from '@components/Blog/Subscribe';
 import throttle from 'lodash/throttle';
 import queryString from 'query-string';
 
-import { Button, Col, Row } from 'antd';
+import CategorySelector from '@components/Blog/CategorySelector';
+import Follow from '@components/Blog/Follow';
+import PostPreview from '@components/Blog/PostPreview';
+import RecentTweets from '@components/Blog/RecentTweets';
+import Subscribe from '@components/Blog/Subscribe';
 
 const RootWrap = styled.div`
   > #root {
@@ -57,7 +56,7 @@ const RootWrap = styled.div`
       margin-top: 10px;
     }
 
-    #load-more-button {
+    .load-more-button {
       display: block;
       font-size: 20px;
       margin: 100px auto;
@@ -72,7 +71,7 @@ const isClient = typeof window !== 'undefined';
 interface BlogProps {
   posts: Post[];
   categories: string[];
-  history?: History[];
+  history?: History;
 }
 
 interface BlogState {
@@ -141,15 +140,16 @@ class Blog extends React.Component<BlogProps, BlogState> {
   componentDidMount() {
     const { history, posts } = this.props;
     const pagifiedPosts = this.splitPostsIntoPages(posts);
+    const loadMore = posts.length;
 
-    if (isClient) {
-    const loadMore = this.props.posts.length;
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleScroll);
     this.setState({
       loadMore,
       pagifiedPosts
     });
+
+    if (isClient) {
+      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleScroll);
     }
 
     if (history.location.search) {
@@ -164,7 +164,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
     }
   }
 
-  setCategory(history: History[]) {
+  setCategory(history: History) {
     const { search } = history.location;
     const { category } = queryString.parse(search);
     const selectedCat = this.categoriesMap[category];
@@ -262,14 +262,13 @@ class Blog extends React.Component<BlogProps, BlogState> {
         md={{ span: 8 }}
         lg={{ span: 6 }}
       >
-        {this.renderCategorySelector(window.innerWidth >= 768)}
+        {this.renderCategorySelector(
+          isClient ? window.innerWidth >= 768 : true
+        )}
 
         <Row id="row">
           <Subscribe />
         </Row>
-        {this.renderCategorySelector(
-          isClient ? window.innerWidth >= 768 : true
-        )}
         <Row id="row">
           <Follow />
         </Row>
@@ -286,7 +285,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
       pagifiedPosts,
       loadMore,
       numPostsPerPage,
-      selectedCat,
+      selectedCat
     } = this.state;
     const postsToRender = pagifiedPosts[selectedPageIndex];
 
@@ -310,10 +309,11 @@ class Blog extends React.Component<BlogProps, BlogState> {
               >
                 <Row gutter={24} id="row">
                   <Col xs={{ span: 24 }} id="row">
-                    <PostPreview post={postsToRender[0]} featured={true} />
-                    {this.renderCategorySelector(
-                      isClient ? window.innerWidth <= 768 : true
-                    )}
+                    <PostPreview
+                      history={this.props.history}
+                      post={postsToRender[0]}
+                      featured={true}
+                    />
                   </Col>
                   {(postsToRender || [])
                     .slice(1, postsToRender.length)
@@ -327,13 +327,18 @@ class Blog extends React.Component<BlogProps, BlogState> {
                           id="row"
                           key={i}
                         >
-                          <PostPreview key={`post#${i}`} post={post} i={i} />
+                          <PostPreview
+                            key={`post#${i}`}
+                            history={this.props.history}
+                            post={post}
+                            i={i}
+                          />
                         </Col>
                       );
                     })}
                   <Col xs={{ span: 24 }}>
                     {loadMore > numPostsPerPage && (
-                      <Button type="primary" id="load-more-button">
+                      <Button type="primary" className="load-more-button">
                         Load more
                       </Button>
                     )}

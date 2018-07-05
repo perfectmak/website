@@ -9,6 +9,7 @@ import Markdown from 'react-markdown';
 import Subscribe from '@components/Blog/Subscribe';
 import SocialLinks from '@components/Blog/SocialLinks';
 import VerticalPostPreview from '@components/Blog/VerticalPostPreview';
+import { History } from 'history';
 
 const BlogPostWrap = styled.div`
   display: flex;
@@ -226,8 +227,9 @@ interface BlogData {
 }
 
 interface BlogPostProps {
-  post: Post;
   blogData: BlogData;
+  history: History;
+  post: Post;
 }
 
 class BlogPost extends React.Component<BlogPostProps, {}> {
@@ -258,7 +260,7 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
   }
 
   render() {
-    const { post } = this.props;
+    const { blogData, history, post } = this.props;
 
     return (
       <BlogPostWrap>
@@ -344,9 +346,13 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
               Readers also enjoyed
             </Bold>
             <PostListContainer>
-              {this.props.blogData && this.props.blogData.posts.length > 0 ? (
-                this.filterPosts(this.props.blogData.posts, post, 3).map(el => (
-                  <VerticalPostPreview key={el.data.title} post={el} />
+              {blogData && blogData.posts.length > 0 ? (
+                this.filterPosts(blogData.posts, post, 3).map(el => (
+                  <VerticalPostPreview
+                    key={el.data.title}
+                    history={history}
+                    post={el}
+                  />
                 ))
               ) : (
                 <Bold
