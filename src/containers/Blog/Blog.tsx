@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import throttle from 'lodash/throttle';
-import queryString from 'query-string';
+import { History } from 'history';
 
 import CategorySelector from '@components/Blog/CategorySelector';
 import Follow from '@components/Blog/Follow';
@@ -68,10 +68,14 @@ const RootWrap = styled.div`
 
 const isClient = typeof window !== 'undefined';
 
+const parseCategory = (category: string) => {
+  return category.replace(/\s+/g, '-').toLowerCase();
+};
+
 interface BlogProps {
   posts: Post[];
   categories: string[];
-  history?: History;
+  history: History;
 }
 
 interface BlogState {
@@ -81,10 +85,6 @@ interface BlogState {
   pagifiedPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
-}
-
-interface History {
-  location: string;
 }
 
 interface Post {
@@ -102,24 +102,11 @@ interface Post {
   content: string;
 }
 
-interface CategoriesMap {
-  development?: string;
-  'crash-courses'?: string;
-  'the-team'?: string;
-}
-
 class Blog extends React.Component<BlogProps, BlogState> {
   private handleScroll: EventListener;
-  private categoriesMap: CategoriesMap;
 
   constructor(props: BlogProps) {
     super(props);
-
-    this.categoriesMap = {
-      'crash-courses': 'Crash Courses',
-      development: 'Development',
-      'the-team': 'The Team'
-    };
 
     this.handleScroll = throttle(() => {
       this.forceUpdate();
@@ -133,12 +120,10 @@ class Blog extends React.Component<BlogProps, BlogState> {
       selectedCat: 'All',
       selectedPageIndex: 0
     };
-
-    this.setCategory = this.setCategory.bind(this);
   }
 
   componentDidMount() {
-    const { history, posts } = this.props;
+    const { categories, history, posts } = this.props;
     const pagifiedPosts = this.splitPostsIntoPages(posts);
     const loadMore = posts.length;
 
@@ -153,7 +138,16 @@ class Blog extends React.Component<BlogProps, BlogState> {
     }
 
     if (history.location.search) {
-      this.setCategory(history);
+      const params = new URLSearchParams(history.location.search.toString());
+      const category = params.get('category');
+
+      if (category) {
+        categories.map(c => {
+          if (category === parseCategory(c)) {
+            this.onSelectCat(c);
+          }
+        });
+      }
     }
   }
 
@@ -162,14 +156,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
       window.removeEventListener('scroll', this.handleScroll);
       window.removeEventListener('resize', this.handleScroll);
     }
-  }
-
-  setCategory(history: History) {
-    const { search } = history.location;
-    const { category } = queryString.parse(search);
-    const selectedCat = this.categoriesMap[category];
-
-    this.setState({ selectedCat }, () => this.filterPosts());
   }
 
   splitPostsIntoPages(posts: Post[]) {
@@ -202,11 +188,18 @@ class Blog extends React.Component<BlogProps, BlogState> {
     return pages;
   }
 
-  onSelectCat(cat: string) {
-    this.setState({ selectedCat: cat }, () => this.filterPosts());
+  onSelectCat = (selectedCat: string) => {
+    if (selectedCat === 'All') {
+      this.props.history.push('/blog');
+    } else {
+      this.props.history.push(`/blog?category=${parseCategory(selectedCat)}`);
+    }
+
+    this.setState({ selectedCat }, () => this.filterPosts());
   }
 
-  deselectCat() {
+  deselectCat = () => {
+    this.props.history.push('/blog');
     this.setState({ selectedCat: 'All' }, () => this.filterPosts());
   }
 
@@ -216,7 +209,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
     const filtered =
       'All' === selectedCat
         ? posts
-        : posts.filter(post => post.data.category === selectedCat);
+        : posts.filter(post => selectedCat === post.data.category);
     const pagified = this.splitPostsIntoPages(filtered);
     const loadMoreBtn = filtered.length === 0 ? posts.length : filtered.length;
 
@@ -247,8 +240,8 @@ class Blog extends React.Component<BlogProps, BlogState> {
         <CategorySelector
           selectedCat={selectedCat}
           categories={categories}
-          deselectCat={this.deselectCat.bind(this)}
-          onSelectCat={this.onSelectCat.bind(this)}
+          deselectCat={this.deselectCat}
+          onSelectCat={this.onSelectCat}
         />
       </Row>
     );

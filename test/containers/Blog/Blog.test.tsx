@@ -1,11 +1,8 @@
 import React from 'react';
-import Waypoint from 'react-waypoint';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
 import { createMemoryHistory } from 'history';
-import Hero from '@components/Hero';
-import queryString from 'query-string';
-import WithData from '@containers/Blog/index/';
+import WithData from '@containers/Blog';
 
 interface Post {
   data: {
@@ -142,7 +139,7 @@ describe('<Blog />', () => {
       const newPages = component.state().pagifiedPosts;
       expect(newPages === origPages).toBeFalsy();
     });
-    
+
   });
 
   it('scrolls without crashing', () => {
@@ -153,17 +150,6 @@ describe('<Blog />', () => {
   it('unmounts without crashing', () => {
     component.unmount();
   });
-
-  it('updates selectedCat from search params', () => {
-    const instance = component.instance();
-    instance.props.history.push({ search: '?category=cat1' })
-    instance.categoriesMap = categoriesMap;
-
-    instance.setCategory(instance.props.history);
-
-    expect(component.state().selectedCat).toEqual('cat1');
-  });
-
 });
 
 describe('With data', () => {

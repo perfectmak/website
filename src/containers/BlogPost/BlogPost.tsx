@@ -267,18 +267,17 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
         <BackgroundContainer>
           <OuterContainer>
             <ColumnContainer>
-              <Link to="/blog">
-                <Button
-                  type="primary"
-                  icon="arrow-left"
-                  style={{
-                    fontSize: '20px',
-                    height: 40,
-                    marginBottom: 20,
-                    width: 40
-                  }}
-                />
-              </Link>
+              <Button
+                type="primary"
+                icon="arrow-left"
+                onClick={() => history.goBack()}
+                style={{
+                  fontSize: '20px',
+                  height: 40,
+                  marginBottom: 20,
+                  width: 40
+                }}
+              />
               <BlogContainer>
                 <Croppit
                   style={{
