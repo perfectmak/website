@@ -1,7 +1,7 @@
 ---
 title: 'Meet the MARKET Protocol Team: Collins Brown'
 author: Lazar Jovanovic
-category: Team Interviews
+category: Team
 published_at: '2018-05-31T00:00:00-07:00'
 readtime: 3
 medium_link: 'https://medium.com/market-protocol/meet-the-market-protocol-team-collins-brown-decef020be36'

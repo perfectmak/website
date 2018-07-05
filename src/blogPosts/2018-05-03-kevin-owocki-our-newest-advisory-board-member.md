@@ -1,7 +1,7 @@
 ---
 title: Kevin Owocki — Our Newest Advisory Board Member
 author: Collins Brown
-category: Board members
+category: Team
 published_at: '2018-05-03T00:00:00-07:00'
 readtime: 2
 medium_link: 'https://medium.com/market-protocol/kevin-owocki-our-newest-advisory-board-member-5ca14f32f7a5'

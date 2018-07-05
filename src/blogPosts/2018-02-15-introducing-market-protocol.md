@@ -1,7 +1,7 @@
 ---
 title: Introducing MARKET Protocol
 author: Phil Elsasser
-category: Development
+category: About
 published_at: '2018-02-15T00:00:00-07:00'
 readtime: 2
 medium_link: 'https://medium.com/market-protocol/introducing-market-protocol-e9765098e541'

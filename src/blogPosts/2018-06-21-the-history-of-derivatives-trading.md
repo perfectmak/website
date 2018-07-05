@@ -1,7 +1,7 @@
 ---
 title: The History of Derivatives Trading
 author: Hannah Oreskovich
-category: Derivatives
+category: Trading
 published_at: '2018-06-21T00:00:00-07:00'
 readtime: 5
 medium_link: 'https://medium.com/market-protocol/the-history-of-derivatives-trading-631e9ab64fed'

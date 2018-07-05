@@ -50,8 +50,8 @@ export default ({
       <div id="root">
         <h2 id="title">About Our Blog</h2>
         <p id="subtitle">
-          Mauris ornare lacus est, eu efficitur felis faucibus tristique. Nam
-          sit amet magna eu nisi gravida convallis.
+          From team announcements to deep dives into the history of derivatives
+          trading, you will find it all here.
         </p>
         <h2 id="title">Categories</h2>
         {categories.map((cat, i) => (

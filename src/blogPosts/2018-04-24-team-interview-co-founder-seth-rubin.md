@@ -1,7 +1,7 @@
 ---
 title: 'Team Interview: Co-Founder Seth Rubin'
 author: Collins Brown
-category: Team Interviews
+category: Team
 published_at: '2018-04-24T00:00:00-07:00'
 readtime: 3
 medium_link: 'https://medium.com/market-protocol/team-interview-co-founder-seth-rubin-3e1def8d4870'

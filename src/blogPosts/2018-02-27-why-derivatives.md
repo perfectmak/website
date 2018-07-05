@@ -1,7 +1,7 @@
 ---
 title: Why Derivatives?
 author: Phil Elsasser
-category: Derivatives
+category: Trading
 published_at: '2018-02-27T00:00:00-07:00'
 readtime: 2
 medium_link: 'https://medium.com/market-protocol/why-derivatives-cb65de0cd528'

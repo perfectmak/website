@@ -1,7 +1,7 @@
 ---
 title: What is Cryptocurrency Mining and How To Do It Better
 author: Collins Brown
-category: Cryptocurrency Mining
+category: Cryptocurrency
 published_at: '2018-05-07T00:00:00-07:00'
 readtime: 6
 medium_link: 'https://medium.com/market-protocol/what-is-cryptocurrency-mining-and-how-to-do-it-better-582a2cca2bf1'

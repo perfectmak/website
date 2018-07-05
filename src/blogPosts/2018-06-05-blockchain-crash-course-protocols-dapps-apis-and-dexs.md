@@ -1,7 +1,7 @@
 ---
 title: 'Blockchain Crash Course: Protocols, dApps, APIs and DEXs'
 author: Lazar Jovanovic
-category: Crash Courses
+category: About
 published_at: '2018-06-05T00:00:00-07:00'
 readtime: 7
 medium_link: 'https://medium.com/market-protocol/blockchain-crash-course-protocols-dapps-apis-and-dexs-4c324964f9c2'

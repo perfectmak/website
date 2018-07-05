@@ -1,7 +1,7 @@
 ---
 title: MARKET Protocol — Explain it like I’m Five
 author: Lazar Jovanovic
-category: Market Protocol
+category: About
 published_at: '2018-04-19T00:00:00-07:00'
 readtime: 4
 medium_link: 'https://medium.com/market-protocol/market-protocol-explain-it-like-im-five-673312673b6e'

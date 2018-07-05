@@ -1,7 +1,7 @@
 ---
 title: How MARKET Protocol Differs From Traditional Derivatives Exchanges
 author: Collins Brown
-category: Market Protocol
+category: Trading
 published_at: '2018-05-15T00:00:00-07:00'
 readtime: 4
 medium_link: 'https://medium.com/market-protocol/how-market-protocol-differs-from-traditional-derivatives-exchanges-4fb101578ece'
