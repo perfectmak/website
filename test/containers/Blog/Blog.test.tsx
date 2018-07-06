@@ -150,6 +150,13 @@ describe('<Blog />', () => {
   it('unmounts without crashing', () => {
     component.unmount();
   });
+
+  it('loads more posts', () => {
+    const instance = component.instance();
+    instance.onLoadMore();
+    expect(component.state().selectedPageIndex).toEqual(1);
+    expect(component.state().currentPosts.length).toEqual(10);
+  });
 });
 
 describe('With data', () => {
