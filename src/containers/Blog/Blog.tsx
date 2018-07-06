@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import throttle from 'lodash/throttle';
+import { flatten, throttle } from 'lodash';
 import { History } from 'history';
 
 import CategorySelector from '@components/Blog/CategorySelector';
@@ -83,6 +83,7 @@ interface BlogState {
   loadMore: number;
   numPostsPerPage: number;
   pagifiedPosts: Post[][];
+  currentPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
 }
@@ -227,6 +228,25 @@ class Blog extends React.Component<BlogProps, BlogState> {
     });
   }
 
+  onLoadMore = () => {
+    const {
+      pagifiedPosts,
+      selectedPageIndex,
+      numPostsPerPage,
+      loadMore
+    } = this.state;
+    const allPosts = flatten(pagifiedPosts);
+    const newPageIndex = selectedPageIndex + 1;
+    const end = newPageIndex * numPostsPerPage + numPostsPerPage;
+
+    const currentPosts = allPosts.slice(0, end);
+
+    this.setState({
+      currentPosts,
+      selectedPageIndex: newPageIndex
+    });
+  }
+
   renderCategorySelector(shouldRender: boolean) {
     if (!shouldRender) {
       return;
@@ -274,13 +294,16 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
   render() {
     const {
-      selectedPageIndex,
       pagifiedPosts,
+      currentPosts,
       loadMore,
       numPostsPerPage,
       selectedCat
     } = this.state;
-    const postsToRender = pagifiedPosts[selectedPageIndex];
+
+    const initialPosts = pagifiedPosts[0];
+
+    const postsToRender = currentPosts || initialPosts;
 
     return (
       <RootWrap>
@@ -300,7 +323,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
                 lg={{ span: 18 }}
                 id="blogs"
               >
-                <Row gutter={24} id="row">
+                <Row gutter={24} id="row" type="flex">
                   <Col xs={{ span: 24 }} id="row">
                     <PostPreview
                       history={this.props.history}
@@ -331,7 +354,11 @@ class Blog extends React.Component<BlogProps, BlogState> {
                     })}
                   <Col xs={{ span: 24 }}>
                     {loadMore > numPostsPerPage && (
-                      <Button type="primary" className="load-more-button">
+                      <Button
+                        type="primary"
+                        className="load-more-button"
+                        onClick={this.onLoadMore}
+                      >
                         Load more
                       </Button>
                     )}
