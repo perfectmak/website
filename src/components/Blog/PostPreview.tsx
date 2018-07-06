@@ -4,10 +4,20 @@ import Moment from 'react-moment';
 import Dotdotdot from 'react-dotdotdot';
 import Markdown from 'react-markdown';
 import { History } from 'history';
+import { device } from '@src/breakpoints';
 
 import SocialLinks from './SocialLinks';
 
 const RootWrap = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 0 12px;
+
+  @media ${device.mobileS} and (max-width: 767px) {
+    width: 100%;
+    padding: 0;
+  }
+
   > #root {
     background: #ffffff;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);

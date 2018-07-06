@@ -3,12 +3,39 @@ import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { flatten, throttle } from 'lodash';
 import { History } from 'history';
+import posed, { PoseGroup } from 'react-pose';
+import { device } from '@src/breakpoints';
 
 import CategorySelector from '@components/Blog/CategorySelector';
 import Follow from '@components/Blog/Follow';
 import PostPreview from '@components/Blog/PostPreview';
 import RecentTweets from '@components/Blog/RecentTweets';
 import Subscribe from '@components/Blog/Subscribe';
+
+const PostsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
+const PostContainer = styled(
+  posed.div({
+    enter: {
+      y: '0%'
+    },
+    exit: {
+      y: '10%'
+    }
+  })
+)`
+  display: flex;
+  flex-grow: 0;
+  width: 50%;
+
+  @media ${device.mobileS} and (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 const RootWrap = styled.div`
   > #root {
@@ -323,35 +350,30 @@ class Blog extends React.Component<BlogProps, BlogState> {
                 lg={{ span: 18 }}
                 id="blogs"
               >
-                <Row gutter={24} id="row" type="flex">
-                  <Col xs={{ span: 24 }} id="row">
+                <PostsContainer>
+                  <div>
                     <PostPreview
                       history={this.props.history}
                       post={postsToRender[0]}
                       featured={true}
                     />
-                  </Col>
-                  {(postsToRender || [])
-                    .slice(1, postsToRender.length)
-                    .map((post, i) => {
-                      return (
-                        <Col
-                          xs={{ span: 24 }}
-                          sm={{ span: 12 }}
-                          md={{ span: 12 }}
-                          lg={{ span: 12 }}
-                          id="row"
-                          key={i}
-                        >
-                          <PostPreview
-                            key={`post#${i}`}
-                            history={this.props.history}
-                            post={post}
-                            i={i}
-                          />
-                        </Col>
-                      );
-                    })}
+                  </div>
+                  <PoseGroup>
+                    {(postsToRender || [])
+                      .slice(1, postsToRender.length)
+                      .map((post, i) => {
+                        return (
+                          <PostContainer key={i}>
+                            <PostPreview
+                              key={`post#${i}`}
+                              history={this.props.history}
+                              post={post}
+                              i={i}
+                            />
+                          </PostContainer>
+                        );
+                      })}
+                  </PoseGroup>
                   <Col xs={{ span: 24 }}>
                     {loadMore > numPostsPerPage && (
                       <Button
@@ -363,7 +385,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
                       </Button>
                     )}
                   </Col>
-                </Row>
+                </PostsContainer>
               </Col>
               {this.renderSidebar()}
             </Row>
