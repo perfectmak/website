@@ -13,6 +13,7 @@
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.2",
     "react-moment": "^0.7.0",
+    "react-pose": "^2.1.2",
     "react-router": "^4.2.0",
     "react-static": "^5.9.7",
     "react-static-routes": "^1.0.0",

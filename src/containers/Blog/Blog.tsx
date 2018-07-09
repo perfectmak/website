@@ -1,14 +1,41 @@
 import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import throttle from 'lodash/throttle';
+import { flatten, throttle } from 'lodash';
 import { History } from 'history';
+import posed, { PoseGroup } from 'react-pose';
+import { device } from '@src/breakpoints';
 
 import CategorySelector from '@components/Blog/CategorySelector';
 import Follow from '@components/Blog/Follow';
 import PostPreview from '@components/Blog/PostPreview';
 import RecentTweets from '@components/Blog/RecentTweets';
 import Subscribe from '@components/Blog/Subscribe';
+
+const PostsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
+const PostContainer = styled(
+  posed.div({
+    enter: {
+      y: '0%'
+    },
+    exit: {
+      y: '10%'
+    }
+  })
+)`
+  display: flex;
+  flex-grow: 0;
+  width: 50%;
+
+  @media ${device.mobileS} and (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 const RootWrap = styled.div`
   > #root {
@@ -83,6 +110,7 @@ interface BlogState {
   loadMore: number;
   numPostsPerPage: number;
   pagifiedPosts: Post[][];
+  currentPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
 }
@@ -227,6 +255,25 @@ class Blog extends React.Component<BlogProps, BlogState> {
     });
   }
 
+  onLoadMore = () => {
+    const {
+      pagifiedPosts,
+      selectedPageIndex,
+      numPostsPerPage,
+      loadMore
+    } = this.state;
+    const allPosts = flatten(pagifiedPosts);
+    const newPageIndex = selectedPageIndex + 1;
+    const end = newPageIndex * numPostsPerPage + numPostsPerPage;
+
+    const currentPosts = allPosts.slice(0, end);
+
+    this.setState({
+      currentPosts,
+      selectedPageIndex: newPageIndex
+    });
+  }
+
   renderCategorySelector(shouldRender: boolean) {
     if (!shouldRender) {
       return;
@@ -274,13 +321,17 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
   render() {
     const {
-      selectedPageIndex,
       pagifiedPosts,
+      currentPosts = [],
       loadMore,
       numPostsPerPage,
       selectedCat
     } = this.state;
-    const postsToRender = pagifiedPosts[selectedPageIndex];
+
+    const initialPosts = pagifiedPosts[0];
+
+    const postsToRender = (currentPosts.length && currentPosts) || initialPosts;
+    const shouldLoad = currentPosts.length < loadMore;
 
     return (
       <RootWrap>
@@ -300,43 +351,42 @@ class Blog extends React.Component<BlogProps, BlogState> {
                 lg={{ span: 18 }}
                 id="blogs"
               >
-                <Row gutter={24} id="row">
-                  <Col xs={{ span: 24 }} id="row">
+                <PostsContainer>
+                  <div>
                     <PostPreview
                       history={this.props.history}
                       post={postsToRender[0]}
                       featured={true}
                     />
-                  </Col>
-                  {(postsToRender || [])
-                    .slice(1, postsToRender.length)
-                    .map((post, i) => {
-                      return (
-                        <Col
-                          xs={{ span: 24 }}
-                          sm={{ span: 12 }}
-                          md={{ span: 12 }}
-                          lg={{ span: 12 }}
-                          id="row"
-                          key={i}
-                        >
-                          <PostPreview
-                            key={`post#${i}`}
-                            history={this.props.history}
-                            post={post}
-                            i={i}
-                          />
-                        </Col>
-                      );
-                    })}
+                  </div>
+                  <PoseGroup>
+                    {(postsToRender || [])
+                      .slice(1, postsToRender.length)
+                      .map((post, i) => {
+                        return (
+                          <PostContainer key={i}>
+                            <PostPreview
+                              key={`post#${i}`}
+                              history={this.props.history}
+                              post={post}
+                              i={i}
+                            />
+                          </PostContainer>
+                        );
+                      })}
+                  </PoseGroup>
                   <Col xs={{ span: 24 }}>
-                    {loadMore > numPostsPerPage && (
-                      <Button type="primary" className="load-more-button">
+                    {shouldLoad && (
+                      <Button
+                        type="primary"
+                        className="load-more-button"
+                        onClick={this.onLoadMore}
+                      >
                         Load more
                       </Button>
                     )}
                   </Col>
-                </Row>
+                </PostsContainer>
               </Col>
               {this.renderSidebar()}
             </Row>
