@@ -6,3 +6,7 @@ exports.CoinCrunch = require('./coinCrunch.png');
 exports.YouTube = require('./youTube.svg');
 exports.FutureTechPodcast = require('./futureTechPodcast.png');
 exports.PressureCast = require('./pressureCast.png');
+exports.FinTechFutures = require('./fintechFutures.png');
+exports.ChainFinance = require('./chainFinance.png');
+exports.Mondovisione = require('./mondovisione.png');
+exports.CrowdfundInsider = require('./crowdfundInsider.png');
