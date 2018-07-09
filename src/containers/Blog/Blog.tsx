@@ -331,7 +331,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
     const initialPosts = pagifiedPosts[0];
 
     const postsToRender = (currentPosts.length && currentPosts) || initialPosts;
-    const shouldLoad = currentPosts.length >= loadMore;
+    const shouldLoad = currentPosts.length < loadMore;
 
     return (
       <RootWrap>
@@ -376,15 +376,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
                       })}
                   </PoseGroup>
                   <Col xs={{ span: 24 }}>
-                    {shouldLoad ? (
-                      <Button
-                        type="primary"
-                        className="load-more-button"
-                        disabled
-                      >
-                        No more posts to load
-                      </Button>
-                    ) : (
+                    {shouldLoad && (
                       <Button
                         type="primary"
                         className="load-more-button"
