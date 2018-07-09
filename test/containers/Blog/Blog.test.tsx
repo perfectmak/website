@@ -1,8 +1,8 @@
 import React from 'react';
-import Waypoint from 'react-waypoint';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
-import Hero from '@components/Hero';
+import { createMemoryHistory } from 'history';
+import WithData from '@containers/Blog';
 
 interface Post {
   data: {
@@ -19,9 +19,14 @@ interface Post {
 
 describe('<Blog />', () => {
   let component = typeof Blog;
-  let posts: Post[] = [];
-  let numPostsToTest = 28
-  let categories: string[] = ['cat1', 'cat2', 'cat3'];
+  const posts: Post[] = [];
+  const numPostsToTest = 28;
+  const categories: string[] = ['cat1', 'cat2', 'cat3'];
+  const categoriesMap = {
+    cat1: 'cat1',
+    cat2: 'cat2',
+    cat3: 'cat3',
+  };
 
   // populate posts[]
   for (let i = 0; i < numPostsToTest; i++) {
@@ -40,8 +45,11 @@ describe('<Blog />', () => {
   }
 
   beforeEach(() => {
-    component = mount(
-      <Blog posts={posts} categories={categories} />
+    const history = createMemoryHistory();
+    history.push('/blog');
+
+    component = shallow(
+      <Blog posts={posts} categories={categories} history={history} />
     );
   });
 
@@ -49,142 +57,112 @@ describe('<Blog />', () => {
     expect(component.exists());
   });
 
-  it('renders a <Hero /> component', () => {
-    expect(component.find(Hero).length).toEqual(1);
-  });
-
-  it('renders a <Waypoint /> component', () => {
-    expect(component.find(Waypoint).length).toEqual(1);
-  });
-
   it('pagifies posts correctly', () => {
-    let instance = component.instance();
-    let { numPostsPerPage } = instance.state;
+    const instance = component.instance();
+    const { numPostsPerPage } = instance.state;
 
     // run pagification function
-    let pagifiedPosts = instance.splitPostsIntoPages(posts);
+    const pagifiedPosts = instance.splitPostsIntoPages(posts);
 
     // define expected results
-    let expected = {
+    const expected = {
       numPages: Math.ceil(numPostsToTest / numPostsPerPage),
       numPosts: numPostsToTest,
-    }
+    };
 
     // define observed results
-    let observed = {
+    const observed = {
       numPages: pagifiedPosts.length,
       numPosts: 0,
       postsAreUnique: false
-    }
+    };
 
     // used to test for post uniqueness
-    let postTitles = []
+    const postTitles = [];
 
     // loop through posts, counting them and testing for uniqueness
     pagifiedPosts.map((page, i) => {
       observed.numPosts += pagifiedPosts[i].length;
       page.map((post, i) => {
-        if (!postTitles.includes(post.title))
+        if (!postTitles.includes(post.title)) {
           postTitles.push(post.title);
+        }
       });
     });
 
     // updated observed post uniqueness value
-    observed.postsAreUnique = postTitles.length === observed.numPages
+    observed.postsAreUnique = postTitles.length === observed.numPages;
 
     expect(observed.numPages).toEqual(expected.numPages);
     expect(observed.numPosts).toEqual(expected.numPosts);
     expect(observed.postsAreUnique);
   });
 
-  it('toggles side menu position using toggleFixedSideMenu and untoggleFixedSideMenu functions', () => {
-    let instance = component.instance();
-    instance.toggleFixedSideMenu();
-    expect(component.state().sideMenuIsFixed).toEqual(true);
-    instance.untoggleFixedSideMenu();
-    expect(component.state().sideMenuIsFixed).toEqual(false);
-  });
-
-  it('updates state.selectedPageIndex when pagination buttons are clicked', () => {
-    let buttonComponents = component.find('.pagination-buttons');
-    let numButtons = buttonComponents.children().length
-    let buttons = {
-      left: buttonComponents.childAt(0),
-      thirdPage: buttonComponents.childAt(3),
-      lastPage: buttonComponents.childAt(numButtons - 2),
-      right: buttonComponents.childAt(numButtons - 1),
-    }
-
-    // test paging left when first page is already selected
-    buttons.left.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(0);
-
-    // test paging right
-    buttons.right.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(1);
-
-    // test paging left
-    buttons.left.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(0);
-
-    // test directly paging to third page
-    buttons.thirdPage.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(2);
-
-    // test directly paging to last page
-    buttons.lastPage.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(5);
-
-    // test paging right when last page is already selected
-    buttons.right.simulate('click');
-    expect(component.state().selectedPageIndex).toEqual(5);
-  });
-
-  it('cancels invocation of onSelectPage if user is already on the target page', () => {
-    let instance = component.instance();
-    let returnValue = instance.onSelectPage(0);
-    expect(returnValue).toEqual('cancelled invocation');
-  });
-
   it('updates selectedCat state var with onSelectCat function', () => {
-    let instance = component.instance();
+    const instance = component.instance();
     instance.onSelectCat('All');
     expect(component.state().selectedCat).toEqual('All');
   });
 
   describe('filterPosts function', () => {
     it('updates filteredPosts state var with posts that have the specified category', () => {
-      let instance = component.instance();
+      const instance = component.instance();
 
-      let expected = {
+      const expected = {
         numPostsWithCategoriesOtherThanCat1: 0
-      }
+      };
 
-      let observed = {
+      const observed = {
         numPostsWithCategoriesOtherThanCat1: 0
-      }
+      };
 
       instance.setState({ selectedCat: 'cat1' });
       instance.filterPosts();
 
-      let { filteredPosts } = component.state();
+      const { filteredPosts } = component.state();
 
       for (let i = 0; i < filteredPosts.length; i++) {
-        let curr = filteredPosts[i];
-        if (curr.data.category !== 'cat1')
+        const curr = filteredPosts[i];
+        if (curr.data.category !== 'cat1') {
           observed.numPostsWithCategoriesOtherThanCat1++;
+        }
       }
 
       expect(observed.numPostsWithCategoriesOtherThanCat1).toEqual(expected.numPostsWithCategoriesOtherThanCat1);
     });
 
     it('repagifies filtered posts', () => {
-      let instance = component.instance();
-      let origPages = component.state().pagifiedPosts
+      const instance = component.instance();
+      const origPages = component.state().pagifiedPosts;
       instance.setState({ selectedCat: 'cat1' });
       instance.filterPosts();
-      let newPages = component.state().pagifiedPosts
+      const newPages = component.state().pagifiedPosts;
       expect(newPages === origPages).toBeFalsy();
     });
+
+  });
+
+  it('scrolls without crashing', () => {
+    const instance = component.instance();
+    instance.handleScroll();
+  });
+
+  it('unmounts without crashing', () => {
+    component.unmount();
+  });
+
+  it('loads more posts', () => {
+    const instance = component.instance();
+    instance.onLoadMore();
+    expect(component.state().selectedPageIndex).toEqual(1);
+    expect(component.state().currentPosts.length).toEqual(10);
+  });
+});
+
+describe('With data', () => {
+  it('renders without crashing', () => {
+    const component = shallow(
+      <WithData />
+    );
   });
 });

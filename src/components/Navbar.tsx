@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Dropdown, Layout, Menu, Popover } from 'antd';
+import { Affix, Button, Dropdown, Layout, Menu, Popover } from 'antd';
 import styled from 'styled-components';
 import { Link, scrollTo } from 'react-static';
 import { size } from '@src/breakpoints';
@@ -100,8 +100,10 @@ const MobileMenuToggle = styled(Button)`
 `;
 
 const HeaderWrapper = styled.div`
+  background-color: rgb(24, 30, 38);
   z-index: 9999;
-  @media (max-width: ${size.mobileM}) {
+  overflow: hidden;
+  @media (max-width: ${size.mobileL}) {
     .ant-layout-header {
       padding-left: 30px;
       padding-right: 30px;
@@ -112,6 +114,9 @@ const HeaderWrapper = styled.div`
       padding-left: 20px;
       padding-right: 20px;
     }
+  }
+  .ant-affix {
+    background-color: rgb(24, 30, 38);
   }
   .ant-popover-arrow {
     top: -4px;
@@ -281,7 +286,8 @@ class Navbar extends React.Component {
         >
           <DropdownTrigger
             className="ant-dropdown-link"
-            href="#"
+            href="https://marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf"
+            target="_blank"
             style={{ padding: '0 20px' }}
           >
             Whitepaper
@@ -299,12 +305,12 @@ class Navbar extends React.Component {
             FAQs
           </Link>
         </Menu.Item>
-        <Menu.Item key="/#subscribe">
+        <Menu.Item key="/partners">
           <Link
-            to="/#subscribe"
+            to="/partners"
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            Subscribe
+            Partners
           </Link>
         </Menu.Item>
         <Menu.Item key="/blog">
@@ -323,32 +329,34 @@ class Navbar extends React.Component {
   render(): JSX.Element {
     return (
       <HeaderWrapper>
-        <Header>
-          <Logo>
-            <Link
-              to="/"
-              style={{ color: 'inherit', textDecoration: 'none' }}
-              onClick={() => this.handleClick('/')}
+        <Affix>
+          <Header>
+            <Logo>
+              <Link
+                to="/"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+                onClick={() => this.handleClick('/')}
+              >
+                <img
+                  alt="Decentralized derivatives and exchange"
+                  width="100%"
+                  src={logoImg}
+                />
+              </Link>
+            </Logo>
+            {this.renderMenuMarkup('desktop')}
+            <Popover
+              getPopupContainer={triggerNode =>
+                triggerNode.parentNode as HTMLElement
+              }
+              content={this.renderMenuMarkup('mobile')}
+              trigger="click"
+              arrowPointAtCenter={true}
             >
-              <img
-                alt="Decentralized derivatives and exchange"
-                width="100%"
-                src={logoImg}
-              />
-            </Link>
-          </Logo>
-          {this.renderMenuMarkup('desktop')}
-          <Popover
-            getPopupContainer={triggerNode =>
-              triggerNode.parentNode as HTMLElement
-            }
-            content={this.renderMenuMarkup('mobile')}
-            trigger="click"
-            arrowPointAtCenter={true}
-          >
-            <MobileMenuToggle shape="circle" icon="bars" />
-          </Popover>
-        </Header>
+              <MobileMenuToggle shape="circle" icon="bars" />
+            </Popover>
+          </Header>
+        </Affix>
       </HeaderWrapper>
     );
   }

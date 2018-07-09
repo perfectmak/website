@@ -6,3 +6,4 @@ exports.Maker = require('./maker.png');
 exports.SharkRelay = require('./sharkrelay.png');
 exports.Virtuse = require('./virtuse.png');
 exports.HeroIllustration = require('./partner_header.svg');
+exports.Bluzelle = require('./bluzelle.png');

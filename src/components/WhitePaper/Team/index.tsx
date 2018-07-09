@@ -85,7 +85,7 @@ class Team extends React.Component {
               <Row type="flex">
                 {config.teamMembers.map((obj, index) => {
                   return (
-                    <PersonWrapper>
+                    <PersonWrapper key={index}>
                       <Col key={index} xs={24} sm={24} md={24} xl={24}>
                         <Person data={obj} />
                         <MarketText
@@ -102,7 +102,7 @@ class Team extends React.Component {
               <Row type="flex">
                 {config.advisors.map((obj, index) => {
                   return (
-                    <PersonWrapper>
+                    <PersonWrapper key={index}>
                       <Col key={index} xs={24} sm={24} md={24} xl={24}>
                         <Person data={obj} />
                         <MarketText

@@ -7,7 +7,10 @@ import { device, size } from '@src/breakpoints';
 import EmailConstant from '@constants/email';
 
 interface Props {
-  bg: string;
+  bg?: string;
+  beforeIcon?: string;
+  text?: string;
+  afterIcon?: boolean;
   onlyShowSubscribeButton?: boolean;
 }
 
@@ -52,22 +55,43 @@ class Cta extends React.Component<Props, CtaState> {
 
   render() {
     const { subscriptionPopUpVisible } = this.state;
-    const { bg, onlyShowSubscribeButton } = this.props;
+    const {
+      bg,
+      beforeIcon = '',
+      onlyShowSubscribeButton,
+      text,
+      afterIcon = true
+    } = this.props;
 
     if (onlyShowSubscribeButton) {
       return (
         <div style={{ width: '100%', height: '100%' }}>
           <Button
             onClick={() => this.setState({ subscriptionPopUpVisible: true })}
-            id={'subscribe-button'}
             type="primary"
-            style={{ width: '100%', textAlign: 'left' }}
+            id="subscribe-button"
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: afterIcon ? 'space-between' : 'center',
+              padding: afterIcon || beforeIcon ? '' : '0 4rem',
+              width: afterIcon || beforeIcon ? '100%' : ''
+            }}
           >
-            Click To Subscribe{' '}
-            <Icon
-              type="arrow-right"
-              style={{ position: 'absolute', top: '35%', right: '15px' }}
-            />
+            {!!beforeIcon && (
+              <img
+                alt="join mailing list"
+                src={beforeIcon}
+                style={{ marginRight: '10px', width: '19px' }}
+              />
+            )}
+            {text || `Join our Newsletter${' '}`}
+            {afterIcon && (
+              <Icon
+                type="arrow-right"
+                style={{ position: 'absolute', top: '35%', right: '15px' }}
+              />
+            )}
           </Button>
 
           <MarketSubscriberForm
@@ -99,7 +123,7 @@ class Cta extends React.Component<Props, CtaState> {
                 onClick={() =>
                   this.setState({ subscriptionPopUpVisible: true })
                 }
-                id={'subscribe-button'}
+                id="subscribe-button"
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >
@@ -118,7 +142,7 @@ class Cta extends React.Component<Props, CtaState> {
               </MarketHeader>
               <Button
                 href={emailLink}
-                id={'email-button'}
+                id="email-button"
                 type="primary"
                 style={{ width: '100%', textAlign: 'left' }}
               >

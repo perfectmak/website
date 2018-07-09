@@ -20,8 +20,34 @@ describe('<Person />', () => {
   it('renders image with src passed as props', () => {
     const component = shallow(<Person {...props} />);
     const imgComponent = component.find('img').at(0);
-    expect(imgComponent.props().className).to.equal('become-opaque-on-hover');
     expect(imgComponent.props().src).to.equal(props.data.img);
+  });
+
+  it('renders readMore with props with bio', () => {
+    const component = shallow(<Person {...props} />);
+    const imgWrapperComponent = component.find('div').at(1);
+    imgWrapperComponent.simulate('click');
+    expect(mockFocus.mock.calls).to.have.length(1);
+  });
+
+  it('renders readMore when bio', () => {
+    const component = shallow(<Person {...props} />);
+    const readMore = component.find('#readMore');
+    expect(readMore).to.have.length(1);
+  });
+
+  it('does not render readMore when no bio', () => {
+    props.data.bio = null;
+    const component = shallow(<Person {...props} />);
+    const readMore = component.find('#readMore');
+    expect(readMore).to.have.length(0);
+  });
+
+  it('handles no or incorrect props passed', () => {
+    props.data.bio = null;
+    const component = shallow(<Person {...props} />);
+    const imgComponent = component.find('img').at(0);
+    expect(imgComponent.props().style.cursor).to.equal('default');
     imgComponent.simulate('click');
     expect(mockFocus.mock.calls).to.have.length(1);
   });

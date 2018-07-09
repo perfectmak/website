@@ -1,65 +1,111 @@
 import React from 'react';
 import styled from 'styled-components';
-import { size } from '@src/breakpoints';
-import Category from '@components/Blog/Category';
 import Moment from 'react-moment';
+import Dotdotdot from 'react-dotdotdot';
+import Markdown from 'react-markdown';
+import { History } from 'history';
+import { device } from '@src/breakpoints';
 
-const BlogPostPreviewWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 700px;
-  height: 200px;
-  margin-top: 40px;
+import SocialLinks from './SocialLinks';
 
-  > div.title {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 20px;
+const RootWrap = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 0 12px;
 
-    * {
-      padding-left: 20px;
-      padding-right: 20px;
-      margin: 0;
-      border-left: 3px solid #f6f6f6;
-    }
-
-    p {
-      color: #4E5668;
-    }
+  @media ${device.mobileS} and (max-width: 767px) {
+    width: 100%;
+    padding: 0;
   }
 
-  > div.thumbnail {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
-    height: 100%;
-    border-radius: 8px;
+  > #root {
+    background: #ffffff;
+    box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: block;
+    padding: 30px;
+    width: 100%;
+    transition: all 300ms;
 
-    img {
-      width: 100%;
-    }
-  }
-
-  @media screen and (max-width: ${size.tablet}) {
-    width: 94%;
-    height: auto;
-    flex-direction: column;
-    margin-left: 3%;
-
-    > div.title {
-      width: 94%;
+    :hover {
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);
     }
 
-    > div.thumbnail {
-      height: auto;
-      width: 90%;
+    #blogStats {
+      #blogStatsCategory {
+        background: #181e26;
+        color: #ffffff;
+        display: inline-block;
+        font-size: 10px;
+        line-height: 12px;
+        padding: 4px 10px;
+        text-transform: uppercase;
+        vertical-align: top;
+        margin-right: 19px;
+      }
+
+      #blogStatsTime {
+        color: #8b8b8b;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: top;
+      }
+    }
+
+    #blogImage {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      border: none;
+      height: 132px;
+      margin: -30px 0 30px -30px;
+      width: calc(100% + 60px);
+    }
+
+    #blogTitle {
+      font-weight: bold;
+      margin-top: 12px;
+      color: #000;
+    }
+
+    #blogContent {
+      color: #646469;
+      margin-top: 10px;
+    }
+
+    #blogActions {
+      margin-top: 38px;
+
+      #blogLink {
+        color: #00e2c1;
+        display: inline-block;
+        line-height: 30px;
+
+        #arrow-container {
+          background: #00e2c1;
+          border-radius: 100%;
+          color: white;
+          display: inline-block;
+          height: 16px;
+          line-height: 16px;
+          margin-left: 9px;
+          margin-top: 8px;
+          text-align: center;
+          vertical-align: top;
+          width: 16px;
+
+          #arrow {
+            margin-top: -1px;
+            position: absolute;
+            margin-left: -2px;
+          }
+        }
+      }
+
+      #socialLinksWrapper {
+        float: right;
+      }
     }
   }
 `;
@@ -78,33 +124,64 @@ interface Post {
 }
 
 interface Props {
+  history: History;
+  featured?: boolean;
   post: Post;
 }
 
-export default ({ post }: Props) => {
+export default ({ history, featured = false, post }: Props) => {
   if (!post) {
     return null;
   }
 
   return (
-    <a href={`/blog/post/${post.data.slug}`}>
-      <BlogPostPreviewWrap>
-        {/* category, title, author, date */}
-        <div className={'title'}>
-          <Category cat={post.data.category} showBorder />
-
-          <h2>{post.data.title}</h2>
-
-          <p>{`by ${post.data.author}`}</p>
-
-          <Moment format={'MMMM Do, YYYY'}>{post.data.published_at}</Moment>
+    <RootWrap onClick={() => history.push(`/blog/post/${post.data.slug}`)}>
+      <div id="root">
+        <div
+          id="blogImage"
+          style={{
+            backgroundImage: `url(${post.data.thumbnail})`,
+            height: featured ? '280px' : '132px'
+          }}
+        />
+        <div id="blogStats">
+          <div id="blogStatsCategory">{post.data.category}</div>
+          <div id="blogStatsTime">
+            <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
+          </div>
         </div>
-
-        {/* thumbnail */}
-        <div className={'thumbnail'}>
-          <img src={post.data.thumbnail} />
+        <div
+          id="blogTitle"
+          style={{
+            fontSize: featured ? '28px' : '21px',
+            lineHeight: featured ? '33px' : '29px'
+          }}
+        >
+          <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
         </div>
-      </BlogPostPreviewWrap>
-    </a>
+        <div
+          style={{
+            fontSize: featured ? '18px' : '14px',
+            lineHeight: featured ? '24px' : '20px'
+          }}
+          id="blogContent"
+        >
+          <Dotdotdot clamp={4}>
+            <Markdown source={post.content} escapeHtml={false} />
+          </Dotdotdot>
+        </div>
+        <div id="blogActions">
+          <div id="blogLink">
+            Continue Reading{' '}
+            <div id="arrow-container">
+              <span id="arrow">›</span>
+            </div>
+          </div>
+          <div id="socialLinksWrapper">
+            <SocialLinks slug={post.data.slug} />
+          </div>
+        </div>
+      </div>
+    </RootWrap>
   );
 };

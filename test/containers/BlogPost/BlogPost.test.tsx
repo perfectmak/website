@@ -1,15 +1,15 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Link } from 'react-static';
-import Moment from 'react-moment';
-import Waypoint from 'react-waypoint';
-import Markdown from 'react-markdown';
-import ProgressBar from '@components/Blog/ProgressBar';
-import Category from '@components/Blog/Category';
-import BlogPost from '@containers/BlogPost/BlogPost';
+import React from 'react'
+import { shallow, mount } from 'enzyme'
+import Moment from 'react-moment'
+import Markdown from 'react-markdown'
+import BlogPost from '@containers/BlogPost/BlogPost'
+import VerticalPostPreview from '@components/Blog/VerticalPostPreview'
+import WithData from '@containers/BlogPost/index';
+import Subscribe from '@components/Blog/Subscribe';
+import SocialLinks from '@components/Blog/SocialLinks';
 
 describe('<BlogPost />', () => {
-  let component = typeof BlogPost;
+  let component = typeof BlogPost
   let samplePost = {
     data: {
       title: 'Post Title',
@@ -18,106 +18,118 @@ describe('<BlogPost />', () => {
       published_at: '2018-06-09T05:00:00-05:00',
       medium_link: 'http://medium.com/',
       thumbnail: 'path/to/thumbnail',
-      slug: '/slug'
+      slug: '/slug',
+      readtime: 5,
     },
-    content: 'The content.'
+    content: 'The content.',
   }
 
+  let sampleData = {
+    posts: [
+      {
+        data: {
+          author: "Brady Cheredone",
+          category: "Crash Courses",
+          medium_link: "http://bradysheridan.com/",
+          published_at:"2018-06-10T02:34:00-05:00",
+          readtime: 2,
+          slug:"sample-post-4",
+          thumbnail:"/uploads/unadjustednonraw_thumb_749.jpg",
+          title:"Sample Post 4",
+        }
+      },
+      {
+        data: {
+          author: "Brady Cheredone",
+          category: "Crash Courses",
+          medium_link: "http://bradysheridan.com/",
+          published_at:"2018-06-10T02:34:00-05:00",
+          readtime: 2,
+          slug:"sample-post-4",
+          thumbnail:"/uploads/unadjustednonraw_thumb_749.jpg",
+          title:"Sample Post 4",
+        }
+      },
+    ]
+  }
+
+
   beforeEach(() => {
-    component = shallow(
-      <BlogPost post={samplePost} />
-    );
-  });
+    component = shallow(<BlogPost post={samplePost} blogData={sampleData}/>)
+  })
 
   it('renders without crashing', () => {
-    expect(component.exists());
+    expect(component.exists())
+  })
+
+  it('renders a <VerticalPostPreview />', () => {
+    expect(component.find(VerticalPostPreview).length).toEqual(2)
+  })
+
+  it('renders BlogImage thumbnail component', () => {
+    const croppitElement = component.findWhere(node => {
+      const styles = node.prop('style');
+      return styles && styles.backgroundImage;
+    });
+
+    expect(croppitElement.length).toEqual(1);
   });
 
-  describe('header', () => {
-    it('renders a <ProgressBar />', () => {
-      expect(component.find(ProgressBar).length).toEqual(1);
+  it('renders correct src for BlogImage thumbnail component', () => {
+    const croppitElement = component.findWhere(node => {
+      const styles = node.prop('style');
+      return styles && styles.backgroundImage;
     });
 
-    it('renders the title', () => {
-      let observed = {
-        title: component.find('.header-wrap').find('#title').first().render().text()
-      }
-
-      expect(observed.title).toEqual(samplePost.data.title);
-    });
-
-    it('renders twitter/medium links', () => {
-      expect(component.find('.header-wrap').find('#links-header').children().length).toEqual(2);
-    });
+    const { backgroundImage } = croppitElement.prop('style');
+    expect(backgroundImage).toEqual(`url(${samplePost.data.thumbnail})`);
   });
 
-  describe('title section', () => {
-    it('renders the category', () => {
-      let category = component.find(Category);
-      expect(category.length).toEqual(1);
-      expect(category.render().text()).toEqual(samplePost.data.category);
-    });
+  it('renders category', () => {
+    expect(component.find('.category').render().text()).toContain(samplePost.data.category.toUpperCase())
+  })
 
-    it('renders the title', () => {
-      let title = component.find('h1');
-      expect(title.render().text()).toEqual(samplePost.data.title);
-    });
+  it('renders title', () => {
+    expect(component.find('.titled').render().text()).toContain(samplePost.data.title)
+  })
 
-    it('renders the author and publication date concatenated', () => {
-      let expected = {
-        author: samplePost.data.author,
-        publicationDate: shallow(<Moment format={'MMMM Do, YYYY'}>{samplePost.data.published_at}</Moment>).render().text(),
-        divider: ' • '
-      }
+  it('renders readtime', () => {
+    expect(component.find('.readtime').render().text()).toContain(`Reading time: ${samplePost.data.readtime} minutes`)
+  })
 
-      let buffer = component.find('h3').render().text().split(expected.divider);
-      let observed = {
-        author: buffer[0],
-        publicationDate: buffer[1]
-      }
+  it('renders the publish date', () => {
+    const m = mount(<Moment format={'MMMM Do, YYYY'}>{samplePost.data.published_at}</Moment>)
+    const publishDateC = component.children().find(Moment)
+    expect(publishDateC.render().text()).toEqual(m.render().text())
+  })
 
-      expect(expected.author).toEqual(observed.author);
-      expect(expected.publicationDate).toEqual(observed.publicationDate);
-    });
+  it('renders the social buttons', () => {
+    expect(component.find(SocialLinks).length).toEqual(1)
+  })
 
-    it('renders twitter/medium links', () => {
-      expect(component.find('#links-body').children().length).toEqual(2);
-    });
+  it('renders the markdown content', () => {
+    let markdown = component.find(Markdown)
+    expect(markdown.props().source).toEqual(samplePost.content)
+  })
 
-    it('renders a <Waypoint />', () => {
-      expect(component.find(Waypoint).length).toEqual(1);
-    });
+  it('renders Telegram button', () => {
+    expect(component.find('.btntelegram').length).toEqual(1)
+  })
 
-    it('renders the thumbnail image with correct src prop', () => {
-      let thumbnail = component.find('img#thumbnail');
-      expect(thumbnail.props().src).toEqual(samplePost.data.thumbnail);
-    });
+  it('renders a Subscribe button', () => {
+    expect(component.find(Subscribe).length).toEqual(1)
+  })
 
-    it('renders the markdown content', () => {
-      let markdown = component.find(Markdown);
-      expect(markdown.props().source).toEqual(samplePost.content);
-    });
+  it('renders Readers also enjoy block', () => {
+    expect(component.find('.readersenjoy').render().text()).toContain(`Readers also enjoyed`)
+  })
 
-    it('renders the afterword with telegram CTA prompt and button', () => {
-      let afterword = component.find('div#afterword');
-      expect(afterword.find('h2').length).toEqual(1);
-      expect(afterword.find(Link).length).toEqual(1);
-    });
+})
 
-    it('toggles the visiblity of the <Header /> with showHeader and hideHeader functions', () => {
-      let instance = component.instance();
-      instance.showHeader();
-      expect(component.state().headerIsVisible).toEqual(true);
-      instance.hideHeader();
-      expect(component.state().headerIsVisible).toEqual(false);
-    });
-
-    it('renders the correctly styled twitter/medium links depending on whether they are being rendered in header or body', () => {
-      let instance = component.instance();
-      let headerLinks = instance.renderSocialButtons('header');
-      let bodyLinks = instance.renderSocialButtons('body');
-      expect(headerLinks.props.id).toEqual('links-header');
-      expect(bodyLinks.props.id).toEqual('links-body');
-    });
-  });
-});
+describe('With data', () => {
+  it('renders without crashing', () => {
+    const component = shallow(
+      <WithData />
+    );
+  })
+})

@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Col, Row} from 'antd';
+import { Link } from 'react-static';
 import protocol from '@images/about/protocol.svg';
 
 import Opensource, {IllustrationContainer1 } from '@components/About/Opensource';
@@ -36,5 +37,11 @@ describe('<Opensource />', () => {
             .to
             .have
             .length(1);
+    });
+
+    it('renders an Add to Calendar button', () => {
+        const component = shallow(<Opensource/>);
+        const button = component.find(Link);
+        expect(button.at(3).render().text()).to.equal('Add To Calendar');
     });
 });

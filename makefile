@@ -5,6 +5,7 @@
 # name of the AWS profile for deployment of the site to dev
 DEV_PROFILE_NAME=dev-website-rw
 PROD_PROFILE_NAME=prod-website-rw
+
 # target AWS bucket for dev deployment
 DEV_BUCKET=s3://dev.website.marketprotocol.io
 PROD_BUCKET=s3://marketprotocol.io
@@ -35,9 +36,7 @@ start:
 
 # build for deployment
 build:
-	npm run build
-
-## remote deployment
+	npm run build:ci
 
 
 # DEV - display contents of deployed site
@@ -50,8 +49,7 @@ rm_dev:
 
 # DEV - deploy site to s3 bucket
 deploy_dev:
-	npm run build
-	cp -r ./assets ./dist/
+	npm run build:ci
 	aws s3 --profile $(DEV_PROFILE_NAME) cp dist/ $(DEV_BUCKET) --recursive
 
 
@@ -65,8 +63,7 @@ rm_prod:
 
 # PROD - deploy site to s3 bucket
 deploy_prod:
-	npm run build
-	cp -r ./assets ./dist/
+	npm run build:ci
 	aws s3 --profile $(PROD_PROFILE_NAME) cp dist/ $(PROD_BUCKET) --recursive
 
 # Generate sitemap for website

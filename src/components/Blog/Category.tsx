@@ -1,36 +1,52 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import close from '@images/close.svg';
 
 interface CategoryProps {
   cat: string;
-  showBorder?: boolean;
-  dontPad?: boolean;
+  selectedCat?: string;
+  deselectCat?: () => void;
   onClick?: () => void;
 }
 
-function getColor(cat: string) {
-  switch (cat) {
-    case 'The Team':
-      return '#3a4fdf';
-    case 'Development':
-      return '#47df5b';
-    case 'Crash Courses':
-      return '#b32deb';
-    default:
-      return 'black';
-  }
-}
+const RootWrap = styled.div`
+  > #root {
+    background-color: ${props => props.selected && 'rgb(246, 246, 246)'};
+    color: #00e2c1;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    line-height: 22px;
+    padding: 12px;
+    margin: 0;
 
-export default ({ cat, showBorder, onClick, dontPad }: CategoryProps) => (
-  <h3
-    style={{
-      borderLeft: `3px solid ${showBorder ? getColor(cat) : '#f6f6f6'}`,
-      color: getColor(cat),
-      cursor: 'pointer',
-      margin: 0,
-      padding: dontPad ? 0 : '2px 0px 2px 20px'
-    }}
-    onClick={onClick}
-  >
-    {cat}
-  </h3>
+    &:hover {
+      background-color: rgb(246, 246, 246);
+    }
+  }
+`;
+
+const Close = styled.div`
+  height: 12px;
+  width: 12px;
+
+  img {
+    width: 100%;
+  }
+`;
+
+export default ({ cat, onClick, selectedCat, deselectCat }: CategoryProps) => (
+  <RootWrap onClick={onClick} selected={cat !== 'All' && selectedCat === cat}>
+    <div id="root">
+      {cat}
+      {cat !== 'All' &&
+        selectedCat === cat && (
+          <Close onClick={deselectCat}>
+            <img alt="deselect category" src={close} width="80%" />
+          </Close>
+        )}
+    </div>
+  </RootWrap>
 );

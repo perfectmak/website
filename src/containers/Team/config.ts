@@ -180,19 +180,6 @@ const config: Config = {
       linkedin: 'https://www.linkedin.com/in/lazar-jovanovic/',
       name: 'Lazar Jovanovic',
       title: 'Marketing/Brand Ambassador'
-    },
-    {
-      bio:
-        'Maz has acted as a business consultant helping a number of startups. He has\
-        experience developing and implementing successful online community outreach\
-        programs. He joined the MARKET Protocol team to combine his experience in\
-        crypto trading and asset management with his passion for helping others.\
-        Maz hopes to help the community learn what MARKET is all about.',
-      email: 'mauzy@marketprotocol.io',
-      img: teamMemberImages.MauzyKeshavarzi,
-      linkedin: '',
-      name: 'Mauzy Keshavarzi',
-      title: 'Community Manager'
     }
   ]
 };

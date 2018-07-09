@@ -174,6 +174,15 @@ class Opensource extends React.Component {
               >
                 <ButtonWrapper type="primary">Learn more</ButtonWrapper>
               </Link>
+              <Link
+                // tslint does not like the long string
+                // tslint:disable-next-line
+                to="https://calendar.google.com/event?action=TEMPLATE&tmeid=NnVmdnU1NHAyYjdoODk1MGY1YzU2YzVrM25fMjAxODA3MDVUMTQwMDAwWiBtYXJrZXRwcm90b2NvbC5pb190dGE5NmhzdXAxbWViOWVkdHJwMnZuaGZlb0Bn&tmsrc=marketprotocol.io_tta96hsup1meb9edtrp2vnhfeo%40group.calendar.google.com&scp=ALL"
+                target="_blank"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <ButtonWrapper type="primary">Add To Calendar</ButtonWrapper>
+              </Link>
             </TextWrapper>
           </Col>
         </Row>

@@ -44,9 +44,24 @@ describe('<Cta />', () => {
   it('renders just the subscribe button if onlyShowSubscribeButton prop is present', () => {
     const component = shallow(<Cta onlyShowSubscribeButton />);
     expect(component.find(Button).length).toEqual(1);
-    expect(component.find(Button).render().text().trim()).toEqual("Click To Subscribe");
+    expect(component.find(Button).render().text().trim()).toEqual("Join our Newsletter");
     expect(component.find(Button).find(Icon).length).toEqual(1);
     expect(component.find(MarketSubscriberForm).length).toEqual(1);
+  });
+
+  it('renders just the subscribe button with updated text', () => {
+    const component = shallow(<Cta onlyShowSubscribeButton text="Updated text" />);
+    expect(component.find(Button).render().text().trim()).toEqual("Updated text");
+  });
+
+  it('renders beforeIcon if beforeIcon props are passed', () => {
+    const component = shallow(<Cta onlyShowSubscribeButton beforeIcon="src" />);
+    expect(component.find('img').length).toEqual(1);
+  });
+
+  it('should not render afterIcon if afterIcon props are set to false', () => {
+    const component = shallow(<Cta onlyShowSubscribeButton afterIcon={false} />);
+    expect(component.find(Icon).length).toEqual(0);
   });
 
   it('updates state.subscriptionPopUpVisible when subscribe button is clicked', () => {

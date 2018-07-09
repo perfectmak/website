@@ -1,68 +1,118 @@
 import React from 'react';
+import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import Waypoint from 'react-waypoint';
-import { size } from '@src/breakpoints';
-import Hero from '@components/Hero';
-import Cta from '@components/Cta';
-import PostPreview from '@components/Blog/PostPreview';
+import { flatten, throttle } from 'lodash';
+import { History } from 'history';
+import posed, { PoseGroup } from 'react-pose';
+import { device } from '@src/breakpoints';
+
 import CategorySelector from '@components/Blog/CategorySelector';
+import Follow from '@components/Blog/Follow';
+import PostPreview from '@components/Blog/PostPreview';
+import RecentTweets from '@components/Blog/RecentTweets';
+import Subscribe from '@components/Blog/Subscribe';
 
-const BlogWrap = styled.div`
+const PostsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+`;
 
-  > div.posts-wrap {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #fff;
-    padding-bottom: 40px;
-  }
-
-  > div.categories-wrap {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    z-index: 1;
-
-    &.fixed {
-      position: fixed;
-      top: 0;
-      right: 0;
+const PostContainer = styled(
+  posed.div({
+    enter: {
+      y: '0%'
+    },
+    exit: {
+      y: '10%'
     }
+  })
+)`
+  display: flex;
+  flex-grow: 0;
+  width: 50%;
+
+  @media ${device.mobileS} and (max-width: 767px) {
+    width: 100%;
   }
+`;
 
-  @media screen and (max-width: ${size.laptop}) {
-    flex-direction: column;
+const RootWrap = styled.div`
+  > #root {
+    background: #eeeeee;
+    display: block;
 
-    > div.posts-wrap {
+    #header {
       width: 100%;
+      height: 361px;
+      background: #181e26;
+
+      #headerTitle {
+        color: #ffffff;
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      #headerSubtitle {
+        color: #ffffff;
+        font-size: 22px;
+        text-align: center;
+      }
     }
 
-    > div.categories-wrap {
-      display: none;
+    #gridContainer {
+      max-width: 100%;
+      margin: 0 auto;
+      width: 1180px;
+      padding: 24px;
+
+      #blogs {
+        margin-top: -154px;
+      }
+    }
+
+    #row {
+      margin-top: 24px;
+    }
+
+    #subtitle {
+      color: #646469;
+      font-size: 14px;
+      line-heigh: 20px;
+      margin-top: 10px;
+    }
+
+    .load-more-button {
+      display: block;
+      font-size: 20px;
+      margin: 100px auto;
+      padding: 0 65px;
+      text-align: center;
     }
   }
 `;
 
+const isClient = typeof window !== 'undefined';
+
+const parseCategory = (category: string) => {
+  return category.replace(/\s+/g, '-').toLowerCase();
+};
+
 interface BlogProps {
   posts: Post[];
   categories: string[];
+  history: History;
 }
 
 interface BlogState {
   filteredPosts: Post[];
+  loadMore: number;
   numPostsPerPage: number;
   pagifiedPosts: Post[][];
+  currentPosts: Post[][];
   selectedCat: string;
   selectedPageIndex: number;
-  sideMenuIsFixed: boolean;
 }
 
 interface Post {
@@ -73,43 +123,67 @@ interface Post {
     published_at: number;
     medium_link: string;
     thumbnail: string;
+
     slug: string;
+    readtime: number;
   };
   content: string;
 }
 
 class Blog extends React.Component<BlogProps, BlogState> {
+  private handleScroll: EventListener;
+
   constructor(props: BlogProps) {
     super(props);
 
+    this.handleScroll = throttle(() => {
+      this.forceUpdate();
+    }, 10);
+
     this.state = {
       filteredPosts: [],
+      loadMore: 0,
       numPostsPerPage: 5,
       pagifiedPosts: [[]],
       selectedCat: 'All',
-      selectedPageIndex: 0,
-      sideMenuIsFixed: false
+      selectedPageIndex: 0
     };
-
-    this.toggleFixedSideMenu = this.toggleFixedSideMenu.bind(this);
-    this.untoggleFixedSideMenu = this.untoggleFixedSideMenu.bind(this);
   }
 
   componentDidMount() {
-    const pagifiedPosts = this.splitPostsIntoPages(this.props.posts);
-    this.setState({ pagifiedPosts });
+    const { categories, history, posts } = this.props;
+    const pagifiedPosts = this.splitPostsIntoPages(posts);
+    const loadMore = posts.length;
+
+    this.setState({
+      loadMore,
+      pagifiedPosts
+    });
+
+    if (isClient) {
+      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleScroll);
+    }
+
+    if (history.location.search) {
+      const params = new URLSearchParams(history.location.search.toString());
+      const category = params.get('category');
+
+      if (category) {
+        categories.map(c => {
+          if (category === parseCategory(c)) {
+            this.onSelectCat(c);
+          }
+        });
+      }
+    }
   }
 
-  toggleFixedSideMenu() {
-    this.setState({
-      sideMenuIsFixed: true
-    });
-  }
-
-  untoggleFixedSideMenu() {
-    this.setState({
-      sideMenuIsFixed: false
-    });
+  componentWillUnmount() {
+    if (isClient) {
+      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.handleScroll);
+    }
   }
 
   splitPostsIntoPages(posts: Post[]) {
@@ -142,21 +216,19 @@ class Blog extends React.Component<BlogProps, BlogState> {
     return pages;
   }
 
-  onSelectPage(i: number) {
-    if (i === this.state.selectedPageIndex) {
-      return 'cancelled invocation';
+  onSelectCat = (selectedCat: string) => {
+    if (selectedCat === 'All') {
+      this.props.history.push('/blog');
+    } else {
+      this.props.history.push(`/blog?category=${parseCategory(selectedCat)}`);
     }
 
-    this.setState({ selectedPageIndex: i }, () => {
-      // scroll to top of post list
-      if (document && document.getElementById('top-of-post-list-anchor')) {
-        document.getElementById('top-of-post-list-anchor').scrollIntoView();
-      }
-    });
+    this.setState({ selectedCat }, () => this.filterPosts());
   }
 
-  onSelectCat(cat: string) {
-    this.setState({ selectedCat: cat }, () => this.filterPosts());
+  deselectCat = () => {
+    this.props.history.push('/blog');
+    this.setState({ selectedCat: 'All' }, () => this.filterPosts());
   }
 
   filterPosts() {
@@ -165,8 +237,9 @@ class Blog extends React.Component<BlogProps, BlogState> {
     const filtered =
       'All' === selectedCat
         ? posts
-        : posts.filter(post => post.data.category === selectedCat);
+        : posts.filter(post => selectedCat === post.data.category);
     const pagified = this.splitPostsIntoPages(filtered);
+    const loadMoreBtn = filtered.length === 0 ? posts.length : filtered.length;
 
     // if currently selected page is going to vanish after re-pagination,
     // select last page in post-pagination post list
@@ -174,6 +247,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
     this.setState({
       filteredPosts: filtered,
+      loadMore: loadMoreBtn,
       pagifiedPosts: pagified,
       selectedPageIndex: selectedPageExists
         ? selectedPageIndex
@@ -181,128 +255,144 @@ class Blog extends React.Component<BlogProps, BlogState> {
     });
   }
 
-  renderPaginationButtons(styles?: {}) {
-    const { selectedPageIndex, pagifiedPosts } = this.state;
-    const numPages = pagifiedPosts.length;
-    const isFirstPage = selectedPageIndex === 0;
-    const isLastPage = numPages === 1 || selectedPageIndex === numPages - 1;
+  onLoadMore = () => {
+    const {
+      pagifiedPosts,
+      selectedPageIndex,
+      numPostsPerPage,
+      loadMore
+    } = this.state;
+    const allPosts = flatten(pagifiedPosts);
+    const newPageIndex = selectedPageIndex + 1;
+    const end = newPageIndex * numPostsPerPage + numPostsPerPage;
+
+    const currentPosts = allPosts.slice(0, end);
+
+    this.setState({
+      currentPosts,
+      selectedPageIndex: newPageIndex
+    });
+  }
+
+  renderCategorySelector(shouldRender: boolean) {
+    if (!shouldRender) {
+      return;
+    }
+
+    const { categories } = this.props;
+    const { selectedCat } = this.state;
 
     return (
-      <div
-        className={'pagination-buttons'}
-        style={Object.assign({}, styles || {}, {
-          display: 'flex',
-          marginBottom: 10
-        })}
+      <Row id="row">
+        <CategorySelector
+          selectedCat={selectedCat}
+          categories={categories}
+          deselectCat={this.deselectCat}
+          onSelectCat={this.onSelectCat}
+        />
+      </Row>
+    );
+  }
+
+  renderSidebar() {
+    return (
+      <Col
+        xs={{ span: 24 }}
+        sm={{ span: 24 }}
+        md={{ span: 8 }}
+        lg={{ span: 6 }}
       >
-        <p
-          onClick={() =>
-            isFirstPage ? null : this.onSelectPage(selectedPageIndex - 1)
-          }
-          style={{
-            backgroundColor: '#f6f6f6',
-            borderRadius: 6,
-            color: isFirstPage ? '#A9AEB7' : '#181E26',
-            cursor: isFirstPage ? 'default' : 'pointer',
-            margin: 3,
-            padding: '4px 14px 4px 14px'
-          }}
-        >
-          {'<'}
-        </p>
+        {this.renderCategorySelector(
+          isClient ? window.innerWidth >= 768 : true
+        )}
 
-        {pagifiedPosts.map((page, i) => (
-          <p
-            onClick={() => this.onSelectPage(i)}
-            style={{
-              backgroundColor: '#f6f6f6',
-              borderRadius: 6,
-              color: selectedPageIndex === i ? '#00E2C1' : '#181E26',
-              cursor: 'pointer',
-              margin: 3,
-              padding: '4px 14px 4px 14px'
-            }}
-            key={i}
-          >
-            {`${i + 1}`}
-          </p>
-        ))}
-
-        <p
-          onClick={() =>
-            isLastPage ? null : this.onSelectPage(selectedPageIndex + 1)
-          }
-          style={{
-            backgroundColor: '#f6f6f6',
-            borderRadius: 6,
-            color: isLastPage ? '#A9AEB7' : '#181E26',
-            cursor: isLastPage ? 'default' : 'pointer',
-            margin: 3,
-            padding: '4px 14px 4px 14px'
-          }}
-        >
-          {'>'}
-        </p>
-      </div>
+        <Row id="row">
+          <Subscribe />
+        </Row>
+        <Row id="row">
+          <Follow />
+        </Row>
+        <Row id="row">
+          <RecentTweets />
+        </Row>
+      </Col>
     );
   }
 
   render() {
-    const { categories } = this.props;
     const {
-      selectedPageIndex,
-      selectedCat,
       pagifiedPosts,
-      sideMenuIsFixed
+      currentPosts = [],
+      loadMore,
+      numPostsPerPage,
+      selectedCat
     } = this.state;
-    const postsToRender = pagifiedPosts[selectedPageIndex];
+
+    const initialPosts = pagifiedPosts[0];
+
+    const postsToRender = (currentPosts.length && currentPosts) || initialPosts;
+    const shouldLoad = currentPosts.length < loadMore;
 
     return (
-      <div>
-        {/* header */}
-        <Waypoint
-          onEnter={this.untoggleFixedSideMenu}
-          onLeave={this.toggleFixedSideMenu}
-        >
-          <div>
-            <Hero text={'Welcome to the MARKET Protocol blog.'} />
-          </div>
-        </Waypoint>
-
-        <BlogWrap>
-          {/* post previews  and pagination buttons */}
-          <div className={'posts-wrap'}>
-            <div id={'top-of-post-list-anchor'} />
-
-            {/* post previews */
-            postsToRender.map((post, i) => {
-              return <PostPreview key={`post#${i}`} post={post} i={i} />;
-            })}
-
-            {/* pagination buttons */
-            this.renderPaginationButtons({ margin: '20px 0px 0px 0px' })}
-          </div>
-
-          {/* pagination buttons, category selectors and newsletter cta */}
-          <div
-            className={['categories-wrap', sideMenuIsFixed && 'fixed'].join(
-              ' '
+      <RootWrap>
+        <div id="root">
+          <div id="header">
+            <div id="headerTitle">Blog</div>
+            {selectedCat !== 'All' && (
+              <div id="headerSubtitle">{selectedCat}</div>
             )}
-          >
-            <h2>Categories</h2>
-            <CategorySelector
-              selectedCat={selectedCat}
-              categories={categories}
-              onSelectCat={(cat: string) => this.onSelectCat(cat)}
-            />
-
-            <div style={{ width: '80%', marginTop: 10 }}>
-              <h2>Join our newsletter</h2>
-              <Cta onlyShowSubscribeButton />
-            </div>
           </div>
-        </BlogWrap>
-      </div>
+          <div id="gridContainer">
+            <Row gutter={24}>
+              <Col
+                xs={{ span: 24 }}
+                sm={{ span: 26 }}
+                md={{ span: 16 }}
+                lg={{ span: 18 }}
+                id="blogs"
+              >
+                <PostsContainer>
+                  <div>
+                    <PostPreview
+                      history={this.props.history}
+                      post={postsToRender[0]}
+                      featured={true}
+                    />
+                  </div>
+                  <PoseGroup>
+                    {(postsToRender || [])
+                      .slice(1, postsToRender.length)
+                      .map((post, i) => {
+                        return (
+                          <PostContainer key={i}>
+                            <PostPreview
+                              key={`post#${i}`}
+                              history={this.props.history}
+                              post={post}
+                              i={i}
+                            />
+                          </PostContainer>
+                        );
+                      })}
+                  </PoseGroup>
+                  <Col xs={{ span: 24 }}>
+                    {shouldLoad && (
+                      <Button
+                        type="primary"
+                        className="load-more-button"
+                        onClick={this.onLoadMore}
+                      >
+                        Load more
+                      </Button>
+                    )}
+                  </Col>
+                </PostsContainer>
+              </Col>
+              {this.renderSidebar()}
+            </Row>
+          </div>
+        </div>
+      </RootWrap>
     );
   }
 }

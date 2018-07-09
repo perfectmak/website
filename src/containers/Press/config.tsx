@@ -1,9 +1,13 @@
 import { LinkInfo } from '@components/Press/SingleLink';
 import {
   BitcoinExchangeGuide,
+  ChainFinance,
   CoinCrunch,
+  CrowdfundInsider,
   CryptoNinja,
+  FinTechFutures,
   FutureTechPodcast,
+  Mondovisione,
   PressureCast,
   Themerkle
 } from '@images/press';
@@ -39,6 +43,64 @@ const linkInfos: LinkInfo[] = [
       with Market Protocol`
   },
   {
+    boxColor: 'white',
+    imgSrc: FinTechFutures,
+    link:
+      'https://www.bankingtech.com/2018/07/kleros-teams-with-market-protocol-for-decentralised-derivatives-trading/',
+    paragraphs: [
+      `Kleros has partnered with open source foundation Market Protocol to provide a decentralised trading and 
+      dispute resolution technology platform.`
+    ],
+    title: `Kleros teams with Market Protocol for decentralised derivatives trading`
+  },
+  {
+    boxColor: 'white',
+    imgSrc: ChainFinance,
+    link:
+      'http://www.chain-finance.com/2018/07/06/decentralized-derivatives-trading-through-blockchain/',
+    paragraphs: [
+      `Kleros, a decentralized dispute resolution ‘layer’ for virtually any 
+      transaction, has partnered with MARKET Protocol, a company building an 
+      open source foundation for decentralized derivatives markets – 
+      an industry worth over 500 trillion. Together, the two companies will 
+      provide a decentralized trading and dispute resolution technology platform 
+      for secure and trustless transactions.`
+    ],
+    title: `Decentralized Derivatives Trading Through Blockchain`
+  },
+  {
+    boxColor: 'white',
+    imgSrc: Mondovisione,
+    link:
+      'http://www.mondovisione.com/media-and-resources/news/kleros-partners-with-market-protocol-' +
+      'for-decentralized-derivatives-trading-the/',
+    paragraphs: [
+      `Kleros, a new decentralized dispute resolution ‘layer’ for virtually any 
+      transaction, has partnered with MARKET Protocol, a company building an 
+      open source foundation for decentralized derivatives markets, 
+      an industry worth over 500 trillion.`
+    ],
+    title: `Kleros Partners With Market Protocol For Decentralized Derivatives Trading`
+  },
+  {
+    boxColor: 'white',
+    imgSrc: CrowdfundInsider,
+    link:
+      'https://www.crowdfundinsider.com/2018/07/135963-dispute-layer-kleros-partners-with-derivative-' +
+      'platform-market-protocol/',
+    paragraphs: [
+      `Kleros, a decentralized "dispute resolution layer" has announced a 
+      partnership with MARKET Protocol, a company building a platform for 
+      decentralized derivatives markets. The two companies say they will 
+      provide a completely decentralized trading and dispute resolution 
+      technology platform for secure and trustless transactions. 
+      Kleros says its dispute resolution technology can be used to 
+      arbitrate all kinds of disputes in industries such as e-commerce, 
+      finance and insurance.`
+    ],
+    title: `Dispute "Layer" Kleros Partners with Derivative Platform Market Protocol`
+  },
+  {
     boxColor: 'darkgrey',
     imgSrc: Themerkle,
     link: 'https://themerkle.com/what-is-the-market-protocol/',
@@ -71,6 +133,20 @@ const linkInfos: LinkInfo[] = [
     ],
     title:
       'Future Tech Podcast - Phil Elsasser CTO, Co-Founder of MARKET Protocol'
+  },
+  {
+    boxColor: 'white',
+    imgSrc: CryptoNinja,
+    link:
+      'https://www.cryptoninjas.net/2018/06/27/market-protocol-partners-with-bluzelle-to-improve-crypto-data-storage/',
+    paragraphs: [
+      `MARKET Protocol, a decentralized framework allowing derivative trading 
+      of all assets has announced a partnership with Bluzelle, a decentralized 
+      database service. Utilizing Bluzelle’s database solutions allows exchanges, 
+      applications, and traders a way to store trading and market data.`
+    ],
+    title:
+      'MARKET Protocol partners with Bluzelle to improve crypto data storage'
   },
   {
     boxColor: 'darkgrey',
