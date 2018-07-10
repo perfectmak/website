@@ -272,7 +272,11 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
                 }}
               />
               <BlogContainer>
-                <BlogImage src={post.data.thumbnail} alt={post.data.title} />
+                <BlogImage
+                  src={post.data.thumbnail}
+                  alt={post.data.title}
+                  id="mainImage"
+                />
                 <ContentContainer>
                   <RowContainer>
                     <CategoryContainer className="category">
