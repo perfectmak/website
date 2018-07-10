@@ -57,89 +57,10 @@ describe('<Blog />', () => {
     expect(component.exists());
   });
 
-  it('pagifies posts correctly', () => {
-    const instance = component.instance();
-    const { numPostsPerPage } = instance.state;
-
-    // run pagification function
-    const pagifiedPosts = instance.splitPostsIntoPages(posts);
-
-    // define expected results
-    const expected = {
-      numPages: Math.ceil(numPostsToTest / numPostsPerPage),
-      numPosts: numPostsToTest,
-    };
-
-    // define observed results
-    const observed = {
-      numPages: pagifiedPosts.length,
-      numPosts: 0,
-      postsAreUnique: false
-    };
-
-    // used to test for post uniqueness
-    const postTitles = [];
-
-    // loop through posts, counting them and testing for uniqueness
-    pagifiedPosts.map((page, i) => {
-      observed.numPosts += pagifiedPosts[i].length;
-      page.map((post, i) => {
-        if (!postTitles.includes(post.title)) {
-          postTitles.push(post.title);
-        }
-      });
-    });
-
-    // updated observed post uniqueness value
-    observed.postsAreUnique = postTitles.length === observed.numPages;
-
-    expect(observed.numPages).toEqual(expected.numPages);
-    expect(observed.numPosts).toEqual(expected.numPosts);
-    expect(observed.postsAreUnique);
-  });
-
   it('updates selectedCat state var with onSelectCat function', () => {
     const instance = component.instance();
     instance.onSelectCat('All');
     expect(component.state().selectedCat).toEqual('All');
-  });
-
-  describe('filterPosts function', () => {
-    it('updates filteredPosts state var with posts that have the specified category', () => {
-      const instance = component.instance();
-
-      const expected = {
-        numPostsWithCategoriesOtherThanCat1: 0
-      };
-
-      const observed = {
-        numPostsWithCategoriesOtherThanCat1: 0
-      };
-
-      instance.setState({ selectedCat: 'cat1' });
-      instance.filterPosts();
-
-      const { filteredPosts } = component.state();
-
-      for (let i = 0; i < filteredPosts.length; i++) {
-        const curr = filteredPosts[i];
-        if (curr.data.category !== 'cat1') {
-          observed.numPostsWithCategoriesOtherThanCat1++;
-        }
-      }
-
-      expect(observed.numPostsWithCategoriesOtherThanCat1).toEqual(expected.numPostsWithCategoriesOtherThanCat1);
-    });
-
-    it('repagifies filtered posts', () => {
-      const instance = component.instance();
-      const origPages = component.state().pagifiedPosts;
-      instance.setState({ selectedCat: 'cat1' });
-      instance.filterPosts();
-      const newPages = component.state().pagifiedPosts;
-      expect(newPages === origPages).toBeFalsy();
-    });
-
   });
 
   it('scrolls without crashing', () => {
@@ -154,8 +75,7 @@ describe('<Blog />', () => {
   it('loads more posts', () => {
     const instance = component.instance();
     instance.onLoadMore();
-    expect(component.state().selectedPageIndex).toEqual(1);
-    expect(component.state().currentPosts.length).toEqual(10);
+    expect(component.state().page).toEqual(2);
   });
 });
 

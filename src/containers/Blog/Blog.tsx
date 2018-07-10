@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import { flatten, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
 import { device } from '@src/breakpoints';
@@ -106,13 +106,10 @@ interface BlogProps {
 }
 
 interface BlogState {
-  filteredPosts: Post[];
-  loadMore: number;
   numPostsPerPage: number;
-  pagifiedPosts: Post[][];
-  currentPosts: Post[][];
+  posts: Post[];
   selectedCat: string;
-  selectedPageIndex: number;
+  page: number;
 }
 
 interface Post {
@@ -141,24 +138,17 @@ class Blog extends React.Component<BlogProps, BlogState> {
     }, 10);
 
     this.state = {
-      filteredPosts: [],
-      loadMore: 0,
       numPostsPerPage: 5,
-      pagifiedPosts: [[]],
-      selectedCat: 'All',
-      selectedPageIndex: 0
+      page: 1,
+      posts: [],
+      selectedCat: 'All'
     };
   }
 
   componentDidMount() {
     const { categories, history, posts } = this.props;
-    const pagifiedPosts = this.splitPostsIntoPages(posts);
-    const loadMore = posts.length;
 
-    this.setState({
-      loadMore,
-      pagifiedPosts
-    });
+    this.setState({ posts });
 
     if (isClient) {
       window.addEventListener('scroll', this.handleScroll);
@@ -186,36 +176,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
     }
   }
 
-  splitPostsIntoPages(posts: Post[]) {
-    const { numPostsPerPage } = this.state;
-    const numPosts = posts.length;
-    const numFullPages = Math.floor(numPosts / numPostsPerPage);
-    const numExcessPosts = numPosts - numFullPages * numPostsPerPage;
-    const numPages = numFullPages + (numExcessPosts > 0 ? 1 : 0);
-
-    // create an array for each page
-    const pages: Post[][] = [];
-    for (let i = 0; i < numPages; i++) {
-      pages.push([]);
-    }
-
-    // populate page arrays
-    let p = 0;
-    for (let i = 0; i < numPosts; i++) {
-      // increment page index
-      if (pages[p].length === numPostsPerPage) {
-        p += 1;
-      }
-
-      const post = posts[i];
-      const page: Post[] = pages[p];
-
-      page.push(post);
-    }
-
-    return pages;
-  }
-
   onSelectCat = (selectedCat: string) => {
     if (selectedCat === 'All') {
       this.props.history.push('/blog');
@@ -223,55 +183,18 @@ class Blog extends React.Component<BlogProps, BlogState> {
       this.props.history.push(`/blog?category=${parseCategory(selectedCat)}`);
     }
 
-    this.setState({ selectedCat }, () => this.filterPosts());
+    this.setState({ selectedCat });
   }
 
   deselectCat = () => {
     this.props.history.push('/blog');
-    this.setState({ selectedCat: 'All' }, () => this.filterPosts());
-  }
-
-  filterPosts() {
-    const { selectedPageIndex, selectedCat } = this.state;
-    const { posts } = this.props;
-    const filtered =
-      'All' === selectedCat
-        ? posts
-        : posts.filter(post => selectedCat === post.data.category);
-    const pagified = this.splitPostsIntoPages(filtered);
-    const loadMoreBtn = filtered.length === 0 ? posts.length : filtered.length;
-
-    // if currently selected page is going to vanish after re-pagination,
-    // select last page in post-pagination post list
-    const selectedPageExists = Array.isArray(pagified[selectedPageIndex]);
-
-    this.setState({
-      filteredPosts: filtered,
-      loadMore: loadMoreBtn,
-      pagifiedPosts: pagified,
-      selectedPageIndex: selectedPageExists
-        ? selectedPageIndex
-        : pagified.length - 1
-    });
+    this.setState({ selectedCat: 'All' });
   }
 
   onLoadMore = () => {
-    const {
-      pagifiedPosts,
-      selectedPageIndex,
-      numPostsPerPage,
-      loadMore
-    } = this.state;
-    const allPosts = flatten(pagifiedPosts);
-    const newPageIndex = selectedPageIndex + 1;
-    const end = newPageIndex * numPostsPerPage + numPostsPerPage;
-
-    const currentPosts = allPosts.slice(0, end);
-
-    this.setState({
-      currentPosts,
-      selectedPageIndex: newPageIndex
-    });
+    this.setState(state => ({
+      page: state.page + 1
+    }));
   }
 
   renderCategorySelector(shouldRender: boolean) {
@@ -320,18 +243,20 @@ class Blog extends React.Component<BlogProps, BlogState> {
   }
 
   render() {
-    const {
-      pagifiedPosts,
-      currentPosts = [],
-      loadMore,
-      numPostsPerPage,
-      selectedCat
-    } = this.state;
+    const { selectedCat, numPostsPerPage, posts = [], page } = this.state;
 
-    const initialPosts = pagifiedPosts[0];
+    const endIndex = page * numPostsPerPage;
+    const filteredPosts =
+      selectedCat === 'All'
+        ? posts
+        : posts.filter(post => selectedCat === post.data.category);
+    const visiblePosts = filteredPosts.slice(1, endIndex);
 
-    const postsToRender = (currentPosts.length && currentPosts) || initialPosts;
-    const shouldLoad = currentPosts.length < loadMore;
+    // We should load if we have more then 5 items a page
+    // and when paginating we are less then the total amount of posts
+    const shouldLoad =
+      filteredPosts.length > numPostsPerPage &&
+      visiblePosts.length + 1 < filteredPosts.length;
 
     return (
       <RootWrap>
@@ -355,25 +280,21 @@ class Blog extends React.Component<BlogProps, BlogState> {
                   <div>
                     <PostPreview
                       history={this.props.history}
-                      post={postsToRender[0]}
+                      post={filteredPosts[0]}
                       featured={true}
                     />
                   </div>
                   <PoseGroup>
-                    {(postsToRender || [])
-                      .slice(1, postsToRender.length)
-                      .map((post, i) => {
-                        return (
-                          <PostContainer key={i}>
-                            <PostPreview
-                              key={`post#${i}`}
-                              history={this.props.history}
-                              post={post}
-                              i={i}
-                            />
-                          </PostContainer>
-                        );
-                      })}
+                    {visiblePosts.map((post, i) => (
+                      <PostContainer key={i}>
+                        <PostPreview
+                          key={`post#${i}`}
+                          history={this.props.history}
+                          post={post}
+                          i={i}
+                        />
+                      </PostContainer>
+                    ))}
                   </PoseGroup>
                   <Col xs={{ span: 24 }}>
                     {shouldLoad && (
