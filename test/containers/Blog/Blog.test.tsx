@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import Blog from '@containers/Blog/Blog';
 import { createMemoryHistory } from 'history';
 import WithData from '@containers/Blog';
+import PostPreview from '@components/Blog/PostPreview';
 
 interface Post {
   data: {
@@ -76,6 +77,11 @@ describe('<Blog />', () => {
     const instance = component.instance();
     instance.onLoadMore();
     expect(component.state().page).toEqual(2);
+  });
+
+  it('should have 5 posts per page', () => {
+    const instance = component.instance();
+    expect(component.state().numPostsPerPage).toEqual(5);
   });
 });
 
