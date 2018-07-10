@@ -277,13 +277,11 @@ class Blog extends React.Component<BlogProps, BlogState> {
                 id="blogs"
               >
                 <PostsContainer>
-                  <div>
-                    <PostPreview
-                      history={this.props.history}
-                      post={filteredPosts[0]}
-                      featured={true}
-                    />
-                  </div>
+                  <PostPreview
+                    history={this.props.history}
+                    post={filteredPosts[0]}
+                    featured={true}
+                  />
                   <PoseGroup>
                     {visiblePosts.map((post, i) => (
                       <PostContainer key={i}>
