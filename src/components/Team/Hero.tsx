@@ -16,13 +16,11 @@ export const HeroArt = styled.div`
   }
   
   @media ${device.mobileS} and (max-width: 767px) {
-    opacity: 0.4
-    margin-top: -80px;
     z-index: -1;
     text-align: right;
     
     img {
-      width: 50%;
+      display: none;
     }
   }
   
