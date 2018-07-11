@@ -114,13 +114,6 @@ const BlogContainer = styled.div`
   text-align: left;
   box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
 `;
-const Croppit = styled.div`
-  width: 100%
-  height: 300px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-`;
 const BlogImage = styled.img`
   width: 100%;
 `;
@@ -279,10 +272,10 @@ class BlogPost extends React.Component<BlogPostProps, {}> {
                 }}
               />
               <BlogContainer>
-                <Croppit
-                  style={{
-                    backgroundImage: `url(${post.data.thumbnail})`
-                  }}
+                <BlogImage
+                  src={post.data.thumbnail}
+                  alt={post.data.title}
+                  id="mainImage"
                 />
                 <ContentContainer>
                   <RowContainer>

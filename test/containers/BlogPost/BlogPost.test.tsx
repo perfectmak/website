@@ -66,23 +66,10 @@ describe('<BlogPost />', () => {
     expect(component.find(VerticalPostPreview).length).toEqual(2)
   })
 
-  it('renders BlogImage thumbnail component', () => {
-    const croppitElement = component.findWhere(node => {
-      const styles = node.prop('style');
-      return styles && styles.backgroundImage;
-    });
-
-    expect(croppitElement.length).toEqual(1);
-  });
-
-  it('renders correct src for BlogImage thumbnail component', () => {
-    const croppitElement = component.findWhere(node => {
-      const styles = node.prop('style');
-      return styles && styles.backgroundImage;
-    });
-
-    const { backgroundImage } = croppitElement.prop('style');
-    expect(backgroundImage).toEqual(`url(${samplePost.data.thumbnail})`);
+  it('renders BlogImage', () => {
+    const image = component.find('#mainImage').props()
+    expect(image.src).toEqual(samplePost.data.thumbnail);
+    expect(image.alt).toEqual(samplePost.data.title);
   });
 
   it('renders category', () => {
