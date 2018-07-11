@@ -1,7 +1,7 @@
 ---
 title: The Revolution Will Be Incentivized!
 author: Lazar Jovanovic
-category: Crash Courses
+category: Cryptocurrency
 published_at: '2018-07-06T08:29:03-05:00'
 medium_link: >-
   https://medium.com/market-protocol/the-revolution-will-be-incentivized-f6fddb3f7c93
