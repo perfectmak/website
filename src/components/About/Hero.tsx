@@ -19,7 +19,7 @@ export const HeroArt = styled.div`
     text-align: right;
     
     img {
-      width: 50%;
+      display: none;
     }
   }
   

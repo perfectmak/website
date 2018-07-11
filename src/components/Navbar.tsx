@@ -25,7 +25,6 @@ export const Logo = styled.div`
 export const StyledMenu = styled(Menu)`
   .ant-dropdown-menu {
     background: #fff;
-    border-radius: 25px;
     padding: 10px;
   }
   .ant-dropdown-menu-item {
@@ -33,12 +32,6 @@ export const StyledMenu = styled(Menu)`
     &:hover {
       background-color: #fff;
       color: #00e2c1;
-    }
-    &:first-child {
-      border-radius: 25px 25px 0 0;
-    }
-    &:last-child {
-      border-radius: 0 0 25px 25px;
     }
   }
   @media (max-width: ${size.tablet}) {
@@ -50,7 +43,6 @@ export const StyledMenu = styled(Menu)`
       background: #fff;
       border-right: 0;
       .ant-menu-item-selected {
-        border-radius: 12px;
         background-color: #f1f1f1;
         color: #00ad94;
       }
@@ -124,9 +116,6 @@ const HeaderWrapper = styled.div`
   .ant-popover-inner-content {
     padding-left: 10px;
     padding-right: 10px;
-  }
-  .ant-popover-inner {
-    border-radius: 25px;
   }
 `;
 
@@ -328,8 +317,8 @@ class Navbar extends React.Component {
 
   render(): JSX.Element {
     return (
-      <HeaderWrapper>
-        <Affix>
+      <Affix>
+        <HeaderWrapper>
           <Header>
             <Logo>
               <Link
@@ -351,13 +340,14 @@ class Navbar extends React.Component {
               }
               content={this.renderMenuMarkup('mobile')}
               trigger="click"
+              placement="topRight"
               arrowPointAtCenter={true}
             >
               <MobileMenuToggle shape="circle" icon="bars" />
             </Popover>
           </Header>
-        </Affix>
-      </HeaderWrapper>
+        </HeaderWrapper>
+      </Affix>
     );
   }
 }
