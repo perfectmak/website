@@ -7,8 +7,6 @@ medium_link: >-
   https://medium.com/market-protocol/the-revolution-will-be-incentivized-f6fddb3f7c93
 thumbnail: /uploads/decentraltokens.jpg
 ---
-## Introduction
-
 The increasing market expansion and progression of cryptocurrencies has spawned a number of interesting and beneficial ideas and applications to a myriad of industries. These developments only continue to grow in potential and actuality with each passing day. The introduction of the token economy, and more importantly different incentive models, are the most important steps to this progression. Their disruptive philosophy is becoming a necessary component of the highly anticipated blockchain revolution.
 
 ## Crypto economy — the dream and reality
