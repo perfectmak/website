@@ -18,14 +18,10 @@ export const HeroArt = styled.div`
   }
   
   @media ${device.mobileS} and (max-width: 767px) {
-    opacity: 0.4
-    margin-top: -40%
     z-index: -1;
-    text-align: right;
-    margin-right: 10%;
     
     img {
-      width: 40%;
+      display: none;
     }
   }
   
@@ -44,7 +40,7 @@ export const TextWrapper = styled.div`
   margin: 50px 0px 150px 50px;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    margin: 70px 30px 30px 30px;
+    margin: 70px 30px 70px 30px;
   }
 
   @media ${device.mobileL} and (max-width: ${size.tablet}) {
