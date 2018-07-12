@@ -1,7 +1,7 @@
 ---
 title: Kleros partners with MARKET Protocol for decentralized derivatives trading
 author: Lazar Jovanovic
-category: Development
+category: Partnerships
 published_at: '2018-07-07T11:52:48-05:00'
 medium_link: >-
   https://medium.com/market-protocol/kleros-partners-with-market-protocol-for-decentralized-derivatives-trading-6c9d0eb84d3
