@@ -25,7 +25,7 @@ describe('<Hero />', () => {
     expect(rowComponentProps.align).to.equal('middle');
   });
 
-  it('renders two Col components', () => {
+  it('renders two Col components except for mobile', () => {
     const component = shallow(<Hero />);
     const colComponents = component.find(Col);
     const firstColComponentProps = colComponents.at(0).props();
@@ -36,7 +36,7 @@ describe('<Hero />', () => {
     expect(firstColComponentProps.md).to.equal(12);
     expect(firstColComponentProps.lg).to.equal(10);
 
-    expect(secondColComponentProps.xs).to.equal(24);
+    expect(secondColComponentProps.xs).to.equal(0);
     expect(secondColComponentProps.md).to.equal(12);
     expect(secondColComponentProps.lg).to.equal(14);
   });
