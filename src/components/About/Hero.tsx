@@ -17,10 +17,6 @@ export const HeroArt = styled.div`
     margin-top: -80px;
     z-index: -1;
     text-align: right;
-    
-    img {
-      display: none;
-    }
   }
   
   @media ${device.mobileL} and (max-width: ${size.tablet}) {
@@ -94,7 +90,7 @@ class Hero extends React.Component {
               </HeroInfo>
             </TextWrapper>
           </Col>
-          <Col xs={24} sm={24} md={10} lg={12} xl={12}>
+          <Col xs={0} sm={0} md={10} lg={12} xl={12}>
             <HeroArt>
               <img alt="about MARKET" src={header} />
             </HeroArt>

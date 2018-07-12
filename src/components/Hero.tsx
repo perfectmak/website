@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
-//
+
 import heroIllustration from '@images/hero-illustration.svg';
 import { device, size } from '@src/breakpoints';
 
@@ -53,10 +53,6 @@ export const HeroArt = styled.div`
   @media ${device.mobileS} and (max-width: 767px) {
     margin-top: -80px;
     z-index: -1;
-
-    img {
-      display: none;
-    }
   }
 `;
 
@@ -105,7 +101,7 @@ class Hero extends React.Component<{ text?: string }, {}> {
               <Cta onlyShowSubscribeButton />
             </CtaContainer>
           </Col>
-          <Col xs={24} md={12} lg={14}>
+          <Col xs={0} sm={0} md={12} lg={14}>
             <HeroArt>
               <img
                 alt="trade stocks ethereum blockhain derivatives"
