@@ -180,6 +180,32 @@ const config: Config = {
       linkedin: 'https://www.linkedin.com/in/lazar-jovanovic/',
       name: 'Lazar Jovanovic',
       title: 'Marketing/Brand Ambassador'
+    },
+    {
+      bio:
+        'Nitin is a Designer by profession and a Developer by passion. \
+        He is a person who believes in having a healthy relationship between design and code. \
+        Being a Product Designer and gaining experience in front-end development skills like \
+        ReactJS, AngularJS, KnockoutJS, Less, SaSS over the past 4 years has helped him establish \
+        the relationship between design and code.',
+      email: 'nitin@marketprotocol.io',
+      img: teamMemberImages.NitinGupta,
+      linkedin: 'https://www.linkedin.com/in/nitinrgupta31/',
+      name: 'Nitin Gupta',
+      title: 'Product Designer/Developer'
+    },
+    {
+      bio:
+        'Travis Mathis is a software developer from Burlington, VT.\
+        He\'s comes from a web 2.0 development background and has owned \
+        and operated several startups\
+        He has over 10 years experience in software engineering and has worked on numerous\
+        projects as a contractor, freelancer, and team member.',
+      email: 'travis@marketprotocol.io',
+      img: teamMemberImages.TravisMathis,
+      linkedin: 'https://www.linkedin.com/in/travis-mathis-43443b16/',
+      name: 'Travis Mathis',
+      title: 'Senior Developer'
     }
   ]
 };
