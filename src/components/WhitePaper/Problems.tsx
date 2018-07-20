@@ -71,7 +71,7 @@ class Problems extends React.Component {
             <TextWrapper>
               <Header>Problems Addressed By MARKET Protocol</Header>
               <SubHeading>
-                Decoupling Price from Utilty - A Scaling Issue
+                Decoupling Price from Utility - A Scaling Issue
               </SubHeading>
               <ContentWrapper>
                 Price volatility is one factor limiting growth in the blockchain
