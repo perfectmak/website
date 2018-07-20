@@ -100,10 +100,9 @@ class Summary extends React.Component {
                 Third party projects can build decentralized applications or
                 “dApps” on top of the protocol, enabling non-technical traders
                 to easily interact with the underlying blockchain. MARKET
-                Protocol Protocol is preparing to release the first dApp for
-                public beta, which allows users to deploy MARKET Protocol
-                Contracts, test oracle queries and explore those created by
-                others.
+                Protocol is preparing to release the first dApp for public beta,
+                which allows users to deploy MARKET Protocol Contracts, test
+                oracle queries and explore those created by others.
               </ContentWrapper>
               <ContentWrapper>
                 The MARKET Protocol team comes from diverse technical and
