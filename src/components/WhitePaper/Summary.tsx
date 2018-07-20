@@ -89,10 +89,10 @@ class Summary extends React.Component {
                 assets and is essential for risk mitigation. As derivatives,
                 traders can buy or sell with no need to borrow or take custody
                 of the underlying assets drastically simplifying trading. Short
-                selling is an necessary piece of an efficient marketplace and
-                can help reduce overall volatility. MARKET Protocol Contracts
-                also enable contracts involving traditional assets like Tesla
-                stock (TSLA) which makes relationships like TSLA/ETH or TSLA/DAI
+                selling is a necessary piece of an efficient marketplace and can
+                help reduce overall volatility. MARKET Protocol Contracts also
+                enable contracts involving traditional assets like Tesla stock
+                (TSLA) which makes relationships like TSLA/ETH or TSLA/DAI
                 tradeable without converting to fiat currency or taking custody
                 of TSLA.
               </ContentWrapper>
