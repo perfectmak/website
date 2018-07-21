@@ -258,6 +258,14 @@ class Navbar extends React.Component {
         onClick={this.handleClick}
         selectedKeys={[this.state.current]}
       >
+        <Menu.Item key="/press">
+          <Link
+            to="/press"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            Press
+          </Link>
+        </Menu.Item>
         <Menu.Item key="/about">
           <Link
             to="/about"

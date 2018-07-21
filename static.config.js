@@ -37,7 +37,7 @@ const webpack = require('webpack')
  * ------------
  * used by getData function of /blog route
  * */
-function getBlogData () {
+function getBlogData (type) {
   const matter = require('gray-matter')
   const klaw = require('klaw')
 
@@ -46,9 +46,9 @@ function getBlogData () {
 
   const getPosts = new Promise(resolve => {
     // make sure post directory exists
-    if (fs.existsSync('./src/blogPosts')) {
+    if (fs.existsSync(`./src/${type}`)) {
       // walk through post directory
-      klaw('./src/blogPosts')
+      klaw(`./src/${type}`)
         // process post files
         .on('data', (item) => {
           if (path.extname(item.path) === '.md') {
@@ -104,7 +104,8 @@ export default {
     title: 'MARKET Protocol',
   }),
   getRoutes: async () => {
-    const blogData = await getBlogData()
+    const blogData = await getBlogData('blogPosts');
+    const pressData = await getBlogData('pressPosts');
 
     return [
       {
@@ -120,10 +121,6 @@ export default {
         component: 'src/containers/About',
       },
       {
-        path: '/press',
-        component: 'src/containers/Press',
-      },
-      {
         path: '/partners',
         component: 'src/containers/Partners',
       },
@@ -134,6 +131,16 @@ export default {
       {
         path: '/jobs',
         component: 'src/containers/Jobs'
+      },
+      {
+        path: '/press',
+        component: 'src/containers/Press',
+        getData: () => pressData,
+        children: pressData.posts.map((post) => ({
+          path: `/press-post/${post.data.slug}`,
+          component: 'src/containers/PressPost',
+          getData: () => ({ post, pressData })
+        }))
       },
       {
         path: '/blog',
