@@ -258,6 +258,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
               >
                 <PostsContainer>
                   <PostPreview
+                    base="blog"
                     history={this.props.history}
                     post={filteredPosts[0]}
                     featured={true}
@@ -266,6 +267,7 @@ class Blog extends React.Component<BlogProps, BlogState> {
                     {visiblePosts.map((post, i) => (
                       <PostContainer key={i}>
                         <PostPreview
+                          base="blog"
                           key={`post#${i}`}
                           history={this.props.history}
                           post={post}

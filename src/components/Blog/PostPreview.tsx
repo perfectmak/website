@@ -130,6 +130,7 @@ interface Post {
 interface PostPreviewProps {
   history: History;
   featured?: boolean;
+  base?: string;
   post: Post;
 }
 

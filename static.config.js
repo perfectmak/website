@@ -138,7 +138,7 @@ export default {
         getData: () => pressData,
         children: pressData.posts.map((post) => ({
           path: `/post/${post.data.slug}`,
-          component: 'src/containers/PressPost',
+          component: 'src/containers/BlogPost',
           getData: () => ({ post, pressData })
         }))
       },
