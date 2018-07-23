@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import { throttle } from 'lodash';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
 import { device } from '@src/breakpoints';
