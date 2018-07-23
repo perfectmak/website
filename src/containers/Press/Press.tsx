@@ -132,7 +132,7 @@ class Press extends React.Component<PressProps, PressState> {
     return (
       <RootWrap>
         <header>
-          <div className="title">Press</div>
+          <h1 className="title">MARKET Protocol in the press</h1>
         </header>
         <div className="gridContainer">
           <Row gutter={24}>
