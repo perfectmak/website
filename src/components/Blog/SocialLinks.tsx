@@ -6,6 +6,7 @@ import { Link } from 'react-static';
 import twitter from '@images/twitter-white.svg';
 import facebook from '@images/facebook-white.svg';
 import medium from '@images/medium-white.svg';
+import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
 
 const RootWrap = styled.div`
   > #root {
@@ -27,21 +28,37 @@ const RootWrap = styled.div`
 interface Props {
   size?: number;
   slug?: string;
+  external?: boolean;
 }
 
 const isClient = typeof window !== 'undefined';
 
-const SocialLinks = ({ size = 30, slug }: Props) => {
+const constructTwitter = (slug: string, external: boolean) => {
+  const base = 'https://twitter.com/intent/tweet?url=';
+  const marketProtocolUrl = 'https://marketprotocol.io';
+  const via = '&via=MarketProtocol';
+
+  return external ? base + slug : base + marketProtocolUrl + slug + via;
+};
+
+const constructFacebook = (slug: string, external: boolean) => {
+  const base = 'https://www.facebook.com/sharer/sharer.php?u=';
+  const marketProtocolUrl = 'https://marketprotocol.io/blog/post';
+
+  return external ? base + slug : base + marketProtocolUrl + slug;
+};
+
+const SocialLinks = ({ size = 30, slug, external }: Props) => {
   const buttonStyle = {
     height: size,
     width: size
   };
 
   const twitterUrl = slug
-    ? `https://twitter.com/intent/tweet?url=https://marketprotocol.io/blog/post/${slug}&via=MarketProtocol`
+    ? constructTwitter(slug, external)
     : 'https://twitter.com/MarketProtocol/';
   const secondaryUrl = slug
-    ? `https://www.facebook.com/sharer/sharer.php?u=https://marketprotocol.io/blog/post/${slug}`
+    ? constructFacebook(slug, external)
     : 'https://medium.com/market-protocol';
   const secondaryIcon = slug ? facebook : medium;
 

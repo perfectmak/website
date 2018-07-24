@@ -123,6 +123,7 @@ interface Post {
     medium_link: string;
     thumbnail: string;
     slug: string;
+    source: string;
   };
   content: string;
 }

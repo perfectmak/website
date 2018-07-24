@@ -132,7 +132,7 @@ class Press extends React.Component<PressProps, PressState> {
     return (
       <RootWrap>
         <header>
-          <h1 className="title">MARKET Protocol in the press</h1>
+          <h1 className="title">Press</h1>
         </header>
         <div className="gridContainer">
           <Row gutter={24}>
@@ -141,7 +141,6 @@ class Press extends React.Component<PressProps, PressState> {
                 {visiblePosts.map((post, i) => (
                   <PostContainer key={i}>
                     <PostPreview
-                      base="press"
                       key={`post#${i}`}
                       history={this.props.history}
                       post={post}
