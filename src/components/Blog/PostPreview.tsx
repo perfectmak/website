@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import Dotdotdot from 'react-dotdotdot';
-import Markdown from 'react-markdown';
+import showdown from 'showdown';
 import { History } from 'history';
 import { device } from '@src/breakpoints';
 
 import SocialLinks from './SocialLinks';
+
+const converter = new showdown.Converter();
 
 const RootWrap = styled.div`
   width: 100%;
@@ -22,7 +24,8 @@ const RootWrap = styled.div`
     background: #ffffff;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 30px;
     width: 100%;
     transition: all 300ms;
@@ -72,10 +75,11 @@ const RootWrap = styled.div`
     #blogContent {
       color: #646469;
       margin-top: 10px;
+      margin-bottom: 38px;
     }
 
     #blogActions {
-      margin-top: 38px;
+      margin-top: auto;
 
       #blogLink {
         color: #00e2c1;
@@ -123,65 +127,99 @@ interface Post {
   content: string;
 }
 
-interface Props {
+interface PostPreviewProps {
   history: History;
   featured?: boolean;
   post: Post;
 }
 
-export default ({ history, featured = false, post }: Props) => {
-  if (!post) {
-    return null;
+class PostPreview extends React.Component<PostPreviewProps> {
+  static createMarkup(body: object, markup: HTMLElement) {
+    const content = [];
+    const sibling = body.firstElementChild.nextElementSibling;
+    const textLength = 177;
+    content.push(markup);
+
+    if (markup.textContent.length <= textLength) {
+      if (sibling.innerText.length >= textLength) {
+        sibling.innerText = sibling.innerText.substring(0, textLength) + '...';
+      } else {
+        sibling.innerText = sibling.innerText + '...';
+      }
+
+      content.push(sibling);
+    } else {
+      markup.textContent = markup.textContent.substring(0, textLength) + '...';
+    }
+
+    return content.length > 1
+      ? content[0].outerHTML + content[1].outerHTML
+      : content[0].outerHTML;
   }
 
-  return (
-    <RootWrap onClick={() => history.push(`/blog/post/${post.data.slug}`)}>
-      <div id="root">
-        <div
-          id="blogImage"
-          style={{
-            backgroundImage: `url(${post.data.thumbnail})`,
-            height: featured ? '280px' : '132px'
-          }}
-        />
-        <div id="blogStats">
-          <div id="blogStatsCategory">{post.data.category}</div>
-          <div id="blogStatsTime">
-            <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
-          </div>
-        </div>
-        <div
-          id="blogTitle"
-          style={{
-            fontSize: featured ? '28px' : '21px',
-            lineHeight: featured ? '33px' : '29px'
-          }}
-        >
-          <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
-        </div>
-        <div
-          style={{
-            fontSize: featured ? '18px' : '14px',
-            lineHeight: featured ? '24px' : '20px'
-          }}
-          id="blogContent"
-        >
-          <Dotdotdot clamp={4}>
-            <Markdown source={post.content} escapeHtml={false} />
-          </Dotdotdot>
-        </div>
-        <div id="blogActions">
-          <div id="blogLink">
-            Continue Reading{' '}
-            <div id="arrow-container">
-              <span id="arrow">›</span>
+  render() {
+    const { post, featured } = this.props;
+
+    if (!post) {
+      return null;
+    }
+
+    const parser = new DOMParser();
+    const htmlString = converter.makeHtml(post.content);
+    const html = parser.parseFromString(htmlString, 'text/html');
+    const intro = html.body.firstElementChild;
+
+    const markup = PostPreview.createMarkup(html.body, intro as HTMLElement);
+
+    return (
+      <RootWrap onClick={() => history.push(`/blog/post/${post.data.slug}`)}>
+        <div id="root">
+          <div
+            id="blogImage"
+            style={{
+              backgroundImage: `url(${post.data.thumbnail})`,
+              height: featured ? '280px' : '132px'
+            }}
+          />
+          <div id="blogStats">
+            <div id="blogStatsCategory">{post.data.category}</div>
+            <div id="blogStatsTime">
+              <Moment format={'MMMM D, YYYY'}>{post.data.published_at}</Moment>
             </div>
           </div>
-          <div id="socialLinksWrapper">
-            <SocialLinks slug={post.data.slug} />
+          <div
+            id="blogTitle"
+            style={{
+              fontSize: featured ? '28px' : '21px',
+              lineHeight: featured ? '33px' : '29px'
+            }}
+          >
+            <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
+          </div>
+          <div
+            style={{
+              fontSize: featured ? '18px' : '14px',
+              lineHeight: featured ? '24px' : '20px'
+            }}
+            id="blogContent"
+          >
+            <div dangerouslySetInnerHTML={{ __html: markup }} />
+          </div>
+          <div id="blogActions">
+            <div id="blogLink">
+              Continue Reading{' '}
+              <div id="arrow-container">
+                <span id="arrow">›</span>
+              </div>
+            </div>
+            <div id="socialLinksWrapper">
+              <SocialLinks slug={post.data.slug} />
+            </div>
           </div>
         </div>
-      </div>
-    </RootWrap>
-  );
-};
+      </RootWrap>
+    );
+  }
+}
+
+export default PostPreview;

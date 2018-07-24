@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Col, Row } from 'antd';
 import styled from 'styled-components';
-import { throttle } from 'lodash';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
 import { device } from '@src/breakpoints';
@@ -128,14 +127,8 @@ interface Post {
 }
 
 class Blog extends React.Component<BlogProps, BlogState> {
-  private handleScroll: EventListener;
-
   constructor(props: BlogProps) {
     super(props);
-
-    this.handleScroll = throttle(() => {
-      this.forceUpdate();
-    }, 10);
 
     this.state = {
       numPostsPerPage: 5,
@@ -150,11 +143,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
 
     this.setState({ posts });
 
-    if (isClient) {
-      window.addEventListener('scroll', this.handleScroll);
-      window.addEventListener('resize', this.handleScroll);
-    }
-
     if (history.location.search) {
       const params = new URLSearchParams(history.location.search.toString());
       const category = params.get('category');
@@ -166,13 +154,6 @@ class Blog extends React.Component<BlogProps, BlogState> {
           }
         });
       }
-    }
-  }
-
-  componentWillUnmount() {
-    if (isClient) {
-      window.removeEventListener('scroll', this.handleScroll);
-      window.removeEventListener('resize', this.handleScroll);
     }
   }
 

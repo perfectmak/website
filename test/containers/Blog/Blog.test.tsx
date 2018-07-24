@@ -64,11 +64,6 @@ describe('<Blog />', () => {
     expect(component.state().selectedCat).toEqual('All');
   });
 
-  it('scrolls without crashing', () => {
-    const instance = component.instance();
-    instance.handleScroll();
-  });
-
   it('unmounts without crashing', () => {
     component.unmount();
   });
