@@ -45,9 +45,9 @@ describe('<Press />', () => {
     );
   });
 
-  it('should have the title "MARKET Protocol in the press"', () => {
+  it('should have the title "Press"', () => {
     const wrapper = mount(<Press />);
-    expect(wrapper.find('.title').text()).toEqual('MARKET Protocol in the press');
+    expect(wrapper.find('.title').text()).toEqual('Press');
   });
 
   it('renders without crashing', () => {
