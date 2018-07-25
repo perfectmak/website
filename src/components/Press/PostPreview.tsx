@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
-import Dotdotdot from 'react-dotdotdot';
 import showdown from 'showdown';
 import { History } from 'history';
 import { device } from '@src/breakpoints';
@@ -137,45 +136,18 @@ interface PostPreviewProps {
 }
 
 class PostPreview extends React.Component<PostPreviewProps> {
-  static createMarkup(body: object, markup: HTMLElement) {
-    const content = [];
-    const sibling = body.firstElementChild.nextElementSibling;
-    const textLength = 177;
-    content.push(markup);
-
-    if (markup.textContent.length <= textLength) {
-      if (sibling.innerText.length >= textLength) {
-        sibling.innerText = sibling.innerText.substring(0, textLength) + '...';
-      } else {
-        sibling.innerText = sibling.innerText + '...';
-      }
-
-      content.push(sibling);
-    } else {
-      markup.textContent = markup.textContent.substring(0, textLength) + '...';
-    }
-
-    return content.length > 1
-      ? content[0].outerHTML + content[1].outerHTML
-      : content[0].outerHTML;
-  }
-
   render() {
-    const { post, featured, history } = this.props;
+    const { post, featured, external } = this.props;
 
     if (!post) {
       return null;
     }
 
-    const parser = new DOMParser();
-    const htmlString = converter.makeHtml(post.content);
-    const html = parser.parseFromString(htmlString, 'text/html');
-    const intro = html.body.firstElementChild;
-    const slug = `/blog/post/${post.data.slug}`;
-    const markup = PostPreview.createMarkup(html.body, intro as HTMLElement);
+    const source = post.data.source;
+    const goto = () => window.open(source, '_blank');
 
     return (
-      <RootWrap onClick={() => history.push(slug)}>
+      <RootWrap onClick={goto}>
         <div id="root">
           <div
             id="blogImage"
@@ -197,7 +169,7 @@ class PostPreview extends React.Component<PostPreviewProps> {
               lineHeight: featured ? '33px' : '29px'
             }}
           >
-            <Dotdotdot clamp={3}>{post.data.title}</Dotdotdot>
+            {post.data.title}
           </div>
           <div
             style={{
@@ -206,17 +178,17 @@ class PostPreview extends React.Component<PostPreviewProps> {
             }}
             id="blogContent"
           >
-            <div dangerouslySetInnerHTML={{ __html: markup }} />
+            {post.content}
           </div>
           <div id="blogActions">
             <div id="blogLink">
-              Continue Reading{' '}
+              Read More{' '}
               <div id="arrow-container">
                 <span id="arrow">›</span>
               </div>
             </div>
             <div id="socialLinksWrapper">
-              <SocialLinks slug={slug} />
+              <SocialLinks slug={source} external={external} />
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
 import { device } from '@src/breakpoints';
 
-import PostPreview from '@components/Blog/PostPreview';
+import PostPreview from '@components/Press/PostPreview';
 
 const PostsContainer = styled.div`
   display: flex;

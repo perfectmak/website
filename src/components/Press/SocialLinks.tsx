@@ -39,11 +39,11 @@ const SocialLinks = ({ size = 30, slug }: Props) => {
   };
 
   const twitterUrl = slug
-    ? `https://twitter.com/intent/tweet?url=https://marketprotocol.io${slug}&via=MarketProtocol`
+    ? `https://twitter.com/intent/tweet?url=${slug}&via=MarketProtocol`
     : 'https://twitter.com/MarketProtocol/';
 
   const secondaryUrl = slug
-    ? `https://www.facebook.com/sharer/sharer.php?u=https://marketprotocol.io${slug}`
+    ? `https://www.facebook.com/sharer/sharer.php?=${slug}`
     : 'https://medium.com/market-protocol';
 
   const secondaryIcon = slug ? facebook : medium;
