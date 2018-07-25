@@ -6,7 +6,6 @@ import { Link } from 'react-static';
 import twitter from '@images/twitter-white.svg';
 import facebook from '@images/facebook-white.svg';
 import medium from '@images/medium-white.svg';
-import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
 
 const RootWrap = styled.div`
   > #root {
@@ -38,7 +37,7 @@ const constructTwitter = (slug: string, external: boolean) => {
   const marketProtocolUrl = 'https://marketprotocol.io';
   const via = '&via=MarketProtocol';
 
-  return external ? base + slug : base + marketProtocolUrl + slug + via;
+  return external ? base + slug + via : base + marketProtocolUrl + slug + via;
 };
 
 const constructFacebook = (slug: string, external: boolean) => {

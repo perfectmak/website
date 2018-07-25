@@ -143,6 +143,7 @@ class Press extends React.Component<PressProps, PressState> {
                     <PostPreview
                       key={`post#${i}`}
                       history={this.props.history}
+                      external={true}
                       post={post}
                       i={i}
                     />

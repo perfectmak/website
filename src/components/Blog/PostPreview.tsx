@@ -131,6 +131,7 @@ interface Post {
 interface PostPreviewProps {
   history: History;
   featured?: boolean;
+  external?: boolean;
   base?: string;
   post: Post;
 }
@@ -160,7 +161,7 @@ class PostPreview extends React.Component<PostPreviewProps> {
   }
 
   render() {
-    const { post, featured, history } = this.props;
+    const { post, featured, history, external } = this.props;
 
     if (!post) {
       return null;
@@ -170,11 +171,17 @@ class PostPreview extends React.Component<PostPreviewProps> {
     const htmlString = converter.makeHtml(post.content);
     const html = parser.parseFromString(htmlString, 'text/html');
     const intro = html.body.firstElementChild;
+    const source = post.data.source;
+    const slug = `/blog/post/${post.data.slug}`;
 
     const markup = PostPreview.createMarkup(html.body, intro as HTMLElement);
 
+    const goto = () => {
+      return external ? window.open(source, '_blank') : history.push(slug);
+    };
+
     return (
-      <RootWrap onClick={() => history.push(`/blog/post/${post.data.slug}`)}>
+      <RootWrap onClick={goto}>
         <div id="root">
           <div
             id="blogImage"
@@ -215,7 +222,7 @@ class PostPreview extends React.Component<PostPreviewProps> {
               </div>
             </div>
             <div id="socialLinksWrapper">
-              <SocialLinks slug={post.data.slug} />
+              <SocialLinks slug={source || slug} external={external} />
             </div>
           </div>
         </div>
