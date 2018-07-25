@@ -204,7 +204,6 @@ interface Post {
   data: {
     title: string;
     published_at: number;
-    medium_link: string;
     author: string;
     thumbnail: string;
     slug: string;

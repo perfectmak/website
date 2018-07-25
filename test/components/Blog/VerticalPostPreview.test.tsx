@@ -12,7 +12,6 @@ describe('<VerticalPostPreview />', () => {
       author: 'Mary Jane',
       category: 'Development',
       published_at: '2018-06-09T05:00:00-05:00',
-      medium_link: 'http://medium.com/',
       thumbnail: 'path/to/thumbnail',
       slug: 'slug',
       readtime: 5,

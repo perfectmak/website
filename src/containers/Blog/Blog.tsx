@@ -117,7 +117,6 @@ interface Post {
     author: string;
     category: string;
     published_at: number;
-    medium_link: string;
     thumbnail: string;
 
     slug: string;

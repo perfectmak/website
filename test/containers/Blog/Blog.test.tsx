@@ -11,7 +11,6 @@ interface Post {
     author: string;
     category: string;
     published_at: string;
-    medium_link: string;
     thumbnail: string;
     slug: string;
   };
@@ -37,7 +36,6 @@ describe('<Blog />', () => {
         author: `author${i}`,
         category: categories[Math.floor(Math.random() * Math.floor(3))],
         published_at: '2018-06-09T05:00:00-05:00',
-        medium_link: 'http://medium.com/',
         thumbnail: 'path/to/thumbnail',
         slug: '/slug'
       },
