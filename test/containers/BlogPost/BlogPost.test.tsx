@@ -16,7 +16,6 @@ describe('<BlogPost />', () => {
       author: 'Mary Jane',
       category: 'The Category',
       published_at: '2018-06-09T05:00:00-05:00',
-      medium_link: 'http://medium.com/',
       thumbnail: 'path/to/thumbnail',
       slug: '/slug',
       readtime: 5,
@@ -30,7 +29,6 @@ describe('<BlogPost />', () => {
         data: {
           author: "Brady Cheredone",
           category: "Crash Courses",
-          medium_link: "http://bradysheridan.com/",
           published_at:"2018-06-10T02:34:00-05:00",
           readtime: 2,
           slug:"sample-post-4",
@@ -42,7 +40,6 @@ describe('<BlogPost />', () => {
         data: {
           author: "Brady Cheredone",
           category: "Crash Courses",
-          medium_link: "http://bradysheridan.com/",
           published_at:"2018-06-10T02:34:00-05:00",
           readtime: 2,
           slug:"sample-post-4",

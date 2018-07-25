@@ -70,7 +70,6 @@ interface Post {
     author: string;
     category: string;
     published_at: string;
-    medium_link: string;
     thumbnail: string;
     slug: string;
   };
