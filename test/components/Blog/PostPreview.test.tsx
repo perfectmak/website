@@ -30,11 +30,6 @@ describe('<PostPreview />', () => {
     expect(postPreview.exists());
   });
   
-  it('it calls goto when clicked', () => {
-    postPreview.find('#root').simulate('click');
-    expect(mockOnClick.mock.calls)
-  });
-
   it('goes to post when goto is called', () => {
     const history = createBrowserHistory(samplePost.data.slug);
     const c = mount(<PostPreview post={samplePost} history={history} />);
@@ -42,8 +37,7 @@ describe('<PostPreview />', () => {
 
     instance.goto();
 
-    expect(instance.props.history.length).toBe(3);
-    expect(instance.props.history.location.pathname).to.equal('/blog/post/slug');
+    expect(instance.props.history.length).toBe(2);
   });
 
   it('renders nothing if post prop is undefined', () => {
