@@ -137,6 +137,12 @@ interface PostPreviewProps {
 }
 
 class PostPreview extends React.Component<PostPreviewProps> {
+  constructor(props: PostPreviewProps) {
+    super(props);
+
+    this.goto = this.goto.bind(this);
+  }
+
   static createMarkup(body: object, markup: HTMLElement) {
     const content = [];
     const sibling = body.firstElementChild.nextElementSibling;
@@ -160,8 +166,12 @@ class PostPreview extends React.Component<PostPreviewProps> {
       : content[0].outerHTML;
   }
 
+  goto(slug: string) {
+    this.props.history.push(slug);
+  }
+
   render() {
-    const { post, featured, history } = this.props;
+    const { post, featured } = this.props;
 
     if (!post) {
       return null;
@@ -175,8 +185,8 @@ class PostPreview extends React.Component<PostPreviewProps> {
     const markup = PostPreview.createMarkup(html.body, intro as HTMLElement);
 
     return (
-      <RootWrap onClick={() => history.push(slug)}>
-        <div id="root">
+      <RootWrap>
+        <div id="root" onClick={() => this.goto(slug)}>
           <div
             id="blogImage"
             style={{

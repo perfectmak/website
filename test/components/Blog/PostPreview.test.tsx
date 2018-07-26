@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { mount, shallow, ShallowWrapper } from 'enzyme';
+import { createMemoryHistory, createBrowserHistory } from 'history';
 import PostPreview from '@components/Blog/PostPreview';
 
 describe('<PostPreview />', () => {
@@ -18,13 +19,31 @@ describe('<PostPreview />', () => {
   };
 
   let postPreview: ShallowWrapper;
+  const mockOnClick = jest.fn();
 
   beforeEach(() => {
-    postPreview = shallow(<PostPreview post={samplePost}/>);
+    const history = createBrowserHistory();
+    postPreview = shallow(<PostPreview post={samplePost} onClick={mockOnClick} history={history} />);
   });
 
   it('renders without crashing', () => {
     expect(postPreview.exists());
+  });
+  
+  it('it calls goto when clicked', () => {
+    postPreview.find('#root').simulate('click');
+    expect(mockOnClick.mock.calls)
+  });
+
+  it('goes to post when goto is called', () => {
+    const history = createBrowserHistory(samplePost.data.slug);
+    const c = mount(<PostPreview post={samplePost} history={history} />);
+    const instance = c.instance();
+
+    instance.goto();
+
+    expect(instance.props.history.length).toBe(3);
+    expect(instance.props.history.location.pathname).to.equal('/blog/post/slug');
   });
 
   it('renders nothing if post prop is undefined', () => {
@@ -52,4 +71,5 @@ describe('<PostPreview />', () => {
     const thumbnailC = postPreview.children().find('#blogImage');
     expect(thumbnailC.prop('style').backgroundImage).toEqual(`url(${samplePost.data.thumbnail})`);
   });
+
 });
