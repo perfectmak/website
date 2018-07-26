@@ -32,6 +32,11 @@ describe('<VerticalPostPreview />', () => {
     expect(verticalPostPreview.exists());
   });
 
+  it('renders a root element', () => {
+    const root = verticalPostPreview.find('#root');
+    expect(root.length).toEqual(1);
+  });
+
   it('it calls goto when clicked', () => {
     const history = createBrowserHistory(samplePost.data.slug);
     const c = mount(<VerticalPostPreview post={samplePost} history={history} />);
