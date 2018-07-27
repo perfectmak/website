@@ -7,6 +7,7 @@ import timeline from '@images/about/timeline.svg';
 
 export const HeaderText = MarketHeader.extend`
   padding-bottom: 40px;
+  text-align: center;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
     padding: 60px 20px 20px 20px;
