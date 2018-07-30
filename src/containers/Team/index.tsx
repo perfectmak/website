@@ -85,7 +85,7 @@ export class TeamComponent extends React.Component<{}, State> {
         <Hero />
         {/* 'the team' title and info */}
         <TeamDivWithResponsiveWidth style={{ padding: '40px 0px 20px 0px' }}>
-          <MarketHeader>Core Team</MarketHeader>
+          <MarketHeader style={{ textAlign: 'center' }}>Core Team</MarketHeader>
         </TeamDivWithResponsiveWidth>
 
         {/* team members */}
@@ -108,7 +108,9 @@ export class TeamComponent extends React.Component<{}, State> {
           }}
         >
           <TeamDivWithResponsiveWidth>
-            <MarketHeader>{'Advisors'}</MarketHeader>
+            <MarketHeader style={{ textAlign: 'center' }}>
+              {'Advisors'}
+            </MarketHeader>
           </TeamDivWithResponsiveWidth>
 
           {/* advisors */}

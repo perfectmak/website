@@ -29,6 +29,7 @@ const MarketHeader = styled.h2`
   font-size: 36px;
   font-weight: 500;
   line-height: 1.1;
+  text-align: center;
 
   @media (max-width: ${size.laptop}) {
     font-size: 26px;
