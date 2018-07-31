@@ -5,7 +5,7 @@ import showdown from 'showdown';
 import { History } from 'history';
 import { device } from '@src/breakpoints';
 
-import SocialLinks from './SocialLinks';
+import SocialLinks from '@components/Blog/SocialLinks';
 
 const converter = new showdown.Converter();
 
