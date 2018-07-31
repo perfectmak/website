@@ -159,7 +159,7 @@ class PartnersComponent extends Component {
         </Helmet>
         <Hero />
         <ContentWrapper>
-          <MarketHeader>Partner Projects</MarketHeader>
+          <MarketHeader align="center">Partner Projects</MarketHeader>
           <PartnerBlockWrapper>
             {this.renderPartnerBlocks(partnerProjects)}
           </PartnerBlockWrapper>

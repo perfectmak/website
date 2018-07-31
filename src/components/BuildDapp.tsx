@@ -43,10 +43,6 @@ export const ButtonWrapper = styled(Button)`
     width: 100%;
   }
 
-  @media ${device.desktopS} {
-    width: 80%;
-  }
-
   @media ${device.desktopM} {
     width: 50%;
   }

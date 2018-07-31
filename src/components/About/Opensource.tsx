@@ -115,9 +115,7 @@ class Opensource extends React.Component {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <TextWrapper>
-              <MarketHeader>
-                We love open source! Contribute to our project!
-              </MarketHeader>
+              <MarketHeader>We love open source!</MarketHeader>
               <OpenSourceText>
                 Come join the development community that is building MARKET
                 Protocol
@@ -130,7 +128,9 @@ class Opensource extends React.Component {
                 <ButtonWrapper type="primary">Contribution Guide</ButtonWrapper>
               </Link>
               <Link
-                to="https://github.com/orgs/MARKETProtocol/projects/1"
+                to="https://app.zenhub.com/workspace/o/marketprotocol/market.js/boards?repos=
+                    140627375,128025988,130496585,117898415,119072718,116695875,130494562,
+                    131598556,108304540,127038994,141709662,135627327,129016888"
                 target="_blank"
                 style={{ color: 'inherit', textDecoration: 'none' }}
               >

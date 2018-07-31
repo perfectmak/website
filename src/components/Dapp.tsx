@@ -45,6 +45,7 @@ const TextWrapper = styled.div`
 
 export const HeaderText = MarketHeader.extend`
   padding-bottom: 70px;
+  text-align: center;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
     padding: 70px 20px;
@@ -60,7 +61,7 @@ export const ButtonWrapper = styled(Button)`
 const Dapp = () => {
   return (
     <SectionWrapper style={{ background: '#f0f0f0' }}>
-      <HeaderText header>Easily create new contracts</HeaderText>
+      <HeaderText>Easily create new contracts</HeaderText>
       <Row type="flex" align="middle">
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <Wrapper bg="#181E26">

@@ -99,7 +99,12 @@ class Bio extends React.Component<Props> {
 
           {/* name and title */}
           <MarketText
-            style={{ textAlign: 'center', paddingTop: 10, fontWeight: 400 }}
+            style={{
+              fontWeight: 400,
+              marginBottom: 0,
+              paddingTop: 10,
+              textAlign: 'center'
+            }}
           >
             {name}
           </MarketText>
@@ -107,7 +112,7 @@ class Bio extends React.Component<Props> {
 
           {/* bio */}
           <MarketText
-            style={{ textAlign: 'left', padding: '0px 40px 0px 40px' }}
+            style={{ padding: '0px 40px 0px 40px', textAlign: 'left' }}
           >
             {bio}
           </MarketText>

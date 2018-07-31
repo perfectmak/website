@@ -116,7 +116,10 @@ class Cta extends React.Component<Props, CtaState> {
         <Row type="flex" justify="center">
           <Col xs={24} md={12} lg={9} xl={6}>
             <ButtonContainer>
-              <MarketHeader style={{ fontSize: '24px', marginBottom: '30px' }}>
+              <MarketHeader
+                align="center"
+                style={{ fontSize: '24px', marginBottom: '30px' }}
+              >
                 Join our Newsletter
               </MarketHeader>
               <Button
@@ -137,7 +140,10 @@ class Cta extends React.Component<Props, CtaState> {
           </Col>
           <Col xs={24} md={12} lg={9} xl={6}>
             <ButtonContainer>
-              <MarketHeader style={{ fontSize: '24px', marginBottom: '30px' }}>
+              <MarketHeader
+                align="center"
+                style={{ fontSize: '24px', marginBottom: '30px' }}
+              >
                 Become a Partner
               </MarketHeader>
               <Button
