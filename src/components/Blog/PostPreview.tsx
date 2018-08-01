@@ -158,7 +158,7 @@ class PostPreview extends React.Component<PostPreviewProps> {
   }
 
   render() {
-    const { post, featured } = this.props;
+    const { post, featured, history } = this.props;
 
     if (!post) {
       return null;
