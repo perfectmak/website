@@ -22,6 +22,7 @@ describe('<PostPreview />', () => {
   };
 
   let postPreview: ShallowWrapper;
+  const spy = jest.spyOn(PostPreview.prototype, 'goto');
   const mockOnClick = jest.fn();
 
   beforeEach(() => {
@@ -32,7 +33,17 @@ describe('<PostPreview />', () => {
   it('renders without crashing', () => {
     expect(postPreview.exists());
   });
-  
+
+  it("invokes onClick prop function on click", () => {
+    const history = createBrowserHistory();
+    const c = mount(<PostPreview post={samplePost} onClick={mockOnClick} history={history} />);
+    const root = c.find('#root').at(0);
+
+    root.simulate('click');
+
+    expect(spy).toHaveBeenCalled();
+  });
+
   it('goes to post when goto is called', () => {
     const history = createBrowserHistory(samplePost.data.slug);
     const c = mount(<PostPreview post={samplePost} history={history} />);
@@ -40,7 +51,7 @@ describe('<PostPreview />', () => {
 
     instance.goto();
 
-    expect(instance.props.history.length).toBe(2);
+    expect(instance.props.history.length).toBe(3);
   });
 
   it('creates markup for preview', () => {
@@ -85,5 +96,4 @@ describe('<PostPreview />', () => {
     const thumbnailC = postPreview.children().find('#blogImage');
     expect(thumbnailC.prop('style').backgroundImage).toEqual(`url(${samplePost.data.thumbnail})`);
   });
-
 });
