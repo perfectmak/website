@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Press from '@containers/Press/Press';
 import { createMemoryHistory } from 'history';
-import WithData from '@containers/Blog';
+import WithData from '@containers/Press';
 
 interface Post {
   data: {
