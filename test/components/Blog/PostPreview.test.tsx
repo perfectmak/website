@@ -3,6 +3,9 @@ import Moment from 'react-moment';
 import { mount, shallow, ShallowWrapper } from 'enzyme';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 import PostPreview from '@components/Blog/PostPreview';
+import showdown from 'showdown';
+
+const converter = new showdown.Converter();
 
 describe('<PostPreview />', () => {
   const samplePost = {
@@ -39,6 +42,23 @@ describe('<PostPreview />', () => {
 
     expect(instance.props.history.length).toBe(2);
   });
+
+  it('creates markup for preview', () => {
+    const c = mount(<PostPreview post={samplePost} />);
+    const textLength = 177;
+    const instance = c.instance();
+
+    const parser = new DOMParser();
+    const htmlString = converter.makeHtml(samplePost.content);
+    const html = parser.parseFromString(htmlString, 'text/html');
+    const intro = html.body.firstElementChild;
+
+    const markup = instance.createMarkup(html.body, intro);
+    const truncatedText = samplePost.content.substring(0, textLength) + '...';
+
+    expect(markup).toEqual(`<p>${truncatedText}</p>`);
+  });
+
 
   it('renders nothing if post prop is undefined', () => {
     const c = shallow(<PostPreview post={undefined}/>);

@@ -141,9 +141,10 @@ class PostPreview extends React.Component<PostPreviewProps> {
     super(props);
 
     this.goto = this.goto.bind(this);
+    this.createMarkup = this.createMarkup.bind(this);
   }
 
-  static createMarkup(body: object, markup: HTMLElement) {
+  createMarkup(body: object, markup: HTMLElement) {
     const content = [];
     const sibling = body.firstElementChild.nextElementSibling;
     const textLength = 177;
@@ -182,7 +183,7 @@ class PostPreview extends React.Component<PostPreviewProps> {
     const html = parser.parseFromString(htmlString, 'text/html');
     const intro = html.body.firstElementChild;
     const slug = `/blog/post/${post.data.slug}`;
-    const markup = PostPreview.createMarkup(html.body, intro as HTMLElement);
+    const markup = this.createMarkup(html.body, intro as HTMLElement);
 
     return (
       <RootWrap>

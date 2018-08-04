@@ -2,6 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import { mount, shallow, ShallowWrapper } from 'enzyme';
 import PostPreview from '@components/Press/PostPreview';
+import { createBrowserHistory } from 'history';
 
 describe('<PostPreview />', () => {
   const samplePost = {
@@ -22,7 +23,7 @@ describe('<PostPreview />', () => {
   let postPreview: ShallowWrapper;
 
   beforeEach(() => {
-    postPreview = shallow(<PostPreview post={samplePost}/>);
+    postPreview = shallow(<PostPreview post={samplePost} />);
   });
 
   it('renders without crashing', () => {
