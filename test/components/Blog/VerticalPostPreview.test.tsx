@@ -21,12 +21,34 @@ describe('<VerticalPostPreview />', () => {
   }
 
   let verticalPostPreview: ShallowWrapper;
+  const spy = jest.spyOn(VerticalPostPreview.prototype, 'goto');
   const mockOnClick = jest.fn();
 
   beforeEach(() => {
     const history = createBrowserHistory();
     verticalPostPreview = shallow(<VerticalPostPreview post={samplePost} onClick={mockOnClick} history={history} />);
   });
+
+  it("invokes onClick prop function on click", () => {
+    const history = createBrowserHistory();
+    const c = mount(<VerticalPostPreview post={samplePost} onClick={mockOnClick} history={history} />);
+    const root = c.find('#root').at(0);
+
+    root.simulate('click');
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('goes to post when goto is called', () => {
+    const history = createBrowserHistory(samplePost.data.slug);
+    const c = mount(<VerticalPostPreview post={samplePost} history={history} />);
+    const instance = c.instance();
+
+    instance.goto();
+
+    expect(instance.props.history.length).toBe(3);
+  });
+
 
   it('renders without crashing', () => {
     expect(verticalPostPreview.exists());
@@ -44,7 +66,7 @@ describe('<VerticalPostPreview />', () => {
 
     instance.goto();
 
-    expect(instance.props.history.length).toBe(2);
+    expect(instance.props.history.length).toBe(4);
   });
 
   it('renders nothing if post prop is undefined', () => {
