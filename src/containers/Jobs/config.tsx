@@ -10,6 +10,10 @@ const list = [
   {
     link: 'https://www.marketprotocol.io/assets/Senior-Solidity-Developer.pdf',
     title: 'Senior Solidity Developer'
+  },
+  {
+    link: 'https://www.marketprotocol.io/assets/Community-Growth-Manager.pdf',
+    title: 'Community Growth Manager'
   }
 ];
 
