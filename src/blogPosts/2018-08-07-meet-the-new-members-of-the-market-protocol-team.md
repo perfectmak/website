@@ -2,8 +2,8 @@
 title: Meet the new members of the MARKET Protocol Team!
 author: Lazar Jovanovic
 category: Team
-published_at: '2018-08-07T16:44:27-05:00'
-thumbnail: /uploads/linkedin_profile_header.png
+published_at: '2018-08-01T16:44:27-05:00'
+thumbnail: /uploads/facebook_header.png
 ---
 _We are excited to announce three new members in our development and design team — Robert, Travis and Nitin!_
 
