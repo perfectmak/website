@@ -161,7 +161,11 @@ export default {
   },
   Document: class CustomHtml extends Component {
     render () {
-      const { Body, children, Html, Head, renderMeta } = this.props
+      const { Body, children, Html, Head, renderMeta, routeInfo } = this.props
+      const ogUrl = `https://marketprotocol.io/${routeInfo && routeInfo.path ? routeInfo.path : ''}`
+      const post = routeInfo && routeInfo.allProps ? routeInfo.allProps.post : undefined
+      const metaTitle = post && post.data && post.data.title ? post.data.title : 'MARKET Protocol'
+      const metaImage = post && post.data && post.data.thumbnail ? post.data.thumbnail : 'https://marketprotocol.io/social.jpg'
 
       return (
         <Html itemScope itemType="http://schema.org/Article">
@@ -179,25 +183,25 @@ export default {
             {renderMeta.helmet && renderMeta.helmet.meta.toComponent()}
 
             <meta httpEquiv="content-language" content="en" />
-            <meta itemProp="name" content="MARKET Protocol" />
+            <meta itemProp="name" content={metaTitle} />
             <meta
               itemProp="description"
               content="Powering safe, solvent and trustless trading of any asset."
             />
-            <meta itemProp="image" content="https://marketprotocol.io/social.jpg" />
+            <meta itemProp="image" content={metaImage} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@MarketProtocol" />
             <meta name="twitter:creator" content="@MarketProtocol" />
-            <meta name="twitter:image:src" content="https://marketprotocol.io/social.jpg" />
+            <meta name="twitter:image:src" content={metaImage} />
             <meta property="og:locale" content="en_US" />
             <meta name="language" content="English" />
-            <meta property="og:url" content="https://marketprotocol.io/" />
-            <meta property="og:title" content="MARKET Protocol" />
+            <meta property="og:url" content={ogUrl} />
+            <meta property="og:title" content={metaTitle} />
             <meta
               property="og:description"
               content="Powering safe, solvent and trustless trading of any asset."
             />
-            <meta property="og:image" content="https://marketprotocol.io/social.jpg" />
+            <meta property="og:image" content={metaImage} />
             <meta name="robots" content="index,follow" />
           </Head>
           <Body>
