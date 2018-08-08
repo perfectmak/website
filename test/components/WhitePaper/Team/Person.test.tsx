@@ -14,7 +14,8 @@ describe('<Person />', () => {
         name: 'Mock User',
         title: 'Developer',
     },
-    focus: mockFocus
+    focus: mockFocus,
+    type: 'core'
   };
 
   it('renders image with src passed as props', () => {

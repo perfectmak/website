@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-static';
 import { MarketText } from '@styledComponents';
-import { TeamMember } from './config';
+import { TeamMember } from '@containers/Team/config';
 
 interface Props {
   data: TeamMember;
@@ -39,7 +39,8 @@ const Person = ({ data }: Props) => {
         <MarketText
           style={{
             fontSize: '16px',
-            fontWeight: 400
+            fontWeight: 400,
+            marginBottom: 0
           }}
         >
           {name}
@@ -54,6 +55,7 @@ const Person = ({ data }: Props) => {
         <MarketText
           style={{
             fontSize: '14px',
+            marginBottom: 0,
             textDecoration: 'underline'
           }}
         >

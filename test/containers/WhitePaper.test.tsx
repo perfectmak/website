@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { Row } from 'antd';
+import { Row, Col } from 'antd';
 
 import Whitepaper, { WhitePaperComponent, Wrapper } from '@containers/WhitePaper';
 
@@ -22,7 +22,6 @@ describe('<WhitePaperComponent />', () => {
     it('renders all site components', () => {
         const component = shallow(<WhitePaperComponent />);
         expect(component.find(Row)).to.have.length(1);
-        expect(component.find(Wrapper)).to.have.length(1);
         expect(component.find(Banner)).to.have.length(1);
         expect(component.find(dApps)).to.have.length(1);
         expect(component.find(MarketProtocol)).to.have.length(1);

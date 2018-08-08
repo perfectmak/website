@@ -1,22 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Row } from 'antd';
-import Problems, { Section } from '@components/WhitePaper/Problems';
+import Problems  from '@components/WhitePaper/Problems';
+import { TextWrapper } from "@src/Styles";
 
 describe('<Problems />', () => {
-  it('renders section with minHeight 10vh', () => {
+  it('renders one container div component', () => {
     const component = shallow(<Problems />);
-    expect(component.find(Section).props().style).to.deep.equal({
-      background: '#ffffff',
-      minHeight: '10vh'
-    });
-  });
-
-  it('renders one Row component', () => {
-    const component = shallow(<Problems />);
-    const rowComponent = component.find(Row);
+    const rowComponent = component.find(TextWrapper);
     const rowComponentProps = rowComponent.props();
     expect(rowComponent).to.have.length(1);
-    expect(rowComponentProps.type).to.equal('flex');
+    expect(rowComponentProps.id).to.equal('problems');
   });
 });

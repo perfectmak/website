@@ -6,10 +6,11 @@ import heroIllustration from '@images/whitepaper/hero_illustration.svg';
 import { device, size } from '@src/breakpoints';
 
 export const SectionWrapper = styled.section`
-  padding: 70px 70px;
+  padding: 100px;
+  background: #181e26;
 
   @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    padding: 70px 30px;
+    padding: 100px 30px;
   }
 
   @media ${device.mobileL} and (max-width: ${size.tablet}) {
@@ -17,7 +18,7 @@ export const SectionWrapper = styled.section`
   }
 
   @media ${device.tablet} and (max-width: ${size.laptop}) {
-    padding: 70px 200px;
+    padding: 70px 100px;
   }
 
   .img {
@@ -29,26 +30,19 @@ export const SectionWrapper = styled.section`
     font-weight: 100;
     margin-top: 40px;
     color: #ffffff;
-
-    @media ${device.mobileS} and (max-width: ${size.mobileL}) {
-    }
   }
 
   p {
     font-size: 20px;
     font-weight: 100;
     color: #00e2c1;
+    margin-bottom: 40px;
   }
 `;
 class Banner extends React.Component {
   render() {
     return (
-      <SectionWrapper
-        style={{
-          background: '#181e26',
-          minHeight: '10vh'
-        }}
-      >
+      <SectionWrapper>
         <img
           className="img"
           src={logo_light}

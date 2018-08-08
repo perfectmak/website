@@ -181,6 +181,21 @@ const HeroText = styled.div`
   }
 `;
 
+const TextWrapper = styled.div`
+  padding: 0 60px 70px 60px;
+
+  @media (max-width: ${size.mobileL}) {
+    padding: 0 20px 50px 20px;
+  }
+`;
+
+const ContentWrapper = styled.p`
+    font-size: 16px
+    font-weight: 300;
+    line-height: 1.5rem;
+    text-align: justify;
+`;
+
 export {
   MarketList,
   MarketHeader,
@@ -190,5 +205,7 @@ export {
   TeamDivWithResponsiveWidth,
   SectionWrapper,
   MarketDescriptionText,
-  MarketDescriptionWrapper
+  MarketDescriptionWrapper,
+  TextWrapper,
+  ContentWrapper
 };
