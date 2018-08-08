@@ -95,6 +95,10 @@ const HeaderWrapper = styled.div`
   background-color: rgb(24, 30, 38);
   z-index: 9999;
   overflow: hidden;
+  .ant-menu {
+    background: transparent;
+    border-bottom: none;
+  }
   @media (max-width: ${size.mobileL}) {
     .ant-layout-header {
       padding-left: 30px;
