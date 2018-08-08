@@ -14,7 +14,8 @@ describe('<Person />', () => {
       linkedin: 'https://www.linkedin.com/in/trial',
       bio: 'Seth Bio'
     },
-    focus: mockFocus
+    focus: mockFocus,
+    type: 'core'
   };
 
   it('renders image with src passed as props', () => {

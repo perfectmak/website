@@ -1,23 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Row } from 'antd';
-import MKTContract, {Section, ExampleIllustrationWrapper, IllustrationWrapper} from '@components/WhitePaper/MKTContract';
+import MKTContract, { ExampleIllustrationWrapper, IllustrationWrapper } from '@components/WhitePaper/MKTContract';
+import { TextWrapper } from '@src/Styles';
 
 describe('<MKTContract />', () => {
-  it('renders section with minHeight 10vh', () => {
+  it('renders one container div component', () => {
     const component = shallow(<MKTContract />);
-    expect(component.find(Section).props().style).to.deep.equal({
-      background: '#ffffff',
-      minHeight: '10vh'
-    });
-  });
-
-  it('renders one Row component', () => {
-    const component = shallow(<MKTContract />);
-    const rowComponent = component.find(Row);
+    const rowComponent = component.find(TextWrapper);
     const rowComponentProps = rowComponent.props();
     expect(rowComponent).to.have.length(1);
-    expect(rowComponentProps.type).to.equal('flex');
+    expect(rowComponentProps.id).to.equal('contract');
   });
 
   it('renders five ExampleIllustrationWrapper', () => {

@@ -48,11 +48,11 @@ export class TeamComponent extends React.Component<{}, State> {
     );
   }
 
-  renderPeople(people: TeamMember[] | Advisor[]): JSX.Element[] {
+  renderPeople(people: TeamMember[] | Advisor[], type: string): JSX.Element[] {
     return people.map((o, i) => {
       return (
         <Col key={i} xs={24} sm={24} md={8}>
-          <Person data={o} focus={this.focusPerson.bind(this, o)} />
+          <Person data={o} focus={this.focusPerson.bind(this, o)} type={type} />
         </Col>
       );
     });
@@ -91,7 +91,7 @@ export class TeamComponent extends React.Component<{}, State> {
         {/* team members */}
         <TeamDivWithResponsiveWidth style={{ paddingBottom: '40px' }}>
           <Row justify={'center'} align={'middle'}>
-            {this.renderPeople(teamMembers)}
+            {this.renderPeople(teamMembers, 'core')}
           </Row>
         </TeamDivWithResponsiveWidth>
 
@@ -121,7 +121,7 @@ export class TeamComponent extends React.Component<{}, State> {
             }}
           >
             <Row justify={'center'} align={'middle'}>
-              {this.renderPeople(advisors)}
+              {this.renderPeople(advisors, 'advisors')}
             </Row>
           </TeamDivWithResponsiveWidth>
         </div>

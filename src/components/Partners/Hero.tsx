@@ -11,10 +11,6 @@ export const HeroArt = styled.div`
   img {
     width: 60%;
 
-    @media ${device.mobileL} and (max-width: ${size.laptopM}) {
-      width: 90%;
-    }
-
     @media ${device.desktopS} {
       width: 50%;
     }
@@ -22,6 +18,16 @@ export const HeroArt = styled.div`
 
   @media ${device.mobileS} and (max-width: 767px) {
     z-index: -1;
+  }
+  
+  @media ${device.mobileL} and (max-width: ${size.tablet}) {
+    opacity: 0.4
+    margin-top: -80px;
+    
+    img {
+      width: 30%;
+      margin-top: -30%;
+    }
   }
 `;
 

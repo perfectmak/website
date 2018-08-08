@@ -26,6 +26,13 @@ interface Config {
 const config: Config = {
   advisors: [
     {
+      bio:
+        'Patrick Charles has over twenty years of experience building software in\
+        a variety of industries including finance, education, health care and computer security. He\
+        has worked as a technology leader, consultant, software architect, engineer and\
+        researcher. Patrick is an open source contributor, has authored a number of technical\
+        papers, is an inventor with two US patents and is co-author of the opening chapter in the\
+        soon to be published book “Frontiers of Cyberlearning”.',
       email: '',
       img: advisorImages.PatrickCharles,
       linkedin: 'https://www.linkedin.com/in/pchuck/',
@@ -33,20 +40,9 @@ const config: Config = {
       title: 'Data Science & Analytics Pipeline Architect'
     },
     {
-      email: '',
-      img: advisorImages.BrianShields,
-      linkedin: 'https://www.linkedin.com/in/briandshields/',
-      name: 'Brian Shields',
-      title: 'Co-Founder, Coder Inc.'
-    },
-    {
-      email: '',
-      img: advisorImages.DanHorowitz,
-      linkedin: 'https://www.linkedin.com/in/danielhorowitznyc/',
-      name: 'Dan Horowitz',
-      title: 'Senior Vice President Engineering, 1010 Data'
-    },
-    {
+      bio:
+        'Josh started coding at the age of 10. Prior to Origin, he co-founded three\
+        other venture-backed companies: EventVue, Torbit (acquired by Walmart Labs) & Forage.',
       email: '',
       img: advisorImages.JoshFraser,
       linkedin: 'https://www.linkedin.com/in/joshuafraser/',
@@ -54,13 +50,32 @@ const config: Config = {
       title: 'Co-Founder, Origin Protocol'
     },
     {
+      bio:
+        'As VP of Engineering, Dan oversees systems development for 1010data.\
+        He focuses on making 1010data the fastest, most reliable big data discovery and sharing\
+        platform on the web. He has been instrumental developing scaled solutions to gracefully\
+        manage petabytes of data with world-class reliability and fast query response time.\
+        During his 8-year tenure at 1010data, Dan has worked on numerous critical development\
+        projects across the company including the Trillion-Row Spreadsheet and various MBS\
+        data products. Before joining 1010data, Dan was a developer at Accenture on the\
+        Global Architecture Team building custom enterprise management software. Dan holds a\
+        BS in Computer Science from the University of Rochester.',
       email: '',
-      img: advisorImages.BrentTraidman,
-      linkedin: 'https://www.linkedin.com/in/btraidman/',
-      name: 'Brent Traidman',
-      title: 'Chief Revenue Officer, Bread'
+      img: advisorImages.DanHorowitz,
+      linkedin: 'https://www.linkedin.com/in/danielhorowitznyc/',
+      name: 'Dan Horowitz',
+      title: 'Senior Vice President Engineering, 1010 Data'
     },
     {
+      bio:
+        'Based in Asia since 2004, Casper has worked as an investment banker,\
+        tech entrepreneur, corporate executive and private equity investor. He is currently a\
+        co-founder of Spartan Group, an investment management and advisory firm focusing on\
+        blockchain technology. Casper co-heads Spartan’s advisory business, which works with\
+        industry leaders in the blockchain and ICO space. Prior to Spartan, Casper spent 10 years\
+        in the Investment Banking Division at Goldman Sachs in their London, Hong Kong, Beijing\
+        and Singapore offices. Casper has been an active tech angel investor for over a decade,\
+        and is an active blockchain and crypto investor.',
       email: '',
       img: advisorImages.CasperJohansen,
       linkedin: 'https://www.linkedin.com/in/casperbjohansen',
@@ -68,6 +83,47 @@ const config: Config = {
       title: 'Co-Founder, Spartan Group'
     },
     {
+      bio:
+        'Brian has over a decade of experience in debt and capital markets, digital\
+        marketing, and technology entrepreneurship. A recognized innovator, he has a wealth of\
+        business acumen developed through years of working with Fortune 500 and Inc. 500\
+        companies, as well as early-stage startups. Brian acts as the venture mind for Coder,\
+        leading sales, marketing, finance and strategy. Before founding Coder, Brian was an\
+        Associate Director at Brafton, a digital marketing agency with offices in Boston, Chicago,\
+        and San Francisco. Brian graduated with a Bachelor’s degree in finance from the\
+        University of Illinois at Urbana-Champaign.',
+      email: '',
+      img: advisorImages.BrianShields,
+      linkedin: 'https://www.linkedin.com/in/briandshields/',
+      name: 'Brian Shields',
+      title: 'Co-Founder, Coder Inc.'
+    },
+    {
+      bio:
+        'Brent has over 15 years of experience leading high impact growth\
+        software companies, of which many have had successful exits. Brent is currently the\
+        Chief Revenue Officer at Bread (BRD), one of the world\'s fastest growing crypto financial\
+        platforms. Bread is considered a thought leader in the world of crypto, with over one\
+        million users in over 140 countries. Prior to Bread, Brent worked in the Vista Equity\
+        Partners portfolio where he helped drive two exits. Brent builds revenue engines and\
+        helps develop growth strategies. When not at work, he helps advise a Silicon Valley \
+        venture capital firm on early stage investments, and regularly speaks, mentors, and\
+        attends global accelerator conferences.',
+      email: '',
+      img: advisorImages.BrentTraidman,
+      linkedin: 'https://www.linkedin.com/in/btraidman/',
+      name: 'Brent Traidman',
+      title: 'Chief Revenue Officer, Bread'
+    },
+    {
+      bio:
+        'Rob Behnke is a 5-year cryptocurrency trader, token sale growth hacker,\
+         and entrepreneur currently living in San Francisco. His prior startups - \
+         The Brooklyn Salsa Company and the MicSwap iOS App have been featured in Forbes,\
+          Techcrunch and the New York Times. He is the founder\
+           of Token Agency - a premier, full-service marketing and strategy\
+            agency for the blockchain startup space that\
+         successfully launched and worked with multiple ICOs / Token Sales / Token Generation Events.',
       email: '',
       img: advisorImages.RobBehnke,
       linkedin: 'https://www.linkedin.com/in/rbehnke/',
@@ -75,6 +131,15 @@ const config: Config = {
       title: 'Founder, Token Agency'
     },
     {
+      bio:
+        'Kevin Owocki is the founder of Gitcoin.co. He is a software engineer interested in hacking,\
+         learning, and writing about the intersection of next-generation technologies,\
+          especially machine learning, computer vision, VR, AR, & plenoptic photography.\
+           He has a BS in Computer Science,\
+            10 years of engineering leadership experience in startups and Open Source Software.\
+             He also is a community organizer in the Boulder Colorado Blockchain Tech Scene,\
+              helping many notable events planning, like ETHDenver with\
+               one of MARKET Protocol co-founders Phil Elsasser.',
       email: '',
       img: advisorImages.KevinOwocki,
       linkedin: 'https://www.linkedin.com/in/owocki/',

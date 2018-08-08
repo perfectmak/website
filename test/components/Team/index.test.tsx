@@ -1,8 +1,7 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import Team from '@components/WhitePaper/Team/index';
-import config from '@components/WhitePaper/Team/config';
-import Person from '@components/WhitePaper/Team/Person';
+import config from '@containers/Team/config';
 import { Row } from 'antd';
 
 describe('<Team />', () => {

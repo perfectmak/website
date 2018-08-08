@@ -10,6 +10,7 @@ import { TeamMember } from '@containers/Team/config';
 interface Props {
   data: TeamMember;
   focus: (event: React.MouseEvent<HTMLImageElement>) => void;
+  type: string;
 }
 
 export const ReadBioHover = styled.div`
@@ -31,7 +32,7 @@ export const ReadBioHover = styled.div`
   }
 `;
 
-const Person = ({ data, focus }: Props) => {
+const Person = ({ data, focus, type }: Props) => {
   const { name, title, img, email, linkedin, bio } = data;
 
   return (
@@ -48,14 +49,19 @@ const Person = ({ data, focus }: Props) => {
       }}
     >
       <div
-        onClick={() => (bio ? focus() : null)}
+        onClick={() =>
+          bio ? (type.toLocaleLowerCase() === 'core' ? focus() : null) : null
+        }
         style={{
           display: 'flex',
           justifyContent: 'center',
           position: 'relative'
         }}
       >
-        {bio && <ReadBioHover id="readMore">Read Bio</ReadBioHover>}
+        {bio &&
+          type.toLocaleLowerCase() === 'core' && (
+            <ReadBioHover id="readMore">Read Bio</ReadBioHover>
+          )}
 
         {/* image */}
         <img

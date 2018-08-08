@@ -6,14 +6,6 @@ import heroIllustration from '@images/whitepaper/hero_illustration.svg';
 import Banner, { SectionWrapper } from '@components/WhitePaper/Banner';
 
 describe('<Banner />', () => {
-  it('renders section with minHeight 10vh', () => {
-    const component = shallow(<Banner />);
-    expect(component.find(SectionWrapper).props().style).to.deep.equal({
-      background: '#181e26',
-      minHeight: '10vh'
-    });
-  });
-
   it('renders one Row component', () => {
     const component = shallow(<Banner />);
     const rowComponent = component.find(Row);

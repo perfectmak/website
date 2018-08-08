@@ -1,36 +1,23 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {Row} from 'antd';
-import Technical, {Section} from '@components/WhitePaper/Technical';
+import { shallow } from 'enzyme';
+import Technical, { IllustrationWrapper } from "@components/WhitePaper/Technical";
+import { TextWrapper } from '@src/Styles';
 
 describe('<Technical />', () => {
-  it('renders section with minHeight 10vh', () => {
-    const component = shallow(<Technical/>);
-    expect(component.find(Section).props().style)
-      .to
-      .deep
-      .equal({background: '#ffffff', minHeight: '10vh'});
-  });
-
-  it('renders one Row component', () => {
-    const component = shallow(<Technical/>);
-    const rowComponent = component.find(Row);
+  it('renders one container div component', () => {
+    const component = shallow(<Technical />);
+    const rowComponent = component.find(TextWrapper);
     const rowComponentProps = rowComponent.props();
-    expect(rowComponent)
-      .to
-      .have
-      .length(1);
-    expect(rowComponentProps.type)
-      .to
-      .equal('flex');
+    expect(rowComponent).to.have.length(1);
+    expect(rowComponentProps.id).to.equal('technical');
   });
 
-  it('renders three images', () => {
+  it('renders five images', () => {
     const component = shallow(<Technical/>);
-    const images = component.find('img');
+    const images = component.find(IllustrationWrapper);
     expect(images)
       .to
       .have
-      .length(3);
+      .length(5);
   });
 });
