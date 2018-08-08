@@ -5,7 +5,7 @@ category: Trading
 published_at: '2018-08-07T17:08:45-05:00'
 thumbnail: /uploads/capture.png
 ---
-## _MARKET Protocol — No Margin Calls, Forced Liquidations, Unknown Downside or Socialized Losses_
+_MARKET Protocol — No Margin Calls, Forced Liquidations, Unknown Downside or Socialized Losses_
 
 Now seems to be a great time to discuss some major topics and issues surrounding the OKEx Bitcoin Future saga. To paraphrase this [Coindesk article](https://www.coindesk.com/okex-confirms-9m-clawback-after-enormous-bitcoin-futures-position-fails/), OKEx force-liquidated a very large (~$400m notional) bitcoin futures position. The size of this position triggered a socialized loss on the OKEx platform to be split proportionally by all profited traders’ realized + unrealized gains. The loss to investors is almost $9m. The ending of this story is still TBD.
 
