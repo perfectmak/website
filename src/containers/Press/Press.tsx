@@ -71,7 +71,6 @@ const RootWrap = styled.div`
 
 interface PressProps {
   posts: Post[];
-  categories: string[];
   history: History;
 }
 
@@ -85,7 +84,6 @@ interface Post {
   data: {
     title: string;
     author: string;
-    category: string;
     published_at: number;
     medium_link: string;
     thumbnail: string;
