@@ -30,17 +30,20 @@ const Bold = styled.div`
   text-align: left;
 `;
 const PostItemContainer = styled.div`
-  > #root {
-    width: 32%;
-    background-color: #fff;
-    cursor: pointer;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
-    transition: all 300ms;
+  width: 32%;
+  cursor: pointer;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+  transition: all 300ms;
 
-    :hover {
-      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);
-    }
+  > #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :hover {
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);
   }
 `;
 const PostItemImage = styled.img`
