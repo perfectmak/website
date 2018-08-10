@@ -109,7 +109,8 @@
       }
     },
     "collectCoverageFrom": [
-      "src/**/*.{ts,tsx,js,jsx,mjs}"
+      "src/**/*.{ts,tsx,js,jsx,mjs}",
+      "!src/assets/images/press/index.js"
     ],
     "setupFiles": [],
     "testMatch": [

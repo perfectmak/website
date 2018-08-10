@@ -306,6 +306,14 @@ class Navbar extends React.Component {
             Partners
           </Link>
         </Menu.Item>
+        <Menu.Item key="/press">
+          <Link
+            to="/press"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            Press
+          </Link>
+        </Menu.Item>
         <Menu.Item key="/blog">
           <Link to="/blog" style={{ color: 'inherit', textDecoration: 'none' }}>
             Blog
